@@ -1,10 +1,10 @@
-(ns campaign3.rings
-  (:require (campaign3
-              [db :as db]
-              [prompting :as p]
-              [randoms :as randoms]
-              [util :as u])
-            [randy.core :as r]))
+(ns campaign4.rings
+  (:require
+    [campaign4.db :as db]
+    [campaign4.prompting :as p]
+    [campaign4.randoms :as randoms]
+    [campaign4.util :as u]
+    [randy.core :as r]))
 
 (def all-rings (->> (db/load-all :rings)
                     (map #(update % :randoms randoms/randoms->fn))))

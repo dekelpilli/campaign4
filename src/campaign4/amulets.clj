@@ -1,8 +1,9 @@
-(ns campaign3.amulets
-  (:require [campaign3.db :as db]
-            [campaign3.prompting :as p]
-            [campaign3.util :as u]
-            [randy.core :as r]))
+(ns campaign4.amulets
+  (:require
+    [campaign4.db :as db]
+    [campaign4.prompting :as p]
+    [campaign4.util :as u]
+    [randy.core :as r]))
 
 (def ^:private cr-weightings
   {0M 0 0.125M 0 0.25M 0 0.5M 0

@@ -1,9 +1,10 @@
-(ns campaign3.util
-  (:require [campaign3.db :as db]
-            [randy.core :as r]
-            [randy.rng :as rng]))
+(ns campaign4.util
+  (:require
+    [campaign4.db :as db]
+    [randy.core :as r]
+    [randy.rng :as rng]))
 
-(def current-session)
+(declare current-session)
 
 (defn record! [event amount]
   (when (bound? #'current-session)

@@ -1,20 +1,20 @@
-(ns campaign3.core
+(ns campaign4.core
   (:gen-class)
-  (:require (campaign3
-              [amulets :as amulets]
-              [crafting :as crafting]
-              [curios :as curios]
-              [enchants :as e]
-              [helmets :as helmets]
-              [mundanes :as mundanes]
-              [relics :as relics]
-              [rings :as rings]
-              [tarot :as tarot]
-              [uniques :as uniques]
-              [util :as u])
-            [puget.printer :as puget]
-            [randy.core :as r]
-            [randy.rng :as rng]))
+  (:require
+    [campaign4.amulets :as amulets]
+    [campaign4.crafting :as crafting]
+    [campaign4.curios :as curios]
+    [campaign4.enchants :as e]
+    [campaign4.helmets :as helmets]
+    [campaign4.mundanes :as mundanes]
+    [campaign4.relics :as relics]
+    [campaign4.rings :as rings]
+    [campaign4.tarot :as tarot]
+    [campaign4.uniques :as uniques]
+    [campaign4.util :as u]
+    [puget.printer :as puget]
+    [randy.core :as r]
+    [randy.rng :as rng]))
 
 (def loot-actions
   {1  {:name   "20-30 gold"

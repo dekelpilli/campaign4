@@ -1,11 +1,11 @@
-(ns campaign3.enchants
-  (:require (campaign3
-              [db :as db]
-              [mundanes :as mundanes]
-              [prompting :as p]
-              [randoms :as randoms]
-              [util :as u])
-            [clojure.walk :as walk]))
+(ns campaign4.enchants
+  (:require
+    [campaign4.db :as db]
+    [campaign4.mundanes :as mundanes]
+    [campaign4.prompting :as p]
+    [campaign4.randoms :as randoms]
+    [campaign4.util :as u]
+    [clojure.walk :as walk]))
 
 (defn ^:private prep-matcher [matcher]
   (walk/prewalk
@@ -83,4 +83,4 @@
 (defn add-enchants-to []
   (u/when-let* [points (some-> (p/>>input "Desired points total:") parse-long)
                 {:keys [base type]} (mundanes/choose-base)]
-    [base (add-enchants-totalling base type points)]))
+               [base (add-enchants-totalling base type points)]))

@@ -1,10 +1,10 @@
-(ns campaign3.mundanes
-  (:require (campaign3
-              [db :as db]
-              [prompting :as p]
-              [randoms :as randoms]
-              [util :as u])
-            [randy.core :as r]))
+(ns campaign4.mundanes
+  (:require
+    [campaign4.db :as db]
+    [campaign4.prompting :as p]
+    [campaign4.randoms :as randoms]
+    [campaign4.util :as u]
+    [randy.core :as r]))
 
 (def ^:private weapons (db/load-all :weapons))
 (def ^:private armours (db/load-all :armours))
@@ -26,8 +26,8 @@
   ([]
    (u/when-let* [base-type (p/>>item "Base category:" (keys base-types))
                  base (choose-base base-type)]
-     {:base base
-      :type base-type}))
+                {:base base
+                 :type base-type}))
   ([type]
    (p/>>item "Base type:"
              (u/assoc-by :name (base-types type)))))

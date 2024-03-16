@@ -1,13 +1,15 @@
-(ns campaign3.db
-  (:require [config.core :refer [env]]
-            [honey.sql :as hsql]
-            [jsonista.core :as j]
-            [next.jdbc :as jdbc]
-            [next.jdbc.prepare :refer [SettableParameter]]
-            [next.jdbc.result-set :refer [ReadableColumn as-unqualified-kebab-maps]])
-  (:import (clojure.lang IObj IPersistentMap IPersistentVector)
-           (java.sql Connection PreparedStatement)
-           (org.postgresql.util PGobject PSQLException)))
+(ns campaign4.db
+  (:require
+    [config.core :refer [env]]
+    [honey.sql :as hsql]
+    [jsonista.core :as j]
+    [next.jdbc :as jdbc]
+    [next.jdbc.prepare :refer [SettableParameter]]
+    [next.jdbc.result-set :refer [ReadableColumn as-unqualified-kebab-maps]])
+  (:import
+    (clojure.lang IObj IPersistentMap IPersistentVector)
+    (java.sql Connection PreparedStatement)
+    (org.postgresql.util PGobject PSQLException)))
 
 (def data-src (let [{:keys [db-host db-port db-user db-pass db-name]} env]
                 (jdbc/get-datasource {:host     db-host
@@ -42,7 +44,7 @@
     (execute! {:select [:*] :from [table]})
     (catch PSQLException _ [])))
 
-(defn- ->pgobject  [x]
+(defn- ->pgobject [x]
   (let [pg-type (or (:pg-type (meta x)) "jsonb")]
     (doto (PGobject.)
       (.setType pg-type)

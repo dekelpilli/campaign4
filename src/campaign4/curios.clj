@@ -1,12 +1,11 @@
-(ns campaign3.curios
-  (:refer-clojure :exclude [use])
-  (:require (campaign3
-              [db :as db]
-              [enchants :as e]
-              [mundanes :as mundanes]
-              [prompting :as p]
-              [util :as u])
-            [randy.core :as r]))
+(ns campaign4.curios
+  (:require
+    [campaign4.db :as db]
+    [campaign4.enchants :as e]
+    [campaign4.mundanes :as mundanes]
+    [campaign4.prompting :as p]
+    [campaign4.util :as u]
+    [randy.core :as r]))
 
 (def ^:private curios (db/load-all :curios))
 

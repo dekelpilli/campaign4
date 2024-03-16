@@ -1,8 +1,10 @@
-(ns campaign3.prompting
-  (:require [clojure.string :as str]
-            [flatland.ordered.map :refer [ordered-map]])
-  (:import (de.codeshelf.consoleui.prompt CheckboxResult ConsolePrompt InputResult ListResult)
-           (jline.console.completer Completer)))
+(ns campaign4.prompting
+  (:require
+    [clojure.string :as str]
+    [flatland.ordered.map :refer [ordered-map]])
+  (:import
+    (de.codeshelf.consoleui.prompt CheckboxResult ConsolePrompt InputResult ListResult)
+    (jline.console.completer Completer)))
 
 (def ^:private console-prompt (ConsolePrompt.))
 (def default-opts {:completer       :regular

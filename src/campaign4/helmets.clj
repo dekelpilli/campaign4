@@ -1,9 +1,9 @@
-(ns campaign3.helmets
-  (:require (campaign3
-              [db :as db]
-              [prompting :as p]
-              [util :as u])
-            [randy.core :as r]))
+(ns campaign4.helmets
+  (:require
+    [campaign4.db :as db]
+    [campaign4.prompting :as p]
+    [campaign4.util :as u]
+    [randy.core :as r]))
 
 (def ^:private mod-mending-result (r/alias-method-sampler {:upgrade 3 :remove 3 :nothing 4}))
 

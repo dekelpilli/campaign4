@@ -1,9 +1,10 @@
-(ns campaign3.prep
-  (:require [campaign3.prompting :as p]
-            [campaign3.util :as u]
-            [clojure.core.match :refer [match]]
-            [randy.core :as r]
-            [randy.rng :as rng]))
+(ns campaign4.prep
+  (:require
+    [campaign4.prompting :as p]
+    [campaign4.util :as u]
+    [clojure.core.match :refer [match]]
+    [randy.core :as r]
+    [randy.rng :as rng]))
 
 (def ^:private default-players-amount 3)
 (def ^:private default-max-enemies 5)
@@ -24,8 +25,9 @@
                                        {:tier "Impossible" :multiplier 2.25 :cost 50}
                                        {:tier "Custom" :multiplier :custom :cost :custom}])
 
-(defn- combinations-without-replacement [coll r]
+(defn- combinations-without-replacement
   "Uses algorithm from https://docs.python.org/2/library/itertools.html#itertools.combinations_with_replacement"
+  [coll r]
   (let [pool (vec coll)
         n (count pool)]
     (loop [indices (vec (repeat r 0))

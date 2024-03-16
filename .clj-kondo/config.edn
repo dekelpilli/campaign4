@@ -1,0 +1,5 @@
+{:lint-as       {campaign4.util/when-let* clojure.core/let}
+ :skip-comments true
+ :linters       {:single-key-in            {:level :warning}
+                 :used-underscored-binding {:level :warning}
+                 :unused-value             {:level :warning}}}

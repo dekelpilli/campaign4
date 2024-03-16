@@ -1,15 +1,15 @@
-(ns campaign3.tarot
-  (:require (campaign3
-              [db :as db]
-              [enchants :as e]
-              [helmets :as helmets]
-              [mundanes :as mundanes]
-              [prompting :as p]
-              [relics :as relics]
-              [util :as u])
-            [clojure.set :as set]
-            [puget.printer :as puget]
-            [randy.core :as r]))
+(ns campaign4.tarot
+  (:require
+    [campaign4.db :as db]
+    [campaign4.enchants :as e]
+    [campaign4.helmets :as helmets]
+    [campaign4.mundanes :as mundanes]
+    [campaign4.prompting :as p]
+    [campaign4.relics :as relics]
+    [campaign4.util :as u]
+    [clojure.set :as set]
+    [puget.printer :as puget]
+    [randy.core :as r]))
 
 (def ^:private suit-tags {:swords    #{"accuracy" "damage"}
                           :wands     #{"magic" "critical"}

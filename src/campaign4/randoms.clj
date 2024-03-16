@@ -1,5 +1,6 @@
-(ns campaign3.randoms
-  (:require [randy.core :as r]))
+(ns campaign4.randoms
+  (:require
+    [randy.core :as r]))
 
 (defn- keyword-type [{:keys [type] :as conf}]
   (cond-> conf
@@ -44,8 +45,7 @@
 
 (defmethod randoms-factor :skills [_]
   5)
-(defmethod randoms-preset :skills [{:keys [type]
-                                    :or   {type :all}}]
+(defmethod randoms-preset :skills [_]
   ["perception" "medicine" "deception" "persuasion" "investigation" "insight" "survival"
    "arcana" "athletics" "acrobatics" "sleight of hand" "stealth" "history"
    "nature" "religion" "animal handling" "intimidation" "performance" "engineering"])

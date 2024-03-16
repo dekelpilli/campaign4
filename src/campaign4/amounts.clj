@@ -1,6 +1,7 @@
-(ns campaign3.amounts
-  (:require [clojure.walk :as walk]
-            [org.fversnel.dnddice.core :as d]))
+(ns campaign4.amounts
+  (:require
+    [clojure.walk :as walk]
+    [org.fversnel.dnddice.core :as d]))
 
 (defn- disadv [f] #(min (f) (f)))
 (defn- adv [f] #(max (f) (f)))

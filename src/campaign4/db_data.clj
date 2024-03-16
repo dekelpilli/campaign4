@@ -1,13 +1,15 @@
-(ns campaign3.db-data
-  (:require [campaign3.db :as db]
-            [campaign3.util :as u]
-            [clojure.edn :as edn]
-            [clojure.java.io :as io]
-            [clojure.pprint :as pprint]
-            [clojure.set :as set]
-            [clojure.string :as str]
-            [jsonista.core :as j])
-  (:import (java.io File PushbackReader)))
+(ns campaign4.db-data
+  (:require
+    [campaign4.db :as db]
+    [campaign4.util :as u]
+    [clojure.edn :as edn]
+    [clojure.java.io :as io]
+    [clojure.pprint :as pprint]
+    [clojure.set :as set]
+    [clojure.string :as str]
+    [jsonista.core :as j])
+  (:import
+    (java.io File PushbackReader)))
 
 (defn- load-data [type]
   (with-open [r (PushbackReader. (io/reader (str "db/initial-data/" type ".edn")))]

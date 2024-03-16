@@ -1,12 +1,12 @@
-(ns campaign3.relics
-  (:require (campaign3
-              [db :as db]
-              [enchants :as e]
-              [mundanes :as mundanes]
-              [prompting :as p]
-              [util :as u])
-            [puget.printer :as puget]
-            [randy.core :as r]))
+(ns campaign4.relics
+  (:require
+    [campaign4.db :as db]
+    [campaign4.enchants :as e]
+    [campaign4.mundanes :as mundanes]
+    [campaign4.prompting :as p]
+    [campaign4.util :as u]
+    [puget.printer :as puget]
+    [randy.core :as r]))
 
 (defn choose-found-relic []
   (->> (db/execute! {:select [:*]

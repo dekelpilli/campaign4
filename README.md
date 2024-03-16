@@ -31,23 +31,7 @@ You can use divinity dust to progress your progress in a divinity path you have 
 - Uniques cannot be moved to other gear slots, but can be moved within the slot + restriction
 
 ### Relics
-- Relics related to a specific personality are unlocked at a certain quest state.
-- Last relic level (10) is a choice:
-  - New random mod from list of mods available on relic (rolled before choosing this option)
-  - Upgrade existing mod of choice
-  - New random mod (rolled before choosing this option)
-- Characters have one armour relic slot, and one weapon relic slot. Any relic they put on will automatically get levelled to that level, but those levels are static once defined
-- Characters can level up their relic slots (separately) at the following costs:
-  1. 0 (start),
-  2. 40,
-  3. 60,
-  4. 80,
-  5. 110,
-  6. 140,
-  7. 170,
-  8. 200,
-  9. 250,
-  10. 300
+Relics are equipment that can be levelled up with gold. Each relic starts at level 1, and can be levelled up 5 times (up to level 6). Each level costs 100gp. Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). Any relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. When relics are sold, all gold invested in them will be refunded 100%.
 
 ### Helmets
 - Character enchants only, spawn with 20 points of mods

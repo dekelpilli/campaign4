@@ -1,9 +1,9 @@
-(ns campaign3.paths
-  (:require (campaign3
-              [db :as db]
-              [helmets :as helmets]
-              [prompting :as p]
-              [util :as u])))
+(ns campaign4.paths
+  (:require
+    [campaign4.db :as db]
+    [campaign4.helmets :as helmets]
+    [campaign4.prompting :as p]
+    [campaign4.util :as u]))
 
 (def divinity-paths (->> (db/load-all :divinity-paths)
                          (u/assoc-by :name)))
