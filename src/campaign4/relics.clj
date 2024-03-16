@@ -66,6 +66,7 @@
     :upgrade-mod (upgrade-mod attunement mod)
     :no-change attunement))
 
+;TODO update functionality to match relic levelling description
 (defn- unique-levelling-options [n upgradeable relic-mods random-gen option-types]
   (if (zero? n)
     []
@@ -124,21 +125,32 @@
           (add-mod-choice choice)
           (update :level inc)))))
 
-(defn set-relic-level! []
-  (u/when-let* [{:keys [levels] :as relic} (choose-found-relic)
-                target-level (p/>>item "What is the relic's new level?" (range 2 11))]
-    (let [current-max-level (-> levels peek :level)
-          additional-levels (- target-level current-max-level)]
-      (if (pos? additional-levels)
-        (let [ new-levels (reduce (fn [levels _]
-                                   (if-let [new-level (single-relic-level relic (peek levels))]
-                                     (conj levels new-level)
-                                     (reduced levels)))
-                                 levels
-                                 (range additional-levels))]
-          (update-relic! (assoc relic :levels new-levels))
-          (peek new-levels))
-        (nth levels (dec target-level))))))
+(defn level-relic! []
+  (when-let [{:keys [level levels] :as relic} (choose-found-relic)]
+    (if (< level 6)
+      (if (< level (count levels))
+        (do (-> (update relic :level inc)
+                update-relic!)
+            (nth levels level))
+        (if-let [new-level (single-relic-level relic (peek levels))]
+          (do (-> (update relic :levels conj new-level)
+                  (update :level inc)
+                  update-relic!)
+              new-level)
+          (peek levels)))
+      (peek levels))))
+
+(defn unveil-relic-levels! []
+  (when-let [{:keys [levels] :as relic} (choose-found-relic)]
+    (let [new-levels (reduce (fn [levels _]
+                               (if-let [new-level (single-relic-level relic (peek levels))]
+                                 (conj levels new-level)
+                                 (reduced levels)))
+                             levels
+                             (range (count levels) 4))]
+      (-> (update relic :levels into new-levels)
+          update-relic!)
+      new-levels)))
 
 (defn reset-relic! []
   (when-let [relic (choose-found-relic)]
@@ -147,8 +159,7 @@
 
 (defn- find-relic! [{:keys [start] :as relic}]
   (-> (assoc relic
-        :levels [{:level 1
-                  :existing (mapv prep-new-mod start)
+        :levels [{:existing   (mapv prep-new-mod start)
                   :progressed []}]
         :found true)
       update-relic!))

@@ -323,6 +323,7 @@
                                [:start :jsonb [:not nil]]
                                [:mods :jsonb [:not nil]]
                                [:levels :jsonb]
+                               [:level :integer [:not nil]]
                                [:sold :boolean [:not nil]]]}))
 
 (defn insert-relics! []
@@ -330,7 +331,7 @@
                 :values      (->> (load-data "relic")
                                   (remove (comp false? :enabled))
                                   (map #(-> (dissoc % :enabled)
-                                            (assoc :sold false)
+                                            (assoc :sold false :level 1)
                                             (update :start u/jsonb-lift)
                                             (update :mods u/jsonb-lift)
                                             (update :levels u/jsonb-lift))))
