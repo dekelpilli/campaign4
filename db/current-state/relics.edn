@@ -1,0 +1,4099 @@
+[{:name "Singular Power",
+  :found true,
+  :base-type "weapon",
+  :base "Bastard Sword",
+  :start
+  [{:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "You may wield one two-handed weapon with one hand instead. This weapon is still limited to one enchantment slot."}],
+  :mods
+  [{:tags ["damage"],
+    :effect
+    "No more than once per turn, when you hit an enemy with a one-handed weapon, deal +1d[6] necrotic damage."}
+   {:tags ["damage"],
+    :effect
+    "Whenever an enemy that is debilitated by you takes damage, it also takes [1] necrotic damage."}
+   {:tags ["damage"],
+    :effect
+    "You have +[1] thorns matching the highest damage type received when your barrier completely nullifies the damage."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Gain maximum poison barriers equal to your maximum generic damage barriers."}
+   {:tags ["damage"],
+    :effect
+    "At the end of each of your turns where you have an amulet active, a creature of your choice must make a Dexterity saving throw or take [2:1]d4 fire damage (half on success)."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect "Your two-handed weapons gain the 'Reach' trait."}
+   {:upgradeable false,
+    :tags ["control"],
+    :effect
+    "No more than once per long rest, when a creature you have damaged lands a killing blow, you may force them to make a CHA save or be debilitated (repeat on turn ends)."}
+   {:tags ["accuracy"],
+    :points 20,
+    :effect
+    "+1 to your DCs with effects that would blind the target on a failed save."}
+   {:tags ["damage"],
+    :effect
+    "+[2:1] damage with weapons while dual-wielding weapons with different base damage types."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may wield one two-handed weapon with one hand instead. This weapon is still limited to one enchantment slot."}
+     {:upgradeable true,
+      :tags ["magic"],
+      :points 10,
+      :level 1,
+      :effect
+      "The number of spells you can prepare is increased by 1."}
+     {:upgradeable true,
+      :tags ["survivability" "utility"],
+      :points 10,
+      :level 1,
+      :effect "Your of Lay of Hands pool increases by [5:5]."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may wield one two-handed weapon with one hand instead. This weapon is still limited to one enchantment slot."}
+     {:upgradeable true,
+      :tags ["magic"],
+      :points 10,
+      :level 1,
+      :effect
+      "The number of spells you can prepare is increased by 1."}
+     {:upgradeable true,
+      :tags ["survivability" "utility"],
+      :points 10,
+      :level 1,
+      :effect "Your of Lay of Hands pool increases by [5:5]."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may wield one two-handed weapon with one hand instead. This weapon is still limited to one enchantment slot."}
+     {:upgradeable true,
+      :tags ["magic"],
+      :points 10,
+      :level 1,
+      :effect
+      "The number of spells you can prepare is increased by 1."}
+     {:upgradeable true,
+      :tags ["survivability" "utility"],
+      :points 10,
+      :level 1,
+      :effect "Your of Lay of Hands pool increases by [5:5]."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "No more than once per long rest, when a creature you have damaged lands a killing blow, you may force them to make a CHA save or be debilitated (repeat on turn ends)."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may wield one two-handed weapon with one hand instead. This weapon is still limited to one enchantment slot."}
+     {:upgradeable true,
+      :tags ["magic"],
+      :points 10,
+      :level 1,
+      :effect
+      "The number of spells you can prepare is increased by 1."}
+     {:upgradeable true,
+      :tags ["survivability" "utility"],
+      :points 10,
+      :level 1,
+      :effect "Your of Lay of Hands pool increases by [5:5]."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "No more than once per long rest, when a creature you have damaged lands a killing blow, you may force them to make a CHA save or be debilitated (repeat on turn ends)."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+1 to your DCs with effects that would blind the target on a failed save."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may wield one two-handed weapon with one hand instead. This weapon is still limited to one enchantment slot."}
+     {:upgradeable true,
+      :tags ["magic"],
+      :points 10,
+      :level 1,
+      :effect
+      "The number of spells you can prepare is increased by 1."}
+     {:upgradeable true,
+      :tags ["survivability" "utility"],
+      :points 10,
+      :level 1,
+      :effect "Your of Lay of Hands pool increases by [5:5]."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "No more than once per long rest, when a creature you have damaged lands a killing blow, you may force them to make a CHA save or be debilitated (repeat on turn ends)."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+1 to your DCs with effects that would blind the target on a failed save."}],
+    :progressed [],
+    :level 5}],
+  :sold true}
+ {:name "Wrath of the Stormbringer",
+  :found true,
+  :base-type "armour",
+  :base "Plate Body Armour",
+  :start
+  [{:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "All physical damage you deal is converted to thunder damage."}],
+  :mods
+  [{:tags ["damage"],
+    :effect
+    "+1d[6] lightning damage against creatures that have taken thunder damage since the end of your last turn."}
+   {:tags ["survivability"],
+    :effect "+[6:3] maximum lightning and thunder barrier."}
+   {:tags ["damage"],
+    :effect
+    "+[1] damage with spells and attacks that deal both thunder and lightning damage."}
+   {:tags ["control" "accuracy"],
+    :points 20,
+    :effect
+    "Creatures deafened by you have -[1] to all saving throws, and -1 AB."}
+   {:upgradeable false,
+    :tags ["control"],
+    :effect
+    "Creatures that fail a saving throw against an effect of yours that deals thunder damage are deafened until the end of your next turn."}
+   {:upgradeable false,
+    :tags ["magic"],
+    :effect
+    "You learn the Booming Blade cantrip and may cast it at will. When cast in this way, any movement triggers the additional thunder damage, rather than just willful movement."}
+   {:tags ["magic"],
+    :points 20,
+    :effect
+    "+[10]% chance to recover the spell slot used for a spell if it deals lightning damage."}
+   {:upgradeable false,
+    :tags ["utility" "wealth"],
+    :effect
+    "Treat penalties to journey activities during 'rain' and 'thunderstorm' days as bonuses instead."}
+   {:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "All non-physical, non-thunder damage you deal is converted to lightning damage."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All physical damage you deal is converted to thunder damage."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All physical damage you deal is converted to thunder damage."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All non-physical, non-thunder damage you deal is converted to lightning damage."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All physical damage you deal is converted to thunder damage."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All non-physical, non-thunder damage you deal is converted to lightning damage."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All physical damage you deal is converted to thunder damage."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All non-physical, non-thunder damage you deal is converted to lightning damage."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You have resistance to all damage while affected by the benefits of the Dodge action.",
+      :prohibits nil}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All physical damage you deal is converted to thunder damage."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All non-physical, non-thunder damage you deal is converted to lightning damage."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You have resistance to all damage while affected by the benefits of the Dodge action.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "Gain 10 temporary hit points when you deliver a Killing Blow.",
+      :prohibits nil}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All physical damage you deal is converted to thunder damage."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "All non-physical, non-thunder damage you deal is converted to lightning damage."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You have resistance to all damage while affected by the benefits of the Dodge action.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "Gain 10 temporary hit points when you deliver a Killing Blow.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+[6:3] maximum lightning and thunder barrier."}],
+    :progressed [],
+    :level 6}],
+  :sold false}
+ {:name "Kartha-Kaya's Recklessness",
+  :found true,
+  :base-type "weapon",
+  :base "Rapier",
+  :start
+  [{:upgradeable false,
+    :tags ["accuracy"],
+    :effect
+    "You have advantaged offence with weapon attacks and maneuvers. You have disadvantaged defence."}],
+  :mods
+  [{:tags ["accuracy"],
+    :effect
+    "You have +[1] AB with attacks you make without advantage."}
+   {:tags ["critical"],
+    :effect
+    "You have +[1] critical hit range with attacks you make without advantage."}
+   {:tags ["utility"], :effect "You have +[2:1] to initiative rolls."}
+   {:tags ["utility"],
+    :effect
+    "You may dash as a free action no more than [once] per combat."}
+   {:tags ["damage"],
+    :effect
+    "No more than once per target per combat, +[6:3] damage with weapon attacks made on turns where you have moved at least 30 feet."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "No more than once per round, when you deal non-physical damage with a weapon attack, gain maximum barrier of that damage type equal to your level."}
+   {:tags ["survivability"],
+    :points 30,
+    :effect
+    "+[1] crit die with each non-physical damage type you deal with weapon attacks."}
+   {:tags ["damage"],
+    :effect "+1d[4] fire damage with weapon attacks."}
+   {:tags ["accuracy"],
+    :points 20,
+    :effect
+    "+[1] AB with weapon attacks against unarmoured (or naturally armoured) creatures."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have advantaged offence with weapon attacks and maneuvers. You have disadvantaged defence."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have advantaged offence with weapon attacks and maneuvers. You have disadvantaged defence."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 incoming healing.",
+      :prohibits nil}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have advantaged offence with weapon attacks and maneuvers. You have disadvantaged defence."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :requires nil,
+      :effect "+1 incoming healing.",
+      :prohibits nil}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+[1] AB with weapon attacks against unarmoured (or naturally armoured) creatures."}
+     {:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have advantaged offence with weapon attacks and maneuvers. You have disadvantaged defence."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :requires nil,
+      :effect "+1 incoming healing.",
+      :prohibits nil}],
+    :progressed [],
+    :level 4}],
+  :sold true}
+ {:name "Sathaqian Hide",
+  :found true,
+  :base-type "armour",
+  :base "Plate Body Armour",
+  :start
+  [{:tags ["control"],
+    :effect
+    "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Your barriers replenish at both the start and end of your turn."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Critical hits you receive do not deplete your barriers, although their damage is still reduced by any barriers that apply."}
+   {:tags ["damage"],
+    :effect "+[1d6] acid damage against poisoned enemies."}
+   {:tags ["accuracy"],
+    :effect "You have advantaged offence against Constructs."}
+   {:tags ["control"],
+    :effect
+    "When you knock an enemy prone, you may make a contested strength check. On a success, you may also knock them back up to 20 feet."}
+   {:tags ["survivability"],
+    :effect "You are resistant to damage from blinded enemies."}
+   {:upgradeable false,
+    :tags ["control"],
+    :effect
+    "Poisoned enemies you critically hit become blinded while they are poisoned."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "+[1] AC if you have poisoned or blinded an enemy in the last minute."}
+   {:tags ["control" "accuracy"],
+    :effect
+    "+1 DC against restrained enemies with effects that poison or blind."}],
+  :levels
+  [{:existing
+    [{:tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "You are resistant to damage from blinded enemies."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "You are resistant to damage from blinded enemies."}
+     {:upgradeable false,
+      :tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Poisoned enemies you critically hit become blinded while they are poisoned."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "You are resistant to damage from blinded enemies."}
+     {:upgradeable false,
+      :tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Poisoned enemies you critically hit become blinded while they are poisoned."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "You are resistant to damage from blinded enemies."}
+     {:upgradeable false,
+      :tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Poisoned enemies you critically hit become blinded while they are poisoned."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+[1] AC if you have poisoned or blinded an enemy in the last minute."}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "You are resistant to damage from blinded enemies."}
+     {:upgradeable false,
+      :tags ["control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Poisoned enemies you critically hit become blinded while they are poisoned."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+[1] AC if you have poisoned or blinded an enemy in the last minute."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "You have advantaged offence against Constructs."}],
+    :progressed [],
+    :level 6}],
+  :sold true}
+ {:name "Essence of Vuneta",
+  :found true,
+  :base-type "armour",
+  :base "Plate Body Armour",
+  :start
+  [{:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Your barriers are twice as effective against damage from enemies you haven't damaged before."}],
+  :mods
+  [{:tags ["control" "accuracy"],
+    :effect "+1 to your DC with effects that can charm."}
+   {:tags ["survivability"],
+    :effect
+    "While conscious, regain [2:1] hit points at the end of your turn if you dealt no damage during that turn."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "+[2:1] AC if you have not dealt damage since your last initiative roll."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "When you use a non-damaging maneuver, regain hit points equal to [1x] the maneuver degree."}
+   {:tags ["control"],
+    :effect
+    "Critical hits by creatures in combat you can see but haven't damaged have a [50:25]% chance to do regular damage."}
+   {:tags ["utility"],
+    :points 30,
+    :effect
+    "Creatures of your choice that have been within 5 feet of your consecutively for 12 seconds gain +[1] to all rolls until this condition is broken."}
+   {:tags ["utility"],
+    :points 20,
+    :effect
+    "Gain +[1] to all rolls while you are within 5 feet of an allied creature you have been within 5 feet of for at least 12 seconds."}
+   {:tags ["control"],
+    :upgradeable? false,
+    :effect
+    "Creatures you have healed in the last hour have disadvantage on saves against your charms and charm-like effects."}
+   {:tags ["control" "accuracy"],
+    :points 20,
+    :effect
+    "Non-damaging conditions you inflict require +[1] DC to escape. The DC returns to normal if the creature is damaged."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Your barriers are twice as effective against damage from enemies you haven't damaged before."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Your barriers are twice as effective against damage from enemies you haven't damaged before."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 to death saves.",
+      :prohibits nil}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Your barriers are twice as effective against damage from enemies you haven't damaged before."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 to death saves.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "When you use a non-damaging maneuver, regain hit points equal to [1x] the maneuver degree."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Your barriers are twice as effective against damage from enemies you haven't damaged before."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 to death saves.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "When you use a non-damaging maneuver, regain hit points equal to [1x] the maneuver degree."}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :effect
+      "Creatures of your choice that have been within 5 feet of your consecutively for 12 seconds gain +[1] to all rolls until this condition is broken."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Your barriers are twice as effective against damage from enemies you haven't damaged before."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 to death saves.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "When you use a non-damaging maneuver, regain hit points equal to [1x] the maneuver degree."}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :effect
+      "Creatures of your choice that have been within 5 feet of your consecutively for 12 seconds gain +[1] to all rolls until this condition is broken."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 expertise die with medicine.",
+      :prohibits nil}],
+    :progressed [],
+    :level 5}],
+  :sold false}
+ {:name "Essence of Ketis",
+  :found true,
+  :base-type "weapon",
+  :base "Warhammer",
+  :start
+  [{:upgradeable true,
+    :tags ["wealth"],
+    :points 10,
+    :upgrade-points 10,
+    :effect
+    "You find loot as if your Investigation and Survival check results are 1 point higher."}
+   {:upgradeable true,
+    :tags ["survivability"],
+    :points 10,
+    :upgrade-points 10,
+    :effect
+    "While up, regenerate 1 hit point at the start of each round of combat."}
+   {:upgradeable true,
+    :tags ["critical"],
+    :points 10,
+    :upgrade-points 10,
+    :effect
+    "Damage from your critical hits ignores resistances and immunities."}
+   {:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}],
+  :mods
+  [{:tags ["survivability"],
+    :effect
+    "At the end of a turn of yours where you have dealt elemental damage, you gain +1 resistance to elemental damage until the end of the combat, to a maximum of [5:1] from this modifier."}
+   {:upgradeable false,
+    :tags ["critical"],
+    :effect
+    "Acid damage from attacks that have critically hit is always rolled at its maximum value."}
+   {:tags ["damage"], :effect "+[2:1] die size with cold damage."}
+   {:tags ["damage"],
+    :effect "+[1d4] fire damage with weapons and spells."}
+   {:tags ["damage"],
+    :effect
+    "Your spells and weapon attacks always deal a minimum of [3:1] thunder damage."}
+   {:tags ["damage"], :effect "+[2:1] acid block thorns."}
+   {:tags ["damage"],
+    :points 20,
+    :effect
+    "Creatures of your choice within [5] feet of creature you deal lightning damage to also take 1 lightning damage from the same source (i.e. would benefit from the same damage bonuses as the original damage dealer). This does not chain."}
+   {:tags ["damage"],
+    :effect
+    "+[2:1] damage with spells and attacks that only deal elemental damage."}
+   {:tags ["accuracy"],
+    :points 30,
+    :effect "+[1] AB with attacks that would deal elemental damage."}],
+  :levels
+  [{:existing
+    [{:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+[2:1] damage against enemies you are flanking.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+[2:1] damage against enemies you are flanking.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 critical hit range with attacks.",
+      :prohibits nil}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+[2:1] damage against enemies you are flanking.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 critical hit range with attacks.",
+      :prohibits nil}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+[2:1] damage against enemies you are flanking.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 critical hit range with attacks.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 incoming healing.",
+      :prohibits nil}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+[2:1] damage against enemies you are flanking.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 critical hit range with attacks.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 incoming healing.",
+      :prohibits nil}],
+    :progressed [],
+    :level 6}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+[2:1] damage against enemies you are flanking.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 critical hit range with attacks.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 incoming healing.",
+      :prohibits nil}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+[1d4] fire damage with weapons and spells."}],
+    :progressed [],
+    :level 7}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+[2:1] damage against enemies you are flanking.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You find loot as if your Investigation and Survival check results are 1 point higher."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :effect
+      "While up, regenerate 1 hit point at the start of each round of combat."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Damage from your critical hits ignores resistances and immunities."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may convert any non-physical, non-elemental damage you would deal to acid, cold, fire, lightning, or thunder damage."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 critical hit range with attacks.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 incoming healing.",
+      :prohibits nil}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+[1d4] fire damage with weapons and spells."}],
+    :progressed
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :committed 10,
+      :requires nil,
+      :effect "+1 critical hit range with attacks.",
+      :prohibits nil}],
+    :level 8}],
+  :sold false}
+ {:name "Ygdrassil's Evolution",
+  :found true,
+  :base-type "weapon",
+  :base "Ring Blade",
+  :start
+  [{:tags ["damage"], :effect "+1d4 acid damage with attacks."}],
+  :mods
+  [{:tags ["damage"],
+    :effect
+    "No more than once per turn, when you hit an enemy with an attack that deals acid damage, you may cause other enemies within 5 feet of it to take [1] acid damage."}
+   {:tags ["damage"],
+    :effect
+    "+[3:2] physical damage with attacks whose acid damage dice deal more average then any other element's damage dice."}
+   {:upgradeable false,
+    :tags ["critical" "control"],
+    :effect
+    "No more than once per creature, when you are hit by a creature you have critically hit with acid damage, that creature must make a Wisdom saving throw or be frightened (1min, repeating)."}
+   {:tags ["utility"],
+    :effect
+    "You gain Flyby. Gain +[5] feet flying speed for a minute at the end of a round where you have dealt acid damage."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "At the end of a turn where you have damage multiple creatures with acid damage, gain temporary hit points equal to the amount of creatures damaged in this way."}
+   {:tags ["utility"],
+    :effect
+    "+1 expertise die with checks made to identify, cure, or create acids and poisons."}
+   {:tags ["damage"],
+    :effect
+    "+1d4 acid damage against enemies whose maximum hit points have been lowered."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "Acid damage you deal reduces enemy hit points by half of the amount of damage dealt."}
+   {:tags ["survivability"], :effect "+[4:2] maximum acid barrier."}],
+  :levels
+  [{:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1d4 acid damage with attacks."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1d4 acid damage with attacks."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC.",
+      :prohibits nil}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+1d4 acid damage with attacks."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC.",
+      :prohibits nil}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "weapon"},
+      :effect "+[1d4] radiant damage with weapon attacks.",
+      :prohibits nil}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+1d4 acid damage with attacks."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC.",
+      :prohibits nil}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[3:2] physical damage with attacks whose acid damage dice deal more average then any other element's damage dice."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "weapon"},
+      :effect "+[1d4] radiant damage with weapon attacks.",
+      :prohibits nil}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+1d4 acid damage with attacks."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC.",
+      :prohibits nil}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You gain Flyby. Gain +[5] feet flying speed for a minute at the end of a round where you have dealt acid damage."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[3:2] physical damage with attacks whose acid damage dice deal more average then any other element's damage dice."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "weapon"},
+      :effect "+[1d4] radiant damage with weapon attacks.",
+      :prohibits nil}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+1d4 acid damage with attacks."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC.",
+      :prohibits nil}],
+    :progressed [],
+    :level 6}
+   {:existing
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You gain Flyby. Gain +[5] feet flying speed for a minute at the end of a round where you have dealt acid damage."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[3:2] physical damage with attacks whose acid damage dice deal more average then any other element's damage dice."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "weapon"},
+      :effect "+[1d4] radiant damage with weapon attacks.",
+      :prohibits nil}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+1d4 acid damage with attacks."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC.",
+      :prohibits nil}],
+    :progressed [],
+    :level 7}
+   {:existing
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "You gain Flyby. Gain +[5] feet flying speed for a minute at the end of a round where you have dealt acid damage."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[3:2] physical damage with attacks whose acid damage dice deal more average then any other element's damage dice."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "weapon"},
+      :effect "+[1d4] radiant damage with weapon attacks.",
+      :prohibits nil}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+1d4 acid damage with attacks."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC.",
+      :prohibits nil}],
+    :progressed [],
+    :level 8}],
+  :sold false}
+ {:name "Essence of Cerasil",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured gloves",
+  :start
+  [{:tags ["utility"],
+    :upgrade-points 20,
+    :effect
+    "You have [1] additional use of your amulet per long rest if the contained creature is a Beast or Plant type creature."}],
+  :mods
+  [{:tags ["utility"],
+    :effect "+[2] to initiative rolls while in nature."}
+   {:tags ["utility"],
+    :effect "+1 to Nature expertise dice for journey activities."}
+   {:upgradeable false,
+    :tags ["wealth"],
+    :effect
+    "When you use an Orb of Favouritism to target Beast or Plant type creatures, you have a 50% chance to not consume the orb."}
+   {:tags ["survivability"],
+    :effect "+[4:1] resistance to poison damage."}
+   {:tags ["survivability"],
+    :effect "+[3:2] incoming healing while in direct sunlight."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Your incoming healing affects passive regeneration while in direct sunlight."}
+   {:tags ["damage"],
+    :effect
+    "+[2] to non-magical damage from non-metallic weapons attacks or from unarmed weapon attacks."}
+   {:tags ["magic"],
+    :effect
+    "You learn the Plant Growth spell and may cast it [once] per long rest."}
+   {:tags ["damage"],
+    :effect
+    "While you have a Plant-type amulet active, +[1d6] melee poison thorns. While you have a Beast-type amulet active, +[1d6] melee piercing thorns."}],
+  :levels
+  [{:existing
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "You have [1] additional use of your amulet per long rest if the contained creature is a Beast or Plant type creature."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "You have [1] additional use of your amulet per long rest if the contained creature is a Beast or Plant type creature."}],
+    :progressed
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :committed 10,
+      :effect
+      "You have [1] additional use of your amulet per long rest if the contained creature is a Beast or Plant type creature."}],
+    :level 2}],
+  :sold true}
+ {:name "Brute's Ascension",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured gloves",
+  :start
+  [{:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "Non-physical damage from your spells is converted to bludgeoning damage."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Non-physical spell damage you take is converted to bludgeoning damage."}
+   {:tags ["damage"],
+    :effect
+    "You cannot deal non-physical damage. +[2:2] bludgeoning damage with weapon attacks that would otherwise deal non-physical damage."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "+[1] to all saving throws if you have taken bludgeoning damage in the last minute."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "Your staves, and your shield, sling, and brawling type weapons gain the Deadly trait. Your club and hammer type weapons gain the forceful trait."}
+   {:tags ["accuracy"],
+    :points 20,
+    :effect
+    "+[1] to your spell AB and spell save DCs while you have at least 20 strength."}
+   {:tags ["utility"], :points 20, :effect "+[1] Strength."}
+   {:tags ["utility"],
+    :points 40,
+    :effect "+[1] to your Intelligence, Wisdom, and Charisma scores."}
+   {:tags ["damage"],
+    :points 10,
+    :effect
+    "+[3:1] damage with spells you cast that naturally deal physical damage."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "All of your specific single-damage type barriers are converted to bludgeoning."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Non-physical damage from your spells is converted to bludgeoning damage."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :effect "+10ft swimming speed, and you can breath under water."}
+     {:upgradeable true,
+      :tags ["magic" "control" "accuracy"],
+      :points 30,
+      :upgrade-points 30,
+      :effect
+      "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage."}
+     {:upgradeable true,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a natural critical hit against an enemy with at least one condition, including a condition caused by the critical hit, you may lock [1] condition on that creature until the start of your next turn. A locked condition cannot expire and cannot be saved out of."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Non-physical damage from your spells is converted to bludgeoning damage."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :effect "+10ft swimming speed, and you can breath under water."}
+     {:upgradeable true,
+      :tags ["magic" "control" "accuracy"],
+      :points 30,
+      :upgrade-points 30,
+      :effect
+      "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage."}
+     {:upgradeable true,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a natural critical hit against an enemy with at least one condition, including a condition caused by the critical hit, you may lock [1] condition on that creature until the start of your next turn. A locked condition cannot expire and cannot be saved out of."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 maximum Strength.",
+      :prohibits nil}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Non-physical damage from your spells is converted to bludgeoning damage."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :effect "+10ft swimming speed, and you can breath under water."}
+     {:upgradeable true,
+      :tags ["magic" "control" "accuracy"],
+      :points 30,
+      :upgrade-points 30,
+      :effect
+      "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage."}
+     {:upgradeable true,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a natural critical hit against an enemy with at least one condition, including a condition caused by the critical hit, you may lock [1] condition on that creature until the start of your next turn. A locked condition cannot expire and cannot be saved out of."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 maximum Strength.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 25,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC while using a Shield or a Targe weapon.",
+      :prohibits nil}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Non-physical damage from your spells is converted to bludgeoning damage."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :effect "+10ft swimming speed, and you can breath under water."}
+     {:upgradeable true,
+      :tags ["magic" "control" "accuracy"],
+      :points 30,
+      :upgrade-points 30,
+      :effect
+      "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage."}
+     {:upgradeable true,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a natural critical hit against an enemy with at least one condition, including a condition caused by the critical hit, you may lock [1] condition on that creature until the start of your next turn. A locked condition cannot expire and cannot be saved out of."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 maximum Strength.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 25,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC while using a Shield or a Targe weapon.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "armour"},
+      :effect "+2 maximum poison barrier.",
+      :prohibits nil}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Non-physical damage from your spells is converted to bludgeoning damage."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :effect "+10ft swimming speed, and you can breath under water."}
+     {:upgradeable true,
+      :tags ["magic" "control" "accuracy"],
+      :points 30,
+      :upgrade-points 30,
+      :effect
+      "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage."}
+     {:upgradeable true,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a natural critical hit against an enemy with at least one condition, including a condition caused by the critical hit, you may lock [1] condition on that creature until the start of your next turn. A locked condition cannot expire and cannot be saved out of."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 maximum Strength.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 25,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC while using a Shield or a Targe weapon.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "armour"},
+      :effect "+2 maximum poison barrier.",
+      :prohibits nil}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 40,
+      :level 1,
+      :effect
+      "+[1] to your Intelligence, Wisdom, and Charisma scores."}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Non-physical damage from your spells is converted to bludgeoning damage."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :effect "+10ft swimming speed, and you can breath under water."}
+     {:upgradeable true,
+      :tags ["magic" "control" "accuracy"],
+      :points 30,
+      :upgrade-points 30,
+      :effect
+      "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage."}
+     {:upgradeable true,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a natural critical hit against an enemy with at least one condition, including a condition caused by the critical hit, you may lock [1] condition on that creature until the start of your next turn. A locked condition cannot expire and cannot be saved out of."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 maximum Strength.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 25,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC while using a Shield or a Targe weapon.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "armour"},
+      :effect "+2 maximum poison barrier.",
+      :prohibits nil}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 40,
+      :level 1,
+      :effect
+      "+[1] to your Intelligence, Wisdom, and Charisma scores."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+[1] to your spell AB and spell save DCs while you have at least 20 strength."}],
+    :progressed [],
+    :level 6}
+   {:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Non-physical damage from your spells is converted to bludgeoning damage."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :effect "+10ft swimming speed, and you can breath under water."}
+     {:upgradeable true,
+      :tags ["magic" "control" "accuracy"],
+      :points 30,
+      :upgrade-points 30,
+      :effect
+      "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."}
+     {:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage."}
+     {:upgradeable true,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :effect
+      "When you score a natural critical hit against an enemy with at least one condition, including a condition caused by the critical hit, you may lock [1] condition on that creature until the start of your next turn. A locked condition cannot expire and cannot be saved out of."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :requires nil,
+      :effect "+1 maximum Strength.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 25,
+      :level 1,
+      :requires nil,
+      :effect "+1 AC while using a Shield or a Targe weapon.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "armour"},
+      :effect "+2 maximum poison barrier.",
+      :prohibits nil}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 40,
+      :level 1,
+      :effect
+      "+[1] to your Intelligence, Wisdom, and Charisma scores."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+[1] to your spell AB and spell save DCs while you have at least 20 strength."}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect "+[1] Strength."}],
+    :progressed [],
+    :level 7}],
+  :sold false}
+ {:name "Solarmane's Legacy",
+  :found true,
+  :base-type "weapon",
+  :base "Gauntlet",
+  :start
+  [{:tags ["damage"],
+    :effect "+[2:1] fire and radiant damage with melee attacks."}],
+  :mods
+  [{:tags ["critical"],
+    :effect
+    "+1 critical hit range while bloodied, or while an ally is on 0 hit points."}
+   {:tags ["survivability" "critical"],
+    :effect
+    "When you deal a natural critical hit with a weapon, heal hit points equal to the radiant damage dealt."}
+   {:tags ["damage"], :effect "+[1d4] fire damage with melee attacks."}
+   {:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "Your melee attacks' non-fire damage is converted to radiant."}
+   {:upgradeable false,
+    :tags ["survivability" "utility"],
+    :effect
+    "You may redirect healing targeted at you to a creature of your choice. This counts as your outgoing healing."}
+   {:tags ["damage"],
+    :effect
+    "Creatures grappled or restrained by you are marked to take [1] additional fire damage from each instance of melee damage."}
+   {:upgradeable false,
+    :tags ["magic"],
+    :effect
+    "Healing actions you use do not consume resources if you have landed a killing blow with radiant damage in the last 6 seconds."}
+   {:tags ["utility"],
+    :upgrade-points 20,
+    :effect
+    "You and creatures of your choice within [5] feet of you are immune to the frightened condition."}
+   {:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "Modifiers to your slashing damage apply to your fire damage instead."}],
+  :levels
+  [{:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+[2:1] fire and radiant damage with melee attacks."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+[2:1] fire and radiant damage with melee attacks."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["survivability" "utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may redirect healing targeted at you to a creature of your choice. This counts as your outgoing healing."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+[2:1] fire and radiant damage with melee attacks."}],
+    :progressed [],
+    :level 3}],
+  :sold true}
+ {:name "Essence of Esher",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured body armour (shirt)",
+  :start
+  [{:tags ["survivability"],
+    :points 20,
+    :effect
+    "Your gain maximum hit points equal to the [number of modifiers] on this item."}],
+  :mods
+  [{:tags ["survivability"],
+    :effect
+    "You have +[3:1] resistance to Necrotic damage, and your maximum hit points cannot be reduced as a result of taking Necrotic damage."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "You have +[1]AC if you have been down during the current combat."}
+   {:tags ["survivability"],
+    :effect
+    "You regenerate [2:1] hit points at the end of your turn while bloodied."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "As an action, once per combat, you may cause yourself to gain incoming healing equal to half your level for the remainder of the combat."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "When you fail a death saving throw, one death saving throw failure point is only counted at the beginning of your next turn."}
+   {:tags ["magic"],
+    :points 20,
+    :effect
+    "+[1] outgoing healing for each of your enchantment slots holding a unique item effect."}
+   {:tags ["survivability" "utility"],
+    :effect
+    "Your medicine checks, and medicine checks targeting you, are always treated as if the roll was at least an [8:1]."}
+   {:tags ["survivability" "magic"],
+    :points 20,
+    :effect
+    "You learn the [Lesser:Greater:more casts] Restoration spell and may cast it once per short rest."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "As a reaction to taking damage at least equal to half of your maximum hit points and surviving, your may immediately heal 1d20 hit points, then take 1d20 non-lethal true damage."}],
+  :levels
+  [{:existing
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["critical" "utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You may take an additional action the end of an action where you landed a killing blow with a critical hit.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["critical" "utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You may take an additional action the end of an action where you landed a killing blow with a critical hit.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You regenerate [2:1] hit points at the end of your turn while bloodied."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable false,
+      :tags ["critical" "utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You may take an additional action the end of an action where you landed a killing blow with a critical hit.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You regenerate [2:1] hit points at the end of your turn while bloodied."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable false,
+      :tags ["critical" "utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You may take an additional action the end of an action where you landed a killing blow with a critical hit.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You regenerate [2:1] hit points at the end of your turn while bloodied."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "You have +[1]AC if you have been down during the current combat."}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable false,
+      :tags ["critical" "utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You may take an additional action the end of an action where you landed a killing blow with a critical hit.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You regenerate [2:1] hit points at the end of your turn while bloodied."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "You have +[1]AC if you have been down during the current combat."}],
+    :progressed
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :committed 10,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}],
+    :level 6}
+   {:existing
+    [{:upgradeable false,
+      :tags ["critical" "utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You may take an additional action the end of an action where you landed a killing blow with a critical hit.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 2,
+      :committed 10,
+      :effect
+      "Your gain maximum hit points equal to the [number of modifiers] on this item."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You regenerate [2:1] hit points at the end of your turn while bloodied."}
+     {:upgradeable false,
+      :tags ["critical" "control"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn.",
+      :prohibits nil}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "You have +[1]AC if you have been down during the current combat."}],
+    :progressed [],
+    :level 7}],
+  :sold false}
+ {:name "Wandslinger's Grips",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured gloves",
+  :start
+  [{:upgradeable true,
+    :tags ["utility"],
+    :points 10,
+    :upgrade-points 10,
+    :effect
+    "Once per long rest, when rolling a natural 1 on a d20, you may reroll."}
+   {:upgradeable true,
+    :tags ["survivability" "critical" "utility"],
+    :points 10,
+    :upgrade-points 10,
+    :effect
+    "Once per long rest, when you need make an attack roll, ability check, or saving throw, you can use your reaction to replace it with a 50% chance to critically succeed and 50% chance to to critically fail."}
+   {:upgradeable true,
+    :tags ["survivability"],
+    :points 10,
+    :upgrade-points 10,
+    :effect "+1 lightning resistance."}
+   {:upgradeable true,
+    :tags ["damage"],
+    :points 10,
+    :upgrade-points 10,
+    :effect "+1 to damage with light weapons."}],
+  :mods [],
+  :levels nil,
+  :sold true}
+ {:name "Dayuzh's Leadership",
+  :found true,
+  :base-type "weapon",
+  :base "Trident",
+  :start
+  [{:upgradeable false,
+    :tags ["utility"],
+    :effect "Your ranged and thrown weapons gain the Parry trait."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["accuracy"],
+    :effect
+    "Your thrown and ranged attacks do not suffer disadvantage due to targeting prone creatures."}
+   {:upgradeable false,
+    :tags ["control"],
+    :effect
+    "No more than once per round, when you make a thrown attack, you may attempt to also knock the creatue down, as per the Knockdown maneuver."}
+   {:upgradeable false,
+    :tags ["magic"],
+    :effect
+    "You learn the Druidcraft cantrip and may cast it at will."}
+   {:tags ["utility"],
+    :effect "+[1] expertise die with Survival checks."}
+   {:tags ["magic"],
+    :effect
+    "Choose [1] creature you are familiar with. You can cast the Sending spell at will when targeting this creature."}
+   {:tags ["damage"],
+    :effect
+    "+1d[6] poison damage with attacks against creatures at least 15 feet away from you."}
+   {:tags ["critical"],
+    :effect
+    "When you deal poison damage with a critical weapon attack, use the maximum poison damage possible instead of rolling damage dice."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "Modifiers on this item also apply to your Beast and Fey minions."}
+   {:tags ["damage"],
+    :effect "+1d[4] poison damage against restrained creatures."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "Your ranged and thrown weapons gain the Parry trait."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 expertise die with intimidation.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "Your ranged and thrown weapons gain the Parry trait."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You can use your reaction to change any damage you deal into a damage type of your choice. This is visually noticeable.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 expertise die with intimidation.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "Your ranged and thrown weapons gain the Parry trait."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1d[4] poison damage against restrained creatures."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "You can use your reaction to change any damage you deal into a damage type of your choice. This is visually noticeable.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 expertise die with intimidation.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "Your ranged and thrown weapons gain the Parry trait."}],
+    :progressed [],
+    :level 4}],
+  :sold true}
+ {:name "Essence of Eion",
+  :found true,
+  :base-type "weapon",
+  :base "Ring Blade",
+  :start
+  [{:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "When you hit with an opportunity attack with this weapon, you may forego dealing any damage to instead teleport the enemy to a random space within 5 feet of you at the end of their turn."}],
+  :mods
+  [{:tags ["magic" "control" "accuracy" "damage"],
+    :effect
+    "You learn the Ensnaring Strike spell and may cast it [once] per short rest."}
+   {:tags ["accuracy"],
+    :points 20,
+    :effect
+    "You have +1AB with weapon attacks if you have cast a Conjuration spell in the last 18 seconds."}
+   {:tags ["accuracy"],
+    :effect
+    "+[3:1] weapon damage while under the effect of a Conjuration spell."}
+   {:tags ["magic" "critical"],
+    :effect
+    "When you land a critical hit while under the effect of a Conjuration spell you cast, you have a [50:10]% chance to regain the resources used for casting that spell."}
+   {:tags ["control"],
+    :effect
+    "Enemies you have teleported in the last [6] seconds are rattled."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "When you land a killing blow, you may immediately teleport to a location you can see within 30 feet of you."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "You may immediately teleport to a location you can see within 30 feet of you and within 5 feet of an enemy upon rolling for initiative when not surprised."}
+   {:tags ["utility"],
+    :effect
+    "No more than [once] per combat, when hitting an enemy with a weapon attack, you may teleport to any space within 5 feet of that enemy, even if the attack kills the enemy."}
+   {:tags ["damage"],
+    :points 20,
+    :effect
+    "No more than [once] per long rest, as an action, you may conjure a copy of your weapons. During your next two turns, the weapons follow you and mimic any attacks you make (rolling separately)."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "When you hit with an opportunity attack with this weapon, you may forego dealing any damage to instead teleport the enemy to a random space within 5 feet of you at the end of their turn."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "When you land a killing blow, you may immediately teleport to a location you can see within 30 feet of you."}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "When you hit with an opportunity attack with this weapon, you may forego dealing any damage to instead teleport the enemy to a random space within 5 feet of you at the end of their turn."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "When you land a killing blow, you may immediately teleport to a location you can see within 30 feet of you."}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "When you hit with an opportunity attack with this weapon, you may forego dealing any damage to instead teleport the enemy to a random space within 5 feet of you at the end of their turn."}
+     {:upgradeable true,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "When you deliver a Killing Blow, heal 5 hit points.",
+      :prohibits nil}],
+    :progressed [],
+    :level 3}],
+  :sold true}
+ {:name "Blazing Glory",
+  :found true,
+  :base-type "weapon",
+  :base "Gauntlet",
+  :start
+  [{:upgradeable true,
+    :tags ["utility" "wealth"],
+    :points 10,
+    :upgrade-points 10,
+    :effect "+1 to journey activity checks."}
+   {:upgradeable true,
+    :tags ["utility"],
+    :points 10,
+    :upgrade-points 10,
+    :effect
+    "+10 feet speed in all of your available speed types on your turn if you have not used your action yet."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :points 10,
+    :upgrade-points 10,
+    :effect
+    "You have resistance to all damage while affeced by the benefits of the Dodge action."}
+   {:upgradeable true,
+    :tags ["damage"],
+    :points 15,
+    :upgrade-points 10,
+    :effect "+[2:1] fire damage."}],
+  :mods [],
+  :levels
+  [{:existing
+    [{:upgradeable true,
+      :tags ["utility" "wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1 to journey activity checks."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have resistance to all damage while affeced by the benefits of the Dodge action."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+[2:1] fire damage."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable true,
+      :tags ["utility" "wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1 to journey activity checks."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have resistance to all damage while affeced by the benefits of the Dodge action."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+[2:1] fire damage."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable true,
+      :tags ["utility" "wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1 to journey activity checks."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have resistance to all damage while affeced by the benefits of the Dodge action."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect "+[2:1] fire damage."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable true,
+      :tags ["utility" "wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1 to journey activity checks."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have resistance to all damage while affeced by the benefits of the Dodge action."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :effect "+[2:1] fire damage."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["utility" "wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1 to journey activity checks."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have resistance to all damage while affeced by the benefits of the Dodge action."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :effect "+[2:1] fire damage."}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["utility" "wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+1 to journey activity checks."}
+     {:upgradeable true,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+10 feet speed in all of your available speed types on your turn if you have not used your action yet."}
+     {:upgradeable false,
+      :tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You have resistance to all damage while affeced by the benefits of the Dodge action."}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 4,
+      :effect "+[2:1] fire damage."}],
+    :progressed [],
+    :level 6}],
+  :sold true}
+ {:name "Essence of Bara",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured gloves",
+  :start
+  [{:tags ["survivability"],
+    :points 20,
+    :effect
+    "+[2:1] damage resistance while you have an active stance."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["survivability"],
+    :effect "You have proficiency in Strength saving throws."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "At the end of your turn, gain physical damage resistance equal to the number of different physical damage types you dealt during your turn, until the end of your next turn."}
+   {:tags ["accuracy"], :points 20, :effect "+1 to your maneuver DCs."}
+   {:tags ["damage"],
+    :effect
+    "Your weapon attacks have +1 bludgeoning damage, even if they normally deal no bludgeoning damage."}
+   {:tags ["utility"],
+    :points 30,
+    :effect
+    "Your Strength and Dexterity become equal to the highest of your [Strength, Dexterity:, and Constitution]."}
+   {:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "Gain weapon damage equal to the number of exertion points you have used since the start of your last turn."}
+   {:upgradeable false,
+    :tags ["accuracy"],
+    :effect
+    "The Debilitated, Prone, and Restrained conditions do not impose disadvantage on your weapon attacks."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "The Staggered, Poisoned, Prone, and Restrained conditions do not grant advantage to weapon attacks made against you."}
+   {:tags ["utility"],
+    :effect
+    "When you make a Strength or Athletics check, you can replace the number you roll with a [12:+1]"}],
+  :levels
+  [{:existing
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}],
+    :progressed
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :committed 10,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}],
+    :level 2}
+   {:existing
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 2,
+      :committed 10,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect "+1 to your maneuver DCs."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 2,
+      :committed 10,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "The Debilitated, Prone, and Restrained conditions do not impose disadvantage on your weapon attacks."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect "+1 to your maneuver DCs."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 2,
+      :committed 10,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "The Debilitated, Prone, and Restrained conditions do not impose disadvantage on your weapon attacks."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect "+1 to your maneuver DCs."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 2,
+      :committed 10,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}],
+    :progressed
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :committed 10,
+      :effect "+1 to your maneuver DCs."}],
+    :level 6}
+   {:existing
+    [{:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "The Debilitated, Prone, and Restrained conditions do not impose disadvantage on your weapon attacks."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect "+1 to your maneuver DCs."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 20,
+      :level 2,
+      :committed 10,
+      :effect
+      "+[2:1] damage resistance while you have an active stance."}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :effect
+      "Your Strength and Dexterity become equal to the highest of your [Strength, Dexterity:, and Constitution]."}],
+    :progressed
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :committed 10,
+      :effect "+1 to your maneuver DCs."}],
+    :level 7}],
+  :sold false}
+ {:name "Essence of Ateus",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured boots",
+  :start
+  [{:upgradeable false,
+    :tags ["wealth"],
+    :effect
+    "Whenever you roll for loot, you may choose to increase or decrease your loot roll by 1."}],
+  :mods
+  [{:tags ["survivability"],
+    :effect
+    "Gain 15 temporary hit points when a creature within [10:5] feet of you scores or receives a natural critical hit."}
+   {:tags ["survivability"],
+    :effect
+    "Natural critical hits against you have a [25:5]% chance to miss you instead."}
+   {:tags ["control"],
+    :effect
+    "When a creature of your choice within 30 feet of you takes the dash action, they have a [10:5]% chance to trip, causing them to fall prone. A creature that has fallen prone in this way immediately ends its turn."}
+   {:tags ["accuracy"],
+    :effect
+    "When you miss with an attack where your roll was less than 4, you have a [50:10]% chance to attempt the attack again."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "The cost of each of your rings is reduced by 1. This cannot reduce a ring's to less than 1."}
+   {:upgradeable false,
+    :tags ["wealth"],
+    :effect
+    "When finding unique items, you instead reveal two and choose one."}
+   {:upgradeable false,
+    :tags ["wealth"],
+    :effect
+    "When drawing tarot cards, you may draw one additional card and return one of the cards you drew to a random place in the deck."}
+   {:tags ["wealth"],
+    :effect
+    "Whenever you find curios, you may replace [1] found curio with a Curio of Abundance."}
+   {:tags ["wealth"],
+    :points 20,
+    :effect
+    "Your loot rolls always grant you [2:1] additional gold while this modifier is on a special base (even from non-gold results)."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Whenever you roll for loot, you may choose to increase or decrease your loot roll by 1."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Whenever you find curios, you may replace [1] found curio with a Curio of Abundance."}
+     {:upgradeable false,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Whenever you roll for loot, you may choose to increase or decrease your loot roll by 1."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "Whenever you find curios, you may replace [1] found curio with a Curio of Abundance."}
+     {:upgradeable false,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Whenever you roll for loot, you may choose to increase or decrease your loot roll by 1."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "Whenever you find curios, you may replace [1] found curio with a Curio of Abundance."}
+     {:upgradeable false,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Whenever you roll for loot, you may choose to increase or decrease your loot roll by 1."}],
+    :progressed [],
+    :level 4}],
+  :sold true}
+ {:name "Ouroboros",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured boots",
+  :start
+  [{:tags ["survivability"],
+    :effect
+    "At the start of your turn, you must choose one damage type in which you have taken damage in the last 6 seconds, if at all. You have +[2:1] resistance to that damage type."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "While you have an amulet effect active, you gain access to any Recharge abilities by the monster in the amulet. These use your DCs/ABs, and you can use them at will (with the regular action cost)."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "While you have an amulet effect active, gain flying speed equal to that of the creature in the amulet."}
+   {:upgradeable false,
+    :tags ["wealth"],
+    :effect
+    "Whenever you find rings with a loot roll, you may replace one ring you find with a new (random) ring."}
+   {:tags ["control"],
+    :effect
+    "[Once] per long rest, when a creature fails any saving throw against you, you may also Daze it for a minute (using a Wis save against the same DC at the end of each turn to end the effect)."}
+   {:tags ["survivability"],
+    :effect
+    "While above 0 hit points, heal [5:3] hit points when an ally you can see makes a death saving throw."}
+   {:tags ["survivability" "damage"],
+    :points 20,
+    :effect
+    "Whenever you go down, the enemy that dealt the killing blow takes necrotic damage equal to [twice:thrice] your level, and you may heal a creature you can see by an amount [equal:twice] to your level."}
+   {:tags ["magic" "control" "damage"],
+    :effect
+    "You may cast the Blinding Smite spell as a free action [once] per long rest."}
+   {:tags ["magic" "control" "damage"],
+    :points 20,
+    :effect
+    "You may cast the Guiding Bolt spell [once] per long rest. [When cast in this way, you target one additional target with this spell.]"}
+   {:tags ["utility"],
+    :effect
+    "You gain [two] expertise dice on knowledge checks regarding snakes and dragons."}],
+  :levels
+  [{:existing
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "At the start of your turn, you must choose one damage type in which you have taken damage in the last 6 seconds, if at all. You have +[2:1] resistance to that damage type."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "At the start of your turn, you must choose one damage type in which you have taken damage in the last 6 seconds, if at all. You have +[2:1] resistance to that damage type."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:tags ["magic" "control" "damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may cast the Blinding Smite spell as a free action [once] per long rest."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "At the start of your turn, you must choose one damage type in which you have taken damage in the last 6 seconds, if at all. You have +[2:1] resistance to that damage type."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable false,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Whenever you find rings with a loot roll, you may replace one ring you find with a new (random) ring."}
+     {:tags ["magic" "control" "damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may cast the Blinding Smite spell as a free action [once] per long rest."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "At the start of your turn, you must choose one damage type in which you have taken damage in the last 6 seconds, if at all. You have +[2:1] resistance to that damage type."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable false,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Whenever you find rings with a loot roll, you may replace one ring you find with a new (random) ring."}
+     {:tags ["magic" "control" "damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You may cast the Blinding Smite spell as a free action [once] per long rest."}
+     {:tags ["survivability"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :effect
+      "At the start of your turn, you must choose one damage type in which you have taken damage in the last 6 seconds, if at all. You have +[2:1] resistance to that damage type."}],
+    :progressed [],
+    :level 5}],
+  :sold true}
+ {:name "Desmond's Madness",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured gloves",
+  :start
+  [{:tags ["accuracy"],
+    :points 30,
+    :effect "Your ranged weapon attacks have +1 AB."}],
+  :mods
+  [{:tags ["damage"],
+    :effect
+    "+[4:1] bludgeoning damage with melee attacks with improvised weapons where the weapon is a ranged weapon."}
+   {:tags ["utility"], :effect "+[10:5] feet to your walking speed."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect "Your improvised weapons gain the Finesse tag."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect "You are immune to charms and frightens from spells."}
+   {:tags ["utility"], :effect "+[1] Strength, -[1] Wisdom."}
+   {:tags ["utility"], :effect "+[1] Dexterity, -[1] Charisma."}
+   {:tags ["survivability"],
+    :effect
+    "+2 resistance to damage from non-magical terrain/area effects."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Your maximum hit points are increased by an amount equal to your level if your Strength is at least 20."}
+   {:tags ["damage"],
+    :effect "+[2:1] damage with ranged weapon attacks."}],
+  :levels
+  [{:existing
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :effect "Your ranged weapon attacks have +1 AB."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :effect "Your ranged weapon attacks have +1 AB."}],
+    :progressed
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :committed 10,
+      :effect "Your ranged weapon attacks have +1 AB."}],
+    :level 2}
+   {:existing
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :effect "Your ranged weapon attacks have +1 AB."}],
+    :progressed
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 30,
+      :level 1,
+      :committed 20,
+      :effect "Your ranged weapon attacks have +1 AB."}],
+    :level 3}
+   {:existing
+    [{:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 30,
+      :level 2,
+      :committed 20,
+      :effect "Your ranged weapon attacks have +1 AB."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect "+[2:1] damage with ranged weapon attacks."}
+     {:tags ["accuracy"],
+      :points 10,
+      :upgrade-points 30,
+      :level 2,
+      :committed 20,
+      :effect "Your ranged weapon attacks have +1 AB."}],
+    :progressed [],
+    :level 5}],
+  :sold true}
+ {:name "Carl's Partnership",
+  :found true,
+  :base-type "weapon",
+  :base "Ring Blade",
+  :start
+  [{:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "Physical damage from attacks made during your bonus action is converted to fire damage."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["damage"],
+    :effect
+    "Physical damage from attacks made during your standard action is converted to cold damage."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "You may disengage as a free action if you have made at least two attacks during your turn."}
+   {:tags ["damage"],
+    :effect
+    "+[3:1] fire damage with attacks that also deal cold damage."}
+   {:tags ["damage"],
+    :effect
+    "+[3:1] cold damage with attacks that also deal fire damage."}
+   {:tags ["damage"],
+    :effect "+1d[4] poison damage with natural weapon attacks."}
+   {:upgradeable false,
+    :tags ["accuracy"],
+    :effect
+    "Ranged attacks you make cannot have disadvantage if they would deal elemental damage."}
+   {:tags ["accuracy"],
+    :points 20,
+    :effect
+    "+[1]AB with attacks made with Dexterity while wearing heavy armour."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "Critical hits from your weapon attacks do not override non-lethal."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "-[1] damage taken while within 5 feet of an ally and within 5 feet of the enemy that caused the damage."}],
+  :levels
+  [{:existing
+    [{:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Critical hits from your weapon attacks do not override non-lethal."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Critical hits from your weapon attacks do not override non-lethal."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :requires nil,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Critical hits from your weapon attacks do not override non-lethal."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :requires nil,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Critical hits from your weapon attacks do not override non-lethal."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+5 to gold found.",
+      :prohibits nil}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :requires nil,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Critical hits from your weapon attacks do not override non-lethal."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+5 to gold found.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 damage to melee and touch attacks.",
+      :prohibits nil}],
+    :progressed [],
+    :level 6}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :requires nil,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Critical hits from your weapon attacks do not override non-lethal."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+5 to gold found.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 damage to melee and touch attacks.",
+      :prohibits nil}],
+    :progressed [],
+    :level 7}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :requires nil,
+      :effect
+      "Your critical hits add 1 additional damage die from the source's base damage.",
+      :prohibits nil}
+     {:upgradeable false,
+      :tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Critical hits from your weapon attacks do not override non-lethal."}
+     {:upgradeable false,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Physical damage from attacks made during your bonus action is converted to fire damage."}
+     {:upgradeable true,
+      :tags ["wealth"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+5 to gold found.",
+      :prohibits nil}
+     {:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect "+1 damage to melee and touch attacks.",
+      :prohibits nil}],
+    :progressed [],
+    :level 8}],
+  :sold false}
+ {:name "Brass Antler",
+  :found true,
+  :base-type "weapon",
+  :base "Gauntlet",
+  :start
+  [{:tags ["damage"],
+    :points 20,
+    :effect
+    "+1d[4] melee fire damage thorns, no more than once per turn."}],
+  :mods
+  [{:tags ["damage"], :effect "+1d[4] fire damage with melee attacks."}
+   {:tags ["utility"],
+    :effect
+    "+[10:10] feet to each of your speeds during the first round of combat."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Your movement does not provoke opportunity attacks with movement types where your speed is at last 50 feet."}
+   {:tags ["damage"],
+    :points 20,
+    :effect
+    "If you move at least 20 feet straight toward a target and then hits it with a melee attack on the same turn, +[2]d6 fire damage."}
+   {:tags ["damage"],
+    :effect "+1d[4] bludgeoning damage against prone creatures."}
+   {:upgradeable false,
+    :tags ["control"],
+    :effect
+    "If you move at least 20 feet straight toward a target and then hits it with a melee attack on the same turn, they must make a Strength saving throw or be knocked prone."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "+[1] resistance to fire damage. Your resistance to fire damage also applies to physical damage if you have at least 2 resistance to fire damage."}
+   {:upgradeable false,
+    :tags ["utility" "wealth"],
+    :effect
+    "You gain advantage on saving throws made to resist the effects of hot weather as though you were wearing hot weather gear, but without the disadvantages in cold weather. This allows you to ignore the penalties of hot weather on your journey activities."}
+   {:tags ["utility"], :effect "+[5:5] feet walking speed."}],
+  :levels
+  [{:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+1d[4] melee fire damage thorns, no more than once per turn."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "+1d[4] melee fire damage thorns, no more than once per turn."}],
+    :progressed
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :committed 10,
+      :effect
+      "+1d[4] melee fire damage thorns, no more than once per turn."}],
+    :level 2}
+   {:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 20,
+      :level 2,
+      :committed 10,
+      :effect
+      "+1d[4] melee fire damage thorns, no more than once per turn."}],
+    :progressed [],
+    :level 3}],
+  :sold true}
+ {:name "Essence of Thetia",
+  :found true,
+  :base-type "weapon",
+  :base "Rapier",
+  :start
+  [{:tags ["utility"],
+    :effect
+    "You and one of your allies in combat have +[1] initiative."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["wealth"],
+    :effect
+    "Gold you gain from loot rolls from encounters (incl. creature parts) is rolled with advantage."}
+   {:tags ["damage"],
+    :effect "+[3:1] global damage against surprised enemies."}
+   {:upgradeable false,
+    :tags ["wealth"],
+    :effect
+    "Your investigation and survival checks for finding loot are made with advantage after combats where you have gone down."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "When you know a lie is told in a conversation, you may make a contested d20 check against anyone involved in the conversation. On a success, you learn the target's total Insight modifier."}
+   {:tags ["damage"], :effect "+[1] die size with all damage."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "If you have landed a killing blow during your last turn, refill your barriers at the end of each turn in combat."}
+   {:tags ["critical"],
+    :effect
+    "Attacks you have advantage with have +1 critical hit range."}
+   {:upgradeable false,
+    :tags ["accuracy"],
+    :effect
+    "Being prone does not impose disadvantage on your attacks."}
+   {:tags ["utility"],
+    :effect
+    "You gain [1] point of experience when at the end of a day where you have had an encounter."}
+   {:tags ["utility"],
+    :effect
+    "+[10:5] feet of speed while bloodied, and while an ally is down."}],
+  :levels
+  [{:existing
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "You and one of your allies in combat have +[1] initiative."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "You and one of your allies in combat have +[1] initiative."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:upgradeable true,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 35,
+      :level 1,
+      :requires nil,
+      :effect "+1 spell save and special feature DCs.",
+      :prohibits nil}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "You and one of your allies in combat have +[1] initiative."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:upgradeable false,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "Being prone does not impose disadvantage on your attacks."}
+     {:upgradeable true,
+      :tags ["accuracy"],
+      :points 10,
+      :upgrade-points 35,
+      :level 1,
+      :requires nil,
+      :effect "+1 spell save and special feature DCs.",
+      :prohibits nil}
+     {:tags ["utility"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "You and one of your allies in combat have +[1] initiative."}],
+    :progressed [],
+    :level 4}],
+  :sold true}
+ {:name "Essence of Qhanas",
+  :found true,
+  :base-type "weapon",
+  :base "Gauntlet",
+  :start
+  [{:tags ["damage"],
+    :effect "+[2:1] damage with spells and magical weapon attacks."}],
+  :mods
+  [{:tags ["magic"],
+    :effect
+    "When you fail a concentration saving throw, you may immediately attempt another concentration saving throw against a DC [10:-1] higher than the one you failed. On a successful save, you regain the spell slot used to cast the spell in which concentration was lost."}
+   {:tags ["magic" "accuracy"],
+    :effect
+    "No more than once per turn, when you cast a spell that had no effect (e.g. it missed, was saved, the enemy was immune to its damage, etc), gain +[1] to your spell AB and spell save DC until the end of your next turn."}
+   {:tags ["damage"],
+    :effect "+[2:1] damage with spells and magical weapon attacks."}
+   {:tags ["magic"],
+    :effect
+    "Regain a [1st] level spell slot when you roll for initiative."}
+   {:upgradeable false,
+    :tags ["magic"],
+    :effect
+    "You have advantage on concentration saving throws triggered by magical effects."}
+   {:tags ["survivability" "magic"],
+    :effect
+    "+1 damage resistance if you have cast a spell since the start of your last turn."}
+   {:tags ["magic" "critical"],
+    :effect
+    "+[1] critical hit range with spell attacks, and minions from your spells have +[1] critical hit range."}
+   {:tags ["magic"],
+    :points 20,
+    :effect
+    "When you upcast a spell, you may cast it at a level [one] above the spell slot consumed."}
+   {:upgradeable false,
+    :tags ["magic" "utility"],
+    :effect
+    "Your movement does not provoke opportunity attacks from opponents under the effect of one of your spells."}
+   {:tags ["magic"],
+    :effect
+    "You and your minions have +[2:1] global damage while you are concentrating on a spell."}],
+  :levels
+  [{:existing
+    [{:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[2:1] damage with spells and magical weapon attacks."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["magic" "critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[1] critical hit range with spell attacks, and minions from your spells have +[1] critical hit range."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[2:1] damage with spells and magical weapon attacks."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:tags ["magic"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "When you upcast a spell, you may cast it at a level [one] above the spell slot consumed."}
+     {:tags ["magic" "critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[1] critical hit range with spell attacks, and minions from your spells have +[1] critical hit range."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[2:1] damage with spells and magical weapon attacks."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:tags ["magic"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "When you upcast a spell, you may cast it at a level [one] above the spell slot consumed."}
+     {:tags ["magic" "critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "+[1] critical hit range with spell attacks, and minions from your spells have +[1] critical hit range."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[2:1] damage with spells and magical weapon attacks."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires {:base-type "weapon"},
+      :effect "+[1d4] cold damage with weapon attacks.",
+      :prohibits nil}
+     {:tags ["magic"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "When you upcast a spell, you may cast it at a level [one] above the spell slot consumed."}
+     {:tags ["magic" "critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "+[1] critical hit range with spell attacks, and minions from your spells have +[1] critical hit range."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[2:1] damage with spells and magical weapon attacks."}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable true,
+      :tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :requires {:base-type "weapon"},
+      :effect "+[1d4] cold damage with weapon attacks.",
+      :prohibits nil}
+     {:tags ["magic"],
+      :points 10,
+      :upgrade-points 20,
+      :level 1,
+      :effect
+      "When you upcast a spell, you may cast it at a level [one] above the spell slot consumed."}
+     {:tags ["magic" "critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "+[1] critical hit range with spell attacks, and minions from your spells have +[1] critical hit range."}
+     {:tags ["damage"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[2:1] damage with spells and magical weapon attacks."}],
+    :progressed [],
+    :level 6}],
+  :sold false}
+ {:name "Tanyll's Ascension",
+  :found true,
+  :base-type "armour",
+  :base "Unarmoured gloves",
+  :start
+  [{:tags ["magic"],
+    :effect
+    "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+  :mods
+  [{:upgradeable false,
+    :tags ["survivability"],
+    :effect "You are immune to diseases and poisons."}
+   {:upgradeable false,
+    :tags ["survivability"],
+    :effect
+    "Modifies to your incoming healing also apply to any regeneration you have."}
+   {:tags ["survivability"],
+    :effect
+    "Regenerate [1] hit point at the end of a turn where you have dealt Necrotic damage."}
+   {:tags ["survivability"],
+    :effect
+    "+[10:10]% chance to remove a failed death save when you recover from going down."}
+   {:tags ["utility"],
+    :points 20,
+    :effect "+[2:1] maximum Constitution."}
+   {:upgradeable false,
+    :tags ["utility"],
+    :effect
+    "Increases to your Strength score beyond its base value also apply to your Constitution score."}
+   {:tags ["magic"],
+    :effect
+    "You learn the Banishment spell and may cast it once per long rest. When cast in this way, the creature sent to a realm where it takes [1]d6 Necrotic damage per turn."}
+   {:tags ["survivability"],
+    :points 20,
+    :effect
+    "No more than once per round, when you hit with an unarmed attack, gain +[1] AC until the start of your next turn."}
+   {:tags ["damage"],
+    :effect "+1d[4] necrotic damage with spells and attacks."}],
+  :levels
+  [{:existing
+    [{:tags ["magic"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :effect
+      "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+    :progressed [],
+    :level 1}
+   {:existing
+    [{:tags ["magic"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :effect
+      "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+    :progressed [],
+    :level 2}
+   {:existing
+    [{:tags ["magic"],
+      :points 10,
+      :upgrade-points 10,
+      :level 3,
+      :effect
+      "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+    :progressed [],
+    :level 3}
+   {:existing
+    [{:tags ["magic"],
+      :points 10,
+      :upgrade-points 10,
+      :level 4,
+      :effect
+      "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+    :progressed [],
+    :level 4}
+   {:existing
+    [{:tags ["magic"],
+      :points 10,
+      :upgrade-points 10,
+      :level 5,
+      :effect
+      "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+    :progressed [],
+    :level 5}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 1,
+      :requires nil,
+      :effect
+      "+1 critical hit range with your first attack on your turn.",
+      :prohibits nil}
+     {:tags ["magic"],
+      :points 10,
+      :upgrade-points 10,
+      :level 5,
+      :effect
+      "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+    :progressed [],
+    :level 6}
+   {:existing
+    [{:upgradeable true,
+      :tags ["critical"],
+      :points 10,
+      :upgrade-points 10,
+      :level 2,
+      :requires nil,
+      :effect
+      "+1 critical hit range with your first attack on your turn.",
+      :prohibits nil}
+     {:tags ["magic"],
+      :points 10,
+      :upgrade-points 10,
+      :level 5,
+      :effect
+      "+[10:5]% chance to cast Wither and Bloom as a free action at the start of your turn."}],
+    :progressed [],
+    :level 7}],
+  :sold false}]

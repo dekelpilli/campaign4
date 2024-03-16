@@ -1,0 +1,69 @@
+[{:name   "The Doctor"
+  :effect "+2 to Medicine checks for stabilising allies for each ring the ally is wearing."
+  :points 4}
+ {:name   "The Hardened"
+  :effect "+1 physical damage reduction for each non-synergy ring worn."
+  :points 5}
+ {:name   "The Lone Wolf"
+  :effect "+1 critical hit range while not wearing any synergy rings that are not The Lone Wolf."
+  :points 5}
+ {:name   "The Joker"
+  :effect "This ring has no effect, but may count as any ring type you choose. It can only count as one ring type at one time."
+  :points 1}
+ {:name   "The Speedster"
+  :effect "+5 feet to all of your speed types for each 'The Speedster' ring worn."
+  :points 4}
+ {:name   "The Prosperous"
+  :effect "+1 gold found for each 'The Prosperous' ring worn."
+  :points 1}
+ {:name   "The Simpleton"
+  :effect "Your non-synergy rings' cost decreases by 1 point. Your synergy rings' cost increases by 2."
+  :points 0} ;2 if you include the ring's effect once
+ {:name   "The Beacon"
+  :effect "You emit bright light in a radius of 5 feet from you for each ring worn."
+  :points 2}
+ {:name    "The Trained"
+  :effect  "If all of your worn synergy rings are 'The Trained', with a minimum of 3, you may choose to gain a feat from one of your rings. This ring grants the option of `%s`. You may change the chosen ring during a long rest."
+  :randoms [{:preset :feats}]
+  :points  2}
+ {:name    "The Able"
+  :effect  "+1 %s while not wearing any synergy rings that are not 'The Able'"
+  :randoms [{:preset :ability-scores}]
+  :points  3}
+ {:name   "Vengeful"
+  :effect "Once per short rest, as a reaction to being damaged, you may cast Hex on the creature that damaged you. Normal range/visibility/concentration restrictions apply."
+  :points 4}
+ {:name   "Jack of All Trades"
+  :effect "None of your ability scores can be below 10. Any ability scores below 10 are considered to be 10 instead."
+  :points 2}
+ {:name   "Watchful"
+  :effect "You may trance instead of sleeping during long rests, but must still rest for 8 hours (by default) to achieve a long rest."
+  :points 2}
+ {:name   "Restless"
+  :effect "You do not suffer disadvantage on Perception checks while asleep."
+  :points 3}
+ {:name    "Divergent"
+  :effect  "You take %s damage as %s damage instead."
+  :randoms {:preset :without-replacement
+            :amount 2
+            :from   {:preset :damage-types
+                     :type   :non-physical}}
+  :points  1}
+ {:name    "Multilingual"
+  :effect  "You can speak, read, and write %s if worn for at least 24 hours."
+  :randoms [{:preset :languages}]
+  :points  1}
+ {:name    "Protected"
+  :effect  "You lose proficiency in a saving throw of your choice. You gain proficiency in %s saving throws."
+  :randoms [{:preset :ability-scores
+             :type   :uncommon}]
+  :points  1}
+ {:name   "Powerful"
+  :effect "Your strength is considered to be 15 for the purpose of wearing armour and wielding weapons."
+  :points 5}
+ {:name   "Acrobat"
+  :effect "You may take high and long jumps without a run-up."
+  :points 1}
+ {:name   "Scapegoat"
+  :effect "When a creature within 5 feet of you takes damage, you may choose for them to take no damage instead. You then take an equal amount of true damage."
+  :points 2}]

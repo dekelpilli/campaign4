@@ -1,0 +1,2 @@
+- Allow purchasing of uniques that have already been found?
+- Offer players more information before choosing divinity path.

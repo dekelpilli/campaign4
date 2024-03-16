@@ -1,0 +1,21 @@
+#_(reduce
+    (fn [acc {:keys [tags weighting]}]
+      (reduce (fn [acc tag] (update acc tag (fnil #(+ % weighting) 0))) acc tags))
+    {}
+    e/enchants)
+[{:effect    "damage"
+  :multiplier 3}
+ {:effect    "critical"
+  :multiplier 10}
+ {:effect    "accuracy"
+  :multiplier 11}
+ {:effect    "survivability"
+  :multiplier 3}
+ {:effect    "control"
+  :multiplier 19}
+ {:effect    "magic"
+  :multiplier 6}
+ {:effect    "wealth"
+  :multiplier 19}
+ {:effect    "utility"
+  :multiplier 3}]
