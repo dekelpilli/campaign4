@@ -1,405 +1,370 @@
-[{:name    "Pacifist's Vow"
-  :base    "any weapon"
-  :effects [{:effect "Non-damaging spells have a 50% chance consume a spell slot 1 level lower."
-             :tags   #{"magic"}}
-            {:effect "+1 to your DC with effects that cannot deal damage."
-             :tags   #{"accuracy"}}
-            {:effect "You may forego dealing damage with a spell to make it count as a non-damaging spell."
-             :tags   #{"magic" "utility"}}
-            {:effect "Your weapons gain the Non-lethal trait"
-             :tags   #{"utility"}}
-            {:effect "You cannot upcast damaging spells."}
-            {:effect "You cannot cast damaging spells on consecutive turns in combat."}
-            {:effect "The damage you deal with cantrips is halved."}]}
- {:name    "Researcher's Power"
-  :base    "staff"
-  :effects [{:effect "Your mental ability score are capped at 26."
-             :tags   #{"utility"}}
-            {:effect "+4 intelligence."
-             :tags   #{"utility"}}
-            {:effect "+2 to non-highest mental ability score (choose if equal)."
-             :tags   #{"utility"}}
-            {:effect "You cannot use intelligence to cast spells."}
-            {:effect "You can use a different mental ability score for spells that you would normally cast with intelligence."}]}
- {:name    "Wrestler's Perseverance"
-  :base    "any body armour"
-  :effects [{:effect "You have advantage with melee attacks while grappled or restrained. You do not suffer disadvantage on melee attacks while restrained."
-             :tags   #{"accuracy"}}
-            {:effect "+1 to your maneuver DC."
-             :tags   #{"accuracy"}}
-            {:effect "You may add your Dexterity modifier to your basic melee damage."
-             :tags   #{"damage"}}
-            {:effect "Creatures you are grappling are considered to be restrained."
-             :tags   #{"control"}}
-            {:effect "You are considered to be restrained while you are grappling a creature."}]}
- {:name    "Garb of the Divine"
-  :base    "any body armour"
-  :effects [{:effect "You gain Divinity until the end of your next turn when you hit a creature with an attack while you do not have Divinity."}
-            {:effect "+10 fire, radiant, cold, and lightning damage while you have Divinity."
-             :tags   #{"damage"}}
-            {:effect "You may convert any physical damage you deal to fire, radiant, cold, or lightning damage while you have Divinity."
-             :tags   #{"damage"}}
-            {:effect "You are immune to curses."
-             :tags   #{"survivability"}}
-            {:effect "You take no extra damage from critical hits from creatures within 5 feet of you."
-             :tags   #{"survivability"}}
-            {:effect "May only be worn if you have at least 20 strength and intelligence."}
-            {:effect "You may not add your intelligence or strength to any damage you deal."}]}
- {:name    "Infernal Mantle"
-  :base    "any body armour"
-  :effects [{:effect "+3 fire damage with spells."
-             :tags   #{"damage"}}
-            {:effect "+1 critical hit range with spells."
-             :tags   #{"critical"}}
-            {:effect "You may cast spells that require a saving throw that would deal fire damage as spell attacks instead."
-             :tags   #{"magic"}}
-            {:effect "+1 damage taken from spells for each spell slot level where you have expended all of your spell slots."}
-            {:effect "Takes at least 1 minute to be donned or doffed."}]}
- {:name    "Werebear's Pelt"
-  :base    "any body armour"
-  :effects [{:effect "Your hit die size is increased by 2. This increases your maximum hit points."
-             :tags   #{"survivability"}}
-            {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, regenerate 2 hit points."
-             :tags   #{"survivability"}}
-            {:effect "You have +3 physical damage with melee attacks."
-             :tags   #{"survivability"}}
-            {:effect "+2 to your Strength maximum."
-             :tags   #{"utility"}}
-            {:effect "You cannot cast spells."}
-            {:effect "You can wear a maximum of 1 relic."}]}
- {:name    "Garb of the Unhinged"
-  :base    "any body armour"
-  :effects [{:effect "+2 to all ability scores."
-             :tags   #{"utility"}}
-            {:effect "Your critical hit range is 13-20 while you are not mad."
-             :tags   #{"critical"}}
-            {:effect "+6 maximum barrier while mad."
-             :tags   #{"survivability"}}
-            {:effect "+3 incoming healing while mad."
-             :tags   #{"survivability"}}
-            {:effect "Healing you receive while mad is applied as if the maximum value was rolled."
-             :tags   #{"survivability"}}
-            {:effect "Roll a d20 at the start of each turn in combat where you are conscious. If you roll 10 or lower, roll a d100 on this modified short term madness table. You are afflicted by the matching effect until the start of your next turn."}]
-  :madness {"01-20"  "The character retreats into his or her mind and becomes staggered. The effect ends if the character takes any damage."
-            "21-30"  "The character becomes dazed and spends the duration screaming, laughing, or weeping."
-            "31-40"  "The character becomes frightened and must use his or her action and movement each round to flee from the source of the fear. (source is a random enemy in combat)"
-            "41-50"  "The character begins babbling and is incapable of normal speech or spellcasting."
-            "51-60"  "The character must use his or her action each round to attack the nearest creature. (random if equal distance)"
-            "61-77"  "The character experiences vivid hallucinations and has disadvantage on attacks and ability checks."
-            "76-80"  "The character experiences an overpowering urge to eat something strange such as dirt, slime, or offal (and must spend go prone and spend their action attempting to do so)."
-            "81-90"  "The character is debilitated."
-            "91-100" "The character falls unconscious."}}
- {:name    "Slow and Steady"
-  :base    "any boots"
-  :effects [{:effect "You are immune to the grappled and restrained conditions."}
-            {:effect "+2 maximum Constitution."
-             :tags   #{"utility"}}
-            {:effect "+1 Constitution."
-             :tags   #{"utility"}}
-            {:effect "Your speed is reduced by 10 feet."}]}
- {:name    "Fast and Furious"
-  :base    "any boots"
-  :effects [{:effect "Your speed is increased by 5 feet for each attack you've made during your turn."
-             :tags   #{"utility"}}
-            {:effect "You may sacrifice half of your movement to disengage if you've made an attack in your bonus action."
-             :tags   #{"utility"}}
-            {:effect "Your speed is reduced by 10 feet if you have not yet made an attack on your turn."}]}
- {:name    "Gluttony"
-  :base    "any boots"
-  :effects [{:effect "You gain 3 hit points when hitting enemies cursed by you, no more than once per turn."
-             :tags   #{"survivability"}}
-            {:effect "Allies gain 3 hit points on hitting enemies cursed by you, no more than once per turn.."
-             :tags   #{"survivability"}}
-            {:effect "You cannot gain temporary hit points."}
-            {:effect "You take 5 true damage when you dash."}]}
- {:name    "Unreserved"
-  :base    "any boots"
-  :effects [{:effect "+2 global damage."
-             :tags   #{"damage"}}
-            {:effect "+1 incoming healing."
-             :tags   #{"survivability"}}
-            {:effect "+1 damage vulnerability."}]}
- {:name    "Relentless"
-  :base    "any boots"
-  :effects [{:effect "Gain temporary hit points equal to twice your level when you roll for initiative and do not have full health."
-             :tags   #{"survivability"}}
-            {:effect "You cannot critically succeed or critically fail death saves."
-             :tags   #{"survivability"}}
-            {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}]}
- {:name    "Mitts of the Frostbitten"
-  :base    "any gloves"
-  :effects [{:effect "+2 cold thorns."
-             :tags   #{"damage"}}
-            {:effect "+2 cold damage."
-             :tags   #{"damage"}}
-            {:effect "Your physical damage is halved."}
-            {:effect "Physical damage you would deal is dealt as cold damage instead."}]}
- {:name    "Cryomancer's Obsession"
-  :base    "any gloves"
-  :effects [{:effect "+1d4 cold damage with attacks and spells."
-             :tags   #{"damage"}}
-            {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies have +2 cold vulnerability, gain fire resistance, and are restrained. CON save at end of turn to end, or until taking fire damage."
-             :tags   #{"control" "critical"}}
-            {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
-             :tags   #{"control"}}
-            {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have just hit with a crit). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}]}
- {:name    "Corrosion"
-  :base    "any 1h weapon"
-  :effects [{:effect "Physical damage you would deal with weapons is dealt as acid damage instead."
-             :tags   #{"damage"}}
-            {:effect "+1d4 acid damage."
-             :tags   #{"damage"}}
-            {:effect "+1 die size with acid damage."
-             :tags   #{"damage"}}
-            {:effect "Take 1 acid damage whenever you deal acid damage."}]}
- {:name    "Apothecary's expertise"
-  :base    "any gloves"
-  :effects [{:effect "Poisons you inflict end one round after their regular duration (including being ended with a save)."
-             :tags   #{"control"}}
-            {:effect "When you attempt to deal poison damage to a poison-immune enemy, they become resistant to poison instead."
-             :tags   #{"damage"}}
-            {:effect "When you deal poison damage to a poison-resistant enemy, they lose their resistance to poison."
-             :tags   #{"damage"}}
-            {:effect "-2 damage with non-poison damage types."}]}
- {:name    "Thunderfist"
-  :base    "any brawling weapon"
-  :effects [{:effect "+1d4 thunder damage with attacks."
-             :tags   #{"damage"}}
-            {:effect "+20 temporary hit points when you take thunder damage, no more than once per minute."
-             :tags   #{"survivability"}}
-            {:effect "You cannot be deafened."
-             :tags   #{"survivability"}}
-            {:effect "You may force enemies that take thunder damage from a critical hit from your attacks to be affected by the Shove or Knockdown maneuvers (DC: 8+AB), but without the additional basic melee damage."
-             :tags   #{"control"}}
-            {:effect "You are vulnerable to lightning damage."}]}
- {:name    "Dominion"
-  :base    "any gloves"
-  :effects [{:effect "+2 maximum physical barrier per minion you control, to a maximum 3."
-             :tags   #{"survivability"}}
-            {:effect "No more than once per combat, when you have at least one minion at the end of your turn, gain temporary hit points equal to your level."
-             :tags   #{"survivability"}}
-            {:effect "Your minion's hit point maximum is increased by twice the spell level used to create or summon them."
-             :tags   #{"survivability"}}
-            {:effect "Your minions' damage is halved."}]}
- {:name    "Pashupatastra"
-  :base    "any bow"
-  :effects [{:effect "Modifiers to minion damage apply to your bow attacks, as your weapon attack projectiles are replaced by spectral tigers."
-             :tags   #{"damage"}}
-            {:effect "Your bow attacks' base damage is radiant."
-             :tags   #{"damage"}}
-            {:effect "When you score a critical hit with bow attacks, all creatures of your choice within 30 feet of the target take 10 radiant damage."
-             :tags   #{"damage"}}
-            {:effect "You cannot attack more than once per round."}
-            {:effect "Attacks with bows have advantage if you would otherwise be able to make more than one attack."
-             :tags   #{"accuracy"}}
-            {:effect "+5 radiant damage for each attack you would normally be able to make in a round (can scale with things such as Action Surge or ki points, still consuming the resource). This does not get multiplied by the single target enchant multiplier."
-             :tags   #{"damage"}}]}
- {:name    "Gungir"
-  :base    "any spear"
-  :effects [{:effect "+1AB with weapons for each consecutive attack you've missed previously."
-             :tags   #{"accuracy"}}
-            {:effect "Hits with weapons count as critical hits if you have missed at least two consecutive attacks previously."
-             :tags   #{"critical"}}
-            {:effect "Gain 3 hit points and 3 temporary hit points when you kill an enemy with a weapon attack."
-             :tags   #{"survivability"}}
-            {:effect "-2 damage with weapon attacks against creatures that are not larger than you."}]}
- {:name    "Mjolnir"
-  :base    "any hammer"
-  :effects [{:effect "+1d6 thunder damage with this weapon."
-             :tags   #{"damage"}}
-            {:effect "This weapon's base damage is converted to lightning."
-             :tags   #{"damage"}}
-            {:effect "+2 lightning damage."
-             :tags   #{"damage"}}
-            {:effect "This weapon gains the Conduit trait."
-             :tags   #{"magic" "utility"}}
-            {:effect "+1d4 lightning damage with thrown attacks with this weapon."
-             :tags   #{"damage"}}
-            {:effect "Requires 22 strength to wield."}]}
- {:name    "Excalibur"
-  :base    "any sword"
-  :effects [{:effect "This weapon becomes dual-wielding"
-             :tags   #{"utility"}}
-            {:effect "If this weapon was previously tagged with Heavy, it loses that tag."
-             :tags   #{"utility"}}
-            {:effect "This weapon becomes a finesse weapon."
-             :tags   #{"utility"}}
-            {:effect "+5 damage with weapons against enemies on very high health (80%+)."
-             :tags   #{"damage"}}
-            {:effect "-1 critical hit range with this weapon."}]}
- {:name    "Pasha"
-  :base    "any flail"
-  :effects [{:effect "Enemies you critically hit with a weapon become restrained for 18 seconds, or until they use an action to end the effect."
-             :tags   #{"control"}}
-            {:effect "+2 critical hit range with weapons."
-             :tags   #{"critical"}}
-            {:effect "+2 damage with against grappled and restrained enemies."
-             :tags   #{"damage"}}
-            {:effect "You cannot critically hit restrained enemies."}
-            {:effect "When you would otherwise land a killing blow with a weapon, the enemy instead dies at the end of their next turn. You know when this happens."}]}
- {:name    "Raven's Talon"
-  :base    "any knife"
-  :effects [{:effect "+1d4 damage against blinded enemies."
-             :tags   #{"damage"}}
-            {:effect "+1 critical hit range against non-blind enemies."
-             :tags   #{"critical"}}
-            {:effect "Non-blind enemies you critically hit become blinded for a minute, or until you do not damage them during your turn, CON save at turn end."
-             :tags   #{"control" "accuracy"}}
-            {:effect "You cannot critically hit blinded enemies."}]}
- {:name    "The Sentinel"
-  :base    "any shield or shield weapon"
-  :effects [{:effect "+2 maximum physical barrier."
-             :tags   #{"survivability"}}
-            {:effect "Regenerate 1 hit point when you block an attack."
-             :tags   #{"survivability"}}
-            {:effect "You may make an opportunity attack against creatures within 5 feet of you when you block their melee attacks."
-             :tags   #{"damage"}}
-            {:effect "You take 2 true damage whenever you make an attack on your turn."}]}
- {:name    "Savage"
-  :base    "any one handed axe"
-  :effects [{:effect "+2 damage while dual wielding."
-             :tags   #{"damage"}}
-            {:effect "+1 global damage while wielding a flail."
-             :tags   #{"damage"}}
-            {:effect "You cannot gain temporary hit points."}]}
- {:name    "Controlling"
-  :base    "any one handed sword"
-  :effects [{:effect "+2 damage while dual wielding."
-             :tags   #{"damage"}}
-            {:effect "+1 AB with this weapon while wielding a pick."
-             :tags   #{"accuracy"}}
-            {:effect "-1 critical hit range."}]}
- {:name    "Tankie"
-  :base    "any one handed knife"
-  :effects [{:effect "+2 damage while dual wielding."
-             :tags   #{"damage"}}
-            {:effect "+1 AC while wielding a hammer."
-             :tags   #{"survivability"}}
-            {:effect "-5 feet speed."}]}
- {:name    "Meticulous"
-  :base    "any shield weapon"
-  :effects [{:effect "+2 damage while dual wielding."
-             :tags   #{"damage"}}
-            {:effect "You have an additional reaction each round while wielding a club."
-             :tags   #{"utility"}}
-            {:effect "-1 to all Strength and Dexterity skill checks, and -1 to Concentration saves."}]}
- {:name    "Unyielding"
-  :base    "any weapon"
-  :effects [{:effect "+1 AC if you have cast a spell since the beginning of your previous turn."
-             :tags   #{"survivability" "magic"}}
-            {:effect "+1 damage with cantrips if you haven't cast any non-cantrip spells since the beginning of your previous turn."
-             :tags   #{"damage"}}
-            {:effect "-2 to concentration saves if you haven't cast any non-cantrip spells since the beginning of your previous turn."}]}
- {:name    "Hidden"
-  :base    "any knife"
-  :effects [{:effect "While this weapon is unsheathed, you are invisible if you haven't attacked or cast a spell in the last 18 seconds."
-             :tags   #{"survivability" "damage" "accuracy"}}
-            {:effect "Gain 5 temporary hit points when you critically hit with this weapon."
-             :tags   #{"survivability"}}
-            {:effect "+5 critical hit range with this weapon while you are invisible."
-             :tags   #{"critical"}}
-            {:effect "Creatures that can see you take no extra damage from critical hits from attacks with this weapon."}]}
- {:name    "The Resilient"
-  :base    "shield"
-  :effects [{:effect "You are resistant to all damage from attacks whose attack roll total was below your AC+5."
-             :tags   #{"survivability"}}
-            {:effect "This shield can be used without proficiency in shields."
-             :tags   #{"utility"}}
-            {:effect "-2 AC."}]}
- {:name    "Thornwall"
-  :base    "shield"
-  :effects [{:effect "Deal 1 piecing thorns damage to melee attackers within 5 feet on blocking their attacks."
-             :tags   #{"damage"}}
-            {:effect "Creatures of your choice within 5 feet of you take 1 piercing damage whenever you deal thorns damage with this shield."
-             :tags   #{"damage"}}
-            {:effect "-1 damage from sources other than this shield."}]}
- {:name    "Dáinsleif"
-  :base    "any sword"
-  :effects [{:effect "+1d6 necrotic damage with weapons."
-             :tags   #{"damage"}}
-            {:effect "When you damage a creature with a weapon attack, its maximum hit points are reduced by an amount equal to the necrotic damage dealt, until its next long rest."
-             :tags   #{"utility"}}
-            {:effect "When you remove more than half of a creature's remaining hit points with a weapon attack, the creature is killed. This supersedes non-lethal."
-             :tags   #{"damage"}}
-            {:effect "Take true damage equal to your level when you end a combat without landing a killing blow. This damage cannot reduce you to 0 hit points."}
-            {:effect "Slashing damage you take is increased by 2."}]}
- {:name    "Amenonuhoko"
-  :base    "any polearm"
-  :effects [{:effect "The first time on your turn that you hit a creature with this weapon, you cast Earth Tremor as a first level spell."
-             :tags   #{"magic"}}
-            {:effect "You cannot be knocked prone by the Earth Tremor and Earthquake spells."
-             :tags   #{"survivability"}}
-            {:effect "You must concentrate to hold this weapon. Whenever you lose concentration, you may either drop the weapon or immediately cast Earth Tremor, centred on you. When cast in this way, the spell also affects you, but does not invoke further concentration saves."}
-            {:effect "This weapon requires an action to pick up."}]}
- {:name    "Babr-e Bayan"
-  :base    "any heavy body armour"
-  :effects [{:effect "You are resistant to fire and cold damage."
-             :tags   #{"survivability"}}
-            {:effect "+1 AC against weapon attacks."
-             :tags   #{"survivability"}}
-            {:effect "Your speed is reduced by 10 feet while you are not wearing any items with wealth modifiers."}]}
- {:name    "Diomedian Cunning"
-  :base    "any body armour"
-  :effects [{:effect "This armour sells for triple the regular price."
-             :tags   #{"wealth"}}]}
- {:name    "Forceslinger"
-  :base    "wand"
-  :effects [{:effect "When you make an attack with a weapon, you may sacrifice a spell slot to add {spell slot level}d4 to the attack roll and damage of the attack."
-             :tags   #{"accuracy" "damage"}}
-            {:effect "You ignore barriers, resistances and immunities to force with weapons."
-             :tags   #{"damage"}}
-            {:effect "Wand attacks made during your bonus action have advantage."
-             :tags   #{"accuracy"}}
-            {:effect "-1 damage with damage types other than force."}]}
- {:name    "Antimagic stick"
-  :base    "wand"
-  :effects [{:effect "Creatures you attack gain one level of vulnerability (immune->resistant->regular->vulnerable) to damage types from this weapon."
-             :tags   #{"damage"}}
-            {:effect "You cannot deal force damage. Flat increases to your wand attacks apply to your highest non-force source of damage from that attack (based on average result)."}
-            {:effect "You cannot make weapon attacks if you have cast a non-cantrip spell since the start of your last turn."}
-            {:effect "-1 cantrips known."}]}
- {:name    "Lorg Mór"
-  :base    "any club or hammer"
-  :effects [{:effect "This weapon gains the Sweep property."
-             :tags   #{"accuracy"}}
-            {:effect "+5 to Medicine checks for healing downed allies."
-             :tags   #{"utility" "survivability"}}
-            {:effect "+2 incoming healing."
-             :tags   #{"survivability"}}
-            {:effect "+2 outgoing healing."
-             :tags   #{"magic" "survivability"}}
-            {:effect "Add your outgoing healing bonus to the life gained by downed allies you heal with Medicine checks."
-             :tags   #{"utility" "survivability"}}
-            {:effect "+2 bludgeoning damage against creatures smaller than you in size."
-             :tags   #{"damage"}}
-            {:effect "You are large."}
-            {:effect "-2 to your two lowest mental ability scores (choose if equal)."}]}
- {:name    "Miner's Greed"
-  :base    "any pick"
-  :effects [{:effect "+2 critical hit range."
-             :tags   #{"critical"}}
-            {:effect "On a critical hit with a pick weapon, add additional damage dice equal to the pick's base damage dice."
-             :tags   #{"critical"}}
-            {:effect "One-handed picks you wield are considered to have the Dual Wielding trait. Two-handed picks you wield lose the Two-handed tag."
-             :tags   #{"utility"}}
-            {:effect "When you score a natural critical hit with a pick, you take true damage equal to thrice the difference between your natural roll and 20 (e.g. take 6 damage after critting with an 18, 0 with a 20)."}]}
- {:name    "Molten Fury"
-  :base    "any axe"
-  :effects [{:effect "You cannot deal more than 10 non-fire damage per turn. Any such damage beyond your 10th on a turn is converted to fire damage."
-             :tags   #{"damage"}}
-            {:effect "When you hit an enemy with a weapon attack that deals fire damage, you gain 1 point of Fury."
-             :tags   #{"damage"}}
-            {:effect "When you critically hit an enemy with a weapon attack that deals fire damage, you gain 1 additional point of Fury."
-             :tags   #{"critical" "damage"}}
-            {:effect "+4 maximum Fury."
-             :tags   #{"damage"}}
-            {:effect "Add 1 fire damage to your weapon attacks for each point of Fury you currently have."
-             :tags   #{"damage"}}
-            {:effect "Reduce non-fire damage from your weapon attacks by 1 for each point of Fury you currently have."}
-            {:effect "You lose all Fury points when you roll for initiative, and when you go down to 0 hit points."}
-            {:effect "You cannot deal non-physical, non-fire damage with weapon attacks."}
-            {:effect "Your resistances and barriers cannot apply to damage types other than fire."}]}
- {:name     "Template"
-  :base     "string"
-  :effects  [{:effect "description"}]
-  :enabled? false}]
+[{:name      "Pacifist's Vow"
+  :base-type "weapon"
+  :effects   [{:effect "Non-damaging spells have a 50% chance consume a spell slot 1 level lower."
+               :tags   #{"magic"}}
+              {:effect "+1 to your DC with effects that cannot deal damage."
+               :tags   #{"accuracy"}}
+              {:effect "You may forego dealing damage with a spell to make it count as a non-damaging spell."
+               :tags   #{"magic" "utility"}}
+              {:effect "Your weapons gain the Non-lethal trait"
+               :tags   #{"utility"}}
+              {:effect "You cannot upcast damaging spells."}
+              {:effect "You cannot cast damaging spells on consecutive turns in combat."}
+              {:effect "The damage you deal with cantrips is halved."}]}
+ {:name      "Researcher's Power"
+  :base-type "weapon"
+  :effects   [{:effect "Your mental ability scores are capped at 26."
+               :tags   #{"utility"}}
+              {:effect "+4 intelligence."
+               :tags   #{"utility"}}
+              {:effect "+2 to non-highest mental ability score (choose if equal)."
+               :tags   #{"utility"}}
+              {:effect "You cannot use intelligence to cast spells."}
+              {:effect "You can use a different mental ability score for spells that you would normally cast with intelligence."}]}
+ {:name      "Wrestler's Perseverance"
+  :base-type "armour"
+  :effects   [{:effect "You have advantage with melee attacks while grappled or restrained. You do not suffer disadvantage on melee attacks while restrained."
+               :tags   #{"accuracy"}}
+              {:effect "+1 to your maneuver DC."
+               :tags   #{"accuracy"}}
+              {:effect "You may add your Dexterity modifier to your basic melee damage."
+               :tags   #{"damage"}}
+              {:effect "Creatures you are grappling are considered to be restrained."
+               :tags   #{"control"}}
+              {:effect "You are considered to be restrained while you are grappling a creature."}]}
+ {:name      "Garb of the Divine"
+  :base-type "armour"
+  :effects   [{:effect "You gain Divinity until the end of your next turn when you hit a creature with an attack while you do not have Divinity."}
+              {:effect "+10 fire, radiant, cold, and lightning damage while you have Divinity."
+               :tags   #{"damage"}}
+              {:effect "You may convert any physical damage you deal to fire, radiant, cold, or lightning damage while you have Divinity."
+               :tags   #{"damage"}}
+              {:effect "You are immune to curses."
+               :tags   #{"survivability"}}
+              {:effect "You take no extra damage from critical hits from creatures within 5 feet of you."
+               :tags   #{"survivability"}}
+              {:effect "May only be worn if you have at least 20 strength and intelligence."}
+              {:effect "You may not add your intelligence or strength to any damage you deal."}]}
+ {:name      "Infernal Mantle"
+  :base-type "armour"
+  :effects   [{:effect "+3 fire damage with spells."
+               :tags   #{"damage"}}
+              {:effect "+1 critical hit range with spells."
+               :tags   #{"critical"}}
+              {:effect "You may cast spells that require a saving throw that would deal fire damage as spell attacks instead."
+               :tags   #{"magic"}}
+              {:effect "+1 damage taken from spells for each spell slot level where you have expended all of your spell slots."}
+              {:effect "Takes at least 1 minute to be donned or doffed."}]}
+ {:name      "Werebear's Pelt"
+  :base-type "armour"
+  :effects   [{:effect "Your hit die size is increased by 2. This increases your maximum hit points."
+               :tags   #{"survivability"}}
+              {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, regenerate 2 hit points."
+               :tags   #{"survivability"}}
+              {:effect "You have +3 physical damage with melee attacks."
+               :tags   #{"survivability"}}
+              {:effect "+2 to your Strength maximum."
+               :tags   #{"utility"}}
+              {:effect "You cannot cast spells."}
+              {:effect "You can wear a maximum of 1 relic."}]}
+ {:name      "Garb of the Unhinged"
+  :base-type "body"
+  :effects   [{:effect "+2 to all ability scores."
+               :tags   #{"utility"}}
+              {:effect "Your critical hit range is 13-20 while you are not mad."
+               :tags   #{"critical"}}
+              {:effect "+6 maximum barrier while mad."
+               :tags   #{"survivability"}}
+              {:effect "+3 incoming healing while mad."
+               :tags   #{"survivability"}}
+              {:effect "Healing you receive while mad is applied as if the maximum value was rolled."
+               :tags   #{"survivability"}}
+              {:effect "Roll a d20 at the start of each turn in combat where you are conscious. If you roll 10 or lower, roll a d100 on this modified short term madness table. You are afflicted by the matching effect until the start of your next turn."}]
+  :madness   {"01-20"  "The character retreats into his or her mind and becomes staggered. The effect ends if the character takes any damage."
+              "21-30"  "The character becomes dazed and spends the duration screaming, laughing, or weeping."
+              "31-40"  "The character becomes frightened and must use his or her action and movement each round to flee from the source of the fear. (source is a random enemy in combat)"
+              "41-50"  "The character begins babbling and is incapable of normal speech or spellcasting."
+              "51-60"  "The character must use his or her action each round to attack the nearest creature. (random if equal distance)"
+              "61-77"  "The character experiences vivid hallucinations and has disadvantage on attacks and ability checks."
+              "76-80"  "The character experiences an overpowering urge to eat something strange such as dirt, slime, or offal (and must spend go prone and spend their action attempting to do so)."
+              "81-90"  "The character is debilitated."
+              "91-100" "The character falls unconscious."}}
+ {:name      "Slow and Steady"
+  :base-type "armour"
+  :effects   [{:effect "You are immune to the grappled and restrained conditions."}
+              {:effect "+2 maximum Constitution."
+               :tags   #{"utility"}}
+              {:effect "+1 Constitution."
+               :tags   #{"utility"}}
+              {:effect "Your speed is reduced by 10 feet."}]}
+ {:name      "Fast and Furious"
+  :base-type "armour"
+  :effects   [{:effect "Your speed is increased by 5 feet for each attack you've made during your turn."
+               :tags   #{"utility"}}
+              {:effect "You may sacrifice half of your movement to disengage if you've made an attack in your bonus action."
+               :tags   #{"utility"}}
+              {:effect "Your speed is reduced by 10 feet if you have not yet made an attack on your turn."}]}
+ {:name      "Gluttony"
+  :base-type "armour"
+  :effects   [{:effect "You gain 3 hit points when hitting enemies cursed by you, no more than once per turn."
+               :tags   #{"survivability"}}
+              {:effect "Allies gain 3 hit points on hitting enemies cursed by you, no more than once per turn.."
+               :tags   #{"survivability"}}
+              {:effect "You cannot gain temporary hit points."}
+              {:effect "You take 5 true damage when you dash."}]}
+ {:name      "Unreserved"
+  :base-type "armour"
+  :effects   [{:effect "+2 global damage."
+               :tags   #{"damage"}}
+              {:effect "+1 incoming healing."
+               :tags   #{"survivability"}}
+              {:effect "+1 damage vulnerability."}]}
+ {:name      "Relentless"
+  :base-type "armour"
+  :effects   [{:effect "Gain temporary hit points equal to twice your level when you roll for initiative and do not have full health."
+               :tags   #{"survivability"}}
+              {:effect "You cannot critically succeed or critically fail death saves."
+               :tags   #{"survivability"}}
+              {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}]}
+ {:name      "Mitts of the Frostbitten"
+  :base-type "armour"
+  :effects   [{:effect "+2 cold thorns."
+               :tags   #{"damage"}}
+              {:effect "+2 cold damage."
+               :tags   #{"damage"}}
+              {:effect "Your physical damage is halved."}
+              {:effect "Physical damage you would deal is dealt as cold damage instead."}]}
+ {:name      "Cryomancer's Obsession"
+  :base-type "armour"
+  :effects   [{:effect "+1d4 cold damage with attacks and spells."
+               :tags   #{"damage"}}
+              {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies have +2 cold vulnerability, gain fire resistance, and are restrained. CON save at end of turn to end, or until taking fire damage."
+               :tags   #{"control" "critical"}}
+              {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
+               :tags   #{"control"}}
+              {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have just hit with a crit). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}]}
+ {:name      "Corrosion"
+  :base-type "weapon"
+  :effects   [{:effect "Physical damage you would deal with weapons is dealt as acid damage instead."
+               :tags   #{"damage"}}
+              {:effect "+1d4 acid damage."
+               :tags   #{"damage"}}
+              {:effect "+1 die size with acid damage."
+               :tags   #{"damage"}}
+              {:effect "Take 1 acid damage whenever you deal acid damage."}]}
+ {:name      "Apothecary's Expertise"
+  :base-type "armour"
+  :effects   [{:effect "Poisons you inflict end one round after their regular duration (including being ended with a save)."
+               :tags   #{"control"}}
+              {:effect "When you attempt to deal poison damage to a poison-immune enemy, they become resistant to poison instead."
+               :tags   #{"damage"}}
+              {:effect "When you deal poison damage to a poison-resistant enemy, they lose their resistance to poison."
+               :tags   #{"damage"}}
+              {:effect "-2 damage with non-poison damage types."}]}
+ {:name      "Thunderfist"
+  :base-type "weapon"
+  :effects   [{:effect "+1d4 thunder damage with attacks."
+               :tags   #{"damage"}}
+              {:effect "+20 temporary hit points when you take thunder damage, no more than once per minute."
+               :tags   #{"survivability"}}
+              {:effect "You cannot be deafened."
+               :tags   #{"survivability"}}
+              {:effect "You may force enemies that take thunder damage from a critical hit from your melee or touch attacks to be affected by the Shove or Knockdown maneuvers (DC: 8+AB), but without the additional basic melee damage."
+               :tags   #{"control"}}
+              {:effect "You are vulnerable to lightning damage."}]}
+ {:name      "Dominion"
+  :base-type "armour"
+  :effects   [{:effect "+2 maximum physical barrier per minion you control, to a maximum 3."
+               :tags   #{"survivability"}}
+              {:effect "No more than once per combat, when you have at least one minion at the end of your turn, gain temporary hit points equal to your level."
+               :tags   #{"survivability"}}
+              {:effect "Your minion's hit point maximum is increased by twice the spell level used to create or summon them."
+               :tags   #{"survivability"}}
+              {:effect "Your minions' damage is halved."}]}
+ {:name      "Pashupatastra"
+  :base-type "weapon"
+  :effects   [{:effect "Modifiers to minion damage apply to your ranged attacks, as your weapon attack projectiles are replaced by spectral tigers."
+               :tags   #{"damage"}}
+              {:effect "Your ranged attacks' base damage is radiant."
+               :tags   #{"damage"}}
+              {:effect "When you score a critical hit with a range attack, all creatures of your choice within 30 feet of the target take 10 radiant damage."
+               :tags   #{"damage"}}
+              {:effect "You cannot attack more than once per round."}
+              {:effect "Ranged attacks have advantage if you would otherwise be able to make more than one attack."
+               :tags   #{"accuracy"}}
+              {:effect "+5 radiant damage for each attack you would normally be able to make in a round (can scale with things such as Action Surge or ki points, still consuming the resource). This does not get multiplied by the single target enchant multiplier."
+               :tags   #{"damage"}}]}
+ {:name      "Gungir"
+  :base-type "weapon"
+  :effects   [{:effect "+1AB with weapons for each consecutive attack you've missed previously."
+               :tags   #{"accuracy"}}
+              {:effect "Hits with weapons count as critical hits if you have missed at least two consecutive attacks previously."
+               :tags   #{"critical"}}
+              {:effect "Gain 3 hit points and 3 temporary hit points when you kill an enemy with a weapon attack."
+               :tags   #{"survivability"}}
+              {:effect "-2 damage with weapon attacks against creatures that are not larger than you."}]}
+ {:name      "Mjolnir"
+  :base-type "weapon"
+  :effects   [{:effect "+1d6 thunder damage with this weapon."
+               :tags   #{"damage"}}
+              {:effect "This weapon's base damage is converted to lightning."
+               :tags   #{"damage"}}
+              {:effect "+2 lightning damage."
+               :tags   #{"damage"}}
+              {:effect "This weapon gains the Conduit trait."
+               :tags   #{"magic" "utility"}}
+              {:effect "+1d4 lightning damage with thrown attacks with this weapon."
+               :tags   #{"damage"}}
+              {:effect "Requires 22 strength to wield."}]}
+ {:name      "Excalibur"
+  :base-type "weapon"
+  :effects   [{:effect "This weapon becomes dual-wielding"
+               :tags   #{"utility"}}
+              {:effect "If this weapon was previously tagged with Heavy, it loses that tag."
+               :tags   #{"utility"}}
+              {:effect "This weapon becomes a finesse weapon."
+               :tags   #{"utility"}}
+              {:effect "+5 damage with weapons against enemies on very high health (80%+)."
+               :tags   #{"damage"}}
+              {:effect "-1 critical hit range with this weapon."}]}
+ {:name      "Pasha"
+  :base-type "weapon"
+  :effects   [{:effect "Enemies you critically hit with a weapon become restrained for 18 seconds, or until they use an action to end the effect."
+               :tags   #{"control"}}
+              {:effect "+2 critical hit range with weapons."
+               :tags   #{"critical"}}
+              {:effect "+2 damage with against grappled and restrained enemies."
+               :tags   #{"damage"}}
+              {:effect "You cannot critically hit restrained enemies."}
+              {:effect "When you would otherwise land a killing blow with a weapon, the enemy instead dies at the end of their next turn. You know when this happens."}]}
+ {:name      "Raven's Talon"
+  :base-type "weapon"
+  :effects   [{:effect "+1d4 damage against blinded enemies."
+               :tags   #{"damage"}}
+              {:effect "+1 critical hit range against non-blind enemies."
+               :tags   #{"critical"}}
+              {:effect "Non-blind enemies you critically hit become blinded for a minute, or until you do not damage them during your turn, CON save at turn end."
+               :tags   #{"control" "accuracy"}}
+              {:effect "You cannot critically hit blinded enemies."}]}
+ {:name      "The Sentinel"
+  :base-type "armour"
+  :effects   [{:effect "+2 maximum physical barrier."
+               :tags   #{"survivability"}}
+              {:effect "Regenerate 1 hit point when you block an attack."
+               :tags   #{"survivability"}}
+              {:effect "You may make an opportunity attack against creatures within 5 feet of you when you block their melee attacks."
+               :tags   #{"damage"}}
+              {:effect "You take 2 true damage whenever you make an attack on your turn."}]}
+ {:name      "Unyielding"
+  :base-type "weapon"
+  :effects   [{:effect "+1 AC if you have cast a spell since the beginning of your previous turn."
+               :tags   #{"survivability" "magic"}}
+              {:effect "+1 damage with cantrips if you haven't cast any non-cantrip spells since the beginning of your previous turn."
+               :tags   #{"damage"}}
+              {:effect "-2 to concentration saves if you haven't cast any non-cantrip spells since the beginning of your previous turn."}]}
+ {:name      "Hidden"
+  :base-type "weapon"
+  :effects   [{:effect "While this weapon is unsheathed, you are invisible if you haven't attacked or cast a spell in the last 18 seconds."
+               :tags   #{"survivability" "damage" "accuracy"}}
+              {:effect "Gain 5 temporary hit points when you critically hit with this weapon."
+               :tags   #{"survivability"}}
+              {:effect "+5 critical hit range with this weapon while you are invisible."
+               :tags   #{"critical"}}
+              {:effect "Creatures that can see you take no extra damage from critical hits from attacks with this weapon."}]}
+ {:name      "The Resilient"
+  :base-type "armour"
+  :effects   [{:effect "You are resistant to all damage from attacks whose attack roll total was below your AC+5."
+               :tags   #{"survivability"}}
+              {:effect "You gain proficiency with shields."
+               :tags   #{"utility"}}
+              {:effect "-2 AC."}]}
+ {:name      "Thornwall"
+  :base-type "armour"
+  :effects   [{:effect "Deal 1 piecing thorns damage to melee attackers within 5 feet on blocking their attacks."
+               :tags   #{"damage"}}
+              {:effect "Creatures of your choice within 5 feet of you take 1 piercing damage whenever you deal thorns damage with this item."
+               :tags   #{"damage"}}
+              {:effect "-1 non-thorns damage."}]}
+ {:name      "Dáinsleif"
+  :base-type "weapon"
+  :effects   [{:effect "+1d6 necrotic damage with weapons."
+               :tags   #{"damage"}}
+              {:effect "When you damage a creature with a weapon attack, its maximum hit points are reduced by an amount equal to the necrotic damage dealt, until its next long rest."
+               :tags   #{"utility"}}
+              {:effect "When you remove more than half of a creature's remaining hit points with a weapon attack, the creature is killed. This supersedes non-lethal."
+               :tags   #{"damage"}}
+              {:effect "Take true damage equal to your level when you end a combat without landing a killing blow. This damage cannot reduce you to 0 hit points."}
+              {:effect "Slashing damage you take is increased by 2."}]}
+ {:name      "Amenonuhoko"
+  :base-type "weapon"
+  :effects   [{:effect "The first time on your turn that you hit a creature with this weapon, you cast Earth Tremor as a first level spell."
+               :tags   #{"magic"}}
+              {:effect "You cannot be knocked prone by the Earth Tremor and Earthquake spells."
+               :tags   #{"survivability"}}
+              {:effect "You must concentrate to hold this weapon. Whenever you lose concentration, you may either drop the weapon or immediately cast Earth Tremor, centred on you. When cast in this way, the spell also affects you, but does not invoke further concentration saves."}
+              {:effect "This weapon requires an action to pick up."}]}
+ {:name      "Babr-e Bayan"
+  :base-type "armour"
+  :effects   [{:effect "You are resistant to fire and cold damage."
+               :tags   #{"survivability"}}
+              {:effect "+1 AC against weapon attacks."
+               :tags   #{"survivability"}}
+              {:effect "Your speed is reduced by 10 feet while you are not wearing any items with wealth modifiers."}]}
+ {:name      "Diomedian Cunning"
+  :base-type "armour"
+  :effects   [{:effect "This armour sells for triple the regular price."
+               :tags   #{"wealth"}}]}
+ {:name      "Forceslinger"
+  :base-type "weapon"
+  :effects   [{:effect "When you make an attack with a weapon, you may sacrifice a spell slot to add {spell slot level}d4 to the attack roll and damage of the attack."
+               :tags   #{"accuracy" "damage"}}
+              {:effect "You ignore barriers, resistances and immunities to force with weapons."
+               :tags   #{"damage"}}
+              {:effect "Ranged attacks made during your bonus action that would deal force damage have advantage."
+               :tags   #{"accuracy"}}
+              {:effect "-1 damage with damage types other than force."}]}
+ {:name      "Lorg Mór"
+  :base-type "weapon"
+  :effects   [{:effect "This weapon gains the Sweep property."
+               :tags   #{"accuracy"}}
+              {:effect "+5 to Medicine checks for healing downed allies."
+               :tags   #{"utility" "survivability"}}
+              {:effect "+2 incoming healing."
+               :tags   #{"survivability"}}
+              {:effect "+2 outgoing healing."
+               :tags   #{"magic" "survivability"}}
+              {:effect "Add your outgoing healing bonus to the life gained by downed allies you heal with Medicine checks."
+               :tags   #{"utility" "survivability"}}
+              {:effect "+2 bludgeoning damage against creatures smaller than you in size."
+               :tags   #{"damage"}}
+              {:effect "You are large."}
+              {:effect "-2 to your two lowest mental ability scores (choose if equal)."}]}
+ {:name      "Miner's Greed"
+  :base-type "weapon"
+  :effects   [{:effect "+2 critical hit range."
+               :tags   #{"critical"}}
+              {:effect "Your weapons gain the 'Deadly' trait. If they already have that trait, its effect applies twofold."
+               :tags   #{"critical"}}
+              {:effect "One-handed picks weapons you wield are considered to have the Dual Wielding trait. Two-handed weapons you wield lose the Two-handed tag."
+               :tags   #{"utility"}}
+              {:effect "When you score a natural critical hit with a weapon attack, you take true damage equal to thrice the difference between your natural roll and 20 (e.g. take 6 damage after critting with an 18, 0 with a 20)."}]}
+ {:name      "Molten Fury"
+  :base-type "weapon"
+  :effects   [{:effect "You cannot deal more than 10 non-fire damage per turn. Any such damage beyond your 10th on a turn is converted to fire damage."
+               :tags   #{"damage"}}
+              {:effect "When you hit an enemy with a weapon attack that deals fire damage, you gain 1 point of Fury."
+               :tags   #{"damage"}}
+              {:effect "When you critically hit an enemy with a weapon attack that deals fire damage, you gain 1 additional point of Fury."
+               :tags   #{"critical" "damage"}}
+              {:effect "+4 maximum Fury."
+               :tags   #{"damage"}}
+              {:effect "Add 1 fire damage to your weapon attacks for each point of Fury you currently have."
+               :tags   #{"damage"}}
+              {:effect "Reduce non-fire damage from your weapon attacks by 1 for each point of Fury you currently have."}
+              {:effect "You lose all Fury points when you roll for initiative, and when you go down to 0 hit points."}
+              {:effect "You cannot deal non-physical, non-fire damage with weapon attacks."}
+              {:effect "Your resistances and barriers cannot apply to damage types other than fire."}]}
+ {:name      "Template"
+  :base-type "weapon|armour"
+  :effects   [{:effect "description"}]
+  :enabled?  false}]

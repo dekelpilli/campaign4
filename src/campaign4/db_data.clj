@@ -55,7 +55,7 @@
 (defn create-uniques! []
   (db/execute! {:create-table :uniques
                 :with-columns [[:name :text [:primary-key] [:not nil]]
-                               [:base :text [:not nil]]
+                               [:base-type :text [:not nil]]
                                [:effects :jsonb [:not nil]]
                                [:extras :jsonb]]}))
 
@@ -67,9 +67,8 @@
                   :values
                   (mapv (fn [unique]
                           (let [extras (not-empty (dissoc unique :name :base :effects))]
-                            (-> unique
-                                (update :effects u/jsonb-lift)
-                                (select-keys [:name :base :effects])
+                            (-> (update unique :effects u/jsonb-lift)
+                                (select-keys [:name :base-type :effects])
                                 (assoc :extras [:lift extras]))))
                         uniques)})))
 
