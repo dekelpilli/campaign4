@@ -5,7 +5,6 @@
     [clojure.edn :as edn]
     [clojure.java.io :as io]
     [clojure.pprint :as pprint]
-    [clojure.set :as set]
     [clojure.string :as str]
     [jsonista.core :as j])
   (:import
@@ -53,50 +52,6 @@
 (defn- drop! [table]
   (db/execute! {:drop-table [:if-exists table]}))
 
-(defn create-armours! []
-  (db/execute! {:create-table :armours
-                :with-columns [[:name :text [:primary-key] [:not nil]]
-                               [:ac :integer [:not nil]]
-                               [:type :text [:not nil]]
-                               [:slot :text [:not nil]]
-                               [:disadvantaged-stealth :boolean [:not nil]]]}))
-
-
-(defn insert-armours! []
-  (drop! :armours)
-  (create-armours!)
-  (let [armours (load-data "armour")]
-    (db/execute! {:insert-into [:armours]
-                  :values
-                  (map (fn [armour]
-                         (set/rename-keys armour {:disadvantaged-stealth? :disadvantaged-stealth}))
-                       armours)})))
-
-(defn create-weapons! []
-  (db/execute! {:create-table :weapons
-                :with-columns [[:name :text [:primary-key] [:not nil]]
-                               [:type :text [:not nil]]
-                               [:category :text [:not nil]]
-                               [:damage :text [:not nil]]
-                               [:proficiency :text [:not nil]]
-                               [:range :text]
-                               [:damage-types :jsonb [:not nil]]
-                               [:traits :jsonb [:not nil]]]}))
-
-
-(defn insert-weapons! []
-  (drop! :weapons)
-  (create-weapons!)
-  (let [weapons (load-data "weapon")]
-    (db/execute! {:insert-into [:weapons]
-                  :values
-                  (map (fn [weapon]
-                         (-> weapon
-                             (update :damage-types u/jsonb-lift)
-                             (update :traits u/jsonb-lift)))
-                       weapons)})))
-
-
 (defn create-uniques! []
   (db/execute! {:create-table :uniques
                 :with-columns [[:name :text [:primary-key] [:not nil]]
@@ -110,13 +65,13 @@
   (let [uniques (load-data "unique")]
     (db/execute! {:insert-into [:uniques]
                   :values
-                  (map (fn [unique]
-                         (let [extras (not-empty (dissoc unique :name :base :effects))]
-                           (-> unique
-                               (update :effects u/jsonb-lift)
-                               (select-keys [:name :base :effects])
-                               (assoc :extras [:lift extras]))))
-                       uniques)})))
+                  (mapv (fn [unique]
+                          (let [extras (not-empty (dissoc unique :name :base :effects))]
+                            (-> unique
+                                (update :effects u/jsonb-lift)
+                                (select-keys [:name :base :effects])
+                                (assoc :extras [:lift extras]))))
+                        uniques)})))
 
 (defn create-crafting-items! []
   (db/execute! {:create-table :crafting-items
@@ -129,13 +84,13 @@
   (create-crafting-items!)
   (let [crafting-items (load-data "crafting-item")]
     (db/execute! {:insert-into [:crafting-items]
-                  :values
-                  (->> crafting-items
-                       (filter #(:enabled? % true))
-                       (map (fn [crafting-item]
-                              (-> crafting-item
-                                  (dissoc :enabled?)
-                                  (update :amount u/jsonb-lift)))))})))
+                  :values      (into []
+                                     (comp (filter #(:enabled? % true))
+                                           (map (fn [crafting-item]
+                                                  (-> crafting-item
+                                                      (dissoc :enabled?)
+                                                      (update :amount u/jsonb-lift)))))
+                                     crafting-items)})))
 
 (defn create-positive-encounters! []
   (db/execute! {:create-table :positive-encounters
@@ -245,18 +200,16 @@
     (db/execute! {:insert-into [:character-enchants]
                   :values      character-enchants})))
 
-(defn create-special-armours! []
-  (db/execute! {:create-table :special-armours
-                :with-columns [[:name :text [:primary-key] [:not nil]]
-                               [:effect :text [:not nil]]
-                               [:randoms :jsonb]
-                               [:slot :text [:not nil]]]}))
+(defn create-enhancements! []
+  (db/execute! {:create-table :enhancements
+                :with-columns [[:effect :text [:primary-key] [:not nil]]
+                               [:randoms :jsonb]]}))
 
-(defn insert-special-armours! []
-  (drop! :special-armours)
-  (create-special-armours!)
-  (db/execute! {:insert-into [:special-armours]
-                :values      (->> (load-data "special-armour")
+(defn insert-enhancements! []
+  (drop! :enhancements)
+  (create-enhancements!)
+  (db/execute! {:insert-into [:enhancements]
+                :values      (->> (load-data "enhancement")
                                   (mapv #(update % :randoms u/jsonb-lift)))}))
 
 (defn create-tarot-cards! []
@@ -294,9 +247,7 @@
   (db/in-transaction
     (transduce (comp (filter some?)
                      (map (comp :next.jdbc/update-count first))) + 0
-               [(insert-armours!)
-                (insert-weapons!)
-                (insert-uniques!)
+               [(insert-uniques!)
                 (insert-crafting-items!)
                 (insert-positive-encounters!)
                 (insert-enchants!)
@@ -304,7 +255,7 @@
                 (insert-curios!)
                 (insert-divinity-paths!)
                 (insert-character-enchants!)
-                (insert-special-armours!)
+                (insert-enhancements!)
                 (insert-tarot-cards!)])))
 
 (defn create-analytics! []

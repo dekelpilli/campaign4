@@ -5,6 +5,7 @@
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
+    [campaign4.enhancements :as enhancements]
     [campaign4.helmets :as helmets]
     [campaign4.relics :as relics]
     [campaign4.rings :as rings]
@@ -28,8 +29,8 @@
        :action (fn enchanted-loot [] (e/random-enchanted 30))}
    6  {:name   "Curios"
        :action (fn curios-loot [] (repeatedly 4 curios/new-curio))}
-   7  {:name   "Special mundane armour"
-       :action mundanes/new-special-armour}
+   7  {:name   "Enhancement"
+       :action enhancements/new-enhancement}
    8  {:name   "Crafting item"
        :action crafting/new-crafting-items}
    9  {:name   "Helmet"
