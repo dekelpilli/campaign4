@@ -2,7 +2,6 @@
   (:require
     [campaign4.db :as db]
     [campaign4.enchants :as e]
-    [campaign4.mundanes :as mundanes]
     [campaign4.prompting :as p]
     [campaign4.util :as u]
     [randy.core :as r]))
@@ -20,7 +19,7 @@
       (select-keys [:name])))
 
 (defn use-curios []
-  (u/when-let* [{:keys [base type]} (mundanes/choose-base)
+  (u/when-let* [base-type (e/choose-base-type)
                 curios-used (let [curios-by-name (as-> (map #(prep-curio % false) curios) $
                                                        (into $ (map #(prep-curio % true)) curios)
                                                        (u/assoc-by :name $))]
@@ -37,7 +36,7 @@
                              (assoc acc effect multiplier))))
                        {}
                        curios-used)
-          enchants-fn (->> (e/valid-enchants base type)
+          enchants-fn (->> (e/valid-enchants base-type)
                            (map (fn [{:keys [tags weighting] :as e}]
                                   (let [new-weighting (transduce
                                                         (comp (map weightings)

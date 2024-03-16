@@ -31,8 +31,8 @@
   "6 cards, added numerics to deck"
   {0 0.2399, 1 0.40295, 2 0.25985, 3 0.08296, 4 0.01301, 5 0.00129, 6 4.0E-5})
 
-(defn- get-minimum-enchants [suit-tags num-mods {:keys [type base]}]
-  (let [enchant-sampler (->> (e/valid-enchants base type)
+(defn- get-minimum-enchants [suit-tags num-mods base-type]
+  (let [enchant-sampler (->> (e/valid-enchants base-type)
                              (filterv (fn [{:keys [tags]}]
                                         (-> (set/intersection tags suit-tags)
                                             seq)))
@@ -51,23 +51,19 @@
                                         (filter second))
                                    suits)
                              not-empty)]
-    (let [{:keys [base base-type] :as relic} (relics/choose-found-relic)]
-      (u/when-let* [base (if relic
-                           (mundanes/name->base base-type base)
-                           (mundanes/choose-base))
-                    mods (mapcat (fn [[suit amount]]
-                                   (get-minimum-enchants (get suit-tags suit) amount base))
-                                 num-mods)]
-        (if relic
-          (do
-            (-> relic
-                (update :start into mods)
-                (update :levels #(mapv (fn inject-relic-mods [level]
-                                        (update level :existing into mods))
-                                      %))
-                relics/update-relic!)
-            mods)
-          mods)))))
+    (let [{:keys [base-type] :as relic} (relics/choose-found-relic)
+          mods (mapcat (fn [[suit amount]]
+                         (get-minimum-enchants (get suit-tags suit) amount base-type))
+                       num-mods)]
+      (if relic
+        (do
+          (-> (update relic :start into mods)
+              (update :levels #(mapv (fn inject-relic-mods [level]
+                                       (update level :existing into mods))
+                                     %))
+              relics/update-relic!)
+          mods)
+        mods))))
 
 (defn add-character-enchants []
   (u/when-let* [character-enchants (p/>>item "Character name:" helmets/character-enchants)
@@ -84,9 +80,9 @@
                                      (reduced nil)))
                                  {}
                                  suits)
-                {:keys [base type] :as relic-base} (mundanes/choose-base)]
+                base-type (e/choose-base-type)]
     (let [starting-mods (-> (mapcat (fn [[tags num]]
-                                      (get-minimum-enchants tags num relic-base))
+                                      (get-minimum-enchants tags num base-type))
                                     suit-tag-freqs)
                             vec)]
       (puget/cprint starting-mods)
@@ -94,8 +90,7 @@
         (db/execute! {:insert-into :relics
                       :values      [{:name      relic-name
                                      :found     true
-                                     :base-type type
-                                     :base      (:name base)
+                                     :base-type base-type
                                      :start     (u/jsonb-lift starting-mods)
                                      :mods      (u/jsonb-lift [])
                                      :levels    (u/jsonb-lift [])}]})

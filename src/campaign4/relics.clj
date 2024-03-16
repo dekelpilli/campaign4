@@ -2,7 +2,6 @@
   (:require
     [campaign4.db :as db]
     [campaign4.enchants :as e]
-    [campaign4.mundanes :as mundanes]
     [campaign4.prompting :as p]
     [campaign4.util :as u]
     [puget.printer :as puget]
@@ -105,14 +104,13 @@
               opts))))
 
 (defn- single-relic-level [{:keys [base-type mods]}
-                           {:keys [existing progressed] :as previous-level} base]
-  ;TODO handle level 9->10 difference
+                           {:keys [existing progressed] :as previous-level}]
   (let [upgradeable (-> (remove (comp false? :upgradeable) existing)
                         seq)
         existing-effects (into #{} (map :effect) existing)
         available-relic-mods (-> (remove (comp existing-effects :effect) mods)
                                  seq)
-        gen-random-mod (comp u/fill-randoms (e/->valid-enchant-fn-memo base base-type))
+        gen-random-mod (comp e/prep-enchant (e/enchants-fns base-type))
         levelling-option-types (cond-> {:new-random-mod 1}
                                        available-relic-mods (assoc :new-relic-mod 1)
                                        upgradeable (assoc :upgrade-mod 1))
@@ -127,14 +125,13 @@
           (update :level inc)))))
 
 (defn set-relic-level! []
-  (u/when-let* [{:keys [levels base-type base] :as relic} (choose-found-relic)
+  (u/when-let* [{:keys [levels] :as relic} (choose-found-relic)
                 target-level (p/>>item "What is the relic's new level?" (range 2 11))]
     (let [current-max-level (-> levels peek :level)
           additional-levels (- target-level current-max-level)]
       (if (pos? additional-levels)
-        (let [base (mundanes/name->base base-type base)
-              new-levels (reduce (fn [levels _]
-                                   (if-let [new-level (single-relic-level relic (peek levels) base)]
+        (let [ new-levels (reduce (fn [levels _]
+                                   (if-let [new-level (single-relic-level relic (peek levels))]
                                      (conj levels new-level)
                                      (reduced levels)))
                                  levels
@@ -148,15 +145,13 @@
     (update-relic!
       (update relic :levels (comp u/jsonb-lift vector first)))))
 
-(defn- find-relic! [{:keys [base-type start] :as relic}]
-  (when-let [{:keys [name]} (mundanes/choose-base base-type)]
-    (-> (assoc relic
-          :levels [{:level 1
-                    :existing (map prep-new-mod start)
-                    :progressed []}]
-          :found true
-          :base name)
-        update-relic!)))
+(defn- find-relic! [{:keys [start] :as relic}]
+  (-> (assoc relic
+        :levels [{:level 1
+                  :existing (mapv prep-new-mod start)
+                  :progressed []}]
+        :found true)
+      update-relic!))
 
 (defn new-relic! []
   (let [relic (-> (db/execute! {:select [:*]
@@ -176,11 +171,6 @@
                         (p/>>item "Relic:"))]
     (-> relic (select-keys [:name :start :base-type]) puget/cprint)
     (find-relic! relic)))
-
-(defn change-relic-base! []
-  (u/when-let* [{:keys [base-type] :as relic} (choose-found-relic)
-                {:keys [name]} (mundanes/choose-base base-type)]
-    (-> relic (assoc :base name) update-relic!)))
 
 (defn sell-relic! []
   (when-let [{:keys [name] :as relic} (choose-found-relic)]
