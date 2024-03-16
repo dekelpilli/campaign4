@@ -4,25 +4,14 @@
     [campaign4.mundanes :as mundanes]
     [campaign4.prompting :as p]
     [campaign4.randoms :as randoms]
-    [campaign4.util :as u]
-    [clojure.walk :as walk]))
-
-(defn ^:private prep-matcher [matcher]
-  (walk/prewalk
-    (fn [x] (if (and (vector? x) (not (map-entry? x)))
-              (set x)
-              x))
-    matcher))
+    [campaign4.util :as u]))
 
 (def ^:private enchants
   (->> (db/load-all :enchants)
        (map (fn [{:keys [randoms] :as enchant}]
-              (-> enchant
-                  (assoc :weighting (randoms/randoms->weighting-multiplier randoms))
+              (-> (assoc enchant :weighting (randoms/randoms->weighting-multiplier randoms))
                   (update :tags set)
-                  (update :randoms randoms/randoms->fn)
-                  (update :requires prep-matcher)
-                  (update :prohibits prep-matcher))))))
+                  (update :randoms randoms/randoms->fn))))))
 
 (defn- equality-match? [actual req]
   (when req

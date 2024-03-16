@@ -30,12 +30,12 @@
     (nil? randoms) 1))
 
 (defmethod randoms-factor :languages [_] 2)
-(defmethod randoms-preset :languages [_]
+(defmethod randoms-preset :languages [_] ;TODO make sure this is updated
   ["Common" "Dwarvish" "Elvish" "Giant" "Gnomish" "Goblin" "Halfling" "Orc"
    "Abyssal" "Celestial" "Draconic" "Deep Speech" "Infernal" "Primordial" "Sylvan" "Undercommon"])
 
 (defmethod randoms-factor :feats [_] 1)
-(defmethod randoms-preset :feats [_]
+(defmethod randoms-preset :feats [_] ;TODO make sure this is updated
   ["Alert" "Athlete" "Actor" "Blinktouched" "Brawler" "Charger" "Crossbow Expert" "Defensive Duelist" "Dual Wielder"
    "Dungeon Delver" "Durable" "Eldritch Adept" "Empathic" "Grappler" "Fighting Initiate" "Great Weapon Master"
    "Healer" "Heavy Armor Master" "Inspiring Leader" "Keen Mind" "Light Armor Master" "Magic Initiate"
@@ -82,7 +82,7 @@
    "Fiend" "Giant" "Humanoid" "Monstrosity" "Ooze" "Plant" "Undead"])
 
 (defmethod randoms-factor :cantrips [_] 2)
-(defmethod randoms-preset :cantrips [_]
+(defmethod randoms-preset :cantrips [_] ;TODO make sure this is updated
   ["Acid Splash" "Altered Strike" "Arcane Muscles" "Blade Ward" "Booming Blade" "Calculate" "Chill Touch"
    "Circular Breathing" "Control Flames" "Create Bonfire" "Dancing Lights" "Druidcraft" "Eldritch Blast"
    "Encode Thoughts" "Fire Bolt" "Friends" "Frostbite" "Grapevine" "Green-Flame Blade" "Guidance" "Gust"
@@ -91,6 +91,10 @@
    "Ray of Frost" "Resistance" "Sacred Flame" "Sapping Sting" "Shape Water" "Shillelagh" "Shocking Grasp"
    "Spare the Dying" "Sword Burst" "Thaumaturgy" "Thorn Whip" "Thunderclap" "Toll the Dead"
    "Tree Heal" "True Strike" "Vicious Mockery" "Word of Radiance"])
+
+(defmethod randoms-factor :weapon-categories [_] 2)
+(defmethod randoms-preset :weapon-categories [_]
+  ["club" "knife" "brawling" "axe" "spear" "caster" "dart" "bow" "sling" "sword" "flail" "polearm" "pick" "shield" "knife"])
 
 (defmethod randoms-factor :literal [{:keys [factor] :or {factor 1}}] factor)
 (defmethod randoms-preset :literal [{:keys [values]}] values)

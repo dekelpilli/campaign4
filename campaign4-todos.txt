@@ -1,0 +1,3 @@
+- Allow purchasing of uniques that have already been found? Trade in only?
+- Offer players more information before choosing divinity path.
+- Come up with some DSL for upgrading mods to make this more automatic

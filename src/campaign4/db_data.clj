@@ -27,9 +27,8 @@
 (defn- find-type [type]
   (if (map? type) (:type type) type))
 
-(defn- prepare-monster [mon]
-  (-> mon
-      (update :cr find-cr)
+(defn- prepare-monster [monster]
+  (-> (update monster :cr find-cr)
       (update :type find-type)
       (select-keys [:name :source :page :type :cr :trait])))
 
@@ -42,9 +41,7 @@
                    (File.)
                    (file-seq)
                    (remove #(.isDirectory %)))
-        mons (->> files
-                  (map load-json-file)
-                  (map :monster)
+        mons (->> (map (comp :monster load-json-file) files)
                   (flatten)
                   (sequence
                     (comp (remove #(contains? % :_copy))
@@ -158,9 +155,8 @@
                                [:points :integer [:not nil]]
                                [:upgrade-points :integer [:not nil]]
                                [:upgradeable :boolean [:not nil]]
-                               [:requires :jsonb]
-                               [:prohibits :jsonb]
                                [:randoms :jsonb]
+                               [:base-type :text]
                                [:tags :jsonb]
                                [[:primary-key :effect :points :upgrade-points]]]}))
 
@@ -173,10 +169,7 @@
                      (map (fn [{:keys [points upgrade-points]
                                 :or   {points 10}
                                 :as   enchant}]
-                            (-> enchant
-                                (update :requires u/jsonb-lift)
-                                (update :randoms u/jsonb-lift)
-                                (update :prohibits u/jsonb-lift)
+                            (-> (update enchant :randoms u/jsonb-lift)
                                 (update :tags (comp u/jsonb-lift vec))
                                 (update :upgradeable (complement false?))
                                 (assoc :points points
@@ -196,10 +189,9 @@
   (db/execute! {:insert-into [:rings]
                 :values
                 (->> (load-data "ring")
-                     (map (fn [{:keys [name] :as ring}]
-                            (-> ring
-                                (update :randoms u/jsonb-lift)
-                                (assoc :synergy (str/starts-with? name "The"))))))}))
+                     (mapv (fn [{:keys [name] :as ring}]
+                             (-> (update ring :randoms u/jsonb-lift)
+                                 (assoc :synergy (str/starts-with? name "The"))))))}))
 
 (defn create-curios! []
   (db/execute! {:create-table :curios
@@ -223,7 +215,7 @@
   (create-divinity-paths!)
   (db/execute! {:insert-into [:divinity-paths]
                 :values      (->> (load-data "divinity-path")
-                                  (map #(update % :levels u/jsonb-lift)))}))
+                                  (mapv #(update % :levels u/jsonb-lift)))}))
 
 
 (defn create-character-enchants! []
@@ -238,18 +230,20 @@
 (defn insert-character-enchants! []
   (drop! :character-enchants)
   (create-character-enchants!)
-  (db/execute! {:insert-into [:character-enchants]
-                :values      (->> (load-data "character-enchant")
-                                  (reduce
-                                    (fn [acc [character enchants]]
-                                      (into acc
-                                            (map (fn [enchant]
-                                                   (-> enchant
-                                                       (assoc :character (name character))
-                                                       (update :upgradeable (complement false?))
-                                                       (update :tags (comp u/jsonb-lift vec)))))
-                                            enchants))
-                                    []))}))
+  (when-let [character-enchants (->> (load-data "character-enchant")
+                                     (reduce
+                                       (fn [acc [character enchants]]
+                                         (into acc
+                                               (map (fn [enchant]
+                                                      (-> enchant
+                                                          (assoc :character (name character))
+                                                          (update :upgradeable (complement false?))
+                                                          (update :tags (comp u/jsonb-lift vec)))))
+                                               enchants))
+                                       [])
+                                     not-empty)]
+    (db/execute! {:insert-into [:character-enchants]
+                  :values      character-enchants})))
 
 (defn create-special-armours! []
   (db/execute! {:create-table :special-armours
@@ -263,7 +257,7 @@
   (create-special-armours!)
   (db/execute! {:insert-into [:special-armours]
                 :values      (->> (load-data "special-armour")
-                                  (map #(update % :randoms u/jsonb-lift)))}))
+                                  (mapv #(update % :randoms u/jsonb-lift)))}))
 
 (defn create-tarot-cards! []
   (db/execute! {:create-table :tarot-cards
@@ -291,15 +285,15 @@
   (create-monsters!)
   (db/execute! {:insert-into [:monsters]
                 :values      (->> (load-monsters)
-                                  (map (fn [{:keys [trait source] :as monster}]
-                                         (-> monster
-                                             (dissoc :source :trait)
-                                             (assoc :book source
-                                                    :traits (u/jsonb-lift trait))))))}))
+                                  (mapv (fn [{:keys [trait source] :as monster}]
+                                          (-> (dissoc monster :source :trait)
+                                              (assoc :book source
+                                                     :traits (u/jsonb-lift trait))))))}))
 
 (defn reload-data! []
   (db/in-transaction
-    (transduce (map (comp :next.jdbc/update-count first)) + 0
+    (transduce (comp (filter some?)
+                     (map (comp :next.jdbc/update-count first))) + 0
                [(insert-armours!)
                 (insert-weapons!)
                 (insert-uniques!)
@@ -335,8 +329,7 @@
   (db/execute! {:insert-into :relics
                 :values      (->> (load-data "relic")
                                   (remove (comp false? :enabled))
-                                  (map #(-> %
-                                            (dissoc :enabled)
+                                  (map #(-> (dissoc % :enabled)
                                             (assoc :sold false)
                                             (update :start u/jsonb-lift)
                                             (update :mods u/jsonb-lift)
