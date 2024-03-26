@@ -133,7 +133,8 @@
               {:effect "+2 cold damage."
                :tags   #{"damage"}}
               {:effect "Your physical damage is halved."}
-              {:effect "Physical damage you would deal is dealt as cold damage instead."}]}
+              {:effect "Physical damage you would deal is dealt as cold damage instead."
+               :tags   #{"damage"}}]}
  {:name      "Cryomancer's Obsession"
   :base-type "armour"
   :effects   [{:effect "+1d4 cold damage with attacks and spells."
@@ -314,7 +315,7 @@
   :base-type "armour"
   :effects   [{:effect "This armour sells for triple the regular price."
                :tags   #{"wealth"}}]}
- {:name      "Forceslinger"
+ {:name      "Force Slinger"
   :base-type "weapon"
   :effects   [{:effect "When you make an attack with a weapon, you may sacrifice a spell slot to add {spell slot level}d4 to the attack roll and damage of the attack."
                :tags   #{"accuracy" "damage"}}
@@ -350,7 +351,7 @@
               {:effect "When you score a natural critical hit with a weapon attack, you take true damage equal to thrice the difference between your natural roll and 20 (e.g. take 6 damage after critting with an 18, 0 with a 20)."}]}
  {:name      "Molten Fury"
   :base-type "weapon"
-  :effects   [{:effect "You cannot deal more than 10 non-fire damage per turn. Any such damage beyond your 10th on a turn is converted to fire damage."
+  :effects   [{:effect "You cannot deal more than 10 damage per turn of types other than fire. Any such damage beyond your 10th on a turn is converted to fire damage."
                :tags   #{"damage"}}
               {:effect "When you hit an enemy with a weapon attack that deals fire damage, you gain 1 point of Fury."
                :tags   #{"damage"}}
@@ -364,6 +365,16 @@
               {:effect "You lose all Fury points when you roll for initiative, and when you go down to 0 hit points."}
               {:effect "You cannot deal non-physical, non-fire damage with weapon attacks."}
               {:effect "Your resistances and barriers cannot apply to damage types other than fire."}]}
+ {:name      "Reckless Replenishment"
+  :base-type "weapon"
+  :effects   [{:effect "At the end of each of your turns, gain temporary hit points equal to 10% of your missing hit points, to a minimum of 1."
+               :tags   #{"survivability"}}
+              {:effect "Gain 1 additional temporary hit point whenever you gain temporary hit points."
+               :tags   #{"survivability"}}
+              {:effect "Whenever you hit with a weapon attack, deal additional damage with that attack equal to your temporary hit points."
+               :tags   #{"damage"}}
+              {:effect "Whenever you hit with a weapon attack, lose all of your temporary hit points."}
+              {:effect "Take true damage equal to half your level whenever you hit with a weapon attack while you have no temporary hit points. This damage cannot reduce you below 1 hit point."}]}
  {:name      "Template"
   :base-type "weapon|armour"
   :effects   [{:effect "description"}]

@@ -12,9 +12,12 @@
 ### Divine Dust
 You can use divinity dust to progress your progress in a divinity path you have started, or start a new one if you haven't started one/have finished all you have started.
 
+### Receptacles
+- Receptacles are vessels for holding enchantments that fit on one enchantment slot. This can be a relic (levelled or unlevelled), unique (levelled or unlevelled), or regular magic enchantment slot (any number of enchants).
+- Receptacles can inherently swap the enchantments they hold with those on a compatible item.
+
 ### Moving mods
-- Can move mod groups between any items so long as all mods are compatible with new item.
-- Incompatible mods can be removed as part of a transfer.
+Can only move mods on weapons to weapons, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
 
 ### Enchant rules
 - The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire).
@@ -27,11 +30,18 @@ You can use divinity dust to progress your progress in a divinity path you have 
 
 ### Uniques
 - Unique items are, lore-wise, failed attempts creating relics, or at replicating items from myths/folk stories
-- Uniques on 2H weapons still only take up one enchantment slot
-- Uniques cannot be moved to other gear slots, but can be moved within the slot + restriction
+- Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level
+- Unique receptacles can be smashed into each other to generate a new unique item receptacle. The resulting item cannot be of the same type as the generated ones.
 
 ### Relics
 Relics are equipment that can be levelled up with gold. Each relic starts at level 1, and can be levelled up 5 times (up to level 6). Each level costs 100gp. Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). Any relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. When relics are sold, all gold invested in them will be refunded 100%.
+
+### Vials
+- Vials are consumable items that alter the behaviour of modifiers on your items. These can either be drunk to apply an effect on you, or applied to an item's modifiers to alter their behaviour.
+- Vials applied to items also alter mods added after the vial was applied.
+- A vial not drunk only impacts one enchantment slot. That is, a two-handed weapon has two separate slots where vials can be applied separately.
+- There is no limit to the number of vials on an item/player, and vials apply in any order the player chooses.
+- Vials on a player are calculated after vials on items.
 
 ### Helmets
 - Character enchants only, spawn with 20 points of mods
@@ -54,19 +64,22 @@ Relics are equipment that can be levelled up with gold. Each relic starts at lev
 - Helmets: N/A
 - Rings: N/A
 - Curios: N/A
-- Mundane bases: 5
+- Mundane bases: 2
+- Vials: 10 (other than essence/cleansing, which are 1)
 - Crafting items: 8
-- Uniques: 15 + base price
+- Unique effect: 15
 - Amulets: 10 * CR capacity
 - Special bases: 25
-- Magical items: base price + (total mod points on the item, max 40)
-- Relics: 60 + base price
+- Magical item effects: total mod points in the effect, max 40
+- Relic effects: 60 + cost of levelling
 
 ### Sales and services
-- Orbs of Flux: 5
 - Orbs of Disavowment: 10
-- Orb of Alteration: 15
-- Mundanes: 10
+- Vial of Cleansing: 2
+- Vial of Essence: 5
+- Choose randomised mod on a vial: 5 + original matching vial (e.g. player gives vial with 'damage' Generosity and chooses to get 'survivabiltiy' Generosity.)
+- Mundanes: 5
+- Empty receptacles/moving modifiers: Free
 
 ### Tags
 - Drawbacks/negative mods have no tags

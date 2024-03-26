@@ -5,13 +5,13 @@
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
-    [campaign4.enhancements :as enhancements]
     [campaign4.helmets :as helmets]
     [campaign4.relics :as relics]
     [campaign4.rings :as rings]
     [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
+    [campaign4.vials :as vials]
     [puget.printer :as puget]
     [randy.core :as r]
     [randy.rng :as rng]))
@@ -20,17 +20,17 @@
   {1  {:name   "20-30 gold"
        :action (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
    2  {:name   "Unique"
-       :action uniques/new-unique}
+       :action (fn unique-loot [] (uniques/new-uniques 2))}
    3  {:name   "Amulet"
        :action amulets/new-amulet}
    4  {:name   "Rings"
        :action #(rings/new-rings 2)}
-   5  {:name   "Enchanted item"
-       :action (fn enchanted-loot [] (e/random-enchanted 30))}
-   6  {:name   "Curios"
+   5  {:name   "Enchanted Receptacle"
+       :action (fn enchanted-receptacle [] (e/random-enchanted 30))}
+   6  {:name   "Receptacle + Curios"
        :action (fn curios-loot [] (repeatedly 4 curios/new-curio))}
-   7  {:name   "Enhancement"
-       :action enhancements/new-enhancement}
+   7  {:name   "Enhancement" ;TODO rename?
+       :action vials/new-vial}
    8  {:name   "Crafting item"
        :action crafting/new-crafting-items}
    9  {:name   "Helmet"
@@ -50,7 +50,7 @@
        :action (constantly "Divine Dust")}})
 
 (defn loot* [n]
-  (when-let [{:keys [action]} (get loot-actions n)]
+  (when-let [{:keys [action]} (get loot-actions n)] ;TODO rework for d100
     (action)))
 
 (defn loot [n]

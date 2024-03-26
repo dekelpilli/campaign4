@@ -8,6 +8,9 @@
 (defn new-unique []
   (r/sample uniques))
 
+(defn new-uniques [n]
+  (r/sample-without-replacement n uniques))
+
 (defn new-unique-weapon []
   (-> (filterv (comp #{"weapon"} :base-type) uniques)
       r/sample))

@@ -1,24 +1,24 @@
 [{:cost         "20g (each)"
   :participants "any"
-  :rules        "Each paying player gets a disadvantaged d12 loot roll, granting the reward twice."}
+  :rules        "Each paying player gets a disadvantaged d100 loot roll, granting the reward twice."}
  {:cost         "25g (each)"
   :participants "any"
-  :rules        "Each paying player gets a d6+6 loot roll (i.e. 7-12)."}
+  :rules        "Each paying player gets a d50+50 loot roll (i.e. 50-100, d10 can be rolled by halving result of d100)."}
  {:cost         "30g (each)"
   :participants "any"
-  :rules        "Roll 1d4: 1. Advantage 1d12 loot roll. 2. 1d12 loot roll with advantaged result. 3. 4x Orbs of Personality 4. Divine Dust."}
+  :rules        "Roll 1d4: 1. Advantaged loot roll. 2. Loot roll with advantaged result. 3. 4x Orbs of Personality 4. Divine Dust."}
  {:cost         "10g (party)"
   :participants "everyone"
-  :rules        "Each player rolls a d4 and the total is summed. The players are given that many distinct special base options, allowing them to buy any amount of these bases for 25 gold each. A base cannot be bought more than once."}
+  :rules        "Each player rolls a d4 and the total is summed. The players are given that many distinct vial options, allowing them to buy any amount of these vials for 15 gold each. A vial cannot be bought more than once."}
  {:cost         "25g (each)"
   :participants "any"
-  :rules        "Choose a word and roll d100 and feed into Cheiro sum algorithm. Get a magic item on a regular base of player's choice with that many enchant points."}
- {:cost         "15g (each)"
+  :rules        "Choose a word and roll d100 and feed into Cheiro sum algorithm. Get a receptacle with that many enchant points for the player's choice of armours or weapons."}
+ #_{:cost         "15g (each)" ;TODO replace? players tend not to write down the monster associated with their mod
   :participants "any"
   :rules        "Players may choose to replace the effect in their amulet with any other effect granted by that monster."}
  {:cost         "50g (each)"
   :participants "any"
   :rules        "Players may choose to learn what each level of a divinity path of their choice grants, then obtain one divine dust."}
- {:cost         "15g per card (max 2 each)"
+ #_{:cost         "15g per card (max 2 each)" ;TODO rework with tarot cards
   :participants "any"
   :rules        "Players may choose to buy tarot cards. Tarot sets turned in immediately after this encounter also grant 2 XP to the party."}]

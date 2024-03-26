@@ -20,7 +20,7 @@
 
 (defn use-curios []
   (u/when-let* [base-type (e/choose-base-type)
-                curios-used (let [curios-by-name (as-> (map #(prep-curio % false) curios) $
+                curios-used (let [curios-by-name (as-> (mapv #(prep-curio % false) curios) $
                                                        (into $ (map #(prep-curio % true)) curios)
                                                        (u/assoc-by :name $))]
                               (some-> (p/>>input "Curios used (maximum 4):"
@@ -37,7 +37,7 @@
                        {}
                        curios-used)
           enchants-fn (->> (e/valid-enchants base-type)
-                           (map (fn [{:keys [tags weighting] :as e}]
+                           (mapv (fn [{:keys [tags weighting] :as e}]
                                   (let [new-weighting (transduce
                                                         (comp (map weightings)
                                                               (filter some?)

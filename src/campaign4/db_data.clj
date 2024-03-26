@@ -199,16 +199,18 @@
     (db/execute! {:insert-into [:character-enchants]
                   :values      character-enchants})))
 
-(defn create-enhancements! []
-  (db/execute! {:create-table :enhancements
-                :with-columns [[:effect :text [:primary-key] [:not nil]]
+(defn create-vials! []
+  (db/execute! {:create-table :vials
+                :with-columns [[:name :text [:primary-key] [:not nil]]
+                               [:character :text [:not nil]]
+                               [:item :text [:not nil]]
                                [:randoms :jsonb]]}))
 
-(defn insert-enhancements! []
-  (drop! :enhancements)
-  (create-enhancements!)
-  (db/execute! {:insert-into [:enhancements]
-                :values      (->> (load-data "enhancement")
+(defn insert-vials! []
+  (drop! :vials)
+  (create-vials!)
+  (db/execute! {:insert-into [:vials]
+                :values      (->> (load-data "vial")
                                   (mapv #(update % :randoms u/jsonb-lift)))}))
 
 (defn create-tarot-cards! []
@@ -254,7 +256,7 @@
                 (insert-curios!)
                 (insert-divinity-paths!)
                 (insert-character-enchants!)
-                (insert-enhancements!)
+                (insert-vials!)
                 (insert-tarot-cards!)])))
 
 (defn create-analytics! []

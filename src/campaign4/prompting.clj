@@ -23,10 +23,10 @@
           current-listed-complete? (lowers-set current-listed-lower)
           current-listed (if current-listed-complete? nil current-listed-lower)
           options (if (and once? listed)
-                    (apply disj lowers-set (map (comp str/lower-case str/trim) listed))
+                    (apply disj lowers-set (mapv (comp str/lower-case str/trim) listed))
                     lowers-set)]
       (if (str/blank? current-listed)
-        (.addAll candidates (map lowers-regular-map options))
+        (.addAll candidates (mapv lowers-regular-map options))
         (let [matching-uppers (for [potential-candidate-lower (subseq options >= current-listed)
                                     :while (str/starts-with? potential-candidate-lower current-listed)]
                                 (get lowers-regular-map potential-candidate-lower))]

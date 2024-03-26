@@ -15,9 +15,6 @@
                       "Human" "Kalashtar" "Kenku" "Kobold" "Leonin" "Lizardfolk" "Loxodon" "Minotaur" "Orc" "Owlin"
                       "Satyr" "Shifter" "Tabaxi" "Tiefling" "Tortle" "Triton" "Vedalken" "Yuan-Ti Pureblood"])
 (def ^:private sexes ["female" "male"])
-
-(def ^:private activities [:befriend-creature :busk :chronicle :entertain :force-march :gather-components
-                           :gossip :harvest :pray :rob :scout :seek-shelter])
 (def ^:private weather-fns
   (-> {:rain         {:rain         12
                       :frigid       10

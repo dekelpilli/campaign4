@@ -9,7 +9,7 @@
 (defmulti ^:private randoms-preset (comp keyword :preset))
 (def ^:private random->values-vec (comp randoms-preset keyword-type))
 
-(defmulti ^:private randoms-factor (comp keyword :preset))
+(defmulti ^:private randoms-factor (comp keyword :preset)) ;TODO allow overriding of factor for any present
 (def ^:private random->weighting (comp randoms-factor keyword-type))
 
 (defn- sample-fn [vs]
@@ -20,7 +20,7 @@
 
 (defn randoms->fn [randoms]
   (cond
-    (vector? randoms) (apply juxt (map random->fn randoms))
+    (vector? randoms) (apply juxt (mapv random->fn randoms))
     (map? randoms) (random->values-vec randoms)))
 
 (defn randoms->weighting-multiplier [randoms]

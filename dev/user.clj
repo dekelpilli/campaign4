@@ -22,7 +22,8 @@
     [campaign4.rings :as rings]
     [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
-    [campaign4.util :as u])
+    [campaign4.util :as u]
+    [campaign4.vials :as vials])
   (:use
     [campaign4.amulets]
     [campaign4.core]
@@ -41,7 +42,8 @@
     [campaign4.rings]
     [campaign4.tarot]
     [campaign4.uniques]
-    [campaign4.util]))
+    [campaign4.util]
+    [campaign4.vials]))
 
 ;https://asciinema.org/a/296507
 (def safe-requires

@@ -20,7 +20,7 @@
   (comp :total (->roll-fn s)))
 
 (defn- parse-amount-vec [amount default-fn]
-  (let [[f & args] (map #(parse-amount-unit % default-fn) amount)]
+  (let [[f & args] (mapv #(parse-amount-unit % default-fn) amount)]
     (apply f args)))
 
 (defn- parse-amount-unit [amount-unit default-fn]

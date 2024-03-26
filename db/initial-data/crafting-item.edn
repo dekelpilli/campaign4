@@ -5,31 +5,20 @@
   :effect "Remove a mod from a magical item and replace it with new random mods at least equal in point value."}
  {:name   "Orb(s) of Perfection"
   :effect "Replace a random value, or grouping of values, from a chosen modifier on an item with any possible random value of your choice."}
- {:name "Orb(s) of Alteration"
-  :effect "Change all references on an item to a specific damage type of your choice, to another damage type of your choice (e.g. +1 cold and thunder damage -> +1 <player's choice> and thunder damage, or +1 cold and <player's choice> damage)."
-  :amount [:disadvantaged [:default]]}
  {:name   "Ancient Orb(s)"
-  :effect "Transform a unique item into another random unique item on a random base."
+  :effect "Roll 1d4 and apply to a unique. Generate that many new uniques of the same base category (weapon/armour) and choose one to convert this item to, if at all."
   :amount [:advantaged [:default]]}
  {:name   "Orb(s) of Consumption"
   :effect "Reduce a non-caster weapon's base damage die size by 1 to add a random modifier, doubled. Increases sell value by 10."
   :amount [:advantaged [:default]]}
- {:name   "Orb of Destruction"
-  :effect "Remove a relic's powers from an item to have a 75% chance to replace it with a new relic on that base. Regardless, the base remains unchanged."
-  :amount [:constant 1]}
  {:name   "Sacrificial Orb(s)"
   :effect "Use when performing a ring sacrifice increase the amount of generated options by an amount equal to the number of rings sacrificed."}
  {:name   "Orb(s) of Favouritism"
   :effect "Reroll the monster & trait in an amulet, forcing a specific monster type. If none are available of that type in the appropriate CR, you may roll with a lower CR."}
  {:name   "Orb(s) of Discovery"
   :effect "Reroll the monster & trait in an amulet 1d8 times, guaranteeing unique results where possible, player then chooses one of the results, or to keep the current trait."}
- {:name   "Orb(s) of Regrading"
-  :effect "Change a body armour, boots, or gloves into a new random special base on the same slot."}
  {:name   "Orb(s) of Mulligan"
   :effect "Resets a relic to before it was levelled, allowing it to be re-levelled again."}
- {:name     "Orb(s) of Flux"
-  :effect   "Swap magical properties between compatible enchantment slots, including moving enchantments to slots without enchantments."
-  :enabled? false}
  {:name     "Orb(s) of Purification"
   :effect   "Apply to an amulet and roll 1d8. If you roll above its current CR capacity, you may increase its CR capacity by 1. Contained creature does not change."
   :enabled? false}

@@ -1,3 +1,17 @@
-- Allow purchasing of uniques that have already been found? Trade in only?
-- Offer players more information before choosing divinity path.
+- Offer players more information before choosing divinity path
+- Simplify tarot crafting to make it take less time
 - Come up with some DSL for upgrading mods to make this more automatic
+
+Potential new amulet system:
+- Monster passives aren't procced by player choice and no longer have a cooldown
+- Monster passive proc % is based on monster CR. (10 + 5*CR)%? (10 + CR^2)%?
+- Monster passives drop as gems that can be refined/upgraded as amulets were before
+- Amulets drop with an enchant of each category
+  - Monster type (e.g. 'fey' or 'monstrosity', or more specific like 'gold dragon' or )
+  - Monster attribute (e.g. based on monster's Strength/fly speed/size/etc.)
+  - Unconditional (e.g. increase proc chance, heal health on proc, etc.)
+- Can amulets be sold? 5? 30?
+- Amulets can be merged, taking one mod from each category from one of the amulets at random.
+  - After this is done, one mod on the amulet is locked, and is guaranteed to be chosen on future merges.
+  - Amulets with locked mods in the same slot can be merged, but locks are ignored on those slots.
+  - Players can see the result before destroying the amulets, but if they choose not to take it, the may keep only one of the amulets, and it has all of its mods locked.
