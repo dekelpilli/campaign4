@@ -140,7 +140,7 @@
             :tags   #{"utility"}}
            {:effect "You harness the powers of spiders; your spells and attacks have +1d4 poison damage, and you are always under the effect of the Spider Climb spell."
             :tags   #{"damage" "magic" "utility"}}
-           {:effect "You have +1 critical hit range against enemies under the effect of a non-magical condition, and when you land a natural critical hit and deal poison damage, force the target to make a Constitution saving throw, causing it to become poisoned for 1 minute on a failed save (repeat on turn ends)."
+           {:effect "You have +1 critical hit range against enemies under the effect of a non-magical condition, and when you score a natural critical hit and deal poison damage, force the target to make a Constitution saving throw, causing it to become poisoned for 1 minute on a failed save (repeat on turn ends)."
             :tags   #{"critical" "control"}}]}
  {:name   "Controlled Morbidity"
   :info   "Focuses on Necromancy and Necromancy spells, with some buffs also applying to undead minions."

@@ -1,13 +1,11 @@
 # Loot Rules
 
-### Amulets
-- Amulets contain a random trait from a random monster from a given CR.
-- As a free action at any time, once per long rest, you can activate the trait contained by the amulet for a duration, granting you its effects.
-- The duration of amulet effects is a number of rounds equal to the amulet CR (not monster CR), to a minimum of 1.
-- Upgrading: Feed an amulet other amulets totalling at least its current CR capacity + 1 to get +1 CR tier.
-- When upgrading amulets, or rerolling with crafting items, you may choose to keep the existing effect instead of the new one.
-- The trait is standardised to not be tied to the creature or its specific actions/items. For example, "If the derro hits a target within 30 feet of it with a ranged attack with its aklys, it can use its bonus action to retrieve the aklys and make another attack against the same target" -> "If you hit a target within 30 feet of you with a ranged attack, you can use your bonus action to make another attack against the same target"
-- The DCs of any effects granted by amulets are as listed, rather than standardised to the player's attributes.
+### Talismans
+
+[//]: # (TODO)
+
+### Curios
+Curios can only be used to fill a receptacle with weapon or armour enchantments.
 
 ### Divine Dust
 You can use divinity dust to progress your progress in a divinity path you have started, or start a new one if you haven't started one/have finished all you have started.

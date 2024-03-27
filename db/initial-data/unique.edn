@@ -375,6 +375,18 @@
                :tags   #{"damage"}}
               {:effect "Whenever you hit with a weapon attack, lose all of your temporary hit points."}
               {:effect "Take true damage equal to half your level whenever you hit with a weapon attack while you have no temporary hit points. This damage cannot reduce you below 1 hit point."}]}
+ {:name      "Volatile Consistency"
+  :base-type "talisman"
+  :effects   [{:effect "Your gem procs whenever another party member's gem procs."
+               :tags   #{"utility"}}
+              {:effect "When you roll for initiative, randomise a monster passive as if the contained gem's CR limit was 2 higher. Use this passive instead of the contained passive."
+               :tags   #{"utility"}}
+              {:effect "Your gem can proc while you're down."
+               :tags   #{"utility"}}
+              {:effect "You have advantaged offence while you have an active monster power."
+               :tags   #{"accuracy"}}
+              {:effect "You have disadvantaged defence while you are up and don't have an active monster power."}
+              {:effect "Your gem proc threshold is 0."}]}
  {:name      "Template"
   :base-type "weapon|armour"
   :effects   [{:effect "description"}]

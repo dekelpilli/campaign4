@@ -6,8 +6,8 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(def ^:private new-base-type (r/alias-method-sampler {"armour" 2
-                                                      "weapon" 1}))
+(def ^:private new-base-type (r/alias-method-sampler {"weapon" 1
+                                                      "armour" 2}))
 
 (defn choose-base-type []
   (p/>>item "Base type:" ["weapon" "armour"]))

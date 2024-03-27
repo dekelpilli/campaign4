@@ -6,9 +6,14 @@ Potential new amulet system:
 - Monster passives aren't procced by player choice and no longer have a cooldown
 - Monster passive proc % is based on monster CR. (10 + 5*CR)%? (10 + CR^2)%?
 - Monster passives drop as gems that can be refined/upgraded as amulets were before
+- Monster passives stored in gems
+- Gems can be upgraded by merging two gems of the same CR
+- Monsters can be swapped between gems freely
+- Cannot proc while down
+- Give multiple options when upgrading gem CR
 - Amulets drop with an enchant of each category
-  - Monster type (e.g. 'fey' or 'monstrosity', or more specific like 'gold dragon' or )
-  - Monster attribute (e.g. based on monster's Strength/fly speed/size/etc.)
+  - Conditional; appearance or above the ability score line (e.g. 'fey' or 'monstrosity', or more specific like 'gold dragon' or 'creature without eyes')
+  - Conditional; below the line (e.g. based on monster's Strength/fly speed/size/etc.)
   - Unconditional (e.g. increase proc chance, heal health on proc, etc.)
 - Can amulets be sold? 5? 30?
 - Amulets can be merged, taking one mod from each category from one of the amulets at random.

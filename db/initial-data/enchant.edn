@@ -55,7 +55,8 @@
   :upgrade-points 10
   :tags           #{"damage"}
   :base-type      "weapon"
-  :randoms        [{:preset :damage-types}]}
+  :randoms        [{:preset :damage-types
+                    :factor 1}]}
  {:effect    "+1 to your DCs."
   :points    35
   :base-type "weapon"
@@ -67,12 +68,14 @@
   :base-type      "weapon"
   :tags           #{"damage"}
   :randoms        [{:preset :damage-types
+                    :factor 1
                     :type   :physical}]
   :points         20
   :upgrade-points 10}
  {:effect         "+[2:1] %s damage."
   :base-type      "weapon"
   :randoms        [{:preset :damage-types
+                    :factor 1
                     :type   :non-physical}]
   :points         15
   :upgrade-points 10
@@ -247,7 +250,7 @@
   :tags   #{"wealth"}}
  {:effect "+1 to journey activity checks."
   :points 20
-  :tags   #{"wealth" "utility"}}
+  :tags   #{"utility"}}
  {:effect "+10% chance to avoid gaining a level of fatigue when you would normally gain one."
   :tags   #{"utility"}}
  {:effect "+10% chance to lose one level of strife when you would normally gain one."

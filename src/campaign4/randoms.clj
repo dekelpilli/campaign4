@@ -9,7 +9,8 @@
 (defmulti ^:private randoms-preset (comp keyword :preset))
 (def ^:private random->values-vec (comp randoms-preset keyword-type))
 
-(defmulti ^:private randoms-factor (comp keyword :preset)) ;TODO allow overriding of factor for any present
+(defmulti ^:private randoms-factor (fn [{:keys [preset factor]}]
+                                     (if factor :literal (keyword preset))))
 (def ^:private random->weighting (comp randoms-factor keyword-type))
 
 (defn- sample-fn [vs]

@@ -234,6 +234,13 @@
                                [:traits :jsonb [:not nil]]
                                [[:primary-key :cr :name]]]}))
 
+(defn create-talisman-enchants! []
+  (db/execute! {:create-table :talisman-enchants
+                :with-columns [[:effect :text [:primary-key] [:not nil]]
+                               [:category :text [:not nil]]
+                               [:tags :jsonb]
+                               [:randoms :jsonb]]}))
+
 (defn insert-monsters! []
   (drop! :monsters)
   (create-monsters!)
@@ -243,6 +250,15 @@
                                           (-> (dissoc monster :source :trait)
                                               (assoc :book source
                                                      :traits (u/jsonb-lift trait))))))}))
+
+(defn insert-talisman-enchants! []
+  (drop! :talisman-enchants)
+  (create-talisman-enchants!)
+  (db/execute! {:insert-into [:talisman-enchants]
+                :values      (->> (load-data "talisman-enchant")
+                                  (mapv (fn [e]
+                                          (-> (update e :tags (comp u/jsonb-lift vec))
+                                              (update :randoms u/jsonb-lift)))))}))
 
 (defn reload-data! []
   (db/in-transaction
@@ -257,6 +273,7 @@
                 (insert-divinity-paths!)
                 (insert-character-enchants!)
                 (insert-vials!)
+                (insert-talisman-enchants!)
                 (insert-tarot-cards!)])))
 
 (defn create-analytics! []
@@ -281,12 +298,11 @@
 (defn insert-relics! []
   (db/execute! {:insert-into :relics
                 :values      (->> (load-data "relic")
-                                  (remove (comp false? :enabled))
-                                  (map #(-> (dissoc % :enabled)
-                                            (assoc :sold false :level 1)
-                                            (update :start u/jsonb-lift)
-                                            (update :mods u/jsonb-lift)
-                                            (update :levels u/jsonb-lift))))
+                                  (mapv #(-> (dissoc % :enabled?)
+                                             (assoc :sold false :level 1)
+                                             (update :start u/jsonb-lift)
+                                             (update :mods u/jsonb-lift)
+                                             (update :levels u/jsonb-lift))))
                 :on-conflict []
                 :do-nothing  {}}))
 

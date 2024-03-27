@@ -3,7 +3,7 @@
   :rules        "Each paying player gets a disadvantaged d100 loot roll, granting the reward twice."}
  {:cost         "25g (each)"
   :participants "any"
-  :rules        "Each paying player gets a d50+50 loot roll (i.e. 50-100, d10 can be rolled by halving result of d100)."}
+  :rules        "Each paying player gets a d50+50 loot roll (i.e. 50-100, d50 can be rolled by halving result of d100)."}
  {:cost         "30g (each)"
   :participants "any"
   :rules        "Roll 1d4: 1. Advantaged loot roll. 2. Loot roll with advantaged result. 3. 4x Orbs of Personality 4. Divine Dust."}
@@ -13,9 +13,9 @@
  {:cost         "25g (each)"
   :participants "any"
   :rules        "Choose a word and roll d100 and feed into Cheiro sum algorithm. Get a receptacle with that many enchant points for the player's choice of armours or weapons."}
- #_{:cost         "15g (each)" ;TODO replace? players tend not to write down the monster associated with their mod
+ {:cost         "15g (each)"
   :participants "any"
-  :rules        "Players may choose to replace the effect in their amulet with any other effect granted by that monster."}
+  :rules        "Players may choose to replace the monster passive in a gem until it meets a condition modifier on their amulet, up to 20 times (no dupes). If a matching monster isn't found, the fee is refunded."}
  {:cost         "50g (each)"
   :participants "any"
   :rules        "Players may choose to learn what each level of a divinity path of their choice grants, then obtain one divine dust."}
