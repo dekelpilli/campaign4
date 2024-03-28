@@ -11,12 +11,13 @@ Potential new amulet system:
 - Monsters can be swapped between gems freely
 - Cannot proc while down
 - Give multiple options when upgrading gem CR
-- Amulets drop with an enchant of each category
+- Talismans drop with an enchant of each category (mods given as 1,2,3 instead of above/below/uncond)
   - Conditional; appearance or above the ability score line (e.g. 'fey' or 'monstrosity', or more specific like 'gold dragon' or 'creature without eyes')
   - Conditional; below the line (e.g. based on monster's Strength/fly speed/size/etc.)
   - Unconditional (e.g. increase proc chance, heal health on proc, etc.)
-- Can amulets be sold? 5? 30?
-- Amulets can be merged, taking one mod from each category from one of the amulets at random.
-  - After this is done, one mod on the amulet is locked, and is guaranteed to be chosen on future merges.
-  - Amulets with locked mods in the same slot can be merged, but locks are ignored on those slots.
-  - Players can see the result before destroying the amulets, but if they choose not to take it, the may keep only one of the amulets, and it has all of its mods locked.
+- Talismans can't be sold, but grant some sort of reward on merge (gold? crafting currency for gems? gem?)
+- Talismans can be merged, taking one mod from each category from one of the talisman at random
+  - Merge can either be random reroll (keep or reroll) or merge (keep or take from other talisman)
+  - After this is done, one mod on the amulet is locked, and is guaranteed to be chosen on future merges
+  - Talismans with locked mods in the same slot can be merged, but locks are ignored on those slots
+  - Players can see the result before destroying the amulets, but if they choose not to take it, the may keep only one of the amulets, and it has all of its mods locked
