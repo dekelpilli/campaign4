@@ -15,7 +15,7 @@ Potential new amulet system:
   - Conditional; appearance or above the ability score line (e.g. 'fey' or 'monstrosity', or more specific like 'gold dragon' or 'creature without eyes')
   - Conditional; below the line (e.g. based on monster's Strength/fly speed/size/etc.)
   - Unconditional (e.g. increase proc chance, heal health on proc, etc.)
-- Talismans can't be sold, but grant some sort of reward on merge (gold? crafting currency for gems? gem?)
+- Talismans can't be sold, but grant some sort of reward on merge (gold? crafting currency for gems? gem?), or can be sold for non-gold results (such as gem/crafting etc)
 - Talismans can be merged, taking one mod from each category from one of the talisman at random
   - Merge can either be random reroll (keep or reroll) or merge (keep or take from other talisman)
   - After this is done, one mod on the amulet is locked, and is guaranteed to be chosen on future merges
