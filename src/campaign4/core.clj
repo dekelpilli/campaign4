@@ -43,7 +43,7 @@
     :omen   :vial
     :action vials/new-vial}
    {:name   "Crafting item"
-    :omen   :crafting
+    :omen   :crafting-item
     :action crafting/new-crafting-items}
    {:name   "Helmet"
     :omen   :helmet
@@ -77,7 +77,7 @@
                (assoc table (int min-roll) action))
         table))))
 
-(defn- ->action [n]
+(defn- ->action [n] ;TODO omens
   (-> (rsubseq loot-table <= n)
       first
       val))

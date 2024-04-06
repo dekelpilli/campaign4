@@ -154,3 +154,4 @@
             :tags   #{"magic"}}
            {:effect "You and your undead minions may choose to convert any damage you deal to Necrotic damage. Additionally, no more than {Prof} times per long rest, you may convert incoming damage to Necrotic damage."
             :tags   #{"damage" "survivability"}}]}]
+;TODO add path for psionics?
