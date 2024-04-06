@@ -7,15 +7,16 @@
 
 (def ^:private mod-mending-result (r/alias-method-sampler {:upgrade 3 :remove 3 :nothing 4}))
 
-(def character-enchants (as-> (db/load-all :character-enchants) $
-                              (group-by :character $)
-                              (update-vals $ #(mapv (fn [e] (-> e
-                                                                (dissoc :character)
-                                                                (update :tags set)))
-                                                    %))))
+(u/defdelayed character-enchants
+  (as-> (db/load-all :character-enchants) $
+        (group-by :character $)
+        (update-vals $ #(mapv (fn [e] (-> e
+                                          (dissoc :character)
+                                          (update :tags set)))
+                              %))))
 
 (defn new-helmet []
-  (when-let [enchants (p/>>item "Character name:" character-enchants)]
+  (when-let [enchants (p/>>item "Character name:" (character-enchants))]
     (loop [total 0
            chosen []
            [{:keys [points] :as enchant} & enchants] (r/shuffle enchants)]
@@ -28,7 +29,7 @@
   (not-empty (p/>>distinct-items "Present enchants:" character-enchants)))
 
 (defn- get-present-enchants []
-  (some-> (p/>>item "Character name:" character-enchants) select-enchants))
+  (some-> (p/>>item "Character name:" (character-enchants)) select-enchants))
 
 (defn- enchant-levels [enchants]
   (->> enchants
@@ -67,7 +68,7 @@
      :fracture-chance (fractured-chance points-total)}))
 
 (defn apply-personality []
-  (u/when-let* [character-enchants (p/>>item "Character name:" character-enchants)
+  (u/when-let* [character-enchants (p/>>item "Character name:" (character-enchants))
                 present-enchants (some-> (select-enchants character-enchants) enchant-levels)]
     (let [upgradeable-enchants (filterv :upgradeable present-enchants)
           has-upgrades? (seq upgradeable-enchants)

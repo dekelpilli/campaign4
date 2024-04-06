@@ -12,7 +12,7 @@
 (defn choose-base-type []
   (p/>>item "Base type:" ["weapon" "armour"]))
 
-(def ^:private enchants
+(u/defdelayed ^:private enchants
   (reduce
     (fn [acc {:keys [base-type randoms] :as enchant}]
       (let [enchant (-> (assoc enchant :weighting (randoms/randoms->weighting-multiplier randoms))
@@ -25,10 +25,10 @@
      "armour" []}
     (db/load-all :enchants)))
 
-(def enchants-fns (update-vals enchants u/weighted-sampler))
+(u/defdelayed enchants-fns (update-vals (enchants) u/weighted-sampler))
 
 (defn valid-enchants [base-type]
-  (get enchants base-type))
+  (get (enchants) base-type))
 
 (def prep-enchant (comp u/filter-vals u/fill-randoms))
 
@@ -43,7 +43,7 @@
         (recur new-points-sum new-enchants)))))
 
 (defn add-typed-enchants [base-type points-target]
-  (-> (get enchants-fns base-type)
+  (-> (get (enchants-fns) base-type)
       (add-enchants-totalling points-target)))
 
 (defn random-enchanted [points-target]

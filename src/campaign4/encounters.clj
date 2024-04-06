@@ -1,5 +1,6 @@
 (ns campaign4.encounters
   (:require
+    [campaign4.analytics :as analytics]
     [campaign4.db :as db]
     [campaign4.helmets :as helmets]
     [campaign4.prompting :as p]
@@ -109,10 +110,10 @@
      [:random]         2
      [:random :random] 8}))
 
-(def ^:private positive-encounters (db/load-all :positive-encounters))
+(u/defdelayed ^:private positive-encounters (db/load-all :positive-encounters))
 
 (defn- add-encounter! [type]
-  (u/record! (str "encounter" type) 1)
+  (analytics/record! (str "encounter" type) 1)
   type)
 
 (defn -weather-freqs [n]
@@ -145,7 +146,7 @@
                                (u/occurred? 0.1) (conj :positive))
             weather (previous-weather-fn)
             acc (assoc acc day {:weather weather
-                                :order   (->> (keys helmets/character-enchants)
+                                :order   (->> (keys (helmets/character-enchants))
                                               (into encounters)
                                               r/shuffle)})]
         (run! add-encounter! encounters)
@@ -177,21 +178,21 @@
   (u/when-let* [difficulty (p/>>item "Difficulty:" [:mild :bruising :bloody :brutal :oppressive :overwhelming :crushing :devastating :boss] :sorted? false)
                 investigations (some-> (p/>>input "List investigations:")
                                        (str/split #","))]
-               {:xp   (case difficulty
-                        :mild (+ 6 (rng/next-int @r/default-rng 2))
-                        :bruising (+ 7 (rng/next-int @r/default-rng 2))
-                        :bloody (+ 8 (rng/next-int @r/default-rng 2))
-                        :brutal (+ 10 (rng/next-int @r/default-rng 3))
-                        :oppressive (+ 13 (rng/next-int @r/default-rng 3))
-                        (:boss :overwhelming) (+ 14 (rng/next-int @r/default-rng 3))
-                        :crushing (+ 16 (rng/next-int @r/default-rng 3))
-                        :devastating (+ 18 (rng/next-int @r/default-rng 3)))
-                :loot (calculate-loot difficulty investigations)}))
+    {:xp   (case difficulty
+             :mild (+ 6 (rng/next-int @r/default-rng 2))
+             :bruising (+ 7 (rng/next-int @r/default-rng 2))
+             :bloody (+ 8 (rng/next-int @r/default-rng 2))
+             :brutal (+ 10 (rng/next-int @r/default-rng 3))
+             :oppressive (+ 13 (rng/next-int @r/default-rng 3))
+             (:boss :overwhelming) (+ 14 (rng/next-int @r/default-rng 3))
+             :crushing (+ 16 (rng/next-int @r/default-rng 3))
+             :devastating (+ 18 (rng/next-int @r/default-rng 3)))
+     :loot (calculate-loot difficulty investigations)}))
 
 (defn positive-encounter []
   {:race      (r/sample races)
    :sex       (r/sample sexes)
-   :encounter (r/sample positive-encounters)})
+   :encounter (r/sample (positive-encounters))})
 
 (defn- num-char->num [c]
   (- (int c) 48))

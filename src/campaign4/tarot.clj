@@ -65,7 +65,7 @@
         mods))))
 
 (defn add-character-enchants []
-  (u/when-let* [character-enchants (p/>>item "Character name:" helmets/character-enchants)
+  (u/when-let* [character-enchants (p/>>item "Character name:" (helmets/character-enchants))
                 amount (p/>>item "How many enchants should be added to the item?" (range 1 (inc (count character-enchants))))]
     (r/sample-without-replacement amount character-enchants)))
 

@@ -6,7 +6,7 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(def ^:private curios (db/load-all :curios))
+(u/defdelayed ^:private curios (db/load-all :curios))
 
 (defn- prep-curio [{:keys [effect] :as curio} inversed?]
   (if inversed?
@@ -14,7 +14,7 @@
     (assoc curio :name effect)))
 
 (defn new-curio []
-  (-> (r/sample curios)
+  (-> (r/sample (curios))
       (prep-curio (u/occurred? 1/3))
       (select-keys [:name])))
 
@@ -38,20 +38,20 @@
                        curios-used)
           enchants-fn (->> (e/valid-enchants base-type)
                            (mapv (fn [{:keys [tags weighting] :as e}]
-                                  (let [new-weighting (transduce
-                                                        (comp (map weightings)
-                                                              (filter some?)
-                                                              (map (fn [multiplier]
-                                                                     (* multiplier weighting))))
-                                                        (fn
-                                                          ([x] x)
-                                                          ([x y] (if (and x
-                                                                          (or (zero? x) (zero? y)))
-                                                                   0
-                                                                   (+ (or x 0) y))))
-                                                        nil
-                                                        tags)]
-                                    (assoc e :weighting (or new-weighting weighting)))))
+                                   (let [new-weighting (transduce
+                                                         (comp (map weightings)
+                                                               (filter some?)
+                                                               (map (fn [multiplier]
+                                                                      (* multiplier weighting))))
+                                                         (fn
+                                                           ([x] x)
+                                                           ([x y] (if (and x
+                                                                           (or (zero? x) (zero? y)))
+                                                                    0
+                                                                    (+ (or x 0) y))))
+                                                         nil
+                                                         tags)]
+                                     (assoc e :weighting (or new-weighting weighting)))))
                            u/weighted-sampler)]
       (e/add-enchants-totalling (* 10 (count curios-used))
                                 enchants-fn))))

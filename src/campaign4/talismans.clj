@@ -5,7 +5,7 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(def ^:private enchants-by-category
+(u/defdelayed ^:private enchants-by-category
   (->> (db/load-all :talisman-enchants)
        (reduce
          (fn [acc {:keys [category] :as e}]
@@ -17,5 +17,5 @@
          {})))
 
 (defn new-talisman []
-  (update-vals enchants-by-category
+  (update-vals (enchants-by-category)
                (comp u/fill-randoms r/sample)))

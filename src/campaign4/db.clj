@@ -1,5 +1,6 @@
 (ns campaign4.db
   (:require
+    [campaign4.util :as u]
     [config.core :refer [env]]
     [honey.sql :as hsql]
     [jsonista.core :as j]
@@ -21,7 +22,7 @@
 
 (defn- connect ^Connection [] (jdbc/get-connection data-src))
 
-(def ^:private c (connect))
+(u/defdelayed ^:private c (connect))
 (def ^:dynamic *txn* nil)
 
 (defmacro in-transaction [& body]
@@ -34,7 +35,7 @@
   ([statement] (execute! statement nil))
   ([statement return-keys]
    (jdbc/execute!
-     (or *txn* c)
+     (or *txn* (c))
      (hsql/format statement)
      (cond-> {:builder-fn as-unqualified-kebab-maps}
              (seq return-keys) (assoc :return-keys (mapv (comp first hsql/format-expr) return-keys))))))

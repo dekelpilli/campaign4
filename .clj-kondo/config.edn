@@ -1,4 +1,5 @@
-{:lint-as       {campaign4.util/when-let* clojure.core/let}
+{:lint-as       {campaign4.util/when-let*  clojure.core/let
+                 campaign4.util/defdelayed clojure.core/def}
  :skip-comments true
  :linters       {:single-key-in            {:level :warning}
                  :used-underscored-binding {:level :warning}

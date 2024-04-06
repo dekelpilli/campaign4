@@ -1,6 +1,7 @@
 (ns campaign4.core
   (:gen-class)
   (:require
+    [campaign4.analytics :as analytics]
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
@@ -11,7 +12,6 @@
     [campaign4.talismans :as talismans]
     [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
-    [campaign4.util :as u]
     [campaign4.vials :as vials]
     [puget.printer :as puget]
     [randy.core :as r]
@@ -19,26 +19,37 @@
 
 (def loot-actions
   [{:name   "20-30 gold"
+    :omen   :gold
     :action (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
    {:name   "Unique"
+    :omen   :unique
     :action (fn unique-loot [] (uniques/new-uniques 2))}
    {:name   "Gem"
+    :omen   :gem
     :action gems/new-gem}
    {:name   "Talisman"
+    :omen   :talisman
     :action talismans/new-talisman}
    {:name   "Rings"
+    :omen   :ring
     :action (fn ring-loot [] (rings/new-rings 2))}
    {:name   "Enchanted Receptacle"
+    :omen   :enchanted
     :action (fn enchanted-receptacle [] (e/random-enchanted 30))}
    {:name   "Receptacle + Curios" ;TODO test this with new mod restrictions. Make this give two with 20 points?
+    :omen   :curio
     :action (fn curios-loot [] (repeatedly 4 curios/new-curio))}
    {:name   "Vial"
+    :omen   :vial
     :action vials/new-vial}
    {:name   "Crafting item"
+    :omen   :crafting
     :action crafting/new-crafting-items}
    {:name   "Helmet"
+    :omen   :helmet
     :action helmets/new-helmet}
    {:name   "Tarot card"
+    :omen   :tarot
     :action (fn tarot-loot []
               (reduce (fn [acc _]
                         (if-let [card (tarot/lookup-card)]
@@ -48,8 +59,10 @@
                       []
                       (range 3)))}
    {:name   "New relic"
+    :omen   :relic
     :action relics/new-relic!}
    {:name   "Divine dust"
+    :omen   :divine-dust
     :action (constantly "Divine Dust")}])
 
 (def loot-table
@@ -74,7 +87,7 @@
     (action)))
 
 (defn loot [n]
-  (u/record! (str "loot:" n) 1)
+  (analytics/record! (str "loot:" n) 1)
   (loot* n))
 
 (defn loots* [ns]
@@ -86,5 +99,5 @@
 
 (defn loots [& ns]
   (doseq [[n amount] (frequencies ns)]
-    (u/record! (str "loot:" n) amount))
+    (analytics/record! (str "loot:" n) amount))
   (loots* ns))
