@@ -1,10 +1,12 @@
-(ns campaign4.omens)
+(ns campaign4.omens
+  (:require
+    [randy.core :as r]))
 
 (def omens
   {:gold          ["Your next Gold result will grant 30 gold."
                    "Your next Gold result will grant 10 additional gold."
                    "Your next Gold result will grant only 1 gold, but will also grant an additional loot roll."
-                   "Instead of your next Gold result, you may immediately sell an item at double its value."]
+                   "You may choose to replace your next Gold result to instead double the sale value of one of your items/receptacles."]
    :unique        ["You may choose to get weapon or armour uniques only on your next Unique result."
                    "Your next Unique result only grants one unique, but it will be level 2."
                    "Your next Unique result will grant three unique items."
@@ -44,3 +46,7 @@
    :divine-dust   ["You may fully reveal a Divinity Path of your choice on your next Divine Dust result."
                    "Your next Divine Dust result also grants gold equal to 10 times your total used Divine Dust."
                    "Instead of your next Divine Dust result, you may choose to receive three loot rolls."]})
+
+(defn new-omen [omen-type]
+  (-> (get omens omen-type)
+      r/sample))

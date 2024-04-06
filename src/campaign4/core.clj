@@ -7,6 +7,7 @@
     [campaign4.enchants :as e]
     [campaign4.gems :as gems]
     [campaign4.helmets :as helmets]
+    [campaign4.omens :as omens]
     [campaign4.relics :as relics]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
@@ -77,14 +78,23 @@
                (assoc table (int min-roll) action))
         table))))
 
-(defn- ->action [n] ;TODO omens
-  (-> (rsubseq loot-table <= n)
-      first
-      val))
+(defn- ->action [n]
+  (let [action (-> (rsubseq loot-table <= n)
+                   first
+                   val)
+        grants-omen? (or (->> (inc n)
+                              (contains? loot-table))
+                         (>= n 100))]
+    (if grants-omen?
+      (update action :omen omens/new-omen)
+      (dissoc action :omen))))
 
 (defn loot* [n]
-  (when-let [{:keys [action]} (->action n)]
-    (action)))
+  (when-let [{:keys [action omen]} (->action n)]
+    (if omen
+      {:result (action)
+       :omen   omen}
+      (action))))
 
 (defn loot [n]
   (analytics/record! (str "loot:" n) 1)
@@ -92,9 +102,10 @@
 
 (defn loots* [ns]
   (mapv (fn collect-loot [n]
-          (let [{:keys [name action]} (->action n)]
-            {:name   (str name " (" n ")")
-             :result (when action (action))}))
+          (let [{:keys [name action omen]} (->action n)]
+            (cond-> {:name   (str name " (" n ")")
+                     :result (when action (action))}
+                    omen (assoc :omen omen))))
         ns))
 
 (defn loots [& ns]
