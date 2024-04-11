@@ -1,9 +1,14 @@
 (ns campaign4.util
   (:require
     [randy.core :as r]
-    [randy.rng :as rng])
+    [randy.rng :as rng]
+    [clojure.java.io :as jio]
+    [aero.core :as aero])
   (:import
     (clojure.lang Delay)))
+
+(def config (-> (jio/resource "config.edn")
+                aero/read-config))
 
 (defn jsonb-lift [x]
   (when x [:lift x]))

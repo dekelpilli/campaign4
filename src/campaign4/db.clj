@@ -1,7 +1,6 @@
 (ns campaign4.db
   (:require
     [campaign4.util :as u]
-    [config.core :refer [env]]
     [honey.sql :as hsql]
     [jsonista.core :as j]
     [next.jdbc :as jdbc]
@@ -12,7 +11,7 @@
     (java.sql Connection PreparedStatement)
     (org.postgresql.util PGobject PSQLException)))
 
-(def data-src (let [{:keys [db-host db-port db-user db-pass db-name]} env]
+(def data-src (let [{:keys [db-host db-port db-user db-pass db-name]} u/config]
                 (jdbc/get-datasource {:host     db-host
                                       :port     db-port
                                       :user     db-user

@@ -20,7 +20,7 @@
   :effect   "If the contained creature is a Fey, choose a Druid-exclusive spell of spell level equal to or lower than the gem's CR. You may cast this once per long rest. You may change the chosen spell on a long rest, or when replacing/upgrading the gem."
   :tags     #{"magic"}}
  {:category "above"
-  :effect   "If the contained creature is a Fiend"} ;TODO
+  :effect   "If the contained creature is a Fiend, whenever this passive procs, another random passive from the same creature also procs. If it has only one, this has no effect."}
  {:category "above"
   :effect   "If the contained creature is Giant, while this power is active, your melee attacks can target two adjacent creatures when they would normally only be able to target one."
   :tags     #{"damage"}}
@@ -72,13 +72,16 @@
   :effect   "If the contained creature has any damage immunities, you have +2 damage with those damage types while the power is active."
   :tags     #{"damage"}}
  {:category "below"
+  :effect   "If the contained creature has both damage immunities and resistances, your barriers replenish half of their maximums at the end of each turn in combat while the power is active."
+  :tags     #{"survivability"}}
+ {:category "below"
   :effect   "If the contained creature has any condition immunities, this power becomes active until the end of the round when one of those conditions is applied to you."
   :tags     #{"utility"}}
  {:category "below"
   :effect   "If the contained creature has any special reactions, you have one additional reaction while the power is active."
   :tags     #{"utility"}}
  {:category "below"
-  :effect   "If the contained creature has any on death effects, you have on additional failed death save slot."
+  :effect   "If the contained creature has any on death effects, you have one additional failed death save slot."
   :tags     #{"survivability"}}
  {:category "below"
   :effect   "If the contained creature has any legendary resistances, you are considered to be proficient in all saving throws while power is active."
@@ -104,6 +107,9 @@
  {:category "below"
   :effect   "If the contained creature knows multiple languages, you learn the Tongues spell and may cast it once per long rest."
   :tags     #{"magic"}}
+ {:category "below"
+  :effect   "If the contained creature has at least four passive traits, gain maximum hit points equal to the number of passive traits it has."
+  :tags     #{"survivability"}}
 
  {:category "unconditional"
   :effect   "While not down, gain hit points equal to the contained creature's CR when its power is activated."
@@ -118,25 +124,19 @@
   :effect   "You have +6 maximum barrier while this power is active."
   :tags     #{"survivability"}}
  {:category "unconditional"
-  :effect   "+5 proc threshold per consecutive round where it wasn't triggered, across any period of time."
+  :effect   "+5 proc threshold per consecutive round where the contained gem wasn't triggered, across any period of time."
   :tags     #{"utility"}}
  {:category "unconditional"
   :effect   "Instead of being random, this power is always active on even rounds and always inactive on odd rounds of combat."
   :tags     #{"utility"}}
  {:category "unconditional"
-  :effect   "You have +1 to your DCs if this monster power hasn't been activated since your last long rest."
+  :effect   "You have +1 to your DCs if this monster power hasn't been activated since your last long rest, and +1 AB while the power is active."
   :tags     #{"accuracy"}}
  {:category "unconditional"
-  :effect   "When this power is activated, you have a 10% chance to also trigger an full turn of the contained creature, starting on a space within 5 feet of you and controlled by you. The creature then dissipates."
+  :effect   "When this power is activated, you have a 20% chance to also trigger a full turn of the contained creature, starting on a space within 5 feet of you and controlled by you. The creature then dissipates."
   :tags     #{"utility"}}
  {:category "unconditional"
   :effect   "Gems in this talisman offer twice as many options when rerolling the contained monster trait."
-  :tags     #{"wealth"}}
- {:category "unconditional"
-  :effect   "This mod is locked. When merging this talisman, you may choose which modifiers get kept in the other categories."
-  :tags     #{"wealth"}}
- {:category "unconditional"
-  :effect   "When merging this talisman, the merge happens with advantage on other mod categories."
   :tags     #{"wealth"}}
  {:category "unconditional"
   :effect   "You gain access to all of this creature's passives. When the gem is activated, you may choose which passive power is activated."

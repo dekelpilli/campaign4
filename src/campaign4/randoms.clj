@@ -31,25 +31,25 @@
     (nil? randoms) 1))
 
 (defmethod randoms-factor :languages [_] 2)
-(defmethod randoms-preset :languages [_] ;TODO make sure this is updated
+(defmethod randoms-preset :languages [_]
   ["Common" "Dwarvish" "Elvish" "Giant" "Gnomish" "Goblin" "Halfling" "Orc"
    "Abyssal" "Celestial" "Draconic" "Deep Speech" "Infernal" "Primordial" "Sylvan" "Undercommon"])
 
 (defmethod randoms-factor :feats [_] 1)
-(defmethod randoms-preset :feats [_] ;TODO make sure this is updated
-  ["Alert" "Athlete" "Actor" "Blinktouched" "Brawler" "Charger" "Crossbow Expert" "Defensive Duelist" "Dual Wielder"
-   "Dungeon Delver" "Durable" "Eldritch Adept" "Empathic" "Grappler" "Fighting Initiate" "Great Weapon Master"
-   "Healer" "Heavy Armor Master" "Inspiring Leader" "Keen Mind" "Light Armor Master" "Magic Initiate"
-   "Martial Scholar" "Medium Armor Master" "Metamagic Adept" "Mobile" "Mounted Combatant" "Polearm Master"
-   "Resilient" "Ritual Caster" "Sentinel" "Sharpshooter" "Shield Master" "Skilled" "Skulker" "Specialist"
-   "Spell Touched" "Summoner" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
+(defmethod randoms-preset :feats [_]
+  ["Alert" "Athlete" "Blinktouched" "Brawler" "Charger" "Crippler" "Crossbow Expert" "Defensive Duelist" "Dual Wielder"
+   "Dungeon Delver" "Durable" "Eldritch Adept" "Fighting Initiate" "Grappler" "Great Weapon Master" "Healer"
+   "Heavy Armour Master" "Inspiring Leader" "Keen Mind" "Light Armour Master" "Magic Initiate" "Martial Scholar"
+   "Master Traveler" "Medium Armour Master" "Metamagic Adept" "Mounted Combatant" "Polearm Master" "Reflective"
+   "Resilient" "Ritual Caster" "Sentinel" "Sharpshooter" "Shield Master" "Skilled" "Skulker" "Socialite" "Specialist"
+   "Spell Touched" "Summoner" "Actions" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
 
 (defmethod randoms-factor :skills [_]
   5)
 (defmethod randoms-preset :skills [_]
-  ["perception" "medicine" "deception" "persuasion" "investigation" "insight" "survival"
-   "arcana" "athletics" "acrobatics" "sleight of hand" "stealth" "history"
-   "nature" "religion" "animal handling" "intimidation" "performance" "engineering"])
+  ["acrobatics" "animal handling" "arcana" "athletics" "deception" "engineering" "history" "insight"
+   "intimidation" "investigation" "medicine" "nature" "perception" "performance" "persuasion" "religion"
+   "sleight of hand" "stealth" "survival"])
 
 (defmethod randoms-factor :damage-types [{:keys [type]
                                           :or   {type :all}}]
@@ -83,15 +83,15 @@
    "Fiend" "Giant" "Humanoid" "Monstrosity" "Ooze" "Plant" "Undead"])
 
 (defmethod randoms-factor :cantrips [_] 2)
-(defmethod randoms-preset :cantrips [_] ;TODO make sure this is updated
+(defmethod randoms-preset :cantrips [_]
   ["Acid Splash" "Altered Strike" "Arcane Muscles" "Blade Ward" "Booming Blade" "Calculate" "Chill Touch"
-   "Circular Breathing" "Control Flames" "Create Bonfire" "Dancing Lights" "Druidcraft" "Eldritch Blast"
-   "Encode Thoughts" "Fire Bolt" "Friends" "Frostbite" "Grapevine" "Green-Flame Blade" "Guidance" "Gust"
-   "Hypnic Jerk" "Infestation" "Light" "Lightning Lure" "Mage Hand" "Magic Stone" "Mending" "Message" "Mind Sliver"
-   "Minor Illusion" "Mold Earth" "Pestilence" "Poison Spray" "Prestidigitation" "Primal Savagery" "Produce Flame"
-   "Ray of Frost" "Resistance" "Sacred Flame" "Sapping Sting" "Shape Water" "Shillelagh" "Shocking Grasp"
-   "Spare the Dying" "Sword Burst" "Thaumaturgy" "Thorn Whip" "Thunderclap" "Toll the Dead"
-   "Tree Heal" "True Strike" "Vicious Mockery" "Word of Radiance"])
+   "Circular Breathing" "Control Flames" "Convenient Retrieval" "Create Bonfire" "Dancing Lights" "Druidcraft"
+   "Eldritch Blast" "Encode Thoughts" "Fire Bolt" "Friends" "Frostbite" "Glamour" "Grapevine" "Green-Flame Blade"
+   "Guidance" "Gust" "Gust Barrier" "Hunter Sense" "Infestation" "Light" "Lightning Lure" "Mage Hand" "Magic Stone"
+   "Mending" "Message" "Mind Sliver" "Minor Illusion" "Mold Earth" "Muddle" "Pestilence" "Poison Spray"
+   "Prestidigitation" "Primal Savagery" "Produce Flame" "Ray of Frost" "Resistance" "Sacred Flame" "Sapping Sting"
+   "Shape Water" "Shillelagh" "Shocking Grasp" "Spare the Dying" "Sword Burst" "Thaumaturgy" "Thorn Whip" "Thunderclap"
+   "Toll the Dead" "True Strike" "Vicious Mockery" "Word of Radiance"])
 
 (defmethod randoms-factor :weapon-categories [_] 2)
 (defmethod randoms-preset :weapon-categories [_]

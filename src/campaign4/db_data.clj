@@ -36,7 +36,7 @@
       (j/read-value j/keyword-keys-object-mapper)))
 
 (defn load-monsters []
-  (let [files (->> "5et/monsters"
+  (let [files (->> "5et/monsters" ;TODO get newer monsters
                    (File.)
                    (file-seq)
                    (remove #(.isDirectory %)))

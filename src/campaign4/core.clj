@@ -5,7 +5,6 @@
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
-    [campaign4.gems :as gems]
     [campaign4.helmets :as helmets]
     [campaign4.omens :as omens]
     [campaign4.relics :as relics]
@@ -25,9 +24,6 @@
    {:name   "Unique"
     :omen   :unique
     :action (fn unique-loot [] (uniques/new-uniques 2))}
-   {:name   "Gem"
-    :omen   :gem
-    :action gems/new-gem}
    {:name   "Talisman"
     :omen   :talisman
     :action talismans/new-talisman}

@@ -1,8 +1,15 @@
 # Loot Rules
 
 ### Talismans
-
-[//]: # (TODO)
+- Talismans contain a gem, and apply effects to passive procs.
+- The passive in worn gem has a chance to proc at the start of each round, with that chance scaling as the gem CR increases. Gems worn by downed players are inactive. 
+- Gems have a CR limit and contain a monster passive from a monster of CR up to that limit.
+- Gems can be upgraded (+1 CR) by merging two gems of the same CR. On upgrade, the existing passive or either gems can be kept, or a choice from 3 new passives from the new CR.
+- Monsters can be swapped between gems freely, or simply removed, as long as gems never contain a passive from a monster above the CR limit.
+- Talismans drop with enchants with pre-defined "slots".
+[//]: # (TODO - do locks add much? diminishing chance to add mods beyond 3?)
+- Talismans can be fed into other talismans. When this is done, choose one enchant from the talisman to be destroyed, and replace the enchant on the other talisman that's in the same slot. After this is done, a random non-locked enchant on the talisman is locked, meaning it cannot be replaced again.
+- Talismans can be sold for a gem (base CR=2, with a chance for higher CRs based on # of locked mods on talisman)
 
 ### Curios
 Curios can only be used to fill a receptacle with weapon or armour enchantments.

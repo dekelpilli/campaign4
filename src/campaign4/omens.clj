@@ -3,27 +3,24 @@
     [randy.core :as r]))
 
 (def omens
-  {:gold          ["Your next Gold result will grant 30 gold."
+  {:gold          ["Your next Gold will instead grant a Curios result with only wealth curios."
                    "Your next Gold result will grant 10 additional gold."
-                   "Your next Gold result will grant only 1 gold, but will also grant an additional loot roll."
+                   "If you choose, your next Gold result will grant only 1 gold, but will also grant an additional loot roll."
                    "You may choose to replace your next Gold result to instead double the sale value of one of your items/receptacles."]
    :unique        ["You may choose to get weapon or armour uniques only on your next Unique result."
                    "Your next Unique result only grants one unique, but it will be level 2."
                    "Your next Unique result will grant three unique items."
                    "Your next Unique result will roll each of the uniques granted with advantage."]
-   :gem           ["+1 CR" ;TODO reconsider after talisman/gem behaviour is more concrete
-                   "Choose monster type"
-                   "Choose trait within rolled monster"
-                   "Also grants talisman, rerolling until at least one conditional is met."]
-   :talisman      []
+   :talisman      ["Your next Talisman result will also grant one CR2 gem, and the talisman is rerolled until at least one conditional enchant is met for the passive in that gem."
+                   "After receiving your next Talisman result, you may choose one of the enchant slots and reroll it up to 3 times."
+                   "The talisman from your next Talisman result sells for higher CR gems (as if 3 locked, +1CR)."]
    :ring          ["Your next Ring result only grants synergy rings."
                    "Your next Ring result only grants non-synergy rings, but grants three rings."
                    "Your next Ring result cannot grant non-synergy rings you are wearing."
                    "Your next Ring result cannot grant synergy rings other than synergy rings you are wearing."]
    :enchanted     ["Your next Enchanted result grants your choice of weapon or armour enchants."
                    "Your next Enchanted result grants two identical receptacles."
-                   "Your next Enchanted result grants two identical receptacles."
-                   "Your next Enchanted result's enchanted receptacle will have a 'wealth' tagged modifier added to it."]
+                   "Your next Enchanted result's receptacle will have a 'wealth' tagged modifier added to it."]
    :curio         ["Your next Curio result grants an additional curio."
                    "Your next Curio result grants your choice of curios."
                    "Your next Curio result also grants the inverse of each curio granted."]
@@ -33,7 +30,7 @@
                    "You may choose to receive a vial that matches vial effects on party members or their items instead of the vial granted by your next Vial result."]
    :crafting-item ["Your next Crafting Item result grants one additional crafting of the same type."
                    "Your next Crafting Item result also grants one use of a random crafting item in the form of a shrine."
-                   "Your next Crafting Item's quantity is rolled with advantage."
+                   "Your next Crafting Item result's quantity is rolled with advantage."
                    "You may choose which crafting item type your next Crafting Item result grants."]
    :helmet        ["Your next Helmet result also grants an Orb of Personality."
                    "Your next Helmet result grants a helmet with on additional modifier."

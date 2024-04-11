@@ -379,14 +379,22 @@
   :base-type "talisman"
   :effects   [{:effect "Your gem procs whenever another party member's gem procs."
                :tags   #{"utility"}}
-              {:effect "When you roll for initiative, randomise a monster passive as if the contained gem's CR limit was 2 higher. Use this passive instead of the contained passive."
+              {:effect "When you roll for initiative, randomise a monster passive as if the contained gem's CR limit was 2 higher. For the duration of the combat, your gem contains this monster passive instead of the one previously in the gem."
                :tags   #{"utility"}}
-              {:effect "Your gem can proc while you're down."
+              {:effect "Your monster passive active status is not impacted by you being down."
                :tags   #{"utility"}}
-              {:effect "You have advantaged offence while you have an active monster power."
+              {:effect "This modifier can be replaced by amulet modifiers from slot 1."
+               :tags   #{"utility"}}
+              {:effect "This modifier can be replaced by amulet modifiers from slot 2."
+               :tags   #{"utility"}}
+              {:effect "Your gem proc threshold is always 0."}]}
+ {:name      "Power Addiction"
+  :base-type "talisman"
+  :effects   [{:effect "You have advantaged offence while you have an active monster power."
                :tags   #{"accuracy"}}
-              {:effect "You have disadvantaged defence while you are up and don't have an active monster power."}
-              {:effect "Your gem proc threshold is 0."}]}
+              {:effect "+3 incoming healing from creatures with an active monster power."
+               :tags   #{"survivability"}}
+              {:effect "You have disadvantaged defence while you are up and don't have an active monster power."}]}
  {:name      "Template"
   :base-type "weapon|armour"
   :effects   [{:effect "description"}]
