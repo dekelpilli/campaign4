@@ -42,7 +42,7 @@
    "Heavy Armour Master" "Inspiring Leader" "Keen Mind" "Light Armour Master" "Magic Initiate" "Martial Scholar"
    "Master Traveler" "Medium Armour Master" "Metamagic Adept" "Mounted Combatant" "Polearm Master" "Reflective"
    "Resilient" "Ritual Caster" "Sentinel" "Sharpshooter" "Shield Master" "Skilled" "Skulker" "Socialite" "Specialist"
-   "Spell Touched" "Summoner" "Actions" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
+   "Spell Touched" "Summoner" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
 
 (defmethod randoms-factor :skills [_]
   5)
