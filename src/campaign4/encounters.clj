@@ -1,7 +1,6 @@
 (ns campaign4.encounters
   (:require
     [campaign4.analytics :as analytics]
-    [campaign4.db :as db]
     [campaign4.helmets :as helmets]
     [campaign4.prompting :as p]
     [campaign4.util :as u]
@@ -110,7 +109,7 @@
      [:random]         2
      [:random :random] 8}))
 
-(u/defdelayed ^:private positive-encounters (db/load-all :positive-encounters))
+(def ^:private positive-encounters (u/load-data :positive-encounters))
 
 (defn- add-encounter! [type]
   (analytics/record! (str "encounter" type) 1)
@@ -130,7 +129,7 @@
 
 (defn pass-time [days]
   (when-let [initial-weather (p/>>item "What was the weather yesterday?" (keys weather-fns))]
-    (u/record! "days:other" days)
+    (analytics/record! "days:other" days)
     (reduce (fn [weather _]
               ((get weather-fns weather)))
             initial-weather
@@ -138,7 +137,7 @@
 
 (defn travel [days]
   (when-let [initial-weather-fn (p/>>item "What was the weather yesterday?" weather-fns)]
-    (u/record! "days:travel" days)
+    (analytics/record! "days:travel" days)
     (loop [acc (sorted-map)
            previous-weather-fn initial-weather-fn
            [day & days] (range 1 (inc days))]
@@ -146,7 +145,7 @@
                                (u/occurred? 0.1) (conj :positive))
             weather (previous-weather-fn)
             acc (assoc acc day {:weather weather
-                                :order   (->> (keys (helmets/character-enchants))
+                                :order   (->> (keys helmets/character-enchants)
                                               (into encounters)
                                               r/shuffle)})]
         (run! add-encounter! encounters)
@@ -192,7 +191,7 @@
 (defn positive-encounter []
   {:race      (r/sample races)
    :sex       (r/sample sexes)
-   :encounter (r/sample (positive-encounters))})
+   :encounter (r/sample positive-encounters)})
 
 (defn- num-char->num [c]
   (- (int c) 48))

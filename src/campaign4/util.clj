@@ -1,14 +1,23 @@
 (ns campaign4.util
   (:require
-    [randy.core :as r]
-    [randy.rng :as rng]
+    [aero.core :as aero]
     [clojure.java.io :as jio]
-    [aero.core :as aero])
+    [randy.core :as r]
+    [randy.rng :as rng])
   (:import
-    (clojure.lang Delay)))
+    (clojure.lang Delay)
+    (java.io PushbackReader)))
 
 (def config (-> (jio/resource "config.edn")
                 aero/read-config))
+
+(defn load-data [kw]
+  (->> (str "data/" (name kw) ".edn")
+       jio/resource
+       jio/reader
+       PushbackReader.
+       read
+       (filterv #(:enabled? % true))))
 
 (defn jsonb-lift [x]
   (when x [:lift x]))

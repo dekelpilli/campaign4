@@ -1,10 +1,9 @@
 (ns campaign4.uniques
   (:require
-    [campaign4.db :as db]
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(u/defdelayed ^:private uniques (db/load-all :uniques))
+(def ^:private uniques (u/load-data :uniques)) ;TODO change data structure to support multiple levels
 
 (defn new-unique []
   (r/sample uniques))

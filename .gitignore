@@ -9,4 +9,4 @@ pom.xml
 resources/config.edn
 .rebel_readline_history
 5et
-.clj-kondo/.cache/
+.clj-kondo/*/

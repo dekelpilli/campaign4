@@ -1,6 +1,5 @@
 (ns campaign4.enchants
   (:require
-    [campaign4.db :as db]
     [campaign4.prompting :as p]
     [campaign4.randoms :as randoms]
     [campaign4.util :as u]
@@ -12,23 +11,22 @@
 (defn choose-base-type []
   (p/>>item "Base type:" ["weapon" "armour"]))
 
-(u/defdelayed ^:private enchants
+(def ^:private enchants
   (reduce
     (fn [acc {:keys [base-type randoms] :as enchant}]
       (let [enchant (-> (assoc enchant :weighting (randoms/randoms->weighting-multiplier randoms))
-                        (update :tags set)
                         (update :randoms randoms/randoms->fn))]
         (if base-type
           (update acc base-type conj enchant)
           (update-vals acc #(conj % enchant)))))
     {"weapon" []
      "armour" []}
-    (db/load-all :enchants)))
+    (u/load-data :enchants)))
 
-(u/defdelayed enchants-fns (update-vals (enchants) u/weighted-sampler))
+(def enchants-fns (update-vals enchants u/weighted-sampler))
 
 (defn valid-enchants [base-type]
-  (get (enchants) base-type))
+  (get enchants base-type))
 
 (def prep-enchant (comp u/filter-vals u/fill-randoms))
 
@@ -43,8 +41,8 @@
         (recur new-points-sum new-enchants)))))
 
 (defn add-typed-enchants [base-type points-target]
-  (-> (get (enchants-fns) base-type)
-      (add-enchants-totalling points-target)))
+  (->> (get enchants-fns base-type)
+       (add-enchants-totalling points-target)))
 
 (defn random-enchanted [points-target]
   (let [base-type (new-base-type)]

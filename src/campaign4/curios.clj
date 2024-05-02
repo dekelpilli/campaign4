@@ -1,20 +1,19 @@
 (ns campaign4.curios
   (:require
-    [campaign4.db :as db]
     [campaign4.enchants :as e]
     [campaign4.prompting :as p]
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(u/defdelayed ^:private curios (db/load-all :curios))
+(def ^:private curios (u/load-data :curios))
 
-(defn- prep-curio [{:keys [effect] :as curio} inversed?]
+(defn- prep-curio [{:keys [type] :as curio} inversed?]
   (if inversed?
-    (assoc curio :multiplier 0 :name (str "Inversed " effect))
-    (assoc curio :name effect)))
+    (assoc curio :multiplier 0 :name (str "Inversed " type))
+    (assoc curio :name type)))
 
 (defn new-curio []
-  (-> (r/sample (curios))
+  (-> (r/sample curios)
       (prep-curio (u/occurred? 1/3))
       (select-keys [:name])))
 
@@ -28,12 +27,12 @@
                                                  :completer :comma-separated)
                                       not-empty))]
     (let [weightings (reduce
-                       (fn [acc {:keys [multiplier effect]}]
+                       (fn [acc {:keys [multiplier type]}]
                          (if (zero? multiplier)
-                           (assoc acc effect 0)
-                           (if-let [existing-multiplier (get acc effect)]
-                             (assoc acc effect (* 2 existing-multiplier))
-                             (assoc acc effect multiplier))))
+                           (assoc acc type 0)
+                           (if-let [existing-multiplier (get acc type)]
+                             (assoc acc type (* 2 existing-multiplier))
+                             (assoc acc type multiplier))))
                        {}
                        curios-used)
           enchants-fn (->> (e/valid-enchants base-type)

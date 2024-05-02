@@ -7,8 +7,8 @@
     [randy.core :as r]
     [randy.rng :as rng]))
 
-(u/defdelayed ^:private talisman-enchants-by-category
-  (->> (db/load-all :talisman-enchants)
+(def ^:private talisman-enchants-by-category
+  (->> (u/load-data :talisman-enchants)
        (reduce
          (fn [acc {:keys [category] :as e}]
            (update acc category
@@ -43,16 +43,38 @@
       monsters->traits))
 
 (def ^:private cr->output (comp r/sample (memoize monster-traits-by-cr)))
+
+(defn- locked->upgrades [^long locked]
+  (if-let [upgrade-threshold (case locked
+                               1 0.1
+                               2 0.6
+                               3 0.85
+                               nil)]
+    (loop [upgrades 1
+           upgrade-threshold upgrade-threshold]
+      (let [probability-roll (rng/next-double @r/default-rng)]
+        (if (> upgrade-threshold probability-roll)
+          (recur (inc upgrades) (- upgrade-threshold probability-roll))
+          upgrades)))
+    0))
+
 (defn new-gem
   ([] (new-gem 0))
   ([locked]
-   (let [cr (loop [cr 2
-                   upgrade-threshold (* 0.4 locked)]
-              (let [probability-roll (rng/next-double @r/default-rng)]
-                (if (> upgrade-threshold probability-roll)
-                  (recur (inc cr) (- upgrade-threshold probability-roll))
-                  cr)))]
-     (cr->output cr))))
+   (-> (locked->upgrades locked)
+       (+ 2)
+       cr->output)))
+
+(comment
+  (let [avg (fn [c] (double (/ (apply + c) (count c))))
+        freqs (fn [c] (->> (frequencies c)
+                           (into (sorted-map))))]
+    (->> (range 1 4)
+         (mapv (fn [n] (repeatedly 100000 #(new-gem n))))
+         (mapv (fn [c]
+                 (let [c (mapv :cr c)]
+                   {:freqs (freqs c)
+                    :avg   (avg c)}))))))
 
 (defn- cr []
   (p/>>input "Gem CR:" (crs)))
@@ -77,5 +99,5 @@
     (-> monsters monsters->traits r/sample)))
 
 (defn new-talisman []
-  (update-vals (talisman-enchants-by-category)
+  (update-vals talisman-enchants-by-category
                (comp u/fill-randoms r/sample)))

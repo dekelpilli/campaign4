@@ -4,7 +4,7 @@
 - Talismans contain a gem, and apply effects to passive procs.
 - The passive in worn gem has a chance to proc at the start of each round, with that chance scaling as the gem CR increases. Gems worn by downed players are inactive. 
 - Gems have a CR limit and contain a monster passive from a monster of CR up to that limit.
-- Gems can be upgraded (+1 CR) by merging two gems of the same CR. On upgrade, the existing passive or either gems can be kept, or a choice from 3 new passives from the new CR.
+- Gems can be upgraded (+1 CR) by merging two gems of the same CR. On upgrade, the existing passive on either gems can be kept, or a choice from 3 new passives from the new CR.
 - Monsters can be swapped between gems freely, or simply removed, as long as gems never contain a passive from a monster above the CR limit.
 - Talismans drop with enchants with pre-defined "slots".
 [//]: # (TODO - do locks add much? diminishing chance to add mods beyond 3?)

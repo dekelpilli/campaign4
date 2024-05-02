@@ -33,7 +33,7 @@
    {:name   "Enchanted Receptacle"
     :omen   :enchanted
     :action (fn enchanted-receptacle [] (e/random-enchanted 30))}
-   {:name   "Receptacle + Curios" ;TODO test this with new mod restrictions. Make this give two with 20 points?
+   {:name   "Receptacle + Curios"
     :omen   :curio
     :action (fn curios-loot [] (repeatedly 4 curios/new-curio))}
    {:name   "Vial"

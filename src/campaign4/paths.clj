@@ -5,7 +5,7 @@
     [campaign4.prompting :as p]
     [campaign4.util :as u]))
 
-(def divinity-paths (->> (db/load-all :divinity-paths)
+(def divinity-paths (->> (u/load-data :divinity-paths)
                          (u/assoc-by :name)))
 
 (defn- new-path-progress [character]
@@ -20,7 +20,7 @@
                (format "%s: %s" name info)))))
 
 (defn use-dust []
-  (u/when-let* [character (p/>>item "Character:" (keys (helmets/character-enchants)))
+  (u/when-let* [character (p/>>item "Character:" (keys helmets/character-enchants))
                 {:keys [path progress] :as current-path} (-> (db/execute! {:select [:*]
                                                                            :from   [:divinity-progress]
                                                                            :where  [:and

@@ -9,7 +9,7 @@
   (:import
     (clojure.lang IObj IPersistentMap IPersistentVector)
     (java.sql Connection PreparedStatement)
-    (org.postgresql.util PGobject PSQLException)))
+    (org.postgresql.util PGobject)))
 
 (def data-src (let [{:keys [db-host db-port db-user db-pass db-name]} u/config]
                 (jdbc/get-datasource {:host     db-host
@@ -38,11 +38,6 @@
      (hsql/format statement)
      (cond-> {:builder-fn as-unqualified-kebab-maps}
              (seq return-keys) (assoc :return-keys (mapv (comp first hsql/format-expr) return-keys))))))
-
-(defn load-all [table]
-  (try
-    (execute! {:select [:*] :from [table]})
-    (catch PSQLException _ [])))
 
 (defn- ->pgobject [x]
   (let [pg-type (or (:pg-type (meta x)) "jsonb")]

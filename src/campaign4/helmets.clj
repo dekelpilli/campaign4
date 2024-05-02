@@ -1,14 +1,13 @@
 (ns campaign4.helmets
   (:require
-    [campaign4.db :as db]
     [campaign4.prompting :as p]
     [campaign4.util :as u]
     [randy.core :as r]))
 
 (def ^:private mod-mending-result (r/alias-method-sampler {:upgrade 3 :remove 3 :nothing 4}))
 
-(u/defdelayed character-enchants
-  (as-> (db/load-all :character-enchants) $
+(def character-enchants
+  (as-> (u/load-data :character-enchants) $
         (group-by :character $)
         (update-vals $ #(mapv (fn [e] (-> e
                                           (dissoc :character)
@@ -16,7 +15,7 @@
                               %))))
 
 (defn new-helmet []
-  (when-let [enchants (p/>>item "Character name:" (character-enchants))]
+  (when-let [enchants (p/>>item "Character name:" character-enchants)]
     (loop [total 0
            chosen []
            [{:keys [points] :as enchant} & enchants] (r/shuffle enchants)]
@@ -29,7 +28,7 @@
   (not-empty (p/>>distinct-items "Present enchants:" character-enchants)))
 
 (defn- get-present-enchants []
-  (some-> (p/>>item "Character name:" (character-enchants)) select-enchants))
+  (some-> (p/>>item "Character name:" character-enchants) select-enchants))
 
 (defn- enchant-levels [enchants]
   (->> enchants

@@ -1,143 +1,143 @@
 [{:category "above"
   :effect   "If the contained creature is an Aberration, you may ask two questions at the start of each of your turns while the power is active."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is a Beast, you have +1 to journey activity checks."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is a Celestial, you may cast the Bless spell twice per long rest."
-  :tags     #{"magic"}}
+  :tags     #{:magic}}
  {:category "above"
   :effect   "If the contained creature is a Construct, gain +10 maximum barrier against Psychic and Necrotic damage."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature is a Dragon, gain a bonus to your loot rolls equal to the contained gem's CR."
-  :tags     #{"wealth"}}
+  :tags     #{:wealth}}
  {:category "above"
   :effect   "If the contained creature is an Elemental, gain a bonus to elemental (acid, cold, fire, lightning, or thunder) damage equal to the gem's CR while the power is active."
-  :tags     #{"damage"}}
+  :tags     #{:damage}}
  {:category "above"
   :effect   "If the contained creature is a Fey, choose a Druid-exclusive spell of spell level equal to or lower than the gem's CR. You may cast this once per long rest. You may change the chosen spell on a long rest, or when replacing/upgrading the gem."
-  :tags     #{"magic"}}
+  :tags     #{:magic}}
  {:category "above"
   :effect   "If the contained creature is a Fiend, whenever this passive procs, another random passive from the same creature also procs. If it has only one, this has no effect."}
  {:category "above"
   :effect   "If the contained creature is Giant, while this power is active, your melee attacks can target two adjacent creatures when they would normally only be able to target one."
-  :tags     #{"damage"}}
+  :tags     #{:damage}}
  {:category "above"
   :effect   "If the contained creature is a Humanoid, roll another humanoid's passive at this CR. When the gem's power is activated, you can choose which passive is activated."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is a Monstrosity, gain +1 your ability score in which the contained creature has the highest score. If it has more than one highest score, you may choose which one this item grants +1 ability score for."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is an Ooze, creatures within 5 feet of you that hit you while this power is active must make a Constitution saving throw or becomes slowed until the start of their next turn."
-  :tags     #{"control"}}
+  :tags     #{:control}}
  {:category "above"
   :effect   "If the contained creature is a Plant, you become immune to disease and gain +10 maximum barrier against Poison damage."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature is an Undead, +15 to the gem's proc threshold while you are bloodied."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is evil, you and your minions have +1 global damage while the power is not active."
-  :tags     #{"damage"}}
+  :tags     #{:damage}}
  {:category "above"
   :effect   "If the contained creature is good, you and your minions have +1 AB while the power is active."
-  :tags     #{"accuracy"}}
+  :tags     #{:accuracy}}
  {:category "above"
   :effect   "If the contained creature has fewer than two eyes, gain blindsight with a distance equal to 10 * the creature's CR."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is larger than you, gain maximum hit points equal to your level."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature is smaller than you, gain temporary hit points equal to the gem's CR when the power is activated."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature has over 100 hit points, gain incoming healing equal to its CR."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature's AC is at least 20, +1 AC while this power is active."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
 
  {:category "below"
   :effect   "If %1$s is the creature's highest attribute, +2 maximum %1$s."
-  :tags     #{"utility"}
+  :tags     #{:utility}
   :randoms  [{:preset :ability-scores}]}
  {:category "below"
   :effect   "If the contained creature has multiattack, your basic maneuvers have a 50% chance to be done as a free action."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has any damage immunities, you have +2 damage with those damage types while the power is active."
-  :tags     #{"damage"}}
+  :tags     #{:damage}}
  {:category "below"
   :effect   "If the contained creature has both damage immunities and resistances, your barriers replenish half of their maximums at the end of each turn in combat while the power is active."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "below"
   :effect   "If the contained creature has any condition immunities, this power becomes active until the end of the round when one of those conditions is applied to you."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has any special reactions, you have one additional reaction while the power is active."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has any on death effects, you have one additional failed death save slot."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "below"
   :effect   "If the contained creature has any legendary resistances, you are considered to be proficient in all saving throws while power is active."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "below"
   :effect   "If the contained creature has any recharge abilities, the monster power activates when you score a natural critical hit."
-  :tags     #{"critical"}}
+  :tags     #{:critical}}
  {:category "below"
   :effect   "Once per long rest, if the contained creature has at least one legendary action, you may take an addition standard action on your turn while this power is active."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has Magic Resistance, +1 to saving throws against spells, regardless of if that was the chosen passive."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "below"
   :effect   "If the contained creature has spell slots or innate spellcasting, choose an amount of spells from its list equal to the gem's CR. You learn theses spells and may cast them using your own spell slots. You may change the chosen spells on a long rest, or when replacing/upgrading the gem."
-  :tags     #{"magic"}}
+  :tags     #{:magic}}
  {:category "below"
   :effect   "If the contained creature has any skill proficiencies, you may choose one of these skills to gain proficiency or an expertise die in. You may change the chosen skills on a long rest, or when replacing/upgrading the gem."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has any daily limited use special actions, you have a percent chance to gain the benefits of a long rest on completing a short rest equal to the gem's CR."
-  :tags     #{"utility" "survivability"}}
+  :tags     #{:utility :survivability}}
  {:category "below"
   :effect   "If the contained creature knows multiple languages, you learn the Tongues spell and may cast it once per long rest."
-  :tags     #{"magic"}}
+  :tags     #{:magic}}
  {:category "below"
   :effect   "If the contained creature has at least four passive traits, gain maximum hit points equal to the number of passive traits it has."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
 
  {:category "unconditional"
   :effect   "While not down, gain hit points equal to the contained creature's CR when its power is activated."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "unconditional"
   :effect   "Gain maximum hit points equal to the gem's CR."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "unconditional"
   :effect   "The contained gem's CR is considered to be one higher for the purposes of calculating its proc threshold."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "unconditional"
   :effect   "You have +6 maximum barrier while this power is active."
-  :tags     #{"survivability"}}
+  :tags     #{:survivability}}
  {:category "unconditional"
   :effect   "+5 proc threshold per consecutive round where the contained gem wasn't triggered, across any period of time."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "unconditional"
   :effect   "Instead of being random, this power is always active on even rounds and always inactive on odd rounds of combat."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "unconditional"
   :effect   "You have +1 to your DCs if this monster power hasn't been activated since your last long rest, and +1 AB while the power is active."
-  :tags     #{"accuracy"}}
+  :tags     #{:accuracy}}
  {:category "unconditional"
   :effect   "When this power is activated, you have a 20% chance to also trigger a full turn of the contained creature, starting on a space within 5 feet of you and controlled by you. The creature then dissipates."
-  :tags     #{"utility"}}
+  :tags     #{:utility}}
  {:category "unconditional"
   :effect   "Gems in this talisman offer twice as many options when rerolling the contained monster trait."
-  :tags     #{"wealth"}}
+  :tags     #{:wealth}}
  {:category "unconditional"
   :effect   "You gain access to all of this creature's passives. When the gem is activated, you may choose which passive power is activated."
-  :tags     #{"utility"}}]
+  :tags     #{:utility}}]
