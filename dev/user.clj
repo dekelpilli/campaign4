@@ -5,7 +5,6 @@
     [org.fversnel.dnddice.core :as d]
     [honey.sql :as hsql]
     [randy.core :as r]
-    [campaign4.core :as c]
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.db :as db]
@@ -13,6 +12,7 @@
     [campaign4.enchants :as e]
     [campaign4.encounters :as encounters]
     [campaign4.helmets :as helmets]
+    [campaign4.loot :as loot]
     [campaign4.paths :as paths]
     [campaign4.prep :as prep]
     [campaign4.prompting :as p]
@@ -25,7 +25,7 @@
     [campaign4.util :as u]
     [campaign4.vials :as vials])
   (:use
-    [campaign4.core]
+    [campaign4.loot]
     [campaign4.crafting]
     [campaign4.curios]
     [campaign4.db]

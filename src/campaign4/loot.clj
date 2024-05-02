@@ -1,4 +1,4 @@
-(ns campaign4.core
+(ns campaign4.loot
   (:gen-class)
   (:require
     [campaign4.analytics :as analytics]

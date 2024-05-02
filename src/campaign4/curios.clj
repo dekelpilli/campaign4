@@ -5,27 +5,45 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(def ^:private curios (u/load-data :curios))
+(defn- generate-curios []
+  (let [weightings (reduce
+                     (fn [acc {:keys [tags weighting]}]
+                       (reduce (fn [acc tag] (update acc tag (fnil #(+ % weighting) 0))) acc tags))
+                     {}
+                     e/enchants)
+        sum (reduce + 0 (vals weightings))]
+    (update-vals weightings #(/ sum %))))
 
-(defn- prep-curio [{:keys [type] :as curio} inversed?]
-  (if inversed?
-    (assoc curio :multiplier 0 :name (str "Inversed " type))
-    (assoc curio :name type)))
+(def ^:private positive-curios (generate-curios))
+
+(defn- ->inversed [s]
+  (str "Inversed " s))
 
 (defn new-curio []
-  (-> (r/sample curios)
-      (prep-curio (u/occurred? 1/3))
-      (select-keys [:name])))
+  (-> (keys positive-curios)
+      vec
+      r/sample
+      name
+      (cond-> (u/occurred? 1/3) ->inversed)))
+
+(def curios-by-name
+  (-> (reduce-kv (fn [acc tag multi]
+                   (assoc acc (name tag)
+                              {:multiplier multi
+                               :tag        tag}))
+                 (sorted-map-by #(compare %2 %1))
+                 positive-curios)
+      (into (map (juxt (comp ->inversed name)
+                       (fn [s] {:multiplier 0
+                                :type       (keyword s)})))
+            (keys positive-curios))))
 
 (defn use-curios []
   (u/when-let* [base-type (e/choose-base-type)
-                curios-used (let [curios-by-name (as-> (mapv #(prep-curio % false) curios) $
-                                                       (into $ (map #(prep-curio % true)) curios)
-                                                       (u/assoc-by :name $))]
-                              (some-> (p/>>input "Curios used (maximum 4):"
-                                                 curios-by-name
-                                                 :completer :comma-separated)
-                                      not-empty))]
+                curios-used (some-> (p/>>input "Curios used (maximum 4):"
+                                               curios-by-name
+                                               :completer :comma-separated)
+                                    not-empty)]
     (let [weightings (reduce
                        (fn [acc {:keys [multiplier type]}]
                          (if (zero? multiplier)
