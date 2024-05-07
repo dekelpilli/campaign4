@@ -1,6 +1,5 @@
 (ns campaign4.prep
   (:require
-    [campaign4.prompting :as p]
     [campaign4.util :as u]
     [clojure.core.match :refer [match]]
     [randy.core :as r]
@@ -42,86 +41,86 @@
                  (conj result (mapv pool indices))))
         result))))
 
-(defn- unordered-legal-selections [crs n lower upper]
-  (sequence (comp
-              (map (fn [crs] {:crs   crs
-                              :total (transduce (map cr-power) + crs)}))
-              (filter #(<= lower (:total %) upper)))
-            (combinations-without-replacement crs n)))
-
-(defn- select-multiplier []
-  (let [{:keys [multiplier]} (p/>>item "What is the target difficulty of this encounter?" encounter-difficulties
-                                       :sorted? false
-                                       :input-threshold Long/MAX_VALUE
-                                       :none-opt? false)]
-    (if (= :custom multiplier)
-      (some-> (p/>>input "What is the difficulty multiplier?") parse-double)
-      multiplier)))
-
-(defn- select-max-enemies []
-  (parse-long
-    (p/>>input "What is the maximum number of enemies that should be allowed for this encounter?"
-               nil
-               :default default-max-enemies)))
-
-(defn- select-players-amount []
-  (parse-long
-    (p/>>input "How many player characters are in this encounter?"
-               nil
-               :default default-players-amount)))
-
-;https://www.gmbinder.com/share/-N4m46K77hpMVnh7upYa
-(defn cr2-encounter []
-  (u/when-let* [level (some-> (p/>>input "What level are the players?") parse-long)]
-    (let [max-enemies (select-max-enemies)
-          players-amount (select-players-amount)
-          player-power (->> (dec level)
-                            (nth level-power)
-                            (* players-amount))
-          multiplier (select-multiplier)
-          target-monster-power (* multiplier player-power)
-          target-monster-power-lower (* 0.9 target-monster-power)
-          target-monster-power-upper (* 1.1 target-monster-power)
-          min-monster-power (/ target-monster-power-lower max-enemies)
-          crs (keep (fn [[cr power]]
-                      (when (and (>= power min-monster-power)
-                                 (<= power target-monster-power-upper))
-                        cr))
-                    cr-power)
-          cr-options (reduce (fn [acc n]
-                               (if-let [legal-cr-combos (-> (unordered-legal-selections
-                                                              crs n target-monster-power-lower target-monster-power-upper)
-                                                            not-empty)]
-                                 (assoc acc n legal-cr-combos)
-                                 (if (empty? acc)
-                                   acc
-                                   (reduced acc))))
-                             {}
-                             (range 1 (inc max-enemies)))]
-      {:target  target-monster-power
-       :options cr-options})))
-
-(defn- new-room-dimensions []
-  (vec (repeatedly 2 #(+ 4 (rng/next-int @r/default-rng 6)))))
-
-(defn- new-room-contents []
-  ((r/sample [#(format "Easy: %s mobs" (+ 2 (rng/next-int @r/default-rng 5)))
-              #(format "Medium: %s mobs" (+ 2 (rng/next-int @r/default-rng 4)))
-              #(format "Hard: %s mobs" (+ 4 (rng/next-int @r/default-rng 3)))
-              (constantly "Hard: 2 mobs")
-              (constantly "Puzzle/trap")])))
-
-(defn new-dungeon []
-  (loop [remaining 3
-         rooms []]
-    (if (pos? remaining)
-      (let [[x y] (new-room-dimensions)
-            new-room {:x x :y y :contents (new-room-contents)}
-            rooms (conj rooms new-room)]
-        (match [x y]
-               [9 9] (recur (inc remaining) rooms)
-               [9 _] (recur remaining rooms)
-               [_ 9] (recur remaining rooms)
-               [_ _] (recur (dec remaining) rooms)))
-      (as-> (new-room-dimensions) $
-            (conj rooms {:x (first $) :y (second $) :contents "Boss"})))))
+;(defn- unordered-legal-selections [crs n lower upper]
+;  (sequence (comp
+;              (map (fn [crs] {:crs   crs
+;                              :total (transduce (map cr-power) + crs)}))
+;              (filter #(<= lower (:total %) upper)))
+;            (combinations-without-replacement crs n)))
+;
+;(defn- select-multiplier []
+;  (let [{:keys [multiplier]} (p/>>item "What is the target difficulty of this encounter?" encounter-difficulties
+;                                       :sorted? false
+;                                       :input-threshold Long/MAX_VALUE
+;                                       :none-opt? false)]
+;    (if (= :custom multiplier)
+;      (some-> (p/>>input "What is the difficulty multiplier?") parse-double)
+;      multiplier)))
+;
+;(defn- select-max-enemies []
+;  (parse-long
+;    (p/>>input "What is the maximum number of enemies that should be allowed for this encounter?"
+;               nil
+;               :default default-max-enemies)))
+;
+;(defn- select-players-amount []
+;  (parse-long
+;    (p/>>input "How many player characters are in this encounter?"
+;               nil
+;               :default default-players-amount)))
+;
+;;https://www.gmbinder.com/share/-N4m46K77hpMVnh7upYa
+;(defn cr2-encounter []
+;  (u/when-let* [level (some-> (p/>>input "What level are the players?") parse-long)]
+;    (let [max-enemies (select-max-enemies)
+;          players-amount (select-players-amount)
+;          player-power (->> (dec level)
+;                            (nth level-power)
+;                            (* players-amount))
+;          multiplier (select-multiplier)
+;          target-monster-power (* multiplier player-power)
+;          target-monster-power-lower (* 0.9 target-monster-power)
+;          target-monster-power-upper (* 1.1 target-monster-power)
+;          min-monster-power (/ target-monster-power-lower max-enemies)
+;          crs (keep (fn [[cr power]]
+;                      (when (and (>= power min-monster-power)
+;                                 (<= power target-monster-power-upper))
+;                        cr))
+;                    cr-power)
+;          cr-options (reduce (fn [acc n]
+;                               (if-let [legal-cr-combos (-> (unordered-legal-selections
+;                                                              crs n target-monster-power-lower target-monster-power-upper)
+;                                                            not-empty)]
+;                                 (assoc acc n legal-cr-combos)
+;                                 (if (empty? acc)
+;                                   acc
+;                                   (reduced acc))))
+;                             {}
+;                             (range 1 (inc max-enemies)))]
+;      {:target  target-monster-power
+;       :options cr-options})))
+;
+;(defn- new-room-dimensions []
+;  (vec (repeatedly 2 #(+ 4 (rng/next-int @r/default-rng 6)))))
+;
+;(defn- new-room-contents []
+;  ((r/sample [#(format "Easy: %s mobs" (+ 2 (rng/next-int @r/default-rng 5)))
+;              #(format "Medium: %s mobs" (+ 2 (rng/next-int @r/default-rng 4)))
+;              #(format "Hard: %s mobs" (+ 4 (rng/next-int @r/default-rng 3)))
+;              (constantly "Hard: 2 mobs")
+;              (constantly "Puzzle/trap")])))
+;
+;(defn new-dungeon []
+;  (loop [remaining 3
+;         rooms []]
+;    (if (pos? remaining)
+;      (let [[x y] (new-room-dimensions)
+;            new-room {:x x :y y :contents (new-room-contents)}
+;            rooms (conj rooms new-room)]
+;        (match [x y]
+;               [9 9] (recur (inc remaining) rooms)
+;               [9 _] (recur remaining rooms)
+;               [_ 9] (recur remaining rooms)
+;               [_ _] (recur (dec remaining) rooms)))
+;      (as-> (new-room-dimensions) $
+;            (conj rooms {:x (first $) :y (second $) :contents "Boss"})))))

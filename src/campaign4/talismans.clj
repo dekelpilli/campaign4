@@ -1,7 +1,6 @@
 (ns campaign4.talismans
   (:require
     [campaign4.db :as db]
-    [campaign4.prompting :as p]
     [campaign4.randoms :as randoms]
     [campaign4.util :as u]
     [randy.core :as r]
@@ -42,7 +41,7 @@
                     :where  [:= :cr cr]})
       monsters->traits))
 
-(def ^:private cr->output (comp r/sample (memoize monster-traits-by-cr)))
+(def cr->output (comp r/sample (memoize monster-traits-by-cr)))
 
 (defn- locked->upgrades [^long locked]
   (if-let [upgrade-threshold (case locked
@@ -76,27 +75,22 @@
                    {:freqs (freqs c)
                     :avg   (avg c)}))))))
 
-(defn- cr []
-  (p/>>input "Gem CR:" (crs)))
+(defn sample-gems [cr amount]
+  (let [monster-traits (monster-traits-by-cr cr)]
+    (cond->> monster-traits
+             (> (count monster-traits) amount) (r/sample-without-replacement amount))))
 
-(defn sample-gems []
-  (u/when-let* [cr (cr)
-                amount (some-> (p/>>input "Amount of monster traits:") parse-long)]
-    (let [monster-traits (monster-traits-by-cr cr)]
-      (cond->> monster-traits
-               (> (count monster-traits) amount) (r/sample-without-replacement amount)))))
-
-(defn cr->gem []
+(defn cr->gem [cr]
   (some-> (cr) cr->output))
 
-(defn gem-by-monster-type []
-  (u/when-let* [cr (cr)
-                monsters (->> (db/execute! {:select [:*]
-                                            :from   [:monsters]
-                                            :where  [:= :cr cr]})
-                              (group-by :type)
-                              (p/>>item "Choose monster type:"))]
-    (-> monsters monsters->traits r/sample)))
+(defn gem-by-monster-type [cr monster-type]
+  (->> (db/execute! {:select [:*]
+                     :from   [:monsters]
+                     :where  [:and
+                              [:= :cr cr]
+                              [:= :type monster-type]]})
+       monsters->traits
+       r/sample))
 
 (defn new-talisman []
   (update-vals talisman-enchants-by-category

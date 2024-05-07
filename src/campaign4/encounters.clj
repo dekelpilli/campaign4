@@ -2,105 +2,101 @@
   (:require
     [campaign4.analytics :as analytics]
     [campaign4.helmets :as helmets]
-    [campaign4.prompting :as p]
     [campaign4.util :as u]
     [clojure.string :as str]
-    [randy.core :as r]
-    [randy.rng :as rng]))
+    [randy.core :as r]))
 
-(def ^:private extra-loot-threshold 13)
-(def ^:private extra-loot-step 2)
 (def ^:private races ["Aarakocra" "Aasimar" "Bugbear" "Centaur" "Changeling" "Dragonborn" "Dwarf" "Elf" "Firbolg"
                       "Genasi" "Gith" "Gnome" "Goblin" "Goliath" "Half-Elf" "Half-Orc" "Halfling" "Harengon" "Hobgoblin"
                       "Human" "Kalashtar" "Kenku" "Kobold" "Leonin" "Lizardfolk" "Loxodon" "Minotaur" "Orc" "Owlin"
                       "Satyr" "Shifter" "Tabaxi" "Tiefling" "Tortle" "Triton" "Vedalken" "Yuan-Ti Pureblood"])
 (def ^:private sexes ["female" "male"])
 (def ^:private weather-fns
-  (-> {:rain         {:rain         12
-                      :frigid       10
-                      :clear        10
-                      :snow         2
-                      :hail         2
-                      :fog          4
-                      :overcast     10
-                      :thunderstorm 6}
-       :clear        {:rain         8
-                      :clear        18
-                      :frigid       4
-                      :sweltering   16
-                      :fog          1
-                      :overcast     10
-                      :sandstorm    1
-                      :thunderstorm 1}
-       :frigid       {:rain         6
-                      :clear        4
-                      :frigid       8
-                      :snow         5
-                      :hail         6
-                      :fog          3
-                      :overcast     3
-                      :thunderstorm 2}
-       :sweltering   {:rain         2
-                      :clear        12
-                      :sweltering   15
-                      :overcast     4
-                      :thunderstorm 1
-                      :sandstorm    2}
-       :snow         {:rain         3
-                      :clear        4
-                      :frigid       6
-                      :snow         6
-                      :hail         5
-                      :fog          1
-                      :overcast     2
-                      :thunderstorm 1}
-       :hail         {:rain         6
-                      :clear        2
-                      :frigid       10
-                      :snow         3
-                      :hail         8
-                      :fog          3
-                      :overcast     6
-                      :thunderstorm 6}
-       :fog          {:rain         8
-                      :clear        2
-                      :frigid       8
-                      :sweltering   8
-                      :snow         1
-                      :hail         2
-                      :fog          8
-                      :overcast     10
-                      :thunderstorm 3}
-       :overcast     {:rain         10
-                      :clear        9
-                      :sweltering   6
-                      :frigid       8
-                      :hail         1
-                      :fog          7
-                      :overcast     15
-                      :thunderstorm 2}
-       :sandstorm    {:rain       1
-                      :clear      6
-                      :sweltering 12
-                      :fog        1
-                      :sandstorm  6
-                      :acid-rain  1}
-       :acid-rain    {:rain       1
-                      :sweltering 6
-                      :frigid     1
-                      :clear      2
-                      :overcast   4
-                      :sandstorm  2
-                      :acid-rain  3}
-       :thunderstorm {:rain         10
-                      :clear        4
-                      :sweltering   1
-                      :frigid       6
-                      :snow         2
-                      :hail         4
-                      :fog          2
-                      :overcast     8
-                      :thunderstorm 10}}
+  (-> {::rain         {::rain         12
+                       ::frigid       10
+                       ::clear        10
+                       ::snow         2
+                       ::hail         2
+                       ::fog          4
+                       ::overcast     10
+                       ::thunderstorm 6}
+       ::clear        {::rain         8
+                       ::clear        18
+                       ::frigid       4
+                       ::sweltering   16
+                       ::fog          1
+                       ::overcast     10
+                       ::sandstorm    1
+                       ::thunderstorm 1}
+       ::frigid       {::rain         6
+                       ::clear        4
+                       ::frigid       8
+                       ::snow         5
+                       ::hail         6
+                       ::fog          3
+                       ::overcast     3
+                       ::thunderstorm 2}
+       ::sweltering   {::rain         2
+                       ::clear        12
+                       ::sweltering   15
+                       ::overcast     4
+                       ::thunderstorm 1
+                       ::sandstorm    2}
+       ::snow         {::rain         3
+                       ::clear        4
+                       ::frigid       6
+                       ::snow         6
+                       ::hail         5
+                       ::fog          1
+                       ::overcast     2
+                       ::thunderstorm 1}
+       ::hail         {::rain         6
+                       ::clear        2
+                       ::frigid       10
+                       ::snow         3
+                       ::hail         8
+                       ::fog          3
+                       ::overcast     6
+                       ::thunderstorm 6}
+       ::fog          {::rain         8
+                       ::clear        2
+                       ::frigid       8
+                       ::sweltering   8
+                       ::snow         1
+                       ::hail         2
+                       ::fog          8
+                       ::overcast     10
+                       ::thunderstorm 3}
+       ::overcast     {::rain         10
+                       ::clear        9
+                       ::sweltering   6
+                       ::frigid       8
+                       ::hail         1
+                       ::fog          7
+                       ::overcast     15
+                       ::thunderstorm 2}
+       ::sandstorm    {::rain       1
+                       ::clear      6
+                       ::sweltering 12
+                       ::fog        1
+                       ::sandstorm  6
+                       ::acid-rain  1}
+       ::acid-rain    {::rain       1
+                       ::sweltering 6
+                       ::frigid     1
+                       ::clear      2
+                       ::overcast   4
+                       ::sandstorm  2
+                       ::acid-rain  3}
+       ::thunderstorm {::rain         10
+                       ::clear        4
+                       ::sweltering   1
+                       ::frigid       6
+                       ::snow         2
+                       ::hail         4
+                       ::fog          2
+                       ::overcast     8
+                       ::thunderstorm 10}}
       (update-vals r/alias-method-sampler)))
 
 (def ^:private generate-random-encounters
@@ -115,8 +111,8 @@
   (analytics/record! (str "encounter" type) 1)
   type)
 
-(defn -weather-freqs [n]
-  (when-let [initial-weather (p/>>item "What was the weather yesterday?" weather-fns)]
+(defn -weather-freqs [n last-weather]
+  (when-let [initial-weather (get weather-fns last-weather)]
     (loop [freqs {}
            weather-fn initial-weather
            n n]
@@ -127,17 +123,15 @@
                  (dec n)))
         freqs))))
 
-(defn pass-time [days]
-  (when-let [initial-weather (p/>>item "What was the weather yesterday?" (keys weather-fns))]
-    (analytics/record! "days:other" days)
-    (reduce (fn [weather _]
-              ((get weather-fns weather)))
-            initial-weather
-            (range days))))
+(defn pass-time [days initial-weather]
+  (analytics/record! "days:other" days)
+  (reduce (fn [weather _]
+            ((get weather-fns weather)))
+          initial-weather
+          (range days)))
 
-(defn travel [days]
-  (when-let [initial-weather-fn (p/>>item "What was the weather yesterday?" weather-fns)]
-    (analytics/record! "days:travel" days)
+(defn travel [days last-weather]
+  (when-let [initial-weather-fn (get weather-fns last-weather)]
     (loop [acc (sorted-map)
            previous-weather-fn initial-weather-fn
            [day & days] (range 1 (inc days))]
@@ -152,41 +146,6 @@
         (if (seq days)
           (recur acc (get weather-fns weather) days)
           acc)))))
-
-(defn- calculate-loot [difficulty investigations]
-  (let [extra-loot-sum (transduce (map (fn [s] (- (parse-long s) extra-loot-threshold))) + 0 investigations)
-        dungeon? (when-not (#{:mild :bruising} difficulty)
-                   (p/>>item "In a dungeon?" [true false] :none-opt? false))
-        base-loot (case difficulty
-                    (:mild :bruising) 0
-                    :bloody (if dungeon? 0 1)
-                    :brutal (if dungeon? 1 2)
-                    (:boss :oppressive) (if dungeon? 2 4)
-                    :overwhelming (if dungeon? 3 5)
-                    :crushing (if dungeon? 4 6)
-                    :devastating (if dungeon? 5 8))]
-    (->> (count investigations)
-         (* extra-loot-step)
-         (/ extra-loot-sum)
-         double
-         Math/round
-         (max 0)
-         (+ base-loot))))
-
-(defn encounter-rewards []
-  (u/when-let* [difficulty (p/>>item "Difficulty:" [:mild :bruising :bloody :brutal :oppressive :overwhelming :crushing :devastating :boss] :sorted? false)
-                investigations (some-> (p/>>input "List investigations:")
-                                       (str/split #","))]
-    {:xp   (case difficulty
-             :mild (+ 6 (rng/next-int @r/default-rng 2))
-             :bruising (+ 7 (rng/next-int @r/default-rng 2))
-             :bloody (+ 8 (rng/next-int @r/default-rng 2))
-             :brutal (+ 10 (rng/next-int @r/default-rng 3))
-             :oppressive (+ 13 (rng/next-int @r/default-rng 3))
-             (:boss :overwhelming) (+ 14 (rng/next-int @r/default-rng 3))
-             :crushing (+ 16 (rng/next-int @r/default-rng 3))
-             :devastating (+ 18 (rng/next-int @r/default-rng 3)))
-     :loot (calculate-loot difficulty investigations)}))
 
 (defn positive-encounter []
   {:race      (r/sample races)

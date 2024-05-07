@@ -1,14 +1,9 @@
 (ns campaign4.tarot
   (:require
-    [campaign4.db :as db]
     [campaign4.enchants :as e]
-    [campaign4.helmets :as helmets]
-    [campaign4.prompting :as p]
     [campaign4.relics :as relics]
     [campaign4.util :as u]
-    [clojure.set :as set]
-    [puget.printer :as puget]
-    [randy.core :as r]))
+    [clojure.set :as set]))
 
 (def ^:private suit-tags {:swords    #{"accuracy" "damage"}
                           :wands     #{"magic" "critical"}
@@ -18,10 +13,6 @@
 (def ^:private cards (->> (u/load-data :tarot-cards)
                           (u/assoc-by :name)))
 
-(defn lookup-card []
-  (-> (p/>>item "What is the Tarot card?" cards)
-      :effect))
-
 (defn- get-minimum-enchants [suit-tags num-mods base-type]
   (let [enchant-sampler (->> (e/valid-enchants base-type)
                              (filterv (fn [{:keys [tags]}]
@@ -30,31 +21,31 @@
                              u/weighted-sampler)]
     (repeatedly num-mods (comp e/prep-enchant enchant-sampler))))
 
-(defn add-tarot-enchants! []
-  (u/when-let* [suits (-> (p/>>distinct-items "What Suit exceeded the minimum?" (keys suit-tags))
-                          not-empty)
-                num-mods (-> (into {} (comp
-                                        (map (fn [suit] [suit
-                                                         (or (some-> (p/>>input (format "How any mods to add for '%s'?"
-                                                                                        (name suit)))
-                                                                     parse-long)
-                                                             0)]))
-                                        (filter second))
-                                   suits)
-                             not-empty)]
-    (let [{:keys [base-type] :as relic} (relics/choose-found-relic)
-          mods (mapcat (fn [[suit amount]]
-                         (get-minimum-enchants (get suit-tags suit) amount base-type))
-                       num-mods)]
-      (if relic
-        (do
-          (-> (update relic :start into mods)
-              (update :levels #(mapv (fn inject-relic-mods [level]
-                                       (update level :existing into mods))
-                                     %))
-              relics/update-relic!)
-          mods)
-        mods))))
+#_#_#_(defn add-tarot-enchants! []
+    (u/when-let* [suits (-> (p/>>distinct-items "What Suit exceeded the minimum?" (keys suit-tags))
+                            not-empty)
+                  num-mods (-> (into {} (comp
+                                          (map (fn [suit] [suit
+                                                           (or (some-> (p/>>input (format "How any mods to add for '%s'?"
+                                                                                          (name suit)))
+                                                                       parse-long)
+                                                               0)]))
+                                          (filter second))
+                                     suits)
+                               not-empty)]
+      (let [{:keys [base-type] :as relic} (relics/choose-found-relic)
+            mods (mapcat (fn [[suit amount]]
+                           (get-minimum-enchants (get suit-tags suit) amount base-type))
+                         num-mods)]
+        (if relic
+          (do
+            (-> (update relic :start into mods)
+                (update :levels #(mapv (fn inject-relic-mods [level]
+                                         (update level :existing into mods))
+                                       %))
+                relics/update-relic!)
+            mods)
+          mods))))
 
 (defn add-character-enchants []
   (u/when-let* [character-enchants (p/>>item "Character name:" helmets/character-enchants)

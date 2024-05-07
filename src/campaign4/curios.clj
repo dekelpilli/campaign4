@@ -4,6 +4,24 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
+;TODO use qualified keyword for curio types
+[::magic
+ ::utility
+ ::accuracy
+ ::control
+ ::wealth
+ ::critical
+ ::survivability
+ ::damage
+ ::negated-magic
+ ::negated-utility
+ ::negated-accuracy
+ ::negated-control
+ ::negated-wealth
+ ::negated-critical
+ ::negated-survivability
+ ::negated-damage]
+
 (defn- generate-curios [enchants]
   (let [weightings (reduce
                      (fn [acc {:keys [tags weighting]}]
@@ -15,15 +33,15 @@
 
 (def ^:private positive-curios (update-vals e/enchants-by-base generate-curios))
 
-(defn- ->inversed [s]
-  (str "Inversed " s))
+(defn- ->negated [s]
+  (str "negated " s))
 
 (defn new-curio []
   (-> (keys positive-curios)
       vec
       r/sample
       name
-      (cond-> (u/occurred? 1/3) ->inversed)))
+      (cond-> (u/occurred? 1/3) ->negated)))
 
 (def ^:private curios
   (update-vals
@@ -35,7 +53,7 @@
                                    :tag        tag}))
                      (sorted-map-by #(compare %2 %1))
                      curios)
-          (into (map (juxt (comp ->inversed name)
+          (into (map (juxt (comp ->negated name)
                            (fn [s] {:multiplier 0
                                     :tag        (keyword s)})))
                 (keys curios))))))

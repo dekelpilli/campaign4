@@ -24,7 +24,7 @@
  {:type    :curio
   :options ["Your next Curio result grants an additional curio."
             "Your next Curio result grants your choice of curios."
-            "Your next Curio result also grants the inverse of each curio granted."]}
+            "Your next Curio result also grants the negated version of each curio granted."]}
  {:type    :vial
   :options ["Your next Vial result grants an additional vial that can only be used on items."
             "Your next Vial result grants an additional vial that can only be used on characters."

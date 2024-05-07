@@ -381,18 +381,19 @@
                :tags   #{:utility}}
               {:effect "When you roll for initiative, randomise a monster passive as if the contained gem's CR limit was 2 higher. For the duration of the combat, your gem contains this monster passive instead of the one previously in the gem."
                :tags   #{:utility}}
-              {:effect "Your monster passive active status is not impacted by you being down."
+              {:effect "Your monster passive activates as normal while you are down."
                :tags   #{:utility}}
-              {:effect "This modifier can be replaced by amulet modifiers from slot 1."
+              {:effect "This modifier can be replaced by talisman modifiers from slot 1."
                :tags   #{:utility}}
-              {:effect "This modifier can be replaced by amulet modifiers from slot 2."
+              {:effect "This modifier can be replaced by talisman modifiers from slot 2."
                :tags   #{:utility}}
-              {:effect "Your gem proc threshold is always 0."}]}
+              {:effect "Your gem proc threshold is always 0."}
+              {:effect "Modifiers on this talisman cannot be locked."}]}
  {:name      "Power Addiction"
   :base-type "talisman"
   :effects   [{:effect "You have advantaged offence while you have an active monster power."
                :tags   #{:accuracy}}
-              {:effect "+3 incoming healing from creatures with an active monster power."
+              {:effect "For each ally within 60ft of you with an active monster power, including yourself, +5 incoming healing from creatures with an active monster power."
                :tags   #{:survivability}}
               {:effect "You have disadvantaged defence while you are up and don't have an active monster power."}]}
  {:name      "Template"

@@ -1,15 +1,11 @@
 (ns campaign4.enchants
   (:require
-    [campaign4.prompting :as p]
     [campaign4.randoms :as randoms]
     [campaign4.util :as u]
     [randy.core :as r]))
 
 (def ^:private new-base-type (r/alias-method-sampler {"weapon" 1
                                                       "armour" 2}))
-
-(defn choose-base-type []
-  (p/>>item "Base type:" ["weapon" "armour"]))
 
 (def enchants-by-base
   (->> (u/load-data :enchants)
