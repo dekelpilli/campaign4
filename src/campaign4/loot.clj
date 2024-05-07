@@ -12,6 +12,7 @@
     [campaign4.talismans :as talismans]
     [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
+    [campaign4.util :as u]
     [campaign4.vials :as vials]
     [puget.printer :as puget]
     [randy.core :as r]
@@ -35,7 +36,7 @@
     :action (fn enchanted-receptacle [] (e/random-enchanted 30))}
    {:name   "Receptacle + Curios"
     :omen   :curio
-    :action (fn curios-loot [] (repeatedly 4 curios/new-curio))}
+    :action (fn curios-loot [] (repeatedly 2 curios/new-curio))}
    {:name   "Vial"
     :omen   :vial
     :action vials/new-vial}
@@ -62,7 +63,7 @@
     :omen   :divine-dust
     :action (constantly "Divine Dust")}])
 
-(def loot-table
+(def loot-table ;TODO make distribution even, make overflow be in middle and grant curio + reroll?
   (let [width (->> (count loot-actions)
                    (/ 100))]
     (loop [min-roll (- 100 width)

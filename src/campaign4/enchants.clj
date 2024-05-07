@@ -11,21 +11,25 @@
 (defn choose-base-type []
   (p/>>item "Base type:" ["weapon" "armour"]))
 
-(def enchants
+(def enchants-by-base
   (->> (u/load-data :enchants)
-       (mapv (fn [{:keys [randoms] :as enchant}]
-               (-> (assoc enchant :weighting (randoms/randoms->weighting-multiplier randoms))
-                   (update :randoms randoms/randoms->fn))))))
-
-(def ^:private enchants-by-base
-  (reduce
-    (fn [acc {:keys [base-type] :as enchant}]
-      (if base-type
-        (update acc base-type conj enchant)
-        (update-vals acc #(conj % enchant))))
-    {"weapon" []
-     "armour" []}
-    enchants))
+       (mapv (fn [{:keys [randoms points upgradeable?]
+                   :or   {points       10
+                          upgradeable? true}
+                   :as   enchant}]
+               (-> (assoc enchant
+                     :weighting (randoms/randoms->weighting-multiplier randoms)
+                     :points points
+                     :upgradeable? upgradeable?)
+                   (cond-> upgradeable? (update :upgrade-points (fnil identity points)))
+                   (update :randoms randoms/randoms->fn))))
+       (reduce
+         (fn [acc {:keys [base-type] :as enchant}]
+           (if base-type
+             (update acc base-type conj enchant)
+             (update-vals acc #(conj % enchant))))
+         {"weapon" []
+          "armour" []})))
 
 (def enchants-fns (update-vals enchants-by-base u/weighted-sampler))
 

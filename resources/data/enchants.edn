@@ -2,10 +2,10 @@
   :points         30
   :tags           #{:magic}
   :upgrade-points 10}
- {:effect      "On your turn, your melee attacks have 10 feet of reach."
-  :points      30
-  :tags        #{:utility}
-  :upgradeable false}
+ {:effect       "On your turn, your melee attacks have 10 feet of reach."
+  :points       30
+  :tags         #{:utility}
+  :upgradeable? false}
  {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."
   :points 30
   :tags   #{:accuracy :control :magic}}
@@ -13,10 +13,10 @@
   :points  20
   :randoms [{:preset :ability-scores}]
   :tags    #{:utility}}
- {:effect      "When you cause a condition on a creature, +10% chance to replace that condition with debilitation."
-  :points      20
-  :tags        #{:control}
-  :upgradeable false}
+ {:effect       "When you cause a condition on a creature, +10% chance to replace that condition with debilitation."
+  :points       20
+  :tags         #{:control}
+  :upgradeable? false}
  {:effect "+1 to journey activity checks."
   :points 20
   :tags   #{:utility}}
@@ -37,9 +37,9 @@
   :tags   #{:magic}}
  {:effect "Recover 10% of your maximum class points (minimum 1) when you roll for initiative."
   :tags   #{:utility}}
- {:effect      "You have advantage on initiative rolls."
-  :tags        #{:utility}
-  :upgradeable false}
+ {:effect       "You have advantage on initiative rolls."
+  :tags         #{:utility}
+  :upgradeable? false}
  {:effect "No more than [once] per minute, when you score a critical hit, recover a 1st-level spell slot."
   :tags   #{:critical :magic}}
  {:effect "No more than [once] per minute, when you score a critical hit, recover 10% of your maximum class points (minimum 1)."
@@ -56,9 +56,9 @@
   :tags   #{:control}}
  {:effect "Once per long rest, as an action, you can make a Persuasion check contested by a non-hostile creature's Wisdom save. The creature must be within 60 feet of you. On a success, you can give them a command as per the Command spell."
   :tags   #{:control}}
- {:effect      "If you take damage exceeding 25% of your maximum hit points in one round and do not reach 0 hit points by its end, you may move up one place in the initiative tracker, if possible."
-  :tags        #{:utility}
-  :upgradeable false}
+ {:effect       "If you take damage exceeding 25% of your maximum hit points in one round and do not reach 0 hit points by its end, you may move up one place in the initiative tracker, if possible."
+  :tags         #{:utility}
+  :upgradeable? false}
  {:effect "Once per long rest, when you need make an attack roll, ability check, or saving throw, you can use your reaction to replace it with a 50% chance to critically succeed and 50% chance to to critically fail."
   :tags   #{:critical :survivability :utility}}
  {:effect "You have [1] additional first level spell slot if you already have at least one."
@@ -69,15 +69,15 @@
   :tags    #{:utility}}
  {:effect "Creatures that have hit you with a critical hit in the last minute have -[1]AB."
   :tags   #{:control}}
- {:effect      "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."
-  :tags        #{:control :critical}
-  :upgradeable false}
- {:effect      "You may take an additional action the end of an action where you landed a killing blow with a critical hit."
-  :tags        #{:critical :utility}
-  :upgradeable false}
- {:effect      "First wearer chooses a language in which this item grants proficiency."
-  :tags        #{:utility}
-  :upgradeable false}
+ {:effect       "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."
+  :tags         #{:control :critical}
+  :upgradeable? false}
+ {:effect       "You may take an additional action the end of an action where you landed a killing blow with a critical hit."
+  :tags         #{:critical :utility}
+  :upgradeable? false}
+ {:effect       "First wearer chooses a language in which this item grants proficiency."
+  :tags         #{:utility}
+  :upgradeable? false}
  {:effect "+2 passive perception while asleep."
   :tags   #{:utility}}
  {:effect "+5 feet speed in all of your available speed types."
@@ -96,9 +96,9 @@
   :tags   #{:utility}}
  {:effect "+10ft swimming speed, and you can breath under water."
   :tags   #{:utility}}
- {:effect      "You can jump without a run-up as if you had taken a run-up."
-  :tags        #{:utility}
-  :upgradeable false}
+ {:effect       "You can jump without a run-up as if you had taken a run-up."
+  :tags         #{:utility}
+  :upgradeable? false}
  {:effect  "+1 expertise die with %s."
   :randoms [{:preset :skills}]
   :tags    #{:utility}}
@@ -127,9 +127,9 @@
   :tags   #{:magic}}
  {:effect "Once per long rest, when rolling a natural 1 on a d20, you may reroll."
   :tags   #{:utility}}
- {:effect      "You have resistance to all damage while affected by the benefits of the Dodge action."
-  :tags        #{:survivability}
-  :upgradeable false}
+ {:effect       "You have resistance to all damage while affected by the benefits of the Dodge action."
+  :tags         #{:survivability}
+  :upgradeable? false}
  {:effect "+1 damage to melee and touch attacks."
   :tags   #{:damage}}
  {:effect "[Once] per short rest, recover a 1st-level spell slot on Killing Blow."
@@ -153,20 +153,20 @@
   :tags   #{:accuracy}}
  {:effect "+[1] to initiative rolls when at least one of the enemies you can see is of size Large or greater."
   :tags   #{:utility}}
- {:effect      "Your critical hits with non-lethal weapons are also non-lethal."
-  :tags        #{:critical :utility}
-  :upgradeable false}
+ {:effect       "Your critical hits with non-lethal weapons are also non-lethal."
+  :tags         #{:critical :utility}
+  :upgradeable? false}
  {:effect "10% chance to refund the spell slots used for spells cast outside of your turn."
   :tags   #{:magic}}
  {:effect "Regain 2 hits points when you, or allies within [5] feet of you, take a critical hit and remain conscious."
   :tags   #{:survivability}}
- {:effect      "Armour can no longer cause your Stealth checks to be made with disadvantage."
-  :tags        #{:utility}
-  :upgradeable false}
- {:effect      "You may ignore the Heavy trait on weapons."
-  :points      5
-  :tags        #{:utility}
-  :upgradeable false}
+ {:effect       "Armour can no longer cause your Stealth checks to be made with disadvantage."
+  :tags         #{:utility}
+  :upgradeable? false}
+ {:effect       "You may ignore the Heavy trait on weapons."
+  :points       5
+  :tags         #{:utility}
+  :upgradeable? false}
  {:effect "You cannot be deafened."
   :points 5
   :tags   #{:utility}}
@@ -188,10 +188,10 @@
   :randoms   [{:preset :ability-scores
                :type   :common}]
   :tags      #{:survivability}}
- {:base-type   "armour"
-  :effect      "Stone's Endurance (if you already have it, you get another use per long/short rest) (Reaction for 1d12+CON reduced damage taken when you take damage)."
-  :tags        #{:survivability}
-  :upgradeable false}
+ {:base-type    "armour"
+  :effect       "Stone's Endurance (if you already have it, you get another use per long/short rest) (Reaction for 1d12+CON reduced damage taken when you take damage)."
+  :tags         #{:survivability}
+  :upgradeable? false}
  {:base-type "armour"
   :effect    "Gain maximum physical barrier equal to the CR of your highest CR active minion."
   :tags      #{:survivability}}
@@ -212,14 +212,14 @@
  {:base-type "armour"
   :effect    "Once per round, when you take damage from a melee or touch attack, the attacker takes true damage equal to half your level, rounded down."
   :tags      #{:damage}}
- {:base-type   "armour"
-  :effect      "Creatures that have hit you with an opportunity attack in the last minute have disadvantage on opportunity attacks."
-  :tags        #{:control}
-  :upgradeable false}
- {:base-type   "armour"
-  :effect      "If you take damage exceeding 25% of your maximum hit points in one turn and do not reach 0 hit points by its end, heal hit points equal to your level."
-  :tags        #{:survivability}
-  :upgradeable false}
+ {:base-type    "armour"
+  :effect       "Creatures that have hit you with an opportunity attack in the last minute have disadvantage on opportunity attacks."
+  :tags         #{:control}
+  :upgradeable? false}
+ {:base-type    "armour"
+  :effect       "If you take damage exceeding 25% of your maximum hit points in one turn and do not reach 0 hit points by its end, heal hit points equal to your level."
+  :tags         #{:survivability}
+  :upgradeable? false}
  {:base-type "armour"
   :effect    "+1 to death saves."
   :tags      #{:survivability}}
@@ -241,17 +241,17 @@
  {:base-type "armour"
   :effect    "+25% chance to ignore bonus damage from incoming critical hits."
   :tags      #{:survivability}}
- {:base-type   "armour"
-  :effect      "You may ignore the Heavy trait on armour."
-  :tags        #{:utility}
-  :upgradeable false}
+ {:base-type    "armour"
+  :effect       "You may ignore the Heavy trait on armour."
+  :tags         #{:utility}
+  :upgradeable? false}
  {:base-type "armour"
   :effect    "+[2:2] maximum physical barrier."
   :tags      #{:survivability}}
- {:base-type   "armour"
-  :effect      "+[2:2] maximum non-physical barrier."
-  :tags        #{:survivability}
-  :upgradeable false}
+ {:base-type    "armour"
+  :effect       "+[2:2] maximum non-physical barrier."
+  :tags         #{:survivability}
+  :upgradeable? false}
  {:base-type "armour"
   :effect    "+1 to Dexterity saving throws if wearing a light or unarmoured body armour and not using a shield."
   :tags      #{:survivability}}
@@ -282,11 +282,11 @@
   :points    30
   :randoms   [{:preset :weapon-categories}]
   :tags      #{:accuracy}}
- {:base-type   "weapon"
-  :effect      "Your base damage dice are automatically rolled at their maximum on critical hits."
-  :points      30
-  :tags        #{:critical}
-  :upgradeable false}
+ {:base-type    "weapon"
+  :effect       "Your base damage dice are automatically rolled at their maximum on critical hits."
+  :points       30
+  :tags         #{:critical}
+  :upgradeable? false}
  {:base-type      "weapon"
   :effect         "+[1d4] %s damage with weapon attacks."
   :points         30
@@ -294,11 +294,11 @@
                     :preset :damage-types}]
   :tags           #{:damage}
   :upgrade-points 10}
- {:base-type   "weapon"
-  :effect      "While you are wielding a Reach weapon, enemies are considered to enter and leave your reach at 5 feet, as well as at your regular reach."
-  :points      25
-  :tags        #{:utility}
-  :upgradeable false}
+ {:base-type    "weapon"
+  :effect       "While you are wielding a Reach weapon, enemies are considered to enter and leave your reach at 5 feet, as well as at your regular reach."
+  :points       25
+  :tags         #{:utility}
+  :upgradeable? false}
  {:base-type      "weapon"
   :effect         "+[2:1] %s damage."
   :points         20
@@ -350,10 +350,10 @@
  {:base-type "weapon"
   :effect    "+1 global damage."
   :tags      #{:damage}}
- {:base-type   "weapon"
-  :effect      "When you hit a creature with a weapon attack, they are silenced until the end of their next turn."
-  :tags        #{:control}
-  :upgradeable false}
+ {:base-type    "weapon"
+  :effect       "When you hit a creature with a weapon attack, they are silenced until the end of their next turn."
+  :tags         #{:control}
+  :upgradeable? false}
  {:base-type "weapon"
   :effect    "+1 damage with %s."
   :randoms   [{:factor 2
@@ -399,27 +399,27 @@
  {:base-type "weapon"
   :effect    "+1 damage against marked enemies."
   :tags      #{:damage}}
- {:base-type   "weapon"
-  :effect      "Your ranged weapon attacks do not suffer disadvantage from enemies being within 5 feet of you if the target of the attack is the only creature imposing disadvantage on you."
-  :tags        #{:accuracy}
-  :upgradeable false}
+ {:base-type    "weapon"
+  :effect       "Your ranged weapon attacks do not suffer disadvantage from enemies being within 5 feet of you if the target of the attack is the only creature imposing disadvantage on you."
+  :tags         #{:accuracy}
+  :upgradeable? false}
  {:base-type "weapon"
   :effect    "+[2:1] damage with attacks that are at least your third during that turn."
   :tags      #{:damage}}
- {:base-type   "weapon"
-  :effect      "If all creatures targeted by a spell you cast received a natural critical hit, the spell slot used for that cast is refunded."
-  :tags        #{:critical :magic}
-  :upgradeable false}
+ {:base-type    "weapon"
+  :effect       "If all creatures targeted by a spell you cast received a natural critical hit, the spell slot used for that cast is refunded."
+  :tags         #{:critical :magic}
+  :upgradeable? false}
  {:base-type "weapon"
   :effect    "+2 damage with attacks with weapons other than this one while you are dual wielding."
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "You and your minions have +3 damage with critical hits."
   :tags      #{:critical}}
- {:base-type   "weapon"
-  :effect      "Damage from your critical hits ignores barriers, resistances, and immunities."
-  :tags        #{:critical}
-  :upgradeable false}
+ {:base-type    "weapon"
+  :effect       "Damage from your critical hits ignores barriers, resistances, and immunities."
+  :tags         #{:critical}
+  :upgradeable? false}
  {:base-type "weapon"
   :effect    "When you hit a temporarily invisible creature with a weapon attack, they become visible."
   :tags      #{:utility}}
