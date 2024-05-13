@@ -1,8 +1,8 @@
 (ns campaign4.paths
   (:require
     [campaign4.db :as db]
-    [campaign4.helmets :as helmets]
-    [campaign4.util :as u]))
+    [campaign4.util :as u]
+    [clojure.string :as str]))
 
 (def divinity-paths (->> (u/load-data :divinity-paths)
                          (u/assoc-by :name)))
@@ -12,24 +12,32 @@
        (mapv (fn [{:keys [name info]}]
                (format "%s: %s" name info)))))
 
-;(defn- new-path-progress [character]
-;  (when-let [{:keys [name]} (p/>>item "New path:" divinity-paths)]
-;    {:progress  0
-;     :path      name
-;     :character character}))
-;
-;(defn use-dust []
-;  (u/when-let* [character (p/>>item "Character:" (keys helmets/character-enchants))
-;                {:keys [path progress] :as current-path} (-> (db/execute! {:select [:*]
-;                                                                           :from   [:divinity-progress]
-;                                                                           :where  [:and
-;                                                                                    [:= :character character]
-;                                                                                    [:< :progress 5]]})
-;                                                             first
-;                                                             (or (new-path-progress character)))]
-;    (db/execute! {:insert-into   :divinity-progress
-;                  :values        [(update current-path :progress inc)]
-;                  :on-conflict   [:character :path]
-;                  :do-update-set {:progress :EXCLUDED.progress}})
-;    {:modifier (get-in divinity-paths [path :levels progress])
-;     :tier     (inc progress)}))
+(defn- fetch-incomplete-path [character]
+  (-> (db/execute! {:select [:*]
+                    :from   [:divinity-progress]
+                    :where  [:and
+                             [:= :character character]
+                             [:< :progress 5]]})
+      first))
+
+(defn new-path-progress [character divinity-path]
+  (when-let [character (when (u/characters character)
+                         (name character))]
+    (when-not (fetch-incomplete-path character)
+      {:insert-into :divinity-progress
+       :values      [{:progress  1
+                      :path      (->> (str/split divinity-path #" ")
+                                      (mapv str/capitalize)
+                                      (str/join \space))
+                      :character character}]})))
+
+(defn progress-path [character]
+  (when-let [{:keys [path progress]
+              :as   current-path} (when (u/characters character)
+                                    (fetch-incomplete-path (name character)))]
+    (db/execute! {:insert-into   :divinity-progress
+                  :values        [(update current-path :progress inc)]
+                  :on-conflict   [:character :path]
+                  :do-update-set {:progress :EXCLUDED.progress}})
+    {:modifier (get-in divinity-paths [path :levels progress])
+     :tier     (inc progress)}))

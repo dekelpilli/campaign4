@@ -7,6 +7,29 @@
 (def ^:private new-base-type (r/alias-method-sampler {"weapon" 1
                                                       "armour" 2}))
 
+(def ^:private _tags
+  [::accuracy
+   ::control
+   ::critical
+   ::damage
+   ::magic
+   ::survivability
+   ::utility
+   ::wealth
+   ::negated-accuracy
+   ::negated-control
+   ::negated-critical
+   ::negated-damage
+   ::negated-magic
+   ::negated-survivability
+   ::negated-utility
+   ::negated-wealth])
+
+(def ^:private enchants-ns-name (str *ns*))
+
+(defn qualify-tag [?kw]
+  (keyword enchants-ns-name (name ?kw)))
+
 (def enchants-by-base
   (->> (u/load-data :enchants)
        (mapv (fn [{:keys [randoms points upgradeable?]

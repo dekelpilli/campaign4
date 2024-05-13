@@ -25,18 +25,18 @@ You can use divinity dust to progress your progress in a divinity path you have 
 Can only move mods on weapons to weapons, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
 
 ### Enchant rules
-- The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire).
-- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 8d6 -> 5d6 + 1d8).
+- The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire)
+- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 8d6 -> 5d6 + 1d8)
 
 ### Rings
 - Max number of ring points used = char level + prof bonus
-- Sacrifice: Smash n rings together (n > 1) to get a choice of 1 from n unique new rings that can't be of the same type as any of the inputs.
-- Synergy rings = rings whose name starts with "The" = rings whose modifier interacts with other rings.
+- Sacrifice: Smash n rings together (n > 1) to get a choice of 1 from n unique new rings that can't be of the same type as any of the inputs
+- Synergy rings = rings whose name starts with "The" = rings whose modifier interacts with other rings
 
 ### Uniques
 - Unique items are, lore-wise, failed attempts creating relics, or at replicating items from myths/folk stories
 - Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level
-- Unique receptacles can be smashed into each other to generate a new unique item receptacle. The resulting item cannot be of the same type as the generated ones.
+- Unique receptacles can be smashed into each other to generate a new unique item receptacle. The resulting item cannot be of the same type as the ones used to generate it
 
 ### Relics
 Relics are equipment that can be levelled up with gold. Each relic starts at level 1, and can be levelled up 5 times (up to level 6). Each level costs 100gp. Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). Any relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. When relics are sold, all gold invested in them will be refunded 100%.

@@ -1,7 +1,6 @@
 (ns campaign4.encounters
   (:require
     [campaign4.analytics :as analytics]
-    [campaign4.helmets :as helmets]
     [campaign4.util :as u]
     [clojure.string :as str]
     [randy.core :as r]))
@@ -139,8 +138,7 @@
                                (u/occurred? 0.1) (conj :positive))
             weather (previous-weather-fn)
             acc (assoc acc day {:weather weather
-                                :order   (->> (keys helmets/character-enchants)
-                                              (into encounters)
+                                :order   (->> (into encounters (map name) u/characters)
                                               r/shuffle)})]
         (run! add-encounter! encounters)
         (if (seq days)

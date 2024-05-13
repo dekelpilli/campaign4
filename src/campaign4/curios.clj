@@ -4,24 +4,6 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
-;TODO use qualified keyword for curio types
-[::magic
- ::utility
- ::accuracy
- ::control
- ::wealth
- ::critical
- ::survivability
- ::damage
- ::negated-magic
- ::negated-utility
- ::negated-accuracy
- ::negated-control
- ::negated-wealth
- ::negated-critical
- ::negated-survivability
- ::negated-damage]
-
 (defn- generate-curios [enchants]
   (let [weightings (reduce
                      (fn [acc {:keys [tags weighting]}]
@@ -34,13 +16,10 @@
 (def ^:private positive-curios (update-vals e/enchants-by-base generate-curios))
 
 (defn- ->negated [s]
-  (str "negated " s))
+  (str "negated-" s))
 
 (defn new-curio []
-  (-> (keys positive-curios)
-      vec
-      r/sample
-      name
+  (-> (r/sample ["accuracy" "control" "critical" "damage" "magic" "survivability" "utility" "wealth"])
       (cond-> (u/occurred? 1/3) ->negated)))
 
 (def ^:private curios
@@ -48,12 +27,12 @@
     positive-curios
     (fn [curios]
       (-> (reduce-kv (fn [acc tag multi]
-                       (assoc acc (name tag)
+                       (assoc acc (e/qualify-tag tag)
                                   {:multiplier multi
                                    :tag        tag}))
                      (sorted-map-by #(compare %2 %1))
                      curios)
-          (into (map (juxt (comp ->negated name)
+          (into (map (juxt (comp e/qualify-tag ->negated name)
                            (fn [s] {:multiplier 0
                                     :tag        (keyword s)})))
                 (keys curios))))))
@@ -85,5 +64,5 @@
                                        new-weighting (* (or weighting-multi 1) weighting)]
                                    (assoc e :weighting (or new-weighting weighting)))))
                          u/weighted-sampler)]
-    (e/add-enchants-totalling (* 20 (count curio-names))
+    (e/add-enchants-totalling (* 20 (count curio-names)) ;TODO could use more testing before deciding on 2x20 or 4x10. Maybe 4x10 and lower weightings?
                               enchants-fn)))

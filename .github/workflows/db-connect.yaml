@@ -1,0 +1,20 @@
+name: db-connect
+on:
+  schedule:
+    - cron: '0 0 0 0 1,6'
+  workflow_dispatch:
+
+jobs:
+  db-connect:
+    name: db-connect
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends postgresql-client
+      - run: >
+          psql --host=${{ secrets.DB_HOST }}
+          --port=${{ secrets.DB_PORT }}
+          --username=${{ secrets.DB_USER }}
+          --dbname=${{ secrets.DB_NAME }}
+          --list
+        env:
+          PGPASSWORD: ${{ secrets.DB_PASS }}

@@ -68,7 +68,7 @@
               {:effect "You cannot cast spells."}
               {:effect "You can wear a maximum of 1 relic."}]}
  {:name      "Garb of the Unhinged"
-  :base-type "body"
+  :base-type "armour"
   :effects   [{:effect "+2 to all ability scores."
                :tags   #{:utility}}
               {:effect "Your critical hit range is 13-20 while you are not mad."
@@ -311,10 +311,6 @@
               {:effect "+1 AC against weapon attacks."
                :tags   #{:survivability}}
               {:effect "Your speed is reduced by 10 feet while you are not wearing any items with wealth modifiers."}]}
- {:name      "Diomedian Cunning"
-  :base-type "armour"
-  :effects   [{:effect "This armour sells for triple the regular price."
-               :tags   #{:wealth}}]}
  {:name      "Force Slinger"
   :base-type "weapon"
   :effects   [{:effect "When you make an attack with a weapon, you may sacrifice a spell slot to add {spell slot level}d4 to the attack roll and damage of the attack."

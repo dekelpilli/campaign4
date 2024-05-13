@@ -18,3 +18,10 @@
 (defn new-unique-armour []
   (-> (filterv (comp #{"armour"} :base-type) uniques)
       r/sample))
+
+(comment
+  (update-vals
+    (group-by
+      :base-type
+      uniques)
+    count))

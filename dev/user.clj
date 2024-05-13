@@ -39,8 +39,11 @@
 
   (curios/use-curios
     "armour"
-    [::curios/survivability
-     ::curios/negated-damage])
+    [::e/survivability
+     ::e/negated-damage])
+
+  (paths/progress-path ::u/nailo)
+  (paths/new-path-progress ::u/nailo "subjective truth")
 
   (rings/sacrifice
     ["The Lone Wolf"

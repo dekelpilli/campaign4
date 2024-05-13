@@ -19,6 +19,8 @@
        read
        (filterv #(:enabled? % true))))
 
+(def characters #{::nailo})
+
 (defn jsonb-lift [x]
   (when x [:lift x]))
 
