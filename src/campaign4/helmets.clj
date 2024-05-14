@@ -5,7 +5,7 @@
 
 (def ^:private mod-mending-result (r/alias-method-sampler {:upgrade 3 :remove 3 :nothing 4}))
 
-(def ^:private character-enchants
+(def character-enchants
   (as-> (u/load-data :character-enchants) $
         (group-by :character $)
         (update-vals $ #(mapv (fn [e] (-> e

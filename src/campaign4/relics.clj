@@ -3,7 +3,6 @@
     [campaign4.db :as db]
     [campaign4.enchants :as e]
     [campaign4.util :as u]
-    [puget.printer :as puget]
     [randy.core :as r]))
 
 ;(defn choose-found-relic []

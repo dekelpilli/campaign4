@@ -6,7 +6,7 @@
     [randy.core :as r]
     [randy.rng :as rng]))
 
-(def ^:private talisman-enchants-by-category
+(def talisman-enchants-by-category
   (->> (u/load-data :talisman-enchants)
        (reduce
          (fn [acc {:keys [category] :as e}]

@@ -28,6 +28,14 @@
   (-> (str n \d x)
       d/roll))
 
+(defn choose-by-name [name coll]
+  (let [pattern (re-pattern (str "(?i).*" name ".*"))]
+    (some #(when (re-matches pattern (:name %)) %) coll)))
+
+(defn shorthand-name [name coll]
+  (-> (choose-by-name name coll)
+      :name))
+
 (comment
   (analytics/set-session! 1)
 
@@ -45,12 +53,16 @@
   (paths/progress-path ::u/nailo)
   (paths/new-path-progress ::u/nailo "subjective truth")
 
-  (rings/sacrifice
-    ["The Lone Wolf"
-     "Restless"])
+  (->> ["lone"
+        "Restless"]
+       (mapv #(shorthand-name % rings/rings))
+       (rings/sacrifice 0))
 
   (uniques/new-unique-armour)
   (uniques/new-unique-weapon)
+  (uniques/at-level *1 1)
+  (uniques/at-level *2 2)
+  (choose-by-name "pashupa" uniques/uniques)
 
   (roll 10 4)
   (cp)

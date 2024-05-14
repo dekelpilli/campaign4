@@ -7,6 +7,7 @@
 - Gems can be upgraded (+1 CR) by merging two gems of the same CR. On upgrade, the existing passive on either gems can be kept, or a choice from 3 new passives from the new CR.
 - Monsters can be swapped between gems freely, or simply removed, as long as gems never contain a passive from a monster above the CR limit.
 - Talismans drop with enchants with pre-defined "slots".
+
 [//]: # (TODO - do locks add much? diminishing chance to add mods beyond 3?)
 - Talismans can be fed into other talismans. When this is done, choose one enchant from the talisman to be destroyed, and replace the enchant on the other talisman that's in the same slot. After this is done, a random non-locked enchant on the talisman is locked, meaning it cannot be replaced again.
 - Talismans can be sold for a gem (base CR=2, with a chance for higher CRs based on # of locked mods on talisman)
@@ -26,7 +27,7 @@ Can only move mods on weapons to weapons, and mods on armours to armours. Recept
 
 ### Enchant rules
 - The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire)
-- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 8d6 -> 5d6 + 1d8)
+- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 6d6 -> 5d6 + 1d8)
 
 ### Rings
 - Max number of ring points used = char level + prof bonus

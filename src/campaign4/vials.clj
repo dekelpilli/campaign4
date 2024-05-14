@@ -4,7 +4,7 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(def ^:private vials
+(def vials
   (->> (u/load-data :vials)
        (mapv #(update % :randoms randoms/randoms->fn))))
 

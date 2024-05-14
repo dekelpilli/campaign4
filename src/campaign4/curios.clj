@@ -13,7 +13,7 @@
         sum (reduce + 0 (vals weightings))]
     (update-vals weightings #(/ sum %))))
 
-(def ^:private positive-curios (update-vals e/enchants-by-base generate-curios))
+(def positive-curios (update-vals e/enchants-by-base generate-curios))
 
 (defn- ->negated [s]
   (str "negated-" s))
@@ -22,7 +22,7 @@
   (-> (r/sample ["accuracy" "control" "critical" "damage" "magic" "survivability" "utility" "wealth"])
       (cond-> (u/occurred? 1/3) ->negated)))
 
-(def ^:private curios
+(def curios
   (update-vals
     positive-curios
     (fn [curios]
