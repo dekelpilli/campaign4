@@ -5,9 +5,11 @@
     [clojure.edn :as edn]
     [clojure.java.io :as io]
     [clojure.pprint :as pprint]
+    [clojure.string :as str]
     [jsonista.core :as j])
   (:import
-    (java.io File)))
+    (java.io File)
+    (org.ahocorasick.trie Trie)))
 
 (defn- write-data! [path coll]
   (with-open [writer (io/writer path)]
@@ -110,3 +112,64 @@
 
 (defn backup-data! []
   (run! backup-table! [:divinity-progress :relics :analytics]))
+
+(defn reformat-race-powers! []
+  (let [races (j/read-value
+                (File. "5et/races.json")
+                j/keyword-keys-object-mapper)
+        skip-power-type? #{"Speed" "Age" "Size" "Languages" "Language" "Creature Type" "Alignment" "Cantrip"
+                           "Elf Weapon Training" "Amphibious" "Powerful Build" "Sunlight Sensitivity" "Extra Language"
+                           "Khenra Weapon Training" "Drow Weapon Training"
+                           "Darkvision"
+                           "Keen Senses"
+                           "Fey Ancestry"
+                           "Trance"
+                           "Superior Darkvision"
+                           "Flight"}
+        trie (-> (Trie/builder)
+                 (.addKeywords ["underwater"
+                                "take a long rest"
+                                "you are proficient in "
+                                "natural weapon"
+                                "natural melee"
+                                "unarmed"
+                                "} cantrip"
+                                "level=0"])
+                 (.build))
+        keep-power? (fn [p]
+                      (and (map? p)
+                           (-> p :name skip-power-type? not)
+                           (not (some #(seq (.parseText trie (str/lower-case %))) (:entries p)))))
+        race-powers (reduce
+                      (fn [acc {:keys [name source entries]}]
+                        (reduce
+                          (fn [acc power]
+                            (if (keep-power? power)
+                              (as-> (assoc power :race name :book source) e
+                                    (dissoc e :type)
+                                    (conj acc e))
+                              acc))
+                          acc
+                          entries))
+                      []
+                      (:race races))
+        powers (reduce
+                 (fn [acc {:keys [raceName name source entries] :as sr}]
+                   (if (and (some? name)
+                            (not (str/includes? name ";")))
+                     (reduce
+                       (fn [acc power]
+                         (if (keep-power? power)
+                           (as-> (assoc power :race raceName :subrace name :book source) e
+                                 (dissoc e :type)
+                                 (conj acc e))
+                           acc))
+                       acc
+                       entries)
+                     acc))
+                 race-powers
+                 (:subrace races))]
+    (with-open [writer (-> (File. "5et/generated/race-powers.edn")
+                           io/writer)]
+      (pprint/pprint powers writer))
+    (count powers)))
