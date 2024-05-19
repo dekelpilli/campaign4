@@ -49,7 +49,7 @@
                :tags   #{:damage}}
               {:effect "Creatures you are grappling are considered to be restrained."
                :tags   #{:control}}
-              {:effect "You are considered to be restrained while you are grappling a creature."}
+              {:effect "You are restrained while you are grappling a creature."}
               {:effect "As a reaction on your turn, when you attempt a basic maneuver and the target succeeds on its save, you may immediately make a melee attack against the original target."
                :levels [:skip
                         :keep]
@@ -61,16 +61,16 @@
  {:name      "Garb of the Divine"
   :base-type "armour"
   :mods      [{:effect "You gain Divinity until the end of your next turn when you hit a creature with an attack while you do not have Divinity."}
-              {:effect "If you have at least 20 intelligence, +10 fire, radiant, cold, and lightning damage while you have Divinity."
+              {:effect "If you have at least 20 wisdom, +10 fire, radiant, cold, and lightning damage while you have Divinity."
                :tags   #{:damage}}
-              {:effect "If you have at least 20 intelligence, you are immune to curses."
+              {:effect "If you have at least 20 wisdom, you are immune to curses."
                :tags   #{:survivability}}
               {:effect "If you have at least 20 strength, you may convert any physical damage you deal to fire, radiant, cold, or lightning damage while you have Divinity."
                :tags   #{:damage}}
               {:effect "If you have at least 20 strength, you take no extra damage from critical hits from creatures within 5 feet of you."
                :tags   #{:survivability}}
-              {:effect "You may not add your intelligence or strength to any damage you deal."}
-              {:effect "Your strength and intelligence scores become equal to the highest of your strength and intelligence scores."
+              {:effect "You may not add your wisdom or strength to any damage you deal."}
+              {:effect "Your strength and wisdom scores become equal to the highest of your strength and  wisdom scores."
                :levels [:skip
                         :keep]
                :tags   #{:utility}}
@@ -83,13 +83,22 @@
                :tags   #{:survivability}}
               {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, regenerate 2 hit points."
                :tags   #{:survivability}}
-              {:effect "You have +3 physical damage with melee attacks."
+              {:effect "% may add your strength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
+               :levels ["No more than once per turn, you"
+                        "You"]
                :tags   #{:survivability}}
               {:effect "+2 to your Strength maximum."
                :tags   #{:utility}}
               {:effect "You cannot cast spells."}
-              {:effect "You can wear a maximum of 1 relic."}]}
- {:name      "Garb of the Unhinged" ;TODO delete?
+              {:effect "You cannot wear relics."}
+              {:effect "You cannot be affected by healing spells and buffs from spells."
+               :levels [:keep
+                        :skip]}
+              {:effect "+2 strength."
+               :tags   #{:utility}
+               :levels [:skip
+                        :keep]}]}
+ {:name      "Garb of the Unhinged" ;TODO delete? soften madness impact and lower power from unique?
   :base-type "armour"
   :mods      [{:effect "+2 to all ability scores."
                :tags   #{:utility}}
@@ -111,52 +120,66 @@
               "76-80"  "The character experiences an overpowering urge to eat something strange such as dirt, slime, or offal (and must spend go prone and spend their action attempting to do so)."
               "81-90"  "The character is debilitated."
               "91-100" "The character falls unconscious."}}
- {:name      "Slow and Steady"
+ {:name      "Steadfast"
   :base-type "armour"
-  :mods      [{:effect "You are immune to the grappled and restrained conditions."}
-              {:effect "+2 maximum Constitution."
+  :mods      [{:effect "You are immune to being grappled  and restrained."
+               :tags   #{:survivability}}
+              {:effect "You have advantage on saving throws against effects that would move you."
+               :tags   #{:survivability}}
+              {:effect "+2 maximum constitution."
                :tags   #{:utility}}
-              {:effect "+1 Constitution."
+              {:effect "+1 constitution."
                :tags   #{:utility}}
-              {:effect "Your speed is reduced by 10 feet."}]}
- {:name      "Fast and Furious"
+              {:effect "Your speed is reduced by 10 feet."}
+              {:effect "You cannot make attacks during your bonus action."}
+              {:effect "Whenever you make a saving throw, you may use your constitution modifier instead."
+               :tags   #{:survivability}
+               :levels [:skip
+                        :keep]}]}
+ {:name      "Erratic"
   :base-type "armour"
   :mods      [{:effect "Your speed is increased by 5 feet for each attack you've made during your turn."
                :tags   #{:utility}}
-              {:effect "You may sacrifice half of your movement to disengage if you've made an attack in your bonus action."
+              {:effect "All of your weapons are considered to have the rapid trait."
+               :tags   #{:accuracy}}
+              {:effect "-1 AB."}
+              {:effect "Your speed is reduced by 10 feet if you have not yet made an attack on your turn."}
+              {:effect "You may sacrifice half of your movement to disengage if you've made an attack during your bonus action."
+               :levels [:skip
+                        :keep]
                :tags   #{:utility}}
-              {:effect "Your speed is reduced by 10 feet if you have not yet made an attack on your turn."}]}
- {:name      "Gluttony"
+              {:effect "You may sacrifice your next turn's bonus action to gain an additional reaction."
+               :levels [:skip
+                        :keep]
+               :tags   #{:utility}}]}
+ {:name      "Black Magic"
   :base-type "armour"
-  :mods      [{:effect "You gain 3 hit points when hitting enemies cursed by you, no more than once per turn."
-               :tags   #{:survivability}}
-              {:effect "Allies gain 3 hit points on hitting enemies cursed by you, no more than once per turn.."
-               :tags   #{:survivability}}
-              {:effect "You cannot gain temporary hit points."}
-              {:effect "You take 5 true damage when you dash."}]}
- {:name      "Unreserved"
-  :base-type "armour"
-  :mods      [{:effect "+2 global damage."
-               :tags   #{:damage}}
-              {:effect "+1 incoming healing."
-               :tags   #{:survivability}}
-              {:effect "+1 damage vulnerability."}]}
+  :mods      [{:effect "Replenish a first level spell slot when you expend a spell slot to cast a curse spell."
+               :tags   #{:magic}}
+              {:effect "If you cast a concentration spell that would curse a creature while you are already concentrating on a curse, the spell shares concentration with your existing concentration. You can concentrate on %d such spells at a time."
+               :levels [2 3]
+               :tags   #{:magic}}
+              {:effect "+1 to your DCs with necromancy spells while you are concentrating on multiple spells."
+               :levels [:skip
+                        :keep]
+               :tags   #{:accuracy}}
+              {:effect "After you cast a non-necromancy spell, you have a 20% chance to lose an additional equivalent spell slot, if available."}
+              {:effect "You cannot deal radiant damage."}]}
  {:name      "Relentless"
   :base-type "armour"
   :mods      [{:effect "Gain temporary hit points equal to twice your level when you roll for initiative and do not have full health."
                :tags   #{:survivability}}
-              {:effect "You cannot critically succeed or critically fail death saves."
+              {:effect "+5 incoming healing while bloodied."
                :tags   #{:survivability}}
+              {:effect "Healing you receive also replenishes each of your barrier types."
+               :tags   #{:survivability}}
+              {:effect "Healing you receive while you have temporary hit points is always rolled at its maximum value (if the healing applies to multiple people, this still only applies to the healing you receive)."
+               :levels [:skip
+                        :keep]
+               :tags   #{:survivability}}
+              {:effect "-5 incoming healing while healthy."}
+              {:effect "Healing you receive while not in combat is instead applied at the end of your first turn during your next combat."}
               {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}]}
- {:name      "Mitts of the Frostbitten"
-  :base-type "armour"
-  :mods      [{:effect "+2 cold thorns."
-               :tags   #{:damage}}
-              {:effect "+2 cold damage."
-               :tags   #{:damage}}
-              {:effect "Your physical damage is halved."}
-              {:effect "Physical damage you would deal is dealt as cold damage instead."
-               :tags   #{:damage}}]}
  {:name      "Cryomancer's Obsession"
   :base-type "armour"
   :mods      [{:effect "+1d4 cold damage with attacks and spells."
@@ -166,15 +189,6 @@
               {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
                :tags   #{:control}}
               {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have just hit with a crit). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}]}
- {:name      "Corrosion"
-  :base-type "weapon"
-  :mods      [{:effect "Physical damage you would deal with weapons is dealt as acid damage instead."
-               :tags   #{:damage}}
-              {:effect "+1d4 acid damage."
-               :tags   #{:damage}}
-              {:effect "+1 die size with acid damage."
-               :tags   #{:damage}}
-              {:effect "Take 1 acid damage whenever you deal acid damage."}]}
  {:name      "Apothecary's Expertise"
   :base-type "armour"
   :mods      [{:effect "Poisons you inflict end one round after their regular duration (including being ended with a save)."
@@ -309,8 +323,7 @@
               {:effect "Creatures that can see you take no extra damage from critical hits from attacks with this weapon."}]}
  {:name      "The Resilient"
   :base-type "armour"
-  :mods      [{:effect "You are resistant to all damage from attacks whose attack roll total was below your AC+%s."
-               :levels [5 6]
+  :mods      [{:effect "You are resistant to all damage from attacks whose attack roll total was below your AC+5."
                :tags   #{:survivability}}
               {:effect "You gain proficiency with shields."
                :tags   #{:utility}}
@@ -321,7 +334,7 @@
                :tags   #{:survivability}}]}
  {:name      "Thornwall"
   :base-type "armour"
-  :mods      [{:effect "Deal 1 piecing thorns damage to melee attackers within 5 feet on blocking their attacks."
+  :mods      [{:effect "Deal 1 piecing thorns damage to melee attackers within 5 feet of you on blocking their attacks."
                :tags   #{:damage}}
               {:effect "Creatures of your choice within 5 feet of you take 1 piercing damage whenever you deal thorns damage with this item.%s"
                :levels [""
@@ -373,22 +386,6 @@
                :tags   #{:damage}}
               {:effect "You are large."}
               {:effect "-2 to your two lowest mental ability scores (choose if equal)."}]}
- {:name      "Molten Fury"
-  :base-type "weapon"
-  :mods      [{:effect "You cannot deal more than 10 damage per turn of types other than fire. Any such damage beyond your 10th on a turn is converted to fire damage."
-               :tags   #{:damage}}
-              {:effect "When you hit an enemy with a weapon attack that deals fire damage, you gain 1 point of Fury."
-               :tags   #{:damage}}
-              {:effect "When you critically hit an enemy with a weapon attack that deals fire damage, you gain 1 additional point of Fury."
-               :tags   #{:critical :damage}}
-              {:effect "+4 maximum Fury."
-               :tags   #{:damage}}
-              {:effect "Add 1 fire damage to your weapon attacks for each point of Fury you currently have."
-               :tags   #{:damage}}
-              {:effect "Reduce non-fire damage from your weapon attacks by 1 for each point of Fury you currently have."}
-              {:effect "You lose all Fury points when you roll for initiative, and when you go down to 0 hit points."}
-              {:effect "You cannot deal non-physical, non-fire damage with weapon attacks."}
-              {:effect "Your resistances and barriers cannot apply to damage types other than fire."}]}
  {:name      "Reckless Replenishment"
   :base-type "armour"
   :mods      [{:effect "At the end of each of your turns, gain temporary hit points equal to %s%% of your missing hit points."
