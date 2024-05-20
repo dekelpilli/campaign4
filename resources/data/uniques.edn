@@ -83,7 +83,7 @@
                :tags   #{:survivability}}
               {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, regenerate 2 hit points."
                :tags   #{:survivability}}
-              {:effect "% may add your strength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
+              {:effect "%s may add your strength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
                :levels ["No more than once per turn, you"
                         "You"]
                :tags   #{:survivability}}

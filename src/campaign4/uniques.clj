@@ -6,17 +6,17 @@
 (def uniques (u/load-data :uniques))
 
 (defn- mod-at-level [{:keys [levels] :as mod} level]
-  (let [new-mod (cond
-                  (nil? levels) mod
-                  (< (count levels) level) (when (#{:keep} (peek levels))
-                                             mod)
-                  :else (let [level-data (->> (dec level)
-                                              (nth levels))]
-                          (cond
-                            (= :skip level-data) nil
-                            (= :keep level-data) mod
-                            (vector? level-data) (update mod :effect #(apply format % level-data))
-                            :else (update mod :effect format level-data))))
+  (let [new-mod (if levels
+                  (let [level-data (if (< (count levels) level)
+                                     (peek levels)
+                                     (->> (dec level)
+                                          (nth levels)))]
+                    (cond
+                      (= :skip level-data) nil
+                      (= :keep level-data) mod
+                      (vector? level-data) (update mod :effect #(apply format % level-data))
+                      :else (update mod :effect format level-data)))
+                  mod)
         previously (when (> level 1)
                      (mod-at-level mod (dec level)))]
     (cond
@@ -48,6 +48,20 @@
       r/sample))
 
 (comment
-  ;TODO convert some weapons to armour? Cull some weapons? Add armours?
-  (-> (group-by :base-type uniques)
-      (update-vals count)))
+  (-> (group-by :base-type uniques) ;TODO consider adding some unique armours
+      (update-vals count))
+
+  (let [levels 2] ;prints any uniques without levels defined up to {level}
+    (run!
+      #(reduce
+         (fn [unique-at-previous-level current-level]
+           (let [unique-at-current-level (at-level % current-level)]
+             (when (= unique-at-previous-level unique-at-current-level)
+               (println)
+               (pr unique-at-previous-level)
+               (println)
+               (pr unique-at-current-level))
+             unique-at-current-level))
+         (at-level % 1)
+         (range 2 (inc levels)))
+      uniques)))

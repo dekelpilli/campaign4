@@ -1,4 +1,4 @@
-(ns campaign4.db-data
+(ns campaign4.prep.data
   (:require
     [campaign4.db :as db]
     [campaign4.util :as u]
@@ -127,6 +127,7 @@
                            "Superior Darkvision"
                            "Flight"}
         trie (-> (Trie/builder)
+                 .ignoreCase
                  (.addKeywords ["underwater"
                                 "take a long rest"
                                 "you are proficient in "
@@ -135,11 +136,11 @@
                                 "unarmed"
                                 "} cantrip"
                                 "level=0"])
-                 (.build))
+                 .build)
         keep-power? (fn [p]
                       (and (map? p)
                            (-> p :name skip-power-type? not)
-                           (not (some #(seq (.parseText trie (str/lower-case %))) (:entries p)))))
+                           (not (some #(seq (.parseText trie (str %))) (:entries p)))))
         race-powers (reduce
                       (fn [acc {:keys [name source entries]}]
                         (reduce
