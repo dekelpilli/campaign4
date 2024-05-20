@@ -1,12 +1,9 @@
 (ns campaign4.vials
   (:require
-    [campaign4.randoms :as randoms]
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(def vials
-  (->> (u/load-data :vials)
-       (mapv #(update % :randoms randoms/randoms->fn))))
+(def vials (u/load-data :vials))
 
 (defn new-vial []
   (let [{:keys [randoms] :as vial} (r/sample vials)

@@ -26,10 +26,8 @@
   :character "You are considered to be proficient in all skills for the purpose of journey activities while at least one item grants you expertise dice or flat bonuses to a skill you are proficient in."
   :item      "You are considered to be proficient in all skills for the purpose of journey activities while this item has a modifier that grants proficiency or expertise die with any skill."}
  {:name      "Generosity"
-  :character "All of your '%s' tagged modifiers apply to your minions instead of to yourself."
-  :item      "'%s' tagged modifiers on this item apply to your minions instead of to yourself."
-  :randoms   [{:preset :literal
-               :values ["damage" "critical" "accuracy" "survivability" "control" "magic" "utility"]}]}
+  :character "Choose a modifier tag. Modifiers on your items with this tag apply to your minions instead of to yourself."
+  :item      "Choose a modifier tag. Modifiers on this item with this tag apply to your minions instead of to yourself."}
  {:name      "Reckless"
   :character "Modifiers on your items that grant maximum barrier instead grant half that much damage, including types and conditions (e.g. +2 maximum cold barrier while bloodied -> +1 cold damage while bloodied)."
   :item      "Modifiers on this item that grant maximum barrier instead grant half that much damage, including types and conditions (e.g. +2 maximum cold barrier while bloodied -> +1 cold damage while bloodied)."}
@@ -37,16 +35,14 @@
   :character "Creatures affected by your marks or curses take +1 damage while your items have at least one modifier that relates to marks or curses."
   :item      "Creatures affected by your marks or curses take +1 damage while this item has at least one modifier that relates to marks or curses."}
  {:name      "Abundant"
-  :character "'Wealth' tagged modifiers on your items have no effect. +1 to your %s for each item you are wearing with at least one 'wealth' tagged modifier."
-  :item      "'Wealth' tagged modifiers on this item have no effect. +1 to your %s for each wealth modifier on this item."
-  :randoms   [{:preset :ability-scores}]}
+  :character "Choose an ability score. 'Wealth' tagged modifiers on your items have no effect. +0.5 to this ability score for each item you are wearing with at least one 'wealth' tagged modifier."
+  :item      "Choose an ability score. 'Wealth' tagged modifiers on this item have no effect. +0.5 to this ability score for each wealth modifier on this item."}
  {:name      "Precise"
   :character "+1 to your critical hit range for each item you are wearing with at least one 'critical' tagged modifier. You don't add any damage dice as a result of critical hits, and your natural criticals are always hits."
   :item      "+1 to your critical hit range for each 'critical' tagged modifier on this item. Your critical hits deal no additional damage, your attacks have -1AB, and your natural criticals are always hits."}
  {:name      "Multi-talented"
-  :character "Modifiers to specific skills on your items also apply to '%1$s', but modifiers that specifically apply to '%1$s' have no effect."
-  :item      "Modifiers to skills on this item also apply to %1$s (this has no effect on modifiers that already apply to %1$s)."
-  :randoms   [{:preset :skills}]}
+  :character "Choose a skill. Modifiers to specific skills on your items also apply to this skill, but modifiers that specifically apply to this skill have no effect."
+  :item      "Choose a skill. Modifiers to skills on this item also apply to this skill (this has no effect on modifiers that already apply to this skill)."}
  {:name      "Aggressive"
   :character "Your AC is always exactly 16 while your weapons only have 'damage' tagged modifiers on them, and have at least 2 modifiers in total."
   :item      "'Damage' tagged modifiers on this item have no effect. +1 AC if this item has at least 2 damage tagged modifiers."}
@@ -61,9 +57,8 @@
   :item      "Modifiers related to attacks, ranged attacks, or spell attacks now also apply to all melee weapon attacks and touch attacks."}
  {:name      "Essence"
   :enabled?  false
-  :character "All references to outgoing damage types on your items are instead treated as if they referenced '%s'. This has no effect on modifiers to damage you take."
-  :item      "All references to outgoing damage types on this item are instead treated as if they referenced '%s'. This has no effect on modifiers to damage you take."
-  :randoms   [{:preset :damage-types}]}
+  :character "Choose a damage type. All references to outgoing damage types on your items are instead treated as if they referenced this damage type. This has no effect on modifiers to damage you take."
+  :item      "Choose a damage type. All references to outgoing damage types on this item are instead treated as if they referenced this damage type. This has no effect on modifiers to damage you take."}
  {:name      "Cleansing"
   :enabled?  false
   :character "Choose a vial affect currently on you. That vial affect is removed."
