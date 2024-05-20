@@ -55,7 +55,7 @@
   :effect   "If the contained creature is smaller than you, gain temporary hit points equal to the gem's CR when the power is activated."
   :tags     #{:survivability}}
  {:category "above"
-  :effect   "If the contained creature has over 100 hit points, gain incoming healing equal to its CR."
+  :effect   "If the contained creature has over 100 hit points, gain incoming healing from magic equal to its CR."
   :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature's AC is at least 20, +1 AC while this power is active."

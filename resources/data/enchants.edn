@@ -121,9 +121,9 @@
   :tags   #{:wealth}}
  {:effect "You find loot as if your Investigation and Survival check results are 1 point higher."
   :tags   #{:wealth}}
- {:effect "+1 incoming healing."
+ {:effect "+1 incoming healing from magic."
   :tags   #{:survivability}}
- {:effect "+2 outgoing healing"
+ {:effect "+2 outgoing healing with magic."
   :tags   #{:magic}}
  {:effect "Once per long rest, when rolling a natural 1 on a d20, you may reroll."
   :tags   #{:utility}}

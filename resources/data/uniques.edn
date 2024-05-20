@@ -106,7 +106,7 @@
                :tags   #{:critical}}
               {:effect "+6 maximum barrier while mad."
                :tags   #{:survivability}}
-              {:effect "+3 incoming healing while mad."
+              {:effect "+3 incoming healing from magic while mad."
                :tags   #{:survivability}}
               {:effect "Healing you receive while mad is applied as if the maximum value was rolled."
                :tags   #{:survivability}}
@@ -122,7 +122,7 @@
               "91-100" "The character falls unconscious."}}
  {:name      "Steadfast"
   :base-type "armour"
-  :mods      [{:effect "You are immune to being grappled  and restrained."
+  :mods      [{:effect "You are immune to being grappled and restrained."
                :tags   #{:survivability}}
               {:effect "You have advantage on saving throws against effects that would move you."
                :tags   #{:survivability}}
@@ -169,7 +169,7 @@
   :base-type "armour"
   :mods      [{:effect "Gain temporary hit points equal to twice your level when you roll for initiative and do not have full health."
                :tags   #{:survivability}}
-              {:effect "+5 incoming healing while bloodied."
+              {:effect "+5 incoming healing from magic while bloodied."
                :tags   #{:survivability}}
               {:effect "Healing you receive also replenishes each of your barrier types."
                :tags   #{:survivability}}
@@ -177,7 +177,7 @@
                :levels [:skip
                         :keep]
                :tags   #{:survivability}}
-              {:effect "-5 incoming healing while healthy."}
+              {:effect "-5 incoming healing from magic while healthy."}
               {:effect "Healing you receive while not in combat is instead applied at the end of your first turn during your next combat."}
               {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}]}
  {:name      "Cryomancer's Obsession"
@@ -189,15 +189,23 @@
               {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
                :tags   #{:control}}
               {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have just hit with a crit). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}]}
- {:name      "Apothecary's Expertise"
+ {:name      "Extended Demise"
   :base-type "armour"
-  :mods      [{:effect "Poisons you inflict end one round after their regular duration (including being ended with a save)."
-               :tags   #{:control}}
-              {:effect "When you attempt to deal poison damage to a poison-immune enemy, they become resistant to poison instead."
+  :mods      [{:effect "DoTs you inflict deal damage for one round after they end (including being ended with a save)."
                :tags   #{:damage}}
-              {:effect "When you deal poison damage to a poison-resistant enemy, they lose their resistance to poison."
+              {:effect "+3 to damage over time."
                :tags   #{:damage}}
-              {:effect "-2 damage with non-poison damage types."}]}
+              {:effect "Damage from your hits also counts as damage over time, but does not have its duration extended by this item."
+               :tags   #{:damage}}
+              {:effect "-3 damage hits."}
+              {:effect "Damage from your hits is delayed by one round."}
+              {:effect "DoTs on you inflict deal damage for one round after they end (including being ended with a save)."}
+              {:effect "Enemies under the effect of your DoTs become resistant to damage types dealt by those DoTs if they were previously immune to them."
+               :levels [:skip :keep]
+               :tags   #{:damage}}
+              {:effect "Enemies under the effect of your DoTs are no longer resistant to damage types dealt by those DoTs if they were resistant to them."
+               :levels [:skip :keep]
+               :tags   #{:damage}}]}
  {:name      "Thunderfist"
   :base-type "weapon"
   :mods      [{:effect "+1d4 thunder damage with attacks."
@@ -271,13 +279,17 @@
   :base-type "weapon"
   :mods      [{:effect "This weapon becomes dual-wielding"
                :tags   #{:utility}}
-              {:effect "If this weapon was previously tagged with Heavy, it loses that tag."
+              {:effect "If this weapon previously had the 'heavy' trait, it loses that trait."
                :tags   #{:utility}}
               {:effect "This weapon becomes a finesse weapon."
                :tags   #{:utility}}
               {:effect "+5 damage with weapons against enemies on very high health (80%+)."
                :tags   #{:damage}}
-              {:effect "-1 critical hit range with this weapon."}]}
+              {:effect "-3 melee damage with weapons if your dexterity score is less than the dexterity score of the target."}
+              {:effect "Requires 22 dexterity to wield."}
+              {:effect "+3 melee damage with weapons if your dexterity score is greater than the dexterity score of the target."
+               :tags   #{:damage}
+               :levels [:skip :keep]}]}
  {:name      "Pasha"
   :base-type "weapon"
   :mods      [{:effect "Enemies you critically hit with a weapon become restrained for 18 seconds, or until they use an action to end the effect."
@@ -323,7 +335,8 @@
               {:effect "Creatures that can see you take no extra damage from critical hits from attacks with this weapon."}]}
  {:name      "The Resilient"
   :base-type "armour"
-  :mods      [{:effect "You are resistant to all damage from attacks whose attack roll total was below your AC+5."
+  :mods      [{:effect "You are resistant to all damage from attacks whose attack roll total was below your AC+%d."
+               :levels [5 6]
                :tags   #{:survivability}}
               {:effect "You gain proficiency with shields."
                :tags   #{:utility}}
@@ -347,14 +360,23 @@
                :tags   #{:damage}}]}
  {:name      "Dáinsleif"
   :base-type "weapon"
-  :mods      [{:effect "+1d6 necrotic damage with weapons."
+  :mods      [{:effect "+%s necrotic damage with weapons."
+               :levels ["1d4"
+                        "1d8"]
                :tags   #{:damage}}
               {:effect "When you damage a creature with a weapon attack, its maximum hit points are reduced by an amount equal to the necrotic damage dealt, until its next long rest."
                :tags   #{:utility}}
               {:effect "When you remove more than half of a creature's remaining hit points with a weapon attack, the creature is killed. This supersedes non-lethal."
                :tags   #{:damage}}
+              {:effect "When you ask a question about a bloodied creature, you may ask exactly how many hit points it has remaining."
+               :tags   #{:utility}}
               {:effect "Take true damage equal to your level when you end a combat without landing a killing blow. This damage cannot reduce you to 0 hit points."}
-              {:effect "Slashing damage you take is increased by 2."}]}
+              {:effect "Slashing damage you take is increased by 2."}
+              {:effect "Slashing damage you take cannot be reduced by barriers."}
+              {:effect "All physical damage from your weapons is converted to necrotic damage."
+               :levels [:skip
+                        :keep]
+               :tags   #{:damage}}]}
  {:name      "Amenonuhoko"
   :base-type "weapon"
   :mods      [{:effect "The first time on your turn that you hit a creature with this weapon, you cast Earth Tremor as a first level spell."
@@ -372,20 +394,29 @@
               {:effect "Your speed is reduced by 10 feet while you are not wearing any items with wealth modifiers."}]}
  {:name      "Lorg Mór"
   :base-type "weapon"
-  :mods      [{:effect "This weapon gains the Sweep property."
+  :mods      [{:effect "This weapon gains the 'sweep' trait."
                :tags   #{:accuracy}}
-              {:effect "+5 to Medicine checks for healing downed allies."
+              {:effect "+5 to Medicine checks%s."
+               :levels [" for healing downed allies"
+                        ""]
                :tags   #{:utility :survivability}}
-              {:effect "+2 incoming healing."
+              {:effect "+2 incoming healing from magic."
                :tags   #{:survivability}}
-              {:effect "+2 outgoing healing."
+              {:effect "+2 outgoing healing with magic."
                :tags   #{:magic :survivability}}
-              {:effect "Add your outgoing healing bonus to the life gained by downed allies you heal with Medicine checks."
+              {:effect "%s"
+               :levels ["Healing granted via your Medicine checks is considered magical."
+                        "You may choose for any healing granted by you to be considered magical healing."]
                :tags   #{:utility :survivability}}
-              {:effect "+2 bludgeoning damage against creatures smaller than you in size."
+              {:effect "+2 bludgeoning damage against creatures smaller than you%s."
+               :levels [""
+                        ", or the same size as you"]
                :tags   #{:damage}}
               {:effect "You are large."}
-              {:effect "-2 to your two lowest mental ability scores (choose if equal)."}]}
+              {:effect "This weapon gains the 'heavy' trait."}
+              {:effect "-2 to your two lowest mental ability scores (choose if equal)."}
+              {:effect "When you grant magical healing to a creature, it may immediately attempt to save out of any ongoing effects on it with saving throws that repeat each round."
+               :tags   #{:magic :survivability}}]}
  {:name      "Reckless Replenishment"
   :base-type "armour"
   :mods      [{:effect "At the end of each of your turns, gain temporary hit points equal to %s%% of your missing hit points."
@@ -423,9 +454,15 @@
   :base-type "talisman"
   :mods      [{:effect "You have advantaged offence while you have an active monster power."
                :tags   #{:accuracy}}
-              {:effect "For each ally within 60ft of you with an active monster power, including yourself, +5 incoming healing from creatures with an active monster power."
+              {:effect "For each ally within 30ft of you with an active monster power, including yourself, +5 incoming healing from magic from creatures with an active monster power."
                :tags   #{:survivability}}
-              {:effect "You have disadvantaged defence while you are up and don't have an active monster power."}]}
+              {:effect "%s"
+               :levels ["You have disadvantaged defence while you are up and don't have an active monster power."
+                        "You have disadvantaged defence while you are up and neither you, nor any allies within 10 feet of you, have an active monster power."]}
+              {:effect "You and allies you can see within 20 feet of you have +5 gem proc threshold, and another +1 gem proc threshold for each creature benefiting from this effect."
+               :levels [:skip
+                        :keep]
+               :tags   #{:utility}}]}
  {:name      "Template"
   :base-type "weapon|armour"
   :mods      [{:effect "description"}]
