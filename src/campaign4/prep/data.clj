@@ -126,21 +126,18 @@
                            "Trance"
                            "Superior Darkvision"
                            "Flight"}
-        trie (-> (Trie/builder)
-                 .ignoreCase
-                 (.addKeywords ["underwater"
-                                "take a long rest"
-                                "you are proficient in "
-                                "natural weapon"
-                                "natural melee"
-                                "unarmed"
-                                "} cantrip"
-                                "level=0"])
-                 .build)
+        contains-skipped-text? (u/str-contains-any-fn ["underwater"
+                                                       "take a long rest"
+                                                       "you are proficient in "
+                                                       "natural weapon"
+                                                       "natural melee"
+                                                       "unarmed"
+                                                       "} cantrip"
+                                                       "level=0"])
         keep-power? (fn [p]
                       (and (map? p)
                            (-> p :name skip-power-type? not)
-                           (not (some #(seq (.parseText trie (str %))) (:entries p)))))
+                           (not (contains-skipped-text? (:entries p)))))
         race-powers (reduce
                       (fn [acc {:keys [name source entries]}]
                         (reduce

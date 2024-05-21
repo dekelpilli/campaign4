@@ -11,7 +11,7 @@
                      {}
                      enchants)
         sum (reduce + 0 (vals weightings))]
-    (update-vals weightings #(/ sum %))))
+    (update-vals weightings #(/ sum (* 2 %)))))
 
 (def positive-curios (update-vals e/enchants-by-base generate-curios))
 
@@ -37,8 +37,8 @@
                                     :tag        (keyword s)})))
                 (keys curios))))))
 
-(defn use-curios [base-type curio-names]
-  (let [weightings (->> (mapv (curios base-type) curio-names)
+(defn use-curios [base-type curio-kws]
+  (let [weightings (->> (mapv (curios base-type) curio-kws)
                         (reduce
                           (fn [acc {:keys [multiplier tag]}]
                             (if (zero? multiplier)
@@ -47,8 +47,7 @@
                                 (assoc acc tag
                                            (if (zero? existing-multiplier)
                                              0
-                                             (+ existing-multiplier
-                                                (/ multiplier 2))))
+                                             (+ existing-multiplier multiplier)))
                                 (assoc acc tag multiplier))))
                           {}))
         enchants-fn (->> (e/valid-enchants base-type)
@@ -64,5 +63,5 @@
                                        new-weighting (* (or weighting-multi 1) weighting)]
                                    (assoc e :weighting (or new-weighting weighting)))))
                          u/weighted-sampler)]
-    (e/add-enchants-totalling (* 20 (count curio-names)) ;TODO could use more testing before deciding on 2x20 or 4x10. Maybe 4x10 and lower weightings?
+    (e/add-enchants-totalling (* 10 (count curio-kws))
                               enchants-fn)))

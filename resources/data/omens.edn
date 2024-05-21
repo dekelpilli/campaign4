@@ -11,7 +11,7 @@
  {:type    :talisman
   :options ["Your next Talisman result will also grant one CR2 gem, and the talisman is rerolled until at least one conditional enchant is met for the passive in that gem."
             "After receiving your next Talisman result, you may choose one of the enchant slots and reroll it up to 3 times."
-            "The talisman from your next Talisman result sells for higher CR gems (as if 3 locked, +1CR)."]}
+            "The talisman from your next Talisman result sells for higher CR gems (as if it has 3 locked mods)."]}
  {:type    :ring
   :options ["Your next Ring result only grants synergy rings."
             "Your next Ring result only grants non-synergy rings, but grants three rings."

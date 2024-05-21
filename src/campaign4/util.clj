@@ -6,7 +6,9 @@
     [randy.rng :as rng])
   (:import
     (clojure.lang Delay)
-    (java.io PushbackReader)))
+    (java.io PushbackReader)
+    (java.util Collection)
+    (org.ahocorasick.trie Trie)))
 
 (def config (-> (jio/resource "config.edn")
                 aero/read-config))
@@ -58,3 +60,11 @@
     `(do
        (def ~(with-meta delayed-name-sym {:tag Delay :private true}) (delay ~body))
        (defn ~name [] (.deref ~delayed-name-sym)))))
+
+(defn str-contains-any-fn [coll]
+  (let [trie (-> (Trie/builder)
+                 .ignoreCase
+                 (.addKeywords ^Collection coll)
+                 .build)]
+    (fn [o]
+      (some #(seq (.parseText trie (str %))) o))))

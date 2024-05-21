@@ -97,6 +97,10 @@
 (defmethod randoms-preset :weapon-categories [_]
   ["club" "knife" "brawling" "axe" "spear" "caster" "dart" "bow" "sling" "sword" "flail" "polearm" "pick" "shield" "knife"])
 
+(defmethod randoms-factor :gear-slots [_] 2)
+(defmethod randoms-preset :gear-slots [_]
+  ["weapon" "offhand" "body armour" "boots" "gloves"])
+
 (defmethod randoms-factor :literal [{:keys [factor] :or {factor 1}}] factor)
 (defmethod randoms-preset :literal [{:keys [values]}] values)
 
