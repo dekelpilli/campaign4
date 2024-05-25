@@ -2,12 +2,9 @@
   :effect "Add a mod to a magical item"
   :amount [:disadvantaged [:default]]}
  {:name   "Orb(s) of Balance"
-  :effect "Remove a mod from a magical item and replace it with new random mods at least equal in point value."}
+  :effect "Remove a non-locked mod from an enchanted item and replace it with new random mods at least equal in point value."}
  {:name   "Orb(s) of Perfection"
   :effect "Replace a random value, or grouping of values, from a chosen modifier on an item with any possible random value of your choice."}
- {:name   "Ancient Orb(s)"
-  :effect "Roll 1d4 and apply to a unique. Generate that many new uniques of the same base category (weapon/armour) and choose one to convert this item to, if at all."
-  :amount [:advantaged [:default]]}
  {:name   "Orb(s) of Consumption"
   :effect "Reduce a non-caster weapon's base damage die size by 1 to add a random modifier, doubled. Increases sell value by 10."
   :amount [:advantaged [:default]]}
@@ -21,6 +18,9 @@
   :effect "Resets a relic to before it was levelled, allowing it to be re-levelled again."}
  {:name     "Orb(s) of Purification"
   :effect   "Apply to an amulet and roll 1d8. If you roll above its current CR capacity, you may increase its CR capacity by 1. Contained creature does not change."
+  :enabled? false}
+ {:name     "Ancient Orb(s)"
+  :effect   "Reroll a unique item into another random unique item."
   :enabled? false}
  {:name     "Orb(s) of Disavowment"
   :effect   "You lose all progress from your current divinity path and all effects it granted, then gain an equivalent amount of levels in another divinity path of your choice."

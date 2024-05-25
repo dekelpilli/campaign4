@@ -1,14 +1,5 @@
 - Offer players more information before choosing divinity path
-- Simplify tarot crafting to make it take less time
 - Come up with some DSL for upgrading mods to make this more automatic
-- Curios:
-  - Some tags are extremely rare on armours, others extremely rare on weapons. This makes curios pretty bad for these tags on these items.
-  - Keep inversed curios the same, make positive ones increase tiers instead of commonness? Combination of tiers and commonness?
-    - Tier upgrading has same problems as artifacts did? Too closely competing with relics/tarot relics especially?
-  - Make weighting bonus different for weapons and armours?
-  - Allow curio-crafted items to ignore base restrictions?
-  - Add curio-only enchants and rework curios to focus on these more?
-  - Only have inversed curios?
-  - Remove damage and survivability curios?
+- Antiquities: when levelled, the choices available to the player 1. mod from mod pool, 2. random mod, 3. random mod
 Talismans:
   - Consider out of combat triggering?

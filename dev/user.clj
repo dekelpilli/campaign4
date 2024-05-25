@@ -56,11 +56,11 @@
        (mapv #(shorthand-name % rings/rings))
        (rings/sacrifice 0))
 
-  (uniques/new-unique-armour)
-  (uniques/new-unique-weapon)
-  (uniques/at-level *1 1)
+  (uniques/new-unique)
   (uniques/at-level *2 2)
   (choose-by-name "pashupa" uniques/uniques)
+  (-> (choose-by-name (:name *1) uniques/uniques)
+      (uniques/at-level 2))
 
   (roll 10 4)
   (cp)

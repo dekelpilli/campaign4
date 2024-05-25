@@ -5,16 +5,11 @@
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
-    [campaign4.helmets :as helmets]
     [campaign4.omens :as omens]
-    [campaign4.relics :as relics]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
-    [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
-    [campaign4.util :as u]
     [campaign4.vials :as vials]
-    [puget.printer :as puget]
     [randy.core :as r]
     [randy.rng :as rng]))
 
@@ -22,9 +17,11 @@
   [{:name   "20-30 gold"
     :omen   :gold
     :action (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
-   {:name   "Unique"
+   {:name   "Unique + 1 ancient orb"
     :omen   :unique
-    :action (fn unique-loot [] (uniques/new-uniques 2))}
+    :action (fn unique-loot [] ["1 Ancient Orb"
+                                (-> (uniques/new-unique)
+                                    (uniques/at-level 1))])}
    {:name   "Talisman"
     :omen   :talisman
     :action talismans/new-talisman}
@@ -56,26 +53,27 @@
     :omen   :divine-dust
     :action (constantly "Divine Dust")}])
 
-(def loot-table ;TODO make distribution even, make overflow be in middle and grant curio + reroll?
+(def loot-table
   (let [width (->> (count loot-actions)
-                   (/ 100))]
-    (loop [min-roll (- 100 width)
-           [action & actions] (reverse loot-actions)
-           table (sorted-map)]
+                   (/ 100)
+                   int)
+        omens-width (mod 100 width)]
+    (loop [max-roll omens-width
+           [action & actions] loot-actions
+           table (sorted-map omens-width {:name   "Reroll, granting an omen"
+                                          :action (constantly "Reroll, granting an omen. If this slot is rolled again, gain an omen for a loot type where you don't currently have an omen and roll again.")})]
       (if action
-        (recur (- min-roll width)
-               actions
-               (assoc table (int min-roll) action))
+        (let [max-roll (+ max-roll width)]
+          (->> (assoc table max-roll action)
+               (recur max-roll actions)))
         table))))
 
 (defn- ->action [n]
-  (let [action (-> (rsubseq loot-table <= n)
+  (let [action (-> (subseq loot-table >= n)
                    first
-                   val)
-        grants-omen? (or (->> (inc n)
-                              (contains? loot-table))
-                         (>= n 100))]
-    (if grants-omen?
+                   val)]
+    (if (and (contains? loot-table n)
+             (:omen action))
       (update action :omen omens/new-omen)
       (dissoc action :omen))))
 

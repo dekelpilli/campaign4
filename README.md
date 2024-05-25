@@ -1,14 +1,13 @@
 # Loot Rules
 
 ### Talismans
-- Talismans contain a gem, and apply effects to passive procs.
-- The passive in worn gem has a chance to proc at the start of each round, with that chance scaling as the gem CR increases. Gems worn by downed players are inactive. 
+- Talismans contain a gem, and apply effects relating to passive procs.
+- The passive in worn gem has a chance to proc at the start of each round, with that chance scaling as the gem CR increases. Gems worn by downed players are inactive.
+  - The % chance is equal to 5 + the gem's CR^2
 - Gems have a CR limit and contain a monster passive from a monster of CR up to that limit.
 - Gems can be upgraded (+1 CR) by merging two gems of the same CR. On upgrade, the existing passive on either gems can be kept, or a choice from 3 new passives from the new CR.
 - Monsters can be swapped between gems freely, or simply removed, as long as gems never contain a passive from a monster above the CR limit.
 - Talismans drop with enchants with pre-defined "slots".
-
-[//]: # (TODO - do locks add much? diminishing chance to add mods beyond 3?)
 - Talismans can be fed into other talismans. When this is done, choose one enchant from the talisman to be destroyed, and replace the enchant on the other talisman that's in the same slot. After this is done, a random non-locked enchant on the talisman is locked, meaning it cannot be replaced again.
 - Talismans can be sold for a gem (base CR=2, with a chance for higher CRs based on # of locked mods on talisman)
 
@@ -38,6 +37,7 @@ Can only move mods on weapons to weapons, and mods on armours to armours. Recept
 - Unique items are, lore-wise, failed attempts creating relics, or at replicating items from myths/folk stories
 - Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level
 - Unique receptacles can be smashed into each other to generate a new unique item receptacle. The resulting item cannot be of the same type as the ones used to generate it
+- You can see a unique's next level for free in towns
 
 ### Relics
 Relics are equipment that can be levelled up with gold. Each relic starts at level 1, and can be levelled up 5 times (up to level 6). Each level costs 100gp. Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). Any relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. When relics are sold, all gold invested in them will be refunded 100%.

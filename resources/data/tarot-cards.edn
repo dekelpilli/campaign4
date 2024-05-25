@@ -8,7 +8,7 @@
  {:name   "The Empress"
   :effect ""}
  {:name   "The Emperor"
-  :effect "The resulting antiquity also contains a damage-tagged or critical-tagged starting modifier from the antiquity mod pool."}
+  :effect "The resulting antiquity also contains a damage-tagged or accuracy-tagged starting modifier from the antiquity mod pool."}
  {:name   "The Hierophant"
   :effect ""}
  {:name   "The Lovers"
@@ -20,7 +20,7 @@
  {:name   "The Hermit"
   :effect ""}
  {:name   "Wheel of Fortune"
-  :effect "The resulting antiquity also contains a wealth-tagged or accuracy-tagged starting modifier from the antiquity mod pool."}
+  :effect "The resulting antiquity also contains a wealth-tagged or critical-tagged starting modifier from the antiquity mod pool."}
  {:name   "Justice"
   :effect "You also gain two random Tarot cards when turning in this set."} ;TODO replace?
  {:name   "The Hanging Man"
@@ -44,7 +44,7 @@
  {:name   "The World"
   :effect "The resulting relic will have an additional starting enchant taken from the Talisman 'Unconditional' slot (slot 3), which will not be upgradeable. This enchant counts as if it is on your Talisman."}
 
- ;TODO implement the following. These will behave like curios with a shared weighting impact between the two tag types.
+ ;TODO implement the following
  {:name   "X of Swords"
   :effect "You gain {X} additional gold when turning in this set. Mods in the resulting antiquity's mod pool are more likely to be 'damage' or 'accuracy' tagged."}
  {:name   "X of Wands"

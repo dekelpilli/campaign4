@@ -82,7 +82,7 @@
                :tags   #{:utility}}
               {:effect "You cannot cast spells."}
               {:effect "You cannot wear relics."}
-              {:effect "You cannot be affected by healing spells and buffs from spells."
+              {:effect "You cannot be affected by healing spells and buffs from spells while conscious."
                :levels [:keep :skip]}
               {:effect "+2 strength."
                :tags   #{:utility}
@@ -91,7 +91,9 @@
   :base-type "armour"
   :mods      [{:effect "You are immune to being grappled and restrained."
                :tags   #{:survivability}}
-              {:effect "You have advantage on saving throws against effects that would move you."
+              {:effect "You have advantage on saving throws against effects that would move you%s."
+               :levels [""
+                        " or knock you prone."]
                :tags   #{:survivability}}
               {:effect "+2 maximum constitution."
                :tags   #{:utility}}
@@ -99,7 +101,7 @@
                :tags   #{:utility}}
               {:effect "Your speed is reduced by 10 feet."}
               {:effect "You cannot make attacks during your bonus action."}
-              {:effect "Whenever you make a saving throw, you may use your constitution modifier instead."
+              {:effect "Whenever you make a saving throw, you may use your constitution modifier instead of the ability you would otherwise make for that save. All other bonuses, inlcuding proficiency, are added as normal for the other ability score."
                :tags   #{:survivability}
                :levels [:skip :keep]}]}
  {:name      "Erratic"
@@ -166,7 +168,7 @@
                :tags   #{:damage}}
               {:effect "Damage from your hits also counts as damage over time, but does not have its duration extended by this item."
                :tags   #{:damage}}
-              {:effect "-3 damage hits."}
+              {:effect "-3 to damage with hits."}
               {:effect "Damage from your hits is delayed by one round."}
               {:effect "DoTs on you inflict deal damage for one round after they end (including being ended with a save)."}
               {:effect "Enemies under the effect of your DoTs become resistant to damage types dealt by those DoTs if they were previously immune to them."
@@ -491,3 +493,4 @@
   :base-type "weapon|armour"
   :mods      [{:effect "description"}]
   :enabled?  false}]
+;TODO make 'this weapon' effects instead apply to all weapons + rebalance
