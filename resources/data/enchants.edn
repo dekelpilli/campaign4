@@ -130,7 +130,10 @@
  {:effect       "You have resistance to all damage while affected by the benefits of the Dodge action."
   :tags         #{:survivability}
   :upgradeable? false}
- {:effect "+1 damage to melee and touch attacks."
+ {:effect "+1 damage to %s attacks."
+  :randoms [{:preset :literal
+             :values ["melee and touch"
+                      "ranged and thrown"]}]
   :tags   #{:damage}}
  {:effect "[Once] per short rest, recover a 1st-level spell slot on Killing Blow."
   :tags   #{:magic}}
@@ -278,7 +281,7 @@
   :points    30
   :tags      #{:accuracy}}
  {:base-type "weapon"
-  :effect    "+1 AB with attacks with %s weapons."
+  :effect    "+1 AB while wielding a %s weapons."
   :points    30
   :randoms   [{:preset :weapon-categories}]
   :tags      #{:accuracy}}
@@ -288,7 +291,7 @@
   :tags         #{:critical}
   :upgradeable? false}
  {:base-type      "weapon"
-  :effect         "+[1d4] %s damage with weapon attacks."
+  :effect         "+[1d4] %s damage with attacks."
   :points         30
   :randoms        [{:factor 1
                     :preset :damage-types}]
@@ -336,7 +339,7 @@
                         "are flanking the target"]}]
   :tags      #{:accuracy}}
  {:base-type "weapon"
-  :effect    "+1 to base damage die size with weapons."
+  :effect    "+1 to base damage die size."
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "+1 critical hit range with your first attack on your turn."
@@ -351,15 +354,9 @@
   :effect    "+1 global damage."
   :tags      #{:damage}}
  {:base-type    "weapon"
-  :effect       "When you hit a creature with a weapon attack, they are silenced until the end of their next turn."
+  :effect       "When you hit a creature with an attack, they are silenced until the end of their next turn."
   :tags         #{:control}
   :upgradeable? false}
- {:base-type "weapon"
-  :effect    "+1 damage with %s."
-  :randoms   [{:factor 2
-               :preset :literal
-               :values ["spells" "weapons"]}]
-  :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "+4 damage against %s creatures."
   :randoms   [{:preset :monster-types}]
@@ -377,7 +374,7 @@
   :effect    "+1 to damage while dual-wielding weapons."
   :tags      #{:damage}}
  {:base-type "weapon"
-  :effect    "When you hit a creature with a weapon attack, they are marked to take +1 damage from creatures other than yourself for [1] minute. This does not stack."
+  :effect    "When you hit a creature with an attack, they are marked to take +1 damage from creatures other than yourself for [1] minute. This does not stack."
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "Every third spell you cast deals +[5:2] damage, across any amount of time."
@@ -411,9 +408,6 @@
   :tags         #{:critical :magic}
   :upgradeable? false}
  {:base-type "weapon"
-  :effect    "+2 damage with attacks with weapons other than this one while you are dual wielding."
-  :tags      #{:damage}}
- {:base-type "weapon"
   :effect    "You and your minions have +3 damage with critical hits."
   :tags      #{:critical}}
  {:base-type    "weapon"
@@ -421,7 +415,7 @@
   :tags         #{:critical}
   :upgradeable? false}
  {:base-type "weapon"
-  :effect    "When you hit a temporarily invisible creature with a weapon attack, they become visible."
+  :effect    "When you hit a temporarily invisible creature with an attack, they become visible."
   :tags      #{:utility}}
  {:base-type "weapon"
   :effect    "Long range thrown weapon attacks have a [50:25]% chance to not incur disadvantage due to the range."

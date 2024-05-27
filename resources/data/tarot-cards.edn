@@ -6,7 +6,7 @@
  {:name   "The High Priestess"
   :effect "The default mods in the resulting antiquity's mod pool are racial powers."}
  {:name   "The Empress"
-  :effect ""}
+  :effect "The default mods in the resulting antiquity's mod pool are exotic mods."}
  {:name   "The Emperor"
   :effect "The resulting antiquity also contains a damage-tagged or accuracy-tagged starting modifier from the antiquity mod pool."}
  {:name   "The Hierophant"
@@ -16,7 +16,7 @@
  {:name   "The Chariot"
   :effect "The resulting antiquity also contains a utility-tagged or survivability-tagged starting modifier from the antiquity mod pool."}
  {:name   "Strength"
-  :effect "The resulting antiquity contains an additional attribute-related starting modifier from the antiquity mod pool."}
+  :effect "The resulting antiquity contains an additional ability score related starting modifier from the exotic mod pool."}
  {:name   "The Hermit"
   :effect ""}
  {:name   "Wheel of Fortune"
@@ -34,7 +34,7 @@
  {:name   "The Tower"
   :effect "25% for the result(s) of this turn in to be destroyed, 75% for the result(s) of this turn in to be duplicated."}
  {:name   "The Star"
-  :effect "The default mods in the resulting antiquity's mod pool are auras."}
+  :effect "The default mods in the resulting antiquity's mod pool are aura mods."}
  {:name   "The Moon"
   :effect "The resulting antiquity starts at level 3, but cannot be levelled."}
  {:name   "The Sun"

@@ -36,7 +36,6 @@ Can only move mods on weapons to weapons, and mods on armours to armours. Recept
 ### Uniques
 - Unique items are, lore-wise, failed attempts creating relics, or at replicating items from myths/folk stories
 - Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level
-- Unique receptacles can be smashed into each other to generate a new unique item receptacle. The resulting item cannot be of the same type as the ones used to generate it
 - You can see a unique's next level for free in towns
 
 ### Relics

@@ -25,7 +25,7 @@
    :tags   #{:control}}
   {:effect "Creatures of your choice within 20 feet of you, other than yourself, deal additional damage with critical hits equal to the number of auras affecting them."
    :tags   #{:critical}}]
- :special
+ :exotic
  [{:effect "+1 to wisdom, charisma, and intelligence."
    :tags   #{:utility}}
   {:effect "+1 to dexterity and strength."
