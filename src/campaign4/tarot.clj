@@ -1,79 +1,50 @@
 (ns campaign4.tarot
   (:require
-    [campaign4.enchants :as e]
-    [campaign4.relics :as relics]
+    [campaign4.randoms :as randoms]
+    [campaign4.uniques :as uniques]
     [campaign4.util :as u]
-    [clojure.set :as set]))
+    [randy.core :as r]))
 
-(def ^:private suit-tags {:swords    #{"accuracy" "damage"}
-                          :wands     #{"magic" "critical"}
-                          :cups      #{"survivability" "control"}
-                          :pentacles #{"utility" "wealth"}})
+(def antiquity-weights {:exotic 30
+                        :aura   20
+                        :racial 30
+                        :unique 10}) ;TODO separate unique weightings by level, excluding level 2 unique mods from level 2 pool
 
-(def ^:private cards (->> (u/load-data :tarot-cards)
-                          (u/assoc-by :name)))
+(def exotic-mods (->> (u/load-data :exotic-mods)
+                      (mapv #(update % :randoms randoms/randoms->fn))))
+(def aura-mods (->> (u/load-data :aura-mods)
+                    (mapv #(update % :randoms randoms/randoms->fn))))
+(def racial-mods (->> (u/load-data :racial-mods)
+                      (mapv #(update % :randoms randoms/randoms->fn))))
 
-(defn- get-minimum-enchants [suit-tags num-mods base-type]
-  (let [enchant-sampler (->> (e/valid-enchants base-type)
-                             (filterv (fn [{:keys [tags]}]
-                                        (-> (set/intersection tags suit-tags)
-                                            seq)))
-                             u/weighted-sampler)]
-    (repeatedly num-mods (comp e/prep-enchant enchant-sampler))))
+(defn- levelled-unique-mods [{:keys [name] :as unique}]
+  (let [unique-mod (fn [m] (-> (select-keys m [:effect :tags])
+                               (assoc :unique name)))
+        first-level (->> (uniques/at-level unique 1)
+                         :mods
+                         (into #{} (comp (filter :tags)
+                                         (map unique-mod))))]
+    (->> (uniques/at-level unique 2)
+         :mods
+         (into first-level (comp (filter :tags)
+                                 (map unique-mod))))))
 
-#_#_#_(defn add-tarot-enchants! []
-    (u/when-let* [suits (-> (p/>>distinct-items "What Suit exceeded the minimum?" (keys suit-tags))
-                            not-empty)
-                  num-mods (-> (into {} (comp
-                                          (map (fn [suit] [suit
-                                                           (or (some-> (p/>>input (format "How any mods to add for '%s'?"
-                                                                                          (name suit)))
-                                                                       parse-long)
-                                                               0)]))
-                                          (filter second))
-                                     suits)
-                               not-empty)]
-      (let [{:keys [base-type] :as relic} (relics/choose-found-relic)
-            mods (mapcat (fn [[suit amount]]
-                           (get-minimum-enchants (get suit-tags suit) amount base-type))
-                         num-mods)]
-        (if relic
-          (do
-            (-> (update relic :start into mods)
-                (update :levels #(mapv (fn inject-relic-mods [level]
-                                         (update level :existing into mods))
-                                       %))
-                relics/update-relic!)
-            mods)
-          mods))))
+(def unique-mods
+  (into [] (comp (filter (comp #{"weapon" "armour"} :base-type))
+                 (mapcat levelled-unique-mods)) uniques/uniques))
 
-(defn add-character-enchants []
-  (u/when-let* [character-enchants (p/>>item "Character name:" helmets/character-enchants)
-                amount (p/>>item "How many enchants should be added to the item?" (range 1 (inc (count character-enchants))))]
-    (r/sample-without-replacement amount character-enchants)))
-
-(defn new-blank-relic! []
-  (u/when-let* [suits (-> (p/>>distinct-items "What Suits were used in this turn in?" (keys suit-tags))
-                          seq)
-                suit-tag-freqs (reduce
-                                 (fn [acc suit]
-                                   (if-let [amount (some-> (p/>>input (str "How many '" (name suit) "' suit cards?")) parse-long)]
-                                     (assoc acc (get suit-tags suit) amount)
-                                     (reduced nil)))
-                                 {}
-                                 suits)
-                base-type (e/choose-base-type)]
-    (let [starting-mods (-> (mapcat (fn [[tags num]]
-                                      (get-minimum-enchants tags num base-type))
-                                    suit-tag-freqs)
-                            vec)]
-      (puget/cprint starting-mods)
-      (when-let [relic-name (p/>>input "What is the relic's name?")]
-        (db/execute! {:insert-into :relics
-                      :values      [{:name      relic-name
-                                     :found     true
-                                     :base-type base-type
-                                     :start     (u/jsonb-lift starting-mods)
-                                     :mods      (u/jsonb-lift [])
-                                     :levels    (u/jsonb-lift [])}]})
-        starting-mods))))
+(defn new-mod-pool []
+  (let [generator (r/alias-method-sampler antiquity-weights)
+        type-counts (reduce (fn [acc _]
+                              (update acc (generator) (fnil inc 0)))
+                            {}
+                            (range 6))]
+    (reduce-kv (fn [acc type amount]
+                 (let [coll (case type
+                              :exotic exotic-mods
+                              :aura aura-mods
+                              :racial racial-mods
+                              :unique unique-mods)]
+                   (into acc (map u/fill-randoms) (r/sample-without-replacement amount coll))))
+               []
+               type-counts)))
