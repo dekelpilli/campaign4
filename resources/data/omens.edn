@@ -4,10 +4,10 @@
             "If you choose, your next Gold result will grant only 1 gold, but will also grant an additional loot roll."
             "You may choose to replace your next Gold result to instead double the sale value of one of your items/receptacles."]}
  {:type    :unique
-  :options ["You may choose to get weapon or armour uniques only on your next Unique result."
-            "Your next Unique result only grants one unique, but it will be level 2."
-            "Your next Unique result will grant three unique items."
-            "Your next Unique result will roll each of the uniques granted with advantage."]}
+  :options ["You may choose to the base type of the unique from your next Unique result."
+            "Your next Unique result grants one additional Ancient Orb."
+            "Your next Unique result will grant two unique items."
+            "Your next Unique result has a 50% chance to grant a level 2 unique."]}
  {:type    :talisman
   :options ["Your next Talisman result will also grant one CR2 gem, and the talisman is rerolled until at least one conditional enchant is met for the passive in that gem."
             "After receiving your next Talisman result, you may choose one of the enchant slots and reroll it up to 3 times."
@@ -29,23 +29,25 @@
   :options ["Your next Vial result grants an additional vial that can only be used on items."
             "Your next Vial result grants an additional vial that can only be used on characters."
             "Your next Vial result is rolled with advantage."
-            "You may choose to receive a vial that matches vial effects on party members or their items instead of the vial granted by your next Vial result."]}
- {:type    :crafting-item
+            "You may choose to receive a random vial that matches vial effects on party members or their items instead of the vial granted by your next Vial result."]}
+ {:type    :crafting-item ;TODO rethink
   :options ["Your next Crafting Item result grants one additional crafting of the same type."
             "Your next Crafting Item result also grants one use of a random crafting item in the form of a shrine."
             "Your next Crafting Item result's quantity is rolled with advantage."
             "You may choose which crafting item type your next Crafting Item result grants."]}
  {:type    :helmet
   :options ["Your next Helmet result also grants an Orb of Personality."
-            "Your next Helmet result grants a helmet with on additional modifier."
+            "Your next Helmet result grants a helmet with one additional modifier."
             "You may replace one modifier of your choice on the next helmet you find from a Helmet result with a new random enchant."]}
  {:type    :tarot
-  :options []} ;TODO think about this after tarot loot is changed
+  :options ["Your next Tarot result grants an additional card."
+            "Your next Tarot result is accompanied by a tarot-related positive random encounter."
+            "On your next Tarot result, instead of one of the cards you would draw, you may look through the deck and choose one card. You don't learn the effects of cards your party hasn't seen before."]}
  {:type    :relic
   :options ["Your next Relic result grants your choice of a weapon or armour relic."
-            "Your next Relic result grants a fully revealed relic."
+            "Your next Relic result grants a fully revealed relic (i.e. levelled, but levels are not yet unlocked)."
             "You may choose to add a random modifier to the relic from your next Relic result."
-            "Your next Relic result grants a relic at level 2."]}
+            "Your next Relic result grants a level 2 relic."]}
  {:type    :divine-dust
   :options ["You may fully reveal a Divinity Path of your choice on your next Divine Dust result."
             "Your next Divine Dust result also grants gold equal to 10 times your total used Divine Dust."

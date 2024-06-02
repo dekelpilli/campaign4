@@ -101,6 +101,11 @@
 (defmethod randoms-preset :gear-slots [_]
   ["weapon" "offhand" "body armour" "boots" "gloves"])
 
+(defmethod randoms-factor :conditions [_] 2)
+(defmethod randoms-preset :conditions [_]
+  ["prone" "poisoned" "petrified" "invisible" "grappled" "frightened" "restrained" "deafened" "charmed" "blinded"
+   "weakened" "taunted" "staggered" "sluggish" "slowed" "rattled" "dominated" "debilitated" "dazed" "confused"])
+
 (defmethod randoms-factor :literal [{:keys [factor] :or {factor 1}}] factor)
 (defmethod randoms-preset :literal [{:keys [values]}] values)
 

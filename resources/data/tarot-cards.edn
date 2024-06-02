@@ -1,12 +1,16 @@
-;TODO differentiate court cards? Make fewer major arcana cards grant rewards instead of impacting the relic itself?
+;TODO
+; differentiate court cards?
+; Make fewer major arcana cards grant rewards instead of impacting the relic itself
+; implement all relevant cards
+; add 'priority' number that determines order in which cards apply
 [{:name   "The Fool"
   :effect "This turn in uses random cards (drawn from the deck) instead of the ones actually turned in (same amount). The cards used are still discarded."}
  {:name   "The Magician"
   :effect "The resulting antiquity also contains a magic-tagged or control-tagged starting modifier from the antiquity mod pool."}
  {:name   "The High Priestess"
-  :effect "The default mods in the resulting antiquity's mod pool are racial powers."}
+  :effect "The default mods in the resulting antiquity's mod pool are more likely to be racial powers."}
  {:name   "The Empress"
-  :effect "The default mods in the resulting antiquity's mod pool are exotic mods."}
+  :effect "The default mods in the resulting antiquity's mod pool are more likely to be exotic mods."}
  {:name   "The Emperor"
   :effect "The resulting antiquity also contains a damage-tagged or accuracy-tagged starting modifier from the antiquity mod pool."}
  {:name   "The Hierophant"
@@ -16,17 +20,17 @@
  {:name   "The Chariot"
   :effect "The resulting antiquity also contains a utility-tagged or survivability-tagged starting modifier from the antiquity mod pool."}
  {:name   "Strength"
-  :effect "The resulting antiquity contains an additional ability score related starting modifier from the exotic mod pool."}
+  :effect "The resulting antiquity contains an additional ability score related exotic starting modifier."}
  {:name   "The Hermit"
-  :effect ""}
+  :effect "The default mods in the resulting antiquity's mod pool are much more likely to be unique mods."}
  {:name   "Wheel of Fortune"
-  :effect "The resulting antiquity also contains a wealth-tagged or critical-tagged starting modifier from the antiquity mod pool."}
+  :effect "The resulting antiquity also contains a wealth-tagged or critical-tagged starting modifier from the antiquity mod pools."}
  {:name   "Justice"
-  :effect "You also gain two random Tarot cards when turning in this set."} ;TODO replace?
+  :effect "Antiquity mod pools are no longer weighted. This applies before any other cards that modify pool weightings."}
  {:name   "The Hanging Man"
   :effect ""}
  {:name   "Death"
-  :effect "You can discard this card to draw two new Tarot cards."} ;TODO replace?
+  :effect "You can discard this card with any number of other tarot cards to draw an equal number of Tarot cards from the deck."}
  {:name   "Temperance"
   :effect ""}
  {:name   "The Devil"
@@ -34,17 +38,16 @@
  {:name   "The Tower"
   :effect "25% for the result(s) of this turn in to be destroyed, 75% for the result(s) of this turn in to be duplicated."}
  {:name   "The Star"
-  :effect "The default mods in the resulting antiquity's mod pool are aura mods."}
+  :effect "The default mods in the resulting antiquity's mod pool are more likely to be aura mods."}
  {:name   "The Moon"
-  :effect "The resulting antiquity starts at level 3, but cannot be levelled."}
+  :effect "The resulting antiquity starts at level 3, but cannot be levelled. Its value is that of a level 1 relic."}
  {:name   "The Sun"
   :effect "The resulting antiquity starts at level 2."}
  {:name   "Judgement"
   :effect "One card of your choice from this set is refunded on turn in."} ;TODO replace?
  {:name   "The World"
-  :effect "The resulting relic will have an additional starting enchant taken from the Talisman 'Unconditional' slot (slot 3), which will not be upgradeable. This enchant counts as if it is on your Talisman."}
+  :effect "The resulting antiquity will have an additional starting modifier taken from the Talisman 'Unconditional' slot (slot 3). This modifier counts as if it is on your Talisman."}
 
- ;TODO implement the following
  {:name   "X of Swords"
   :effect "You gain {X} additional gold when turning in this set. Mods in the resulting antiquity's mod pool are more likely to be 'damage' or 'accuracy' tagged."}
  {:name   "X of Wands"

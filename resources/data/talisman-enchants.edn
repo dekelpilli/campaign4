@@ -62,7 +62,7 @@
   :tags     #{:survivability}}
 
  {:category "below"
-  :effect   "If %1$s is the creature's highest attribute, +2 maximum %1$s."
+  :effect   "If %1$s is the creature's highest ability score, +2 maximum %1$s."
   :tags     #{:utility}
   :randoms  [{:preset :ability-scores}]}
  {:category "below"
