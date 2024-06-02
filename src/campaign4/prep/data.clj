@@ -120,6 +120,7 @@
         skip-power-type? #{"Speed" "Age" "Size" "Languages" "Language" "Creature Type" "Alignment" "Cantrip"
                            "Elf Weapon Training" "Amphibious" "Powerful Build" "Sunlight Sensitivity" "Extra Language"
                            "Khenra Weapon Training" "Drow Weapon Training"
+                           ;TODO add skipped types below this comment, and maybe some to represent the themes of some of the above
                            "Darkvision"
                            "Keen Senses"
                            "Fey Ancestry"
@@ -167,6 +168,7 @@
                      acc))
                  race-powers
                  (:subrace races))]
+    ;\{@\w+([a-zA-Z\d ]+)\}
     (with-open [writer (-> (File. "5et/generated/race-powers.edn")
                            io/writer)]
       (pprint/pprint powers writer))

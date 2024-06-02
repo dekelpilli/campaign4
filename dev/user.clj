@@ -46,6 +46,8 @@
   (curios/use-curios
     "armour"
     [::e/survivability
+     ::e/utility
+     ::e/utility
      ::e/negated-damage])
 
   (paths/progress-path ::u/nailo)

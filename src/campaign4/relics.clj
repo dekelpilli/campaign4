@@ -14,7 +14,8 @@
                       (mapv #(update % :randoms randoms/randoms->fn))))
 (def aura-mods (->> (u/load-data :aura-mods)
                     (mapv #(update % :randoms randoms/randoms->fn))))
-(def racial-mods (u/load-data :racial-mods))
+(def racial-mods (->> (u/load-data :racial-mods)
+                      (mapv #(update % :randoms randoms/randoms->fn))))
 
 (defn- levelled-unique-mods [{:keys [name] :as unique}]
   (let [unique-mod (fn [m] (-> (select-keys m [:effect :tags])

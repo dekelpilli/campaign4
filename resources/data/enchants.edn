@@ -191,10 +191,6 @@
   :randoms   [{:preset :ability-scores
                :type   :common}]
   :tags      #{:survivability}}
- {:base-type    "armour"
-  :effect       "Stone's Endurance (if you already have it, you get another use per long/short rest) (Reaction for 1d12+CON reduced damage taken when you take damage)."
-  :tags         #{:survivability}
-  :upgradeable? false}
  {:base-type "armour"
   :effect    "Gain maximum physical barrier equal to the CR of your highest CR active minion."
   :tags      #{:survivability}}

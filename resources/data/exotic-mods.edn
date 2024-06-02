@@ -30,8 +30,12 @@
   :randoms [{:preset :damage-types}]
   :tags    #{:damage}}
  {:effect  "When you would otherwise gain the condition '%s', gain '%s' instead."
-  :randoms [{:preset :conditions}]
+  :randoms [{:preset :without-replacement
+             :amount 2
+             :from   {:preset :conditions}}]
   :tags    #{:survivability}}
  {:effect  "No more than once per short rest, when you would otherwise inflict the condition '%s' on a creature, inflict '%s' instead."
-  :randoms [{:preset :conditions}]
+  :randoms [{:preset :without-replacement
+             :amount 2
+             :from   {:preset :conditions}}]
   :tags    #{:control}}]
