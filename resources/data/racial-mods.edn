@@ -1,9 +1,4 @@
-[{:effect "If you are flying and dive at least 30 ft. straight toward a target and then hit it with a melee weapon attack, the attack deals an extra 1d6 damage to the target."
-  :tags   #{:damage}
-  :race   "Aarakocra"
-  :name   "Dive Attack"
-  :book   "DMG"}
- {:effect "You have resistance to necrotic damage and radiant damage."
+[{:effect "You have resistance to necrotic damage and radiant damage."
   :tags   #{:survivability}
   :race   "Aasimar"
   :name   "Celestial Resistance"
@@ -74,21 +69,6 @@
   :race   "Bugbear"
   :name   "Surprise Attack"
   :book   "Various"}
- {:effect "You can communicate simple concepts to frogs and toads when you speak in Bullywug."
-  :tags   #{:utility}
-  :race   "Bullywug"
-  :name   "Speak with Frogs and Toads"
-  :book   "DMG"}
- {:effect "You have advantage on Dexterity (Stealth) checks made to hide in swampy terrain."
-  :tags   #{:utility}
-  :race   "Bullywug"
-  :name   "Swamp Camouflage"
-  :book   "DMG"}
- {:effect "Your long jump is up to 20 feet and your high jump is up to 10 feet, with or without a running start."
-  :tags   #{:utility}
-  :race   "Bullywug"
-  :name   "Standing Leap"
-  :book   "DMG"}
  {:effect "Your creature type is fey, rather than humanoid."
   :tags   #{:utility}
   :race   "Centaur"
@@ -194,11 +174,11 @@
   :race   "Dwarf (Kaladesh)"
   :name   "Dwarven Toughness"
   :book   "PSK"}
- {:entries "Whenever you make an Intelligence (History) check related to the origin of any architectural construction, you are considered proficient in the History skill and add an expertise die to the check."
-  :tags    #{:utility}
-  :race    "Dwarf (Kaladesh)"
-  :name    "Artisan's Expertise"
-  :book    "PSK"}
+ {:effect "Whenever you make an Intelligence (History) check related to the origin of any architectural construction, you are considered proficient in the History skill and add an expertise die to the check."
+  :tags   #{:utility}
+  :race   "Dwarf (Kaladesh)"
+  :name   "Artisan's Expertise"
+  :book   "PSK"}
  {:effect  "As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. Additionally, %s. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
   :tags    #{:utility}
   :randoms [{:preset :literal
@@ -226,9 +206,9 @@
   :book   "Various"}
  {:effect "As a bonus action, you can use your powerful feathered arms to propel yourself upward a distance equal to half your movement speed while you jump."
   :tags   #{:utility}
-  :race   "Gallus"
+  :race   "Various"
   :name   "Wing Flap"
-  :book   "HWCS"}
+  :book   "Various"}
  {:effect "Whenever you make an Intelligence (History) check related to the history of your race, culture, or community, you are considered proficient in the History skill and add an expertise die to the check."
   :tags   #{:utility}
   :race   "Gallus"
@@ -264,11 +244,7 @@
   :race   "Githzerai"
   :name   "Mental Discipline"
   :book   "MPMM"}
- {:effect "You have advantage on Dexterity (Stealth) checks to hide in rocky terrain."
-  :tags   #{:utility}
-  :race   "Gnome (Deep)"
-  :name   "Stone Camouflage"
-  :book   "DMG"}
+
  {:effect "You can take the Disengage or Hide action as a bonus action on each of your turns."
   :tags   #{:utility}
   :race   "Goblin"
@@ -289,21 +265,6 @@
   :race   "Goliath"
   :name   "Stone's Endurance"
   :book   "Various"}
- {:effect "You have no eyes, and cannot be blinded. You can perceive your surroundings within 30 ft., or 10 ft. while deafened. You are considered blind beyond this radius."
-  :tags   #{:survivability :utility}
-  :race   "Grimlock"
-  :name   "Blindsight"
-  :book   "DMG"}
- {:effect "You have advantage on Wisdom (Perception) checks that rely on hearing or smell."
-  :tags   #{:utility}
-  :race   "Grimlock"
-  :name   "Keen Hearing and Smell"
-  :book   "DMG"}
- {:effect "You have advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
-  :tags   #{:utility}
-  :race   "Grimlock"
-  :name   "Stone Camouflage"
-  :book   "DMG"}
  {:effect "You're immune to poison damage and the poisoned condition."
   :tags   #{:survivability}
   :race   "Grung"
@@ -345,24 +306,24 @@
   :book   "PHB"}
  {:effect "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest."
   :tags   #{:survivability}
-  :race   "Half-Orc"
+  :race   "Various"
   :name   "Relentless Endurance"
-  :book   "PHB"}
+  :book   "Various"}
  {:effect "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit."
   :tags   #{:critical}
-  :race   "Half-Orc"
+  :race   "Various"
   :name   "Savage Attacks"
-  :book   "PHB"}
+  :book   "Various"}
  {:effect "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
   :tags   #{:survivability :utility :accuracy}
-  :race   "Halfling"
+  :race   "Various"
   :name   "Lucky"
-  :book   "PHB"}
+  :book   "Various"}
  {:effect "You have advantage on saving throws against being frightened."
   :tags   #{:survivability}
-  :race   "Halfling"
+  :race   "Various"
   :name   "Brave"
-  :book   "PHB"}
+  :book   "Various"}
  {:effect "You can move through the space of any creature that is of a size larger than yours."
   :tags   #{:utility}
   :race   "Halfling"
@@ -417,11 +378,6 @@
   :race   "Hexblood"
   :name   "Hex Magic"
   :book   "VRGR"}
- {:effect "Once per turn, you can deal an extra 2d6 damage to a creature you hit with a weapon attack if that creature is within 5 ft. of an ally of yours that isn't incapacitated."
-  :tags   #{:damage}
-  :race   "Hobgoblin"
-  :name   "Martial Advantage"
-  :book   "DMG"}
  {:effect  "You can take the Help action as a bonus action while in combat, and you can do so a number of times equal to your proficiency bonus. You regain all expended uses when you finish a long rest. Additionally, when you take the help action in this way, %s."
   :tags    #{:utility :accuracy}
   :randoms [{:preset :literal
@@ -457,387 +413,181 @@
   :race   "Kalashtar"
   :name   "Dual Mind"
   :book   "ERLW"}
- {:entries
-  ["You can speak telepathically to any creature you can see, provided the creature is within a number of feet of you equal to 10 times your level. You don't need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language."
-   "When you're using this trait to speak telepathically to a creature, you can use your action to give that creature the ability to speak telepathically with you for 1 hour or until you end this effect as an action. To use this ability, the creature must be able to see you and must be within this trait's range. You can give this ability to only one creature at a time; giving it to a creature takes it away from another creature who has it."]
-  :race "Kalashtar"
-  :name "Mind Link"
-  :book "ERLW"}
- {:entries
-  ["Kalashtar sleep, but they don't connect to the plane of dreams as other creatures do. Instead, their minds draw from the memories of their otherworldly spirit while they sleep. As such, you are immune to spells and other magical effects that require you to dream, like dream, but not to spells and other magical effects that put you to sleep, like sleep."]
-  :race "Kalashtar"
-  :name "Severed from Dreams"
-  :book "ERLW"}
- {:entries
-  ["You have advantage on saving throws you make to avoid or end the frightened condition on yourself. When you fail a saving throw to avoid or end the frightened condition on yourself, you can choose to succeed instead. Once you succeed on a saving throw in this way, you can't do so again until you finish a long rest."]
-  :race "Kender"
-  :name "Fearless"
-  :book "DSotDQ"}
- {:entries
-  ["Thanks to the mystical origin of your people, you gain proficiency with one of the following skills of your choice: Insight, Investigation, Sleight of Hand, Stealth, or Survival."]
-  :race "Kender"
-  :name "Kender Curiosity"
-  :book "DSotDQ"}
- {:entries
-  ["You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. The target must succeed on a Wisdom saving throw, or it has disadvantage on attack rolls against targets other than you until the start of your next turn. The DC equals 8 + your proficiency bonus + your Intelligence, Wisdom, or Charisma modifier (choose when you select this race)."
-   "You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."]
-  :race "Kender"
-  :name "Taunt"
-  :book "DSotDQ"}
- {:entries
-  ["In the first round of a combat, you have advantage on attack rolls against any creature who is {@quickref Surprise|PHB|3|0|surprised}."]
-  :race "Kenku"
-  :name "Ambusher"
-  :book "DMG"}
- {:entries
-  ["You can mimic any sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom ( Insight) check."]
-  :race "Kenku"
-  :name "Mimicry"
-  :book "DMG"}
- {:entries
-  ["When you copy writing or craftwork produced by yourself or someone else, you have advantage on any ability checks you make to produce an exact duplicate."]
-  :race "Kenku"
-  :name "Expert Duplication"
-  :book "MPMM"}
- {:entries
-  ["Thanks to your supernaturally good memory, you have proficiency in two skills of your choice."
-   "Moreover, when you make an ability check using any skill in which you have proficiency, you can give yourself advantage on the check before rolling the d20. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."]
-  :race "Kenku"
-  :name "Kenku Recall"
-  :book "MPMM"}
- {:entries
-  ["You can accurately mimic sounds you have heard, including voices. A creature that hears the sounds you make can tell they are imitations only with a successful Wisdom ( Insight) check against a DC of 8 + your proficiency bonus + your Charisma modifier."]
-  :race "Kenku"
-  :name "Mimicry"
-  :book "MPMM"}
- {:entries
-  ["You can duplicate other creatures' handwriting and craftwork. You have advantage on all checks made to produce forgeries or duplicates of existing objects."]
-  :race "Kenku"
-  :name "Expert Forgery"
-  :book "VGM"}
- {:entries
-  ["You can mimic sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful Wisdom ( Insight) check opposed by your Charisma ( Deception) check."]
-  :race "Kenku"
-  :name "Mimicry"
-  :book "VGM"}
- {:entries
-  ["If your twin is alive and you can see your twin, whenever you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll. If your twin is dead (or if you were born without a twin), you can't be frightened."]
-  :race "Khenra"
-  :name "Khenra Twins"
-  :book "PSA"}
- {:entries
-  ["You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't incapacitated."]
-  :race "Kobold"
-  :name "Pack Tactics"
-  :book "DMG"}
- {:entries
-  ["As a bonus action, you let out a cry at your enemies within 10 feet of you. Until the start of your next turn, you and your allies have advantage on attack rolls against any of those enemies who could hear you. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."]
-  :race "Kobold"
-  :name "Draconic Cry"
-  :book "MPMM"}
- {:entries
-  ["As an action on your turn, you can cower pathetically to distract nearby foes. Until the end of your next turn, your allies gain advantage on attack rolls against enemies within 10 feet of you that you can see. Once you use this trait, you can't use it again until you finish a short or long rest."]
-  :race "Kobold"
-  :name "Grovel, Cower, and Beg"
-  :book "VGM"}
- {:entries
-  ["You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't incapacitated."]
-  :race "Kobold"
-  :name "Pack Tactics"
-  :book "VGM"}
- {:entries
-  ["You have advantage on saving throws against being frightened."]
-  :race "Kor"
-  :name "Brave"
-  :book "PSZ"}
- {:entries
-  ["You also have a climbing speed of 30 feet as long as you are not encumbered or wearing heavy armor."]
-  :race "Kor"
-  :name "Climbing"
-  :book "PSZ"}
- {:entries
-  ["You have proficiency in the Athletics and Acrobatics skills."]
-  :race "Kor"
-  :name "Kor Climbing"
-  :book "PSZ"}
- {:entries
-  ["When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."]
-  :race "Kor"
-  :name "Lucky"
-  :book "PSZ"}
- {:entries
-  ["You can sense the presence of any creature within 30 feet of you that is invisible or on the Ethereal Plane. You can pinpoint such a creature that is moving."]
-  :race "Kuo-Toa"
-  :name "Otherworldly Perception"
-  :book "DMG"}
- {:entries
-  ["You have advantage on ability checks and saving throws made to escape a grapple."]
-  :race "Kuo-Toa"
-  :name "Slippery"
-  :book "DMG"}
- {:entries
-  ["As a bonus action, you can let out an especially menacing roar. Creatures of your choice within 10 feet of you that can hear you must succeed on a Wisdom saving throw or become frightened of you until the end of your next turn. The DC of the save equals 8 + your proficiency bonus + your Constitution modifier. Once you use this trait, you can't use it again until you finish a short or long rest."]
-  :race "Leonin"
-  :name "Daunting Roar"
-  :book "MOT"}
- {:entries
-  ["You can hold your breath for up to 15 minutes at a time."]
-  :race "Lizardfolk"
-  :name "Hold Breath"
-  :book "DMG"}
- {:entries
-  ["Your scales function as natural armor, granting you a +3 bonus to Armor Class."]
-  :race "Lizardfolk"
-  :name "Natural Armor"
-  :book "DMG"}
- {:entries
-  ["You can hold your breath for up to 15 minutes at a time."]
-  :race "Lizardfolk"
-  :name "Hold Breath"
-  :book "MPMM"}
- {:entries
-  ["You can throw yourself into a feeding frenzy. As a bonus action, you can make a special attack with your Bite. If the attack hits, it deals its normal damage, and you gain temporary hit points equal to your proficiency bonus. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."]
-  :race "Lizardfolk"
-  :name "Hungry Jaws"
-  :book "MPMM"}
- {:entries
-  ["You have tough, scaly skin. When you aren't wearing armor, your base AC is 13 + Dexterity modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor."]
-  :race "Lizardfolk"
-  :name "Natural Armor"
-  :book "MPMM"}
- {:entries
-  ["Thanks to your mystical connection to nature, you gain proficiency with two of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival."]
-  :race "Lizardfolk"
-  :name "Nature's Intuition"
-  :book "MPMM"}
- {:entries ["You have a swimming speed of 30 feet."]
-  :race    "Lizardfolk"
-  :name    "Swim Speed"
-  :book    "VGM"}
- {:entries
-  ["As part of a short rest, you can harvest bone and hide from a slain beast, construct, dragon, monstrosity, or plant creature of size small or larger to create one of the following items: a {@item shield|phb}, a {@item club|phb}, a {@item javelin|phb}, or 1d4 {@item dart|phb|darts} or {@item blowgun needle|phb|blowgun needles}. To use this trait, you need a blade, such as a {@item dagger|phb}, or appropriate {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan's tools}, such as {@item leatherworker's tools|phb}."]
-  :race "Lizardfolk"
-  :name "Cunning Artisan"
-  :book "VGM"}
- {:entries
-  ["You can hold your breath for up to 15 minutes at a time."]
-  :race "Lizardfolk"
-  :name "Hold Breath"
-  :book "VGM"}
- {:entries
-  ["You gain proficiency with two of the following skills of your choice: Animal Handling, Nature, Perception, Stealth, and Survival."]
-  :race "Lizardfolk"
-  :name "Hunter's Lore"
-  :book "VGM"}
- {:entries
-  ["You have tough, scaly skin. When you aren't wearing armor, your AC is 13 + your Dexterity modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor."]
-  :race "Lizardfolk"
-  :name "Natural Armor"
-  :book "VGM"}
- {:entries
-  ["In battle, you can throw yourself into a vicious feeding frenzy. As a bonus action, you can make a special attack with your bite. If the attack hits, it deals its normal damage, and you gain temporary hit points equal to your Constitution modifier (minimum of 1), and you can't use this trait again until you finish a short or long rest."]
-  :race "Lizardfolk"
-  :name "Hungry Jaws"
-  :book "VGM"}
- {:entries
-  ["You have tough, scaly skin. When you aren't wearing armor, your AC is 12 + your Dexterity modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor."]
-  :race "Locathah"
-  :name "Natural Armor"
-  :book "LR"}
- {:entries
-  ["You have proficiency in the Athletics and Perception skills."]
-  :race "Locathah"
-  :name "Observant & Athletic"
-  :book "LR"}
- {:entries
-  ["You have advantage on saving throws against being charmed, frightened, staggered, poisoned, stunned, or put to sleep."]
-  :race "Locathah"
-  :name "Leviathan Will"
-  :book "LR"}
- {:entries
-  ["You can breathe air and water, but you need to be submerged at least once every 4 hours to avoid suffocating."]
-  :race "Locathah"
-  :name "Limited Amphibiousness"
-  :book "LR"}
- {:entries
-  ["You have advantage on saving throws against being charmed or frightened."]
-  :race "Loxodon"
-  :name "Loxodon Serenity"
-  :book "GGR"}
- {:entries
-  ["You have thick, leathery skin. When you aren't wearing armor, your AC is 12 + your Constitution modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor."
-   {:entries
-    ["When the game gives you more than one way to calculate your Armor Class, you can use only one of them. You choose the one to use. For example, if you have the loxodon's Natural Armor trait and the monk's Unarmored Defense feature, you don't mix them together. Instead, you choose which one determines your AC."]
-    :name "Tip: AC Calculations Don't Stack"
-    :type "inset"}]
-  :race "Loxodon"
-  :name "Natural Armor"
-  :book "GGR"}
- {:entries
-  ["Thanks to your sensitive trunk, you have advantage on Wisdom ( Perception), Wisdom ( Survival), and Intelligence ( Investigation) checks that involve smell."]
-  :race "Loxodon"
-  :name "Keen Smell"
-  :book "GGR"}
- {:entries
-  ["As a bonus action, you can use your powerful feathered arms to propel yourself upward a distance equal to half your movement speed. You can use it in conjunction with a regular jump, but not while gliding."]
-  :race "Luma"
-  :name "Wing Flap"
-  :book "HWCS"}
- {:entries
-  ["Whether by luck or a guiding presence, you always seem to find your way. You can choose to reroll any attack, skill check, or saving throw. You can decide to do this after your roll, but only before the outcome of the roll has been determined. You can't use this feature again until you have completed a long rest."]
-  :race "Luma"
-  :name "Fated"
-  :book "HWCS"}
- {:entries ["You have a climb speed of 20 feet."]
-  :race    "Mapach"
-  :name    "Expert Climbers"
-  :book    "HWCS"}
- {:entries
-  ["You have advantage on saving throws against poison and resistance against poison damage."]
-  :race "Mapach"
-  :name "Resilience"
-  :book "HWCS"}
- {:entries
-  ["You are proficient with {@item tinker's tools|PHB}. Additionally, you have the ability to construct crude but functional versions of common items using materials present in your surroundings. You may spend 10 minutes to craft these materials into any tool or piece of adventuring gear worth 30 gold pieces or less. The item will be completely functional, even capable of passing for a disguise (if you crafted an article of clothing). Tools, along with any other item that would logically break on its first use (caltrops, arrows), will become useless afterward. Scroungecrafted items will otherwise last 1 hour before falling apart."
-   "Depending on the materials available, a Game Master (GM) may rule that you cannot craft an item in this way. For example, a vial of acid might be easy to make if you happen to be near a nest of acidic beetle larvae, or bark can be bound into a makeshift flask, but it would be difficult to create a passable facsimile of silken robes from a pile of leaves."
-   "Should you have access to the proper materials, you can spend 8 hours converting an item you have scroungecrafted in this way into a permanent version, so long as you start this process before the item falls apart. Items crafted in such a way will function exactly as a normal version of the item, and if you have proficiency in the tools used to craft them, they can even look professionally-crafted. Otherwise, they retain a rather rough, cobbled-together appearance. You can also use scroungecraft to repair broken equipment, provided you have the materials on hand. Though, how long your repairs hold together is up to the GM."]
-  :race "Mapach"
-  :name "Scroungecraft"
-  :book "HWCS"}
- {:entries
-  ["You have advantage on Stealth checks made in dim light and darkness."]
-  :race "Mapach"
-  :name "Skulker"
-  :book "HWCS"}
- {:entries ["You have a swimming speed of 30 feet."]
-  :race    "Merfolk"
-  :name    "Swimming"
-  :book    "PSZ"}
- {:entries
-  ["{@note These traits are also suitable for minotaurs in other D&D worlds where these people have avoided the demonic influence of Baphomet.}"]
-  :race "Minotaur"
-  :book "GGR"}
- {:entries
-  ["Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one melee attack with your horns as a bonus action."]
-  :race "Minotaur"
-  :name "Goring Rush"
-  :book "GGR"}
- {:entries
-  ["Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to shove that target with your horns. The target must be no more than one size larger than you and within 5 feet of you. Unless it succeeds on a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier, you push it up to 10 feet away from you."]
-  :race "Minotaur"
-  :name "Hammering Horns"
-  :book "GGR"}
- {:entries
-  ["Immediately after you take the Dash action on your turn and move at least 20 feet, you can make one melee attack with your Horns as a bonus action."]
-  :race "Minotaur"
-  :name "Goring Rush"
-  :book "MPMM"}
- {:entries
-  ["Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to push that target with your horns. The target must be within 5 feet of you and no more than one size larger than you. Unless it succeeds on a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier, you can push it up to 10 feet away from you."]
-  :race "Minotaur"
-  :name "Hammering Horns"
-  :book "MPMM"}
- {:entries
-  ["You always know which direction is north, and you have advantage on any Wisdom ( Survival) check you make to navigate or track."]
-  :race "Minotaur"
-  :name "Labyrinthine Recall"
-  :book "MPMM"}
- {:entries
-  ["When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest."]
-  :race "Minotaur (Amonkhet)"
-  :name "Relentless Endurance"
-  :book "PSA"}
- {:entries
-  ["When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit."]
-  :race "Minotaur (Amonkhet)"
-  :name "Savage Attacks"
-  :book "PSA"}
- {:entries
-  ["By lowering your body to the ground and propelling yourself with your arms, you can move more quickly for a time. As a bonus action on your turn, if you have both hands free, you can increase your walking speed by 5 feet until the end of your turn."]
-  :race "Naga"
-  :name "Speed Burst"
-  :book "PSA"}
- {:entries
-  ["You are immune to poison damage and can't be poisoned."]
-  :race "Naga"
-  :name "Poison Immunity"
-  :book "PSA"}
- {:entries
-  ["You gain proficiency with the {@item poisoner's kit|phb}."]
-  :race "Naga"
-  :name "Poison Affinity"
-  :book "PSA"}
- {:entries
-  ["As a bonus action, you can move up to your speed toward a hostile creature that you can see."]
-  :race "Orc"
-  :name "Aggressive"
-  :book "DMG"}
- {:entries
-  ["As a bonus action, you can move up to your movement speed toward a hostile creature you can see or hear. You must end this move closer to the enemy than you started."]
-  :race "Orc"
-  :name "Aggressive"
-  :book "ERLW"}
- {:entries
-  ["You have proficiency in two of the following skills of your choice: Animal Handling, Insight, Intimidation, Medicine, Nature, Perception, and Survival."]
-  :race "Orc"
-  :name "Primal Intuition"
-  :book "ERLW"}
- {:entries
-  ["You can take the Dash action as a bonus action. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
-   "Whenever you use this trait, you gain a number of temporary hit points equal to your proficiency bonus."]
-  :race "Orc"
-  :name "Adrenaline Rush"
-  :book "MPMM"}
- {:entries
-  ["When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. Once you use this trait, you can't do so again until you finish a long rest."]
-  :race "Orc"
-  :name "Relentless Endurance"
-  :book "MPMM"}
- {:entries
-  ["As a bonus action, you can move up to your movement speed toward a hostile creature you can see or hear. You must end this move closer to the enemy than you started."]
-  :race "Orc"
-  :name "Aggressive"
-  :book "VGM"}
- {:entries
-  ["You have proficiency in two of the following skills of your choice: Animal Handling, Insight, Intimidation, Medicine, Nature, Perception, and Survival."]
-  :race "Orc"
-  :name "Primal Intuition"
-  :book "VGM"}
- {:entries
-  ["When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest."]
-  :race "Orc (Ixalan)"
-  :name "Relentless Endurance"
-  :book "PSX"}
- {:entries
-  ["When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit."]
-  :race "Orc (Ixalan)"
-  :name "Savage Attacks"
-  :book "PSX"}
- {:entries
-  ["You can squeeze through a space as narrow as 1 inch wide, provided you are wearing and carrying nothing. You have advantage on ability checks you make to initiate or escape a grapple."]
-  :race "Plasmoid"
-  :name "Amorphous"
-  :book "AAG"}
- {:entries ["You can hold your breath for 1 hour."]
-  :race    "Plasmoid"
-  :name    "Hold Breath"
-  :book    "AAG"}
- {:entries
-  ["You have resistance to acid and poison damage, and you have advantage on saving throws against being poisoned."]
-  :race "Plasmoid"
-  :name "Natural Resilience"
-  :book "AAG"}
- {:entries
-  ["As an action, you can reshape your body to give yourself a head, one or two arms, one or two legs, and makeshift hands and feet, or you can revert to a limbless blob. While you have a humanlike shape, you can wear clothing and armor made for a Humanoid of your size."
-   "As a bonus action, you can extrude a pseudopod that is up to 6 inches wide and 10 feet long or reabsorb it into your body. As part of the same bonus action, you can use this pseudopod to manipulate an object, open or close a door or container, or pick up or set down a Tiny object. The pseudopod contains no sensory organs and can't attack, activate magic items, or lift more than 10 pounds."]
-  :race "Plasmoid"
-  :name "Shape Self"
-  :book "AAG"}
- {:entries
-  ["Your accuracy allows you to treat three-quarters cover as half cover and half cover as no cover."]
-  :race "Raptor"
-  :name "Woodland Hunter"
-  :book "HWCS"}
+ {:effect "You can speak telepathically to any creature you can see, provided the creature is within a number of feet of you equal to 10 times your level. You don't need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language. When you're using this trait to speak telepathically to a creature, you can use your action to give that creature the ability to speak telepathically with you for 1 hour or until you end this effect as an action. To use this ability, the creature must be able to see you and must be within this trait's range. You can give this ability to only one creature at a time; giving it to a creature takes it away from another creature who has it."
+  :tags   #{:utility}
+  :race   "Kalashtar"
+  :name   "Mind Link"
+  :book   "ERLW"}
+ {:effect "You are immune to spells and other magical effects that require you to dream, like dream, but not to spells and other magical effects that put you to sleep, like sleep."
+  :tags   #{:survivability}
+  :race   "Kalashtar"
+  :name   "Severed from Dreams"
+  :book   "ERLW"}
+ {:effect "You have advantage on saving throws you make to avoid or end the frightened condition on yourself. When you fail a saving throw to avoid or end the frightened condition on yourself, you can choose to succeed instead. Once you succeed on a saving throw in this way, you can't do so again until you finish a long rest."
+  :tags   #{:survivability}
+  :race   "Kender"
+  :name   "Fearless"
+  :book   "DSotDQ"}
+ {:effect "You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. The target must succeed on a Wisdom saving throw, or it has disadvantage on attack rolls against targets other than you until the start of your next turn. You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :tags   #{:control}
+  :race   "Kender"
+  :name   "Taunt"
+  :book   "DSotDQ"}
+ {:effect "You can mimic any sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful Wisdom (Insight) check."
+  :tags   #{:utility}
+  :race   "Kenku"
+  :name   "Mimicry"
+  :book   "Various"}
+ {:effect "When you copy writing or craftwork produced by yourself or someone else, you have advantage on any ability checks you make to produce an exact duplicate."
+  :tags   #{:utility}
+  :race   "Kenku"
+  :name   "Expert Duplication"
+  :book   "Various"}
+ {:effect "You have proficiency in two skills of your choice. Moreover, when you make an ability check using any skill in which you have proficiency, you can give yourself advantage on the check before rolling the d20. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :tags   #{:utility}
+  :race   "Kenku"
+  :name   "Kenku Recall"
+  :book   "Various"}
+ {:effect "If your twin is alive and you can see your twin, whenever you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll. If your twin is dead (or if you were born without a twin), you can't be frightened."
+  :tags   #{:survivability :accuracy :utility}
+  :race   "Khenra"
+  :name   "Khenra Twins"
+  :book   "PSA"}
+ {:effect "As a bonus action, you let out a cry at your enemies within 10 feet of you. Until the start of your next turn, you and your allies have advantage on attack rolls against any of those enemies who could hear you. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :tags   #{:accuracy}
+  :race   "Kobold"
+  :name   "Draconic Cry"
+  :book   "MPMM"}
+ {:effect "As an action on your turn, you can cower pathetically to distract nearby foes. Until the end of your next turn, your allies gain advantage on attack rolls against enemies within 10 feet of you that you can see. Once you use this trait, you can't use it again until you finish a short or long rest."
+  :tags   #{:accuracy}
+  :race   "Kobold"
+  :name   "Grovel, Cower, and Beg"
+  :book   "VGM"}
+ {:effect "You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't incapacitated."
+  :tags   #{:accuracy}
+  :race   "Kobold"
+  :name   "Pack Tactics"
+  :book   "VGM"}
+ {:effect "You also have a climbing speed of 30 feet as long as you are not wearing heavy armor."
+  :tags   #{:utility}
+  :race   "Kor"
+  :name   "Climbing"
+  :book   "PSZ"}
+ {:effect "You have proficiency in the Athletics and Acrobatics skills."
+  :tags   #{:utility}
+  :race   "Kor"
+  :name   "Kor Climbing"
+  :book   "PSZ"}
+ {:effect "You can hold your breath for up to 15 minutes at a time."
+  :tags   #{:survivability}
+  :race   "Lizardfolk"
+  :name   "Hold Breath"
+  :book   "Various"}
+ {:effect "You gain proficiency with two of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival."
+  :tags   #{:utility}
+  :race   "Lizardfolk"
+  :name   "Nature's Intuition"
+  :book   "MPMM"}
+ {:effect "You have a swimming speed of 30 feet."
+  :tags   #{:utility}
+  :race   "Various"
+  :name   "Swim Speed"
+  :book   "Various"}
+ {:effect "You have proficiency in the Athletics and Perception skills."
+  :tags   #{:utility}
+  :race   "Locathah"
+  :name   "Observant & Athletic"
+  :book   "LR"}
+ {:effect "You have advantage on saving throws against being charmed, frightened, staggered, poisoned, stunned, or put to sleep."
+  :tags   #{:survivability}
+  :race   "Locathah"
+  :name   "Leviathan Will"
+  :book   "LR"}
+ {:effect "You can breathe air and water, but you need to be submerged at least once every 4 hours to avoid suffocating."
+  :tags   #{:utility}
+  :race   "Locathah"
+  :name   "Limited Amphibiousness"
+  :book   "LR"}
+ {:effect "You have advantage on saving throws against being charmed or frightened."
+  :tags   #{:survivability}
+  :race   "Loxodon"
+  :name   "Loxodon Serenity"
+  :book   "GGR"}
+ {:effect "When you aren't wearing armor, your AC is 12 + your Constitution modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor."
+  :tags   #{:survivability}
+  :race   "Loxodon"
+  :name   "Natural Armor"
+  :book   "GGR"}
+ {:effect "You have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that involve smell."
+  :tags   #{:utility}
+  :race   "Loxodon"
+  :name   "Keen Smell"
+  :book   "GGR"}
+ {:effect "Once per long rest, you can choose to reroll any attack, skill check, or saving throw. You can decide to do this after your roll, but only before the outcome of the roll has been determined."
+  :tags   #{:survivability :accuracy :utility}
+  :race   "Luma"
+  :name   "Fated"
+  :book   "HWCS"}
+ {:effect "You have a climb speed of 20 feet."
+  :tags   #{:utility}
+  :race   "Mapach"
+  :name   "Expert Climbers"
+  :book   "HWCS"}
+ {:effect "You have advantage on Stealth checks made in dim light and darkness."
+  :tags   #{:utility}
+  :race   "Mapach"
+  :name   "Skulker"
+  :book   "HWCS"}
+ {:effect "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one melee attack as a bonus action."
+  :tags   #{:damage}
+  :race   "Minotaur"
+  :name   "Goring Rush"
+  :book   "Various"}
+ {:effect "Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to shove that target. The target must be no more than one size larger than you and within 5 feet of you. Unless it succeeds on a Strength saving throw, you push it up to 10 feet away from you."
+  :tags   #{:control}
+  :race   "Minotaur"
+  :name   "Hammering Horns"
+  :book   "Various"}
+ {:effect "You always know which direction is north, and you have advantage on any Wisdom (Survival) check you make to navigate or track."
+  :tags   #{:utility}
+  :race   "Minotaur"
+  :name   "Labyrinthine Recall"
+  :book   "MPMM"}
+ {:effect "As a bonus action on your turn, if you have both hands free, you can increase your walking speed by 5 feet until the end of your turn."
+  :tags   #{:utility}
+  :race   "Naga"
+  :name   "Speed Burst"
+  :book   "PSA"}
+ {:effect "As a bonus action, you can move up to your movement speed toward a hostile creature you can see or hear. You must end this move closer to the enemy than you started."
+  :tags   #{:utility}
+  :race   "Orc"
+  :name   "Aggressive"
+  :book   "Various"}
+ {:effect "You have proficiency in two of the following skills of your choice: Animal Handling, Insight, Intimidation, Medicine, Nature, Perception, and Survival."
+  :tags   #{:utility}
+  :race   "Orc"
+  :name   "Primal Intuition"
+  :book   "Various"}
+ {:effect "You can take the Dash action as a bonus action. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. When you dash in this way, you gain a number of temporary hit points equal to your proficiency bonus."
+  :tags   #{:utility :survivability}
+  :race   "Orc"
+  :name   "Adrenaline Rush"
+  :book   "MPMM"}
+ {:effect "You can squeeze through a space as narrow as 1 inch wide, provided you are wearing and carrying nothing. You have advantage on ability checks you make to initiate or escape a grapple."
+  :tags   #{:utility :survivability}
+  :race   "Plasmoid"
+  :name   "Amorphous"
+  :book   "AAG"}
+ {:effect "You can hold your breath for 1 hour."
+  :tags   #{:survivability}
+  :race   "Various"
+  :name   "Hold Breath"
+  :book   "Various"}
+ {:effect "You have resistance to acid and poison damage, and you have advantage on saving throws against being poisoned."
+  :tags   #{:survivability}
+  :race   "Plasmoid"
+  :name   "Natural Resilience"
+  :book   "AAG"}
  {:entries
   ["You have proficiency with the {@item longbow|PHB}, {@item shortbow|PHB}, and {@item spear|PHB}. Additionally, your familiarity with the longbow means that it is not considered a heavy weapon for you."]
   :race "Raptor"
@@ -865,10 +615,6 @@
   :race "Reborn"
   :name "Knowledge from a Past Life"
   :book "VRGR"}
- {:entries ["Your creature type is fey, rather than humanoid."]
-  :race    "Satyr"
-  :name    "Fey"
-  :book    "MOT"}
  {:entries
   ["You have advantage on saving throws against spells and other magical effects."]
   :race "Satyr"
@@ -924,15 +670,6 @@
   :race "Shifter"
   :name "Shifting"
   :book "ERLW"}
- {:entries ["You are vulnerable to bludgeoning damage."]
-  :race    "Skeleton"
-  :name    "Brittle Bones"
-  :book    "DMG"}
- {:entries
-  ["You are immune to poison damage and exhaustion, and you can't be poisoned. You don't require air, food, drink, or sleep."]
-  :race "Skeleton"
-  :name "Undead Nature"
-  :book "DMG"}
  {:entries
   ["You have advantage on Dexterity ( Stealth) checks when you attempt to hide in a forest."]
   :race "Strig"
@@ -983,10 +720,6 @@
   :race    "Tiefling"
   :name    "Hellish Resistance"
   :book    "PHB"}
- {:entries ["You can hold your breath for up to 1 hour."]
-  :race    "Tortle"
-  :name    "Hold Breath"
-  :book    "MPMM"}
  {:entries
   ["Your shell provides you a base AC of 17 (your Dexterity modifier doesn't affect this number). You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal."]
   :race "Tortle"
@@ -1051,20 +784,6 @@
   :race "Triton"
   :name "Guardians of the Depths"
   :book "VGM"}
- {:entries
-  ["You have advantage on Dexterity ( Stealth) checks made to hide."]
-  :race "Troglodyte"
-  :name "Chameleon Skin"
-  :book "DMG"}
- {:entries
-  ["Any creature other than a troglodyte that starts its turn within 5 ft. of you must succeed on a DC 12 Constitution saving throw or be poisoned until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."]
-  :race "Troglodyte"
-  :name "Stench"
-  :book "DMG"}
- {:entries ["Your thick hide grants you a +1 bonus to Armor Class."]
-  :race    "Troglodyte"
-  :name    "Natural Armor"
-  :book    "DMG"}
  {:entries
   ["You can drain blood and life energy from a willing creature, or one that is grappled by you, incapacitated, or restrained. Make a melee attack against the target. If you hit, you deal 1 piercing damage and 1d6 necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."]
   :race "Vampire"
@@ -1159,16 +878,6 @@
   :race "Yuan-ti Pureblood"
   :name "Poison Immunity"
   :book "VGM"}
- {:entries
-  ["If damage reduces you to 0 hit points, you must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, you drop to 1 hit point instead."]
-  :race "Zombie"
-  :name "Undead Fortitude"
-  :book "DMG"}
- {:entries
-  ["You are immune to poison damage, and you can't be poisoned. You don't require air, food, drink, or sleep."]
-  :race "Zombie"
-  :name "Undead Nature"
-  :book "DMG"}
  {:subrace "Fallen"
   :entries
   ["Starting at 3rd level, you can use your action to unleash the divine energy within yourself, causing your eyes to turn into pools of darkness and two skeletal, ghostly, flightless wings to sprout from your back. The instant you transform, other creatures within 10 feet of you that can see you must succeed on a Charisma saving throw (DC 8 + your proficiency bonus + your Charisma modifier) or become frightened of you until the end of your next turn."
@@ -1357,38 +1066,6 @@
   :race    "Dwarf"
   :name    "Dwarven Armor Training"
   :book    "PHB"}
- {:subrace "Eladrin"
-  :entries
-  ["You can cast the misty step spell once using this trait. You regain the ability to do so when you finish a short or long rest."]
-  :race    "Elf"
-  :name    "Fey Step"
-  :book    "DMG"}
- {:subrace "Eladrin"
-  :entries
-  ["As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. Once you use this trait, you can't do so again until you finish a short or long rest."
-   "When you reach 3rd level, your Fey Step gains an additional effect based on your season; if the effect requires a saving throw, the DC equals 8 + your proficiency bonus + your Charisma modifier:"
-   {:type  "list"
-    :style "list-hang-notitle"
-    :items
-    [{:name "Autumn"
-      :type "item"
-      :entry
-      "Immediately after you use your Fey Step, up to two creatures of your choice that you can see within 10 feet of you must succeed on a Wisdom saving throw or be charmed by you for 1 minute, or until you or your companions deal any damage to it."}
-     {:name "Winter"
-      :type "item"
-      :entry
-      "When you use your Fey Step, one creature of your choice that you can see within 5 feet of you before you teleport must succeed on a Wisdom saving throw or be frightened of you until the end of your next turn."}
-     {:name "Spring"
-      :type "item"
-      :entry
-      "When you use your Fey Step, you can touch one willing creature within 5 feet of you. That creature then teleports instead of you, appearing in an unoccupied space of your choice that you can see within 30 feet of you."}
-     {:name "Summer"
-      :type "item"
-      :entry
-      "Immediately after you use your Fey Step, each creature of your choice that you can see within 5 feet of you takes fire damage equal to your Charisma modifier (minimum of 1 damage)."}]}]
-  :race    "Elf"
-  :name    "Fey Step"
-  :book    "MTF"}
  {:subrace "Mark of Shadow"
   :entries
   ["When you make a Charisma ( Performance) or Dexterity ( Stealth) check, you can roll a d4 and add the number rolled to the ability check."]
@@ -1649,15 +1326,9 @@
   :race    "Gnome"
   :name    "Tinker"
   :book    "PHB"}
- {:subrace "Ixalan"
-  :entries
-  ["You have a climbing speed of 25 feet. You can't use your climbing speed while you wear medium or heavy armor. (If your campaign uses the variant rule for {@variantrule encumbrance|PHB}, you can't use your climbing speed if you are encumbered.)"]
-  :race    "Goblin"
-  :name    "Agile Climber"
-  :book    "PSX"}
  {:subrace "Ghostwise"
-  :entries
-  ["You can speak telepathically to any creature within 30 feet of you. The creature understands you only if the two of you share a language. You can speak telepathically in this way to one creature at a time."]
+  :effect  "You can speak telepathically to any creature within 30 feet of you. The creature understands you only if the two of you share a language. You can speak telepathically in this way to one creature at a time."
+  :tags    #{:utility}
   :race    "Halfling"
   :name    "Silent Speech"
   :book    "SCAG"}

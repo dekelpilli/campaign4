@@ -141,21 +141,24 @@
                            (not (contains-skipped-text? (:entries p)))))
         race-powers (reduce
                       (fn [acc {:keys [name source entries]}]
-                        (reduce
-                          (fn [acc power]
-                            (if (keep-power? power)
-                              (as-> (assoc power :race name :book source) e
-                                    (dissoc e :type)
-                                    (conj acc e))
-                              acc))
-                          acc
-                          entries))
+                        (if (not= "DMG" source)
+                          (reduce
+                            (fn [acc power]
+                              (if (keep-power? power)
+                                (as-> (assoc power :race name :book source) e
+                                      (dissoc e :type)
+                                      (conj acc e))
+                                acc))
+                            acc
+                            entries)
+                          acc))
                       []
                       (:race races))
         powers (reduce
-                 (fn [acc {:keys [raceName name source entries] :as sr}]
+                 (fn [acc {:keys [raceName name source entries]}]
                    (if (and (some? name)
-                            (not (str/includes? name ";")))
+                            (not (str/includes? name ";"))
+                            (not= "DMG" source))
                      (reduce
                        (fn [acc power]
                          (if (keep-power? power)
