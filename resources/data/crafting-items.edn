@@ -1,20 +1,19 @@
-[{:name   "Orb(s) of Annexation"
-  :effect "Add a mod to a magical item"
-  :amount [:disadvantaged [:default]]}
- {:name   "Orb(s) of Balance"
+[{:name   "Shrine of Annexation"
+  :effect "Add a mod to a magical item"}
+ {:name   "Shrine of Balance"
   :effect "Remove a non-locked mod from an enchanted item and replace it with new random mods at least equal in point value."}
- {:name   "Orb(s) of Perfection"
+ {:name   "Shrine of Consumption"
+  :effect "Add a random modifier, doubled, to a weapon. Increases sell value by 10, but also add the following locked modifier: '-1 die size with damage'."}
+
+ {:name   "Orb of Perfection"
   :effect "Replace a random value, or grouping of values, from a chosen modifier on an item with any possible random value of your choice."}
- {:name   "Orb(s) of Consumption"
-  :effect "Reduce a non-caster weapon's base damage die size by 1 to add a random modifier, doubled. Increases sell value by 10."
-  :amount [:advantaged [:default]]}
- {:name   "Sacrificial Orb(s)"
+ {:name   "Sacrificial Orb"
   :effect "Use when performing a ring sacrifice increase the amount of generated options by an amount equal to the number of rings sacrificed."}
- {:name   "Orb(s) of Favouritism"
+ {:name   "Orb of Favouritism"
   :effect "Reroll the monster & trait in an gem 3 times, forcing a specific monster type. If none are available of that type in the appropriate CR, you may roll with a lower CR."}
- {:name   "Orb(s) of Discovery"
+ {:name   "Orb of Discovery"
   :effect "Reroll the monster & trait in an gem 10 times, guaranteeing unique results where possible, player then chooses one of the results, or to keep the current trait."}
- {:name   "Orb(s) of Mulligan"
+ {:name   "Orb of Mulligan"
   :effect "Resets a relic to before it was levelled, allowing it to be re-levelled again."}
  {:name     "Orb(s) of Purification"
   :effect   "Apply to an amulet and roll 1d8. If you roll above its current CR capacity, you may increase its CR capacity by 1. Contained creature does not change."
