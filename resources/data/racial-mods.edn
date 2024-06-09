@@ -18,12 +18,12 @@
                       "Two luminous, spectral wings sprout from your back temporarily. Until the transformation ends, you have a flying speed equal to your walking speed, and once on each of your turns, you can deal extra radiant damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your proficiency bonus."]}]
   :race    "Aasimar"
   :name    "Celestial Revelation"
-  :book    "MPMM"}
+  :book    "Various"}
  {:effect "You have resistance to necrotic damage."
   :tags   #{:survivability}
-  :race   "Aetherborn"
-  :name   "Born of Aether"
-  :book   "PSK"}
+  :race   "Various"
+  :name   "Various"
+  :book   "Various"}
  {:effect "As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
   :tags   #{:utility}
   :race   "Astral Elf"
@@ -113,11 +113,6 @@
   :tags   #{:magic}
   :race   "Deep Gnome"
   :name   "Gift of the Svirfneblin"
-  :book   "MPMM"}
- {:effect "You have advantage on Intelligence, Wisdom, and Charisma saving throws against spells."
-  :tags   #{:survivability}
-  :race   "Deep Gnome"
-  :name   "Gnomish Magic Resistance"
   :book   "MPMM"}
  {:effect "When you make a Dexterity (Stealth) check, you can make the check with advantage. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
   :tags   #{:utility}
@@ -463,11 +458,6 @@
   :race   "Kobold"
   :name   "Grovel, Cower, and Beg"
   :book   "VGM"}
- {:effect "You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't incapacitated."
-  :tags   #{:accuracy}
-  :race   "Kobold"
-  :name   "Pack Tactics"
-  :book   "VGM"}
  {:effect "You also have a climbing speed of 30 feet as long as you are not wearing heavy armor."
   :tags   #{:utility}
   :race   "Kor"
@@ -588,329 +578,159 @@
   :race   "Plasmoid"
   :name   "Natural Resilience"
   :book   "AAG"}
- {:entries
-  ["You have proficiency with the {@item longbow|PHB}, {@item shortbow|PHB}, and {@item spear|PHB}. Additionally, your familiarity with the longbow means that it is not considered a heavy weapon for you."]
-  :race "Raptor"
-  :name "Hunter's Training"
-  :book "HWCS"}
- {:entries
-  ["If you replace a race with this lineage, you can keep the following elements of that race: any skill proficiencies you gained from it and any climbing, flying, or swimming speed you gained from it."
-   "If you don't keep any of those elements or you choose this lineage at character creation, you gain proficiency in two skills of your choice."]
-  :race "Reborn"
-  :name "Ancestral Legacy"
-  :book "VRGR"}
- {:entries
-  ["You have escaped death, a fact represented by the following benefits:"
-   {:type "list"
-    :items
-    ["You have advantage on saving throws against disease and being poisoned, and you have resistance to poison damage."
-     "You have advantage on death saving throws."
-     "You don't need to eat, drink, or breathe."
-     "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in an inactive, motionless state, during which you retain consciousness."]}]
-  :race "Reborn"
-  :name "Deathless Nature"
-  :book "VRGR"}
- {:entries
-  ["You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."]
-  :race "Reborn"
-  :name "Knowledge from a Past Life"
-  :book "VRGR"}
- {:entries
-  ["You have advantage on saving throws against spells and other magical effects."]
-  :race "Satyr"
-  :name "Magic Resistance"
-  :book "MOT"}
- {:entries
-  ["Whenever you make a long or high jump, you can roll a d8 and add the number rolled to the number of feet you cover, even when making a standing jump. This extra distance costs movement as normal."]
-  :race "Satyr"
-  :name "Mirthful Leaps"
-  :book "MOT"}
- {:entries
-  ["You have proficiency in the Performance and Persuasion skills, and you have proficiency with one {@item musical instrument|PHB} of your choice."]
-  :race "Satyr"
-  :name "Reveler"
-  :book "MOT"}
- {:entries ["You have advantage on saving throws against spells."]
-  :race    "Satyr"
-  :name    "Magic Resistance"
-  :book    "MPMM"}
- {:entries
-  ["Whenever you make a long jump or a high jump, you can roll a d8 and add the number rolled to the number of feet you cover, even when making a standing jump. This extra distance costs movement as usual."]
-  :race "Satyr"
-  :name "Mirthful Leaps"
-  :book "MPMM"}
- {:entries
-  ["As an embodiment of revelry, you have proficiency in the Performance and Persuasion skills, and you have proficiency with one {@item musical instrument|PHB} of your choice."]
-  :race "Satyr"
-  :name "Reveler"
-  :book "MPMM"}
- {:entries
-  ["You can breathe air and water, and you have a resistance to cold damage."]
-  :race "Sea Elf"
-  :name "Child of the Sea"
-  :book "MPMM"}
- {:entries
-  ["Aquatic animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that has a swimming speed. It can understand your words, though you have no special ability to understand it in return."]
-  :race "Sea Elf"
-  :name "Friend of the Sea"
-  :book "MPMM"}
- {:entries
-  ["As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
-   "Starting at 3rd level, you also gain resistance to all damage when you teleport using this trait. The resistance lasts until the start of your next turn. During that time, you appear ghostly and translucent."]
-  :race "Shadar-Kai"
-  :name "Blessing of the Raven Queen"
-  :book "MPMM"}
- {:entries ["You have resistance to necrotic damage."]
-  :race    "Shadar-Kai"
-  :name    "Necrotic Resistance"
-  :book    "MPMM"}
- {:entries
-  ["As a bonus action, you can assume a more bestial appearance. This transformation lasts for 1 minute, until you die, or until you revert to your normal appearance as a bonus action. When you shift, you gain temporary hit points equal to your level + your Constitution modifier (minimum of 1 temporary hit point). You also gain additional benefits that depend on your shifter subrace, described below."
-   "Once you shift, you can't do so again until you finish a short or long rest."]
-  :race "Shifter"
-  :name "Shifting"
-  :book "ERLW"}
- {:entries
-  ["You have advantage on Dexterity ( Stealth) checks when you attempt to hide in a forest."]
-  :race "Strig"
-  :name "Patterned Feathers"
-  :book "HWCS"}
- {:entries
-  ["You have proficiency in the Perception and Stealth skills."]
-  :race "Tabaxi"
-  :name "Cat's Talent"
-  :book "MPMM"}
- {:entries
-  ["Your reflexes and agility allow you to move with a burst of speed. When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move 0 feet on one of your turns."]
-  :race "Tabaxi"
-  :name "Feline Agility"
-  :book "MPMM"}
- {:entries
-  ["Your reflexes and agility allow you to move with a burst of speed. When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move 0 feet on one of your turns."]
-  :race "Tabaxi"
-  :name "Feline Agility"
-  :book "VGM"}
- {:entries
-  ["You have proficiency in the Perception and Stealth skills."]
-  :race "Tabaxi"
-  :name "Cat's Talents"
-  :book "VGM"}
- {:entries
-  ["While you aren't wearing armor, your carapace gives you a base Armor Class of 13 + your Dexterity modifier."
-   "As an action, you can change the color of your carapace to match the color and texture of your surroundings, giving you advantage on Dexterity ( Stealth) checks made to hide in those surroundings."]
-  :race "Thri-kreen"
-  :name "Chameleon Carapace"
-  :book "AAG"}
- {:entries
-  ["You have two slightly smaller secondary arms below your primary pair of arms. The secondary arms can manipulate an object, open or close a door or container, pick up or set down a Tiny object, or wield a weapon that has the light property."]
-  :race "Thri-kreen"
-  :name "Secondary Arms"
-  :book "AAG"}
- {:entries
-  ["You do not require sleep and can remain conscious during a long rest, though you must still refrain from strenuous activity to gain the benefit of the rest."]
-  :race "Thri-kreen"
-  :name "Sleepless"
-  :book "AAG"}
- {:entries
-  ["Without the assistance of magic, you can't speak the non-thri-kreen languages you know. Instead you use telepathy to convey your thoughts. You have the magical ability to transmit your thoughts mentally to willing creatures within 120 feet of yourself. A contacted creature doesn't need to share a language with you to understand your thoughts, but it must be able to understand at least one language. Your telepathic link to a creature is broken if you and the creature move more than 120 feet apart, if either of you is incapacitated, or if either of you mentally breaks the contact (no action required)."]
-  :race "Thri-kreen"
-  :name "Thri-kreen Telepathy"
-  :book "AAG"}
- {:entries ["You have resistance to fire damage."]
-  :race    "Tiefling"
-  :name    "Hellish Resistance"
-  :book    "PHB"}
- {:entries
-  ["Your shell provides you a base AC of 17 (your Dexterity modifier doesn't affect this number). You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal."]
-  :race "Tortle"
-  :name "Natural Armor"
-  :book "MPMM"}
- {:entries
-  ["Thanks to your mystical connection to nature, you gain proficiency with one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival."]
-  :race "Tortle"
-  :name "Nature's Intuition"
-  :book "MPMM"}
- {:entries
-  ["You can withdraw into your shell as an action. Until you emerge, you gain a +4 bonus to your AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell."]
-  :race "Tortle"
-  :name "Shell Defense"
-  :book "MPMM"}
- {:entries
-  ["{@note The Tortle Package is considered part of Xanathar's Guide to Everything for Adventurers League character creation.}"]
-  :race "Tortle"
-  :book "TTP"}
- {:entries
-  ["Due to your shell and the shape of your body, you are ill-suited to wearing armor. Your shell provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn't affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal."]
-  :race "Tortle"
-  :name "Natural Armor"
-  :book "TTP"}
- {:entries
-  ["You can withdraw into your shell as an action. Until you emerge, you gain a +4 bonus to AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell."]
-  :race "Tortle"
-  :name "Shell Defense"
-  :book "TTP"}
- {:entries
-  ["You can cast fog cloud with this trait. Starting at 3rd level, you can cast the gust of wind spell with this trait. Starting at 5th level, you can also cast the water walk spell with it. Once you cast any of these spells with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast these spells using any spell slots you have of the appropriate level."
-   "Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race)."]
-  :race "Triton"
-  :name "Control Air and Water"
-  :book "MPMM"}
- {:entries
-  ["You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. It can understand your words, though you have no special ability to understand it in return."]
-  :race "Triton"
-  :name "Emissary of the Sea"
-  :book "MPMM"}
- {:entries
-  ["Adapted to the frigid ocean depths, you have resistance to cold damage."]
-  :race "Triton"
-  :name "Guardian of the Depths"
-  :book "MPMM"}
- {:entries ["You have a swimming speed of 30 feet."]
-  :race    "Triton"
-  :name    "Swim Speed"
-  :book    "VGM"}
- {:entries
-  ["A child of the sea, you can call on the magic of elemental air and water. You can cast fog cloud with this trait. Starting at 3rd level, you can cast gust of wind with it, and starting at 5th level, you can also cast {@spell wall of water|xge} with it. Once you cast a spell with this trait, you can't cast that spell with it again until you finish a long rest. Charisma is your spellcasting ability for these spells."]
-  :race "Triton"
-  :name "Control Air and Water"
-  :book "VGM"}
- {:entries
-  ["Aquatic beasts have an extraordinary affinity with your people. You can communicate simple ideas with beasts that can breathe water. They can understand the meaning of your words, though you have no special ability to understand them in return."]
-  :race "Triton"
-  :name "Emissary of the Sea"
-  :book "VGM"}
- {:entries
-  ["Adapted to even the most extreme ocean depths, you have resistance to cold damage."]
-  :race "Triton"
-  :name "Guardians of the Depths"
-  :book "VGM"}
- {:entries
-  ["You can drain blood and life energy from a willing creature, or one that is grappled by you, incapacitated, or restrained. Make a melee attack against the target. If you hit, you deal 1 piercing damage and 1d6 necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."]
-  :race "Vampire"
-  :name "Blood Thirst"
-  :book "PSZ"}
- {:entries ["You have resistance to necrotic damage."]
-  :race    "Vampire"
-  :name    "Vampiric Resistance"
-  :book    "PSZ"}
- {:entries
-  ["You have advantage on all Intelligence, Wisdom, and Charisma saving throws."]
-  :race "Vedalken"
-  :name "Vedalken Dispassion"
-  :book "GGR"}
- {:entries
-  ["You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."]
-  :race "Vedalken"
-  :name "Vedalken Cunning"
-  :book "PSK"}
- {:entries
-  ["Whenever you make an Intelligence ( History) check related to magic items or aether-powered technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."]
-  :race "Vedalken"
-  :name "Aether Lore"
-  :book "PSK"}
- {:entries
-  ["The black blood that is a sign of your people's connection to That-Which-Endures boosts your natural healing. When you roll a 1 or 2 on any Hit Die you spend at the end of a short rest, you can reroll the die and must use the new roll."]
-  :race "Verdan"
-  :name "Black Blood Healing"
-  :book "AI"}
- {:entries
-  ["You can telepathically speak to any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand your telepathy, but it must be able to understand at least one language. This process of communication is slow and limited, allowing you to transmit and receive only simple ideas and straightforward concepts."]
-  :race "Verdan"
-  :name "Limited Telepathy"
-  :book "AI"}
- {:entries
-  ["Your mind's connection to the world around you strengthens your will. You have advantage on all Wisdom and Charisma saving throws."]
-  :race "Verdan"
-  :name "Telepathic Insight"
-  :book "AI"}
- {:entries
-  ["You add your Intelligence modifier as a bonus on all Dexterity saving throws."]
-  :race "Vulpin"
-  :name "Evasive"
-  :book "HWCS"}
- {:entries
-  ["You can cast charm person as a 1st level spell with this trait, and regain the ability to do so when you finish a long rest. When you reach 3rd level, you can cast {@spell ambush prey|HWCS} as a 2nd level spell with this trait, and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast fear with this trait, and regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells."]
-  :race "Vulpin"
-  :name "Bewitching Guile"
-  :book "HWCS"}
- {:entries
-  ["You were created to have remarkable fortitude, represented by the following benefits:"
-   {:type "list"
-    :items
-    ["You have advantage on saving throws against being poisoned, and you have resistance to poison damage."
-     "You don't need to eat, drink, or breathe."
-     "You are immune to disease."
-     "You don't need to sleep, and magic can't put you to sleep."]}]
-  :race "Warforged"
-  :name "Constructed Resilience"
-  :book "ERLW"}
- {:entries
-  ["Your body has built-in defensive layers, which can be enhanced with armor:"
-   {:type "list"
-    :items
-    ["You gain a +1 bonus to Armor Class."
-     "You can don only armor with which you have proficiency. To don armor other than a shield, you must incorporate it into your body over the course of 1 hour, during which you remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way."
-     "While you live, the armor incorporated into your body can't be removed against your will."]}]
-  :race "Warforged"
-  :name "Integrated Protection"
-  :book "ERLW"}
- {:entries
-  ["You gain one skill proficiency and one tool proficiency of your choice."]
-  :race "Warforged"
-  :name "Specialized Design"
-  :book "ERLW"}
- {:entries ["You have advantage on saving throws against spells."]
-  :race    "Yuan-Ti"
-  :name    "Magic Resistance"
-  :book    "MPMM"}
- {:entries
-  ["You have advantage on saving throws you make to avoid or end the poisoned condition on yourself. You also have resistance to poison damage."]
-  :race "Yuan-Ti"
-  :name "Poison Resilience"
-  :book "MPMM"}
- {:entries
-  ["You have advantage on saving throws against spells and other magical effects."]
-  :race "Yuan-ti Pureblood"
-  :name "Magic Resistance"
-  :book "VGM"}
- {:entries
-  ["You are immune to poison damage and the poisoned condition."]
-  :race "Yuan-ti Pureblood"
-  :name "Poison Immunity"
-  :book "VGM"}
- {:subrace "Fallen"
-  :entries
-  ["Starting at 3rd level, you can use your action to unleash the divine energy within yourself, causing your eyes to turn into pools of darkness and two skeletal, ghostly, flightless wings to sprout from your back. The instant you transform, other creatures within 10 feet of you that can see you must succeed on a Charisma saving throw (DC 8 + your proficiency bonus + your Charisma modifier) or become frightened of you until the end of your next turn."
-   "Your transformation lasts for 1 minute or until you end it as a bonus action. During it, once on each of your turns, you can deal extra necrotic damage to one target when you deal damage to it with an attack or a spell. The extra necrotic damage equals your level."
-   "Once you use this trait, you can't use it again until you finish a long rest."]
-  :race    "Aasimar"
-  :name    "Necrotic Shroud"
-  :book    "VGM"}
- {:subrace "Protector"
-  :entries
-  ["Starting at 3rd level, you can use your action to unleash the divine energy within yourself, causing your eyes to glimmer and two luminous, incorporeal wings to sprout from your back."
-   "Your transformation lasts for 1 minute or until you end it as a bonus action. During it, you have a flying speed of 30 feet, and once on each of your turns, you can deal extra radiant damage to one target when you deal damage to it with an attack or a spell. The extra radiant damage equals your level."
-   "Once you use this trait, you can't use it again until you finish a long rest."]
-  :race    "Aasimar"
-  :name    "Radiant Soul"
-  :book    "VGM"}
- {:subrace "Scourge"
-  :entries
-  ["Starting at 3rd level, you can use your action to unleash the divine energy within yourself, causing a searing light to radiate from you, pour out of your eyes and mouth, and threaten to char you."
-   "Your transformation lasts for 1 minute or until you end it as a bonus action. During it, you shed bright light in a 10-foot radius and dim light for an additional 10 feet, and at the end of each of your turns, you and each creature within 10 feet of you take radiant damage equal to half your level (rounded up). In addition, once on each of your turns, you can deal extra radiant damage to one target when you deal damage to it with an attack or a spell. The extra radiant damage equals your level."
-   "Once you use this trait, you can't use it again until you finish a long rest."]
-  :race    "Aasimar"
-  :name    "Radiant Consumption"
-  :book    "VGM"}
- {:subrace "Hawk-Headed"
-  :entries
-  ["You have proficiency in the Perception skill. In addition, attacking at long range doesn't impose disadvantage on your ranged weapon attack rolls."]
-  :race    "Aven"
-  :name    "Hawkeyed"
-  :book    "PSA"}
+ {:effect "You have proficiency with the longbow and shortbow. Additionally, your familiarity with the longbow means that it is not considered a heavy weapon for you."
+  :tags   #{:utility}
+  :race   "Raptor"
+  :name   "Hunter's Training"
+  :book   "HWCS"}
+ {:effect "\"You have advantage on saving throws against disease and being poisoned, and you have resistance to poison damage.\""
+  :tags   #{:survivability}
+  :race   "Reborn"
+  :name   "Deathless Nature 1"
+  :book   "VRGR"}
+ {:effect "You have advantage on death saving throws."
+  :tags   #{:survivability}
+  :race   "Reborn"
+  :name   "Deathless Nature 2"
+  :book   "VRGR"}
+ {:effect "You don't need to eat, drink, or breathe."
+  :tags   #{:utility}
+  :race   "Reborn"
+  :name   "Deathless Nature 3"
+  :book   "VRGR"}
+ {:effect "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in an inactive, motionless state, during which you retain consciousness."
+  :tags   #{:utility}
+  :race   "Reborn"
+  :name   "Deathless Nature 4"
+  :book   "VRGR"}
+ {:effect "When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :tags   #{:utility}
+  :race   "Reborn"
+  :name   "Knowledge from a Past Life"
+  :book   "VRGR"}
+ {:effect "Whenever you make a long or high jump, you can roll a d8 and add the number rolled to the number of feet you cover, even when making a standing jump. This extra distance costs movement as normal."
+  :tags   #{:utility}
+  :race   "Satyr"
+  :name   "Mirthful Leaps"
+  :book   "Various"}
+ {:effect "You have proficiency in the Performance and Persuasion skills, and you have proficiency with one musical instrument of your choice."
+  :tags   #{:utility}
+  :race   "Satyr"
+  :name   "Reveler"
+  :book   "Various"}
+ {:effect "You can breathe air and water, and you have a resistance to cold damage."
+  :tags   #{:utility :survivability}
+  :race   "Sea Elf"
+  :name   "Child of the Sea"
+  :book   "MPMM"}
+ {:effect "You can communicate simple ideas to any Beast that has a swimming speed. It can understand your words, though you have no special ability to understand it in return."
+  :tags   #{:utility}
+  :race   "Sea Elf"
+  :name   "Friend of the Sea"
+  :book   "MPMM"}
+ {:effect "As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. You also gain resistance to all damage when you teleport using this trait. The resistance lasts until the start of your next turn. During that time, you appear ghostly and translucent."
+  :tags   #{:utility :survivability}
+  :race   "Shadar-Kai"
+  :name   "Blessing of the Raven Queen"
+  :book   "MPMM"}
+ {:effect "You have advantage on Dexterity (Stealth) checks when you attempt to hide in a forest."
+  :tags   #{:utility}
+  :race   "Strig"
+  :name   "Patterned Feathers"
+  :book   "HWCS"}
+ {:effect "You have proficiency in the Perception and Stealth skills."
+  :tags   #{:utility}
+  :race   "Tabaxi"
+  :name   "Cat's Talent"
+  :book   "Various"}
+ {:effect "When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move 0 feet on one of your turns."
+  :tags   #{:utility}
+  :race   "Tabaxi"
+  :name   "Feline Agility"
+  :book   "Various"}
+ {:effect "While you aren't wearing armor, your carapace gives you a base Armor Class of 13 + your Dexterity modifier. As an action, you can change the color of your carapace to match the color and texture of your surroundings, giving you advantage on Dexterity (Stealth) checks made to hide in those surroundings."
+  :tags   #{:utility :survivability}
+  :race   "Thri-kreen"
+  :name   "Chameleon Carapace"
+  :book   "AAG"}
+ {:effect "You do not require sleep and can remain conscious during a long rest, though you must still refrain from strenuous activity to gain the benefit of the rest."
+  :tags   #{:utility}
+  :race   "Thri-kreen"
+  :name   "Sleepless"
+  :book   "AAG"}
+ {:effect "Without the assistance of magic, you can't speak the non-thri-kreen languages you know. You have the magical ability to transmit your thoughts mentally to willing creatures within 120 feet of yourself. A contacted creature doesn't need to share a language with you to understand your thoughts, but it must be able to understand at least one language. Your telepathic link to a creature is broken if you and the creature move more than 120 feet apart, if either of you is incapacitated, or if either of you mentally breaks the contact (no action required)."
+  :tags   #{:utility}
+  :race   "Thri-kreen"
+  :name   "Thri-kreen Telepathy"
+  :book   "AAG"}
+ {:effect "You have resistance to fire damage."
+  :tags   #{:survivability}
+  :race   "Tiefling"
+  :name   "Hellish Resistance"
+  :book   "PHB"}
+ {:effect "You have a base AC of 17 (your Dexterity modifier doesn't affect this number). You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal."
+  :tags   #{:survivability}
+  :race   "Tortle"
+  :name   "Natural Armor"
+  :book   "Various"}
+ {:effect "You can withdraw into your shell as an action. Until you emerge, you gain a +4 bonus to your AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell."
+  :tags   #{:survivability}
+  :race   "Tortle"
+  :name   "Shell Defense"
+  :book   "Various"}
+ {:effect "You learn fog cloud. gust of wind, and water walk, and can cast them without consuming a spell slot. Once you cast any of these in this way, you can't cast that spell with it again until you finish a long rest."
+  :tags   #{:magic}
+  :race   "Triton"
+  :name   "Control Air and Water"
+  :book   "Various"}
+ {:effect "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. It can understand your words, though you have no special ability to understand it in return."
+  :tags   #{:utility}
+  :race   "Triton"
+  :name   "Emissary of the Sea"
+  :book   "MPMM"}
+ {:effect "You have resistance to cold damage."
+  :tags   #{:survivability}
+  :race   "Triton"
+  :name   "Guardian of the Depths"
+  :book   "Various"}
+ {:effect "You can drain blood and life energy from a willing creature, or one that is grappled by you, incapacitated, or restrained. Make a melee attack against the target as an action. If you hit, you deal 1 piercing damage and 1d6 necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+  :tags   #{:damage :survivability}
+  :race   "Vampire"
+  :name   "Blood Thirst"
+  :book   "PSZ"}
+ {:effect "Whenever you make an Intelligence (History) check related to magic items or aether-powered technological devices, gain an expertise die for that check."
+  :tags   #{:utility}
+  :race   "Vedalken"
+  :name   "Aether Lore"
+  :book   "PSK"}
+ {:effect "When you roll a 1 or 2 on any Hit Die you spend at the end of a short rest, you can reroll the die and must use the new roll."
+  :tags   #{:survivability}
+  :race   "Verdan"
+  :name   "Black Blood Healing"
+  :book   "AI"}
+ {:effect "You can telepathically speak to any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand your telepathy, but it must be able to understand at least one language. This process of communication is slow and limited, allowing you to transmit and receive only simple ideas and straightforward concepts."
+  :tags   #{:utility}
+  :race   "Verdan"
+  :name   "Limited Telepathy"
+  :book   "AI"}
+ {:effect "You add your Intelligence modifier as a bonus on all Dexterity saving throws."
+  :tags   #{:survivability}
+  :race   "Vulpin"
+  :name   "Evasive"
+  :book   "HWCS"}
+ {:effect "You learn the Charm Person, Ambush Prey, and Fear spells, and may cast these spells without using a spell slot. You can cast each of these spells only once in this way."
+  :tags   #{:magic}
+  :race   "Vulpin"
+  :name   "Bewitching Guile"
+  :book   "HWCS"}
+ {:effect "You gain a +1 bonus to Armor Class."
+  :tags   #{:survivability}
+  :race   "Warforged"
+  :name   "Integrated Protection"
+  :book   "ERLW"}
  {:subrace "Ibis-Headed"
-  :entries
-  ["You can add half your proficiency bonus, rounded down, to any Intelligence check you make that doesn't already include your proficiency bonus."]
+  :effet   "You can add half your proficiency bonus, rounded down, to any Intelligence check you make that doesn't already include your proficiency bonus."
+  :tags    #{:utility}
   :race    "Aven"
   :name    "Kefnet's Blessing"
   :book    "PSA"}
@@ -1114,11 +934,6 @@
   :name    "Friend of the Sea"
   :book    "MTF"}
  {:subrace "Shadar-kai"
-  :entries ["You have resistance to necrotic damage."]
-  :race    "Elf"
-  :name    "Necrotic Resistance"
-  :book    "MTF"}
- {:subrace "Shadar-kai"
   :entries
   ["As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. Once you use this trait, you can't do so again until you finish a long rest."
    "Starting at 3rd level, you also gain resistance to all damage when you teleport using this trait. The resistance lasts until the start of your next turn. During that time, you appear ghostly and translucent."]
@@ -1210,11 +1025,6 @@
   :entries ["You have resistance to acid damage."]
   :race    "Genasi"
   :name    "Acid Resistance"
-  :book    "EEPC"}
- {:subrace "Water"
-  :entries ["You have a swimming speed of 30 feet."]
-  :race    "Genasi"
-  :name    "Swim"
   :book    "EEPC"}
  {:subrace "Air"
   :entries
