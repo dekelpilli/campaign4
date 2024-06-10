@@ -5,7 +5,7 @@
 
 (def uniques (u/load-data :uniques))
 
-(defn- mod-at-level [{:keys [levels] :as mod} level]
+(defn mod-at-level [{:keys [levels] :as mod} level]
   (let [new-mod (if levels
                   (let [level-data (if (< (count levels) level)
                                      (peek levels)

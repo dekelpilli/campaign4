@@ -31,15 +31,15 @@
    {:name   "Enchanted Receptacle"
     :omen   :enchanted
     :action (fn enchanted-receptacle [] (e/random-enchanted 30))} ;TODO replace?
+   {:name   "Crafting item"
+    :omen   :crafting-item
+    :action crafting/crafting-loot}
    {:name   "Receptacle + Curios"
     :omen   :curio
     :action (fn curios-loot [] (repeatedly 2 curios/new-curio))}
    {:name   "Vial"
     :omen   :vial
     :action vials/new-vial}
-   {:name   "Crafting item"
-    :omen   :crafting-item
-    :action crafting/new-crafting-items}
    {:name   "Helmet"
     :omen   :helmet
     :action (constantly "helmets/new-helmet")} ;TODO

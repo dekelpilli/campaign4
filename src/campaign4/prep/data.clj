@@ -8,8 +8,7 @@
     [clojure.string :as str]
     [jsonista.core :as j])
   (:import
-    (java.io File)
-    (org.ahocorasick.trie Trie)))
+    (java.io File)))
 
 (defn- write-data! [path coll]
   (with-open [writer (io/writer path)]
@@ -119,14 +118,8 @@
                 j/keyword-keys-object-mapper)
         skip-power-type? #{"Speed" "Age" "Size" "Languages" "Language" "Creature Type" "Alignment" "Cantrip"
                            "Elf Weapon Training" "Amphibious" "Powerful Build" "Sunlight Sensitivity" "Extra Language"
-                           "Khenra Weapon Training" "Drow Weapon Training"
-                           ;TODO add skipped types below this comment, and maybe some to represent the themes of some of the above
-                           "Darkvision"
-                           "Keen Senses"
-                           "Fey Ancestry"
-                           "Trance"
-                           "Superior Darkvision"
-                           "Flight"}
+                           "Khenra Weapon Training" "Drow Weapon Training" "Darkvision" "Keen Senses" "Fey Ancestry"
+                           "Trance" "Superior Darkvision" "Flight"}
         contains-skipped-text? (u/str-contains-any-fn ["underwater"
                                                        "take a long rest"
                                                        "you are proficient in "

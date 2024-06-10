@@ -30,11 +30,11 @@
             "Your next Vial result grants an additional vial that can only be used on characters."
             "Your next Vial result is rolled with advantage."
             "You may choose to receive a random vial that matches vial effects on party members or their items instead of the vial granted by your next Vial result."]}
- {:type    :crafting-item ;TODO rethink
-  :options ["Your next Crafting Item result grants one additional crafting of the same type."
-            "Your next Crafting Item result also grants one use of a random crafting item in the form of a shrine."
-            "Your next Crafting Item result's quantity is rolled with advantage."
-            "You may choose which crafting item type your next Crafting Item result grants."]}
+ {:type    :crafting
+  :options ["Your next Crafting result grants both and orb and a shrine."
+            "Roll a disadvantaged d4 when you receive your next Crafting loot result. Gain that many Crafting results instead of just 1."
+            "You may choose if your next Crafting result grants a shrine or an orb."
+            "After it is determined if your next Crafting result is an orb or a shrine, the shrine or orb is rolled with advantage."]}
  {:type    :helmet
   :options ["Your next Helmet result also grants an Orb of Personality."
             "Your next Helmet result grants a helmet with one additional modifier."

@@ -1,4 +1,14 @@
-[{:effect "You have resistance to necrotic damage and radiant damage."
+[{:effect "You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray."
+  :tags   #{:utility}
+  :name   "Darkvision"
+  :race   "Various"
+  :book   "Various"}
+ {:effect "You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray."
+  :tags   #{:utility}
+  :name   "Keen Senses"
+  :race   "Various"
+  :book   "Various"}
+ {:effect "You have resistance to necrotic damage and radiant damage."
   :tags   #{:survivability}
   :race   "Aasimar"
   :name   "Celestial Resistance"
@@ -753,28 +763,22 @@
   :name    "Sharp Mind"
   :book    "HWCS"}
  {:subrace "Draconblood"
-  :entries
-  ["You can use your understanding of creative diplomacy or intimidation to guide a conversation in your favor. When you make a Charisma ( Intimidation or Persuasion) check, you can do so with advantage. Once you use this trait, you can't do so again until you finish a short or long rest."]
+  :effect  "Once per long rest, when you make a Charisma (Intimidation or Persuasion) check, you can do so with advantage."
+  :tags    #{:utility}
   :race    "Dragonborn"
   :name    "Forceful Presence"
   :book    "EGW"}
  {:subrace "Ravenite"
-  :entries
-  ["When you take damage from a creature in range of a weapon you are wielding, you can use your reaction to make an attack with the weapon against that creature. Once you use this trait, you can't do so again until you finish a short or long rest."]
+  :effect  "Once per short rest, when you take damage from a creature in range of a weapon you are wielding, you can use your reaction to make an attack with the weapon against that creature"
+  :tags    #{:damage}
   :race    "Dragonborn"
   :name    "Vengeful Assault"
   :book    "EGW"}
  {:subrace "Duergar"
-  :entries
-  ["You have advantage on saving throws against poison, and you have resistance against poison damage. You also have advantage on saving throws against illusions and against being charmed or staggered."]
+  :effect  "You have advantage on saving throws against poison, and you have resistance against poison damage. You also have advantage on saving throws against illusions and against being charmed or staggered."
+  :tags    #{:survivability}
   :race    "Dwarf"
   :name    "Duergar Resilience"
-  :book    "MTF"}
- {:subrace "Duergar"
-  :entries
-  ["When you reach 3rd level, you can cast the {@spell Enlarge/Reduce} spell on yourself once with this trait, using only the spell's enlarge option. When you reach 5th level, you can cast the Invisibility spell on yourself once with this trait. You don't need material components for either spell, and you can't cast them while you're in direct sunlight, although sunlight has no effect on them once cast. You regain the ability to cast these spells with this trait when you finish a long rest. Intelligence is your spellcasting ability for these spells."]
-  :race    "Dwarf"
-  :name    "Duergar Magic"
   :book    "MTF"}
  {:subrace "Hill"
   :effect  "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
@@ -913,12 +917,6 @@
   :tags    #{:magic :utility}
   :race    "Human"
   :name    "The Bigger They Are"
-  :book    "ERLW"}
- {:subrace "Mark of Passage"
-  :entries
-  ["You can cast the misty step spell once with this trait, and you regain the ability to cast it when you finish a long rest. Dexterity is your spellcasting ability for this spell."]
-  :race    "Human"
-  :name    "Magical Passage"
   :book    "ERLW"}
  {:subrace "Mark of Sentinel"
   :effect  "You gain an expertise die with Wisdom (Insight) and Wisdom (Perception) checks."
