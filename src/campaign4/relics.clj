@@ -1,7 +1,9 @@
 (ns campaign4.relics
   (:require
     [campaign4.db :as db]
-    [campaign4.util :as u]))
+    [campaign4.util :as u]
+    [clojure.core.match :refer [match]]
+    [randy.core :as r]))
 
 (defn update-relic! [{:keys [name] :as relic}]
   (db/execute! {:update [:relics]
@@ -176,7 +178,48 @@
 ;                  :where  [:= :name name]})
 ;    (select-keys relic [:name :base-type :base])))
 
-(defn relic-level-options [{:keys [pool antiquity starting levels level sold]}]
+(defn- upgrade-points [mod]
+  (when (:upgradeable? mod true)
+    (or (:upgrade-points mod)
+        (:points mod)
+        10)))
+
+(defn- upgrade-mod [mod]
+  (if (>= (+ 10 (:progress mod 0))
+          (upgrade-points mod))
+    (-> (dissoc mod :progress)
+        (update :level (fnil inc 1)))
+    (update mod :progress (fnil + 0) 10)))
+
+(defn current-relic-mods [{:keys [starting levels level]}]
+  (reduce (fn [mods level]
+            (cond
+              (nil? level) mods
+              (or (:random level) (:pool level)) (conj mods (or (:random level) (:pool level)))
+              (or (:upgrade level) (:progress level))
+              (mapv
+                (fn [mod]
+                  (cond-> mod
+                          (= (or (:upgrade level) (:progress level))
+                             (select-keys mod [:upgrade-points :points :effect])) upgrade-mod))
+                mods)))
+          starting
+          (take level levels)))
+
+(defn- level-options-types [antiquity? remaining-pool num-progress-mods has-upgradeable?]
+  (let [pool-option (if (seq remaining-pool) :pool :random)]
+    (if antiquity?
+      [:random :random pool-option]
+      (match [num-progress-mods has-upgradeable?]
+             [2 _] [:progress :progress pool-option]
+             [1 true] [:progress pool-option (r/sample [:random :upgrade])]
+             [1 false] [:progress :random pool-option]
+             [0 true] [:random pool-option :upgrade]
+             [0 false] [:random pool-option (if (>= (count remaining-pool) 2)
+                                              (r/sample [:random pool-option])
+                                              :random)]))))
+
+(defn relic-level-options [{:keys [pool antiquity levels level sold base-type] :as relic}]
   (if-not (or sold
               (= level 6)
               (< (dec level) (count levels)))
@@ -185,20 +228,22 @@
                            (-> (apply disj (set pool) chosen-pool-mods)
                                vec)
                            pool)
-          current-mods [] ;TODO calculate effects from levels+starting, add :progressed to any in-progress mods
-          option-types (if antiquity
-                         [:random :random (if (seq remaining-pool)
-                                            :pool
-                                            :random)]
-                         ;[:random :pool :upgrade] if all are possible and no progress
-                         ;[:random :pool (1 of :random or :pool)] if no progress and no upgrades
-                         ;[:random :pool :progress] if 1 upgrade
-                         ;[(1 of :random or :pool) :progress :progress] if 2 progress
-                         ;for all of these, if no :pool, replace all :pool with :random
-                         )
+          current-mods (current-relic-mods relic)
+          remaining-points (* 10 (- 6 level))
+          upgradeable-mods (if antiquity
+                             []
+                             (keep (fn [mod]
+                                     (some-> (upgrade-points mod)
+                                             (<= remaining-points)))
+                                   current-mods))
+          progress-mods (if antiquity
+                          []
+                          (filterv :progress current-mods))
+          option-types (level-options-types antiquity remaining-pool (count progress-mods) (-> upgradeable-mods seq some?))
           option-freqs (frequencies option-types)]
       ;TODO use option-freqs to generate 3 unique options
-      )
+
+      option-types)
     []))
 
 (comment
@@ -211,7 +256,8 @@
                          :points 20}}
                  {:pool {:effect "Mod 2"}}
                  {:upgrade {:effect "Mod 0"}}
-                 {:upgrade {:effect "Mod 1"}}]
+                 {:upgrade {:effect "Mod 1"
+                            :points 20}}]
      :starting  [{:effect "Mod 0"}]
      :pool      [{:effect "Mod 1"
                   :points 20}
@@ -223,12 +269,16 @@
 
   (let [db-relic {:name      ""
                   :sold      false
+                  :found     true
                   :antiquity false
+                  :base-type "armour"
                   :level     6
-                  :levels    [{:pool {:effect "Mod 1"}}
+                  :levels    [{:pool {:effect "Mod 1"
+                                      :points 20}}
                               {:pool {:effect "Mod 2"}}
                               {:upgrade {:effect "Mod 0"}}
-                              {:upgrade {:effect "Mod 1"}}
+                              {:upgrade {:effect "Mod 1"
+                                         :points 20}}
                               {:progress {:effect "Mod 1"}}] ;can also have :random {whatever}, and nil for no changes
                   :starting  [{:effect "Mod 0"}]
                   :pool      [{:effect "Mod 1"
