@@ -5,8 +5,7 @@
 
 (defn update-relic! [{:keys [name] :as relic}]
   (db/execute! {:update [:relics]
-                :set    (-> relic
-                            (select-keys [:levels :base :found])
+                :set    (-> (select-keys relic [:levels :base :found])
                             (update :levels u/jsonb-lift))
                 :where  [:= :name name]}))
 
@@ -176,3 +175,74 @@
 ;                  :set    {:sold true}
 ;                  :where  [:= :name name]})
 ;    (select-keys relic [:name :base-type :base])))
+
+(defn relic-level-options [{:keys [pool antiquity starting levels level sold]}]
+  (if-not (or sold
+              (= level 6)
+              (< (dec level) (count levels)))
+    (let [chosen-pool-mods (keep :pool levels)
+          remaining-pool (if (seq chosen-pool-mods)
+                           (-> (apply disj (set pool) chosen-pool-mods)
+                               vec)
+                           pool)
+          current-mods [] ;TODO calculate effects from levels+starting, add :progressed to any in-progress mods
+          option-types (if antiquity
+                         [:random :random (if (seq remaining-pool)
+                                            :pool
+                                            :random)]
+                         ;[:random :pool :upgrade] if all are possible and no progress
+                         ;[:random :pool (1 of :random or :pool)] if no progress and no upgrades
+                         ;[:random :pool :progress] if 1 upgrade
+                         ;[(1 of :random or :pool) :progress :progress] if 2 progress
+                         ;for all of these, if no :pool, replace all :pool with :random
+                         )
+          option-freqs (frequencies option-types)]
+      ;TODO use option-freqs to generate 3 unique options
+      )
+    []))
+
+(comment
+  (relic-level-options
+    {:name      ""
+     :sold      false
+     :antiquity false
+     :level     5
+     :levels    [{:pool {:effect "Mod 1"
+                         :points 20}}
+                 {:pool {:effect "Mod 2"}}
+                 {:upgrade {:effect "Mod 0"}}
+                 {:upgrade {:effect "Mod 1"}}]
+     :starting  [{:effect "Mod 0"}]
+     :pool      [{:effect "Mod 1"
+                  :points 20}
+                 {:effect "Mod 2"}
+                 {:effect "Mod 3"}
+                 {:effect "Mod 4"}
+                 {:effect "Mod 5"}
+                 {:effect "Mod 6"}]})
+
+  (let [db-relic {:name      ""
+                  :sold      false
+                  :antiquity false
+                  :level     6
+                  :levels    [{:pool {:effect "Mod 1"}}
+                              {:pool {:effect "Mod 2"}}
+                              {:upgrade {:effect "Mod 0"}}
+                              {:upgrade {:effect "Mod 1"}}
+                              {:progress {:effect "Mod 1"}}] ;can also have :random {whatever}, and nil for no changes
+                  :starting  [{:effect "Mod 0"}]
+                  :pool      [{:effect "Mod 1"
+                               :points 20}
+                              {:effect "Mod 2"}
+                              {:effect "Mod 3"}
+                              {:effect "Mod 4"}
+                              {:effect "Mod 5"}
+                              {:effect "Mod 6"}]}
+        output-relic {:name    ""
+                      :level   6
+                      :effects [{:effect "Mod 0"
+                                 :level  2}
+                                {:effect "Mod 1"
+                                 :level  2}
+                                {:effect "Mod 2"
+                                 :level  1}]}]))
