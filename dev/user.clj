@@ -64,6 +64,15 @@
   (-> (choose-by-name (:name *1) uniques/uniques)
       (uniques/at-level 2))
 
+  (-> (mapv #(choose-by-name % tarot/cards)
+            ["x of swords"
+             "devil"
+             "empress"])
+      (tarot/generate-antiquity nil))
+
+  (talismans/cr->output 3)
+  (talismans/new-gem 0)
+
   (roll 10 4)
   (cp)
 

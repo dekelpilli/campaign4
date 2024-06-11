@@ -74,22 +74,22 @@
 (defn create-relics! []
   (db/execute! {:create-table :relics
                 :with-columns [[:name :text [:primary-key] [:not nil]]
+                               [:sold :boolean [:not nil]]
                                [:found :boolean [:not nil]]
+                               [:antiquity :boolean [:not nil]]
                                [:base-type :text [:not nil]]
-                               [:base :text]
-                               [:start :jsonb [:not nil]]
-                               [:mods :jsonb [:not nil]]
-                               [:levels :jsonb]
                                [:level :integer [:not nil]]
-                               [:sold :boolean [:not nil]]]}))
+                               [:starting :jsonb [:not nil]]
+                               [:pool :jsonb [:not nil]]
+                               [:levels :jsonb]]}))
 
 (defn insert-relics! []
   (db/execute! {:insert-into :relics
                 :values      (->> (u/load-data :relics)
                                   (mapv #(-> (dissoc % :enabled?)
                                              (assoc :sold false :level 1)
-                                             (update :start u/jsonb-lift)
-                                             (update :mods u/jsonb-lift)
+                                             (update :starting u/jsonb-lift)
+                                             (update :pool u/jsonb-lift)
                                              (update :levels u/jsonb-lift))))
                 :on-conflict []
                 :do-nothing  {}}))

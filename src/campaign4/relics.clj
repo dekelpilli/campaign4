@@ -1,6 +1,7 @@
 (ns campaign4.relics
   (:require
     [campaign4.db :as db]
+    [campaign4.enchants :as e]
     [campaign4.util :as u]
     [clojure.core.match :refer [match]]
     [randy.core :as r]))
@@ -213,7 +214,7 @@
       (match [num-progress-mods has-upgradeable?]
              [2 _] [:progress :progress pool-option]
              [1 true] [:progress pool-option (r/sample [:random :upgrade])]
-             [1 false] [:progress :random pool-option]
+             [1 false] [:progress pool-option :random]
              [0 true] [:random pool-option :upgrade]
              [0 false] [:random pool-option (if (>= (count remaining-pool) 2)
                                               (r/sample [:random pool-option])
@@ -222,7 +223,7 @@
 (defn relic-level-options [{:keys [pool antiquity levels level sold base-type] :as relic}]
   (if-not (or sold
               (= level 6)
-              (< (dec level) (count levels)))
+              (not= (dec level) (count levels)))
     (let [chosen-pool-mods (keep :pool levels)
           remaining-pool (if (seq chosen-pool-mods)
                            (-> (apply disj (set pool) chosen-pool-mods)
@@ -232,18 +233,30 @@
           remaining-points (* 10 (- 6 level))
           upgradeable-mods (if antiquity
                              []
-                             (keep (fn [mod]
-                                     (some-> (upgrade-points mod)
-                                             (<= remaining-points)))
-                                   current-mods))
+                             (filterv (fn [mod]
+                                        (some-> (upgrade-points mod)
+                                                (<= remaining-points)))
+                                      current-mods))
           progress-mods (if antiquity
                           []
                           (filterv :progress current-mods))
           option-types (level-options-types antiquity remaining-pool (count progress-mods) (-> upgradeable-mods seq some?))
           option-freqs (frequencies option-types)]
-      ;TODO use option-freqs to generate 3 unique options
-
-      option-types)
+      (reduce-kv
+        (fn [options option-type amount]
+          (into options
+                (map (fn [o] {option-type o}))
+                (case option-type
+                  :progress progress-mods ;(= amount (count progress-mods)) is always true
+                  :pool (r/sample-without-replacement amount remaining-pool)
+                  :upgrade (r/sample-without-replacement amount upgradeable-mods)
+                  :random (let [f (comp e/prep-enchant (e/enchants-fns base-type))]
+                            (loop [opts #{(f)}]
+                              (if (= (count opts) amount)
+                                opts
+                                (recur (conj opts (f)))))))))
+        []
+        option-freqs))
     []))
 
 (comment
@@ -251,6 +264,7 @@
     {:name      ""
      :sold      false
      :antiquity false
+     :base-type "armour"
      :level     5
      :levels    [{:pool {:effect "Mod 1"
                          :points 20}}
@@ -288,11 +302,12 @@
                               {:effect "Mod 4"}
                               {:effect "Mod 5"}
                               {:effect "Mod 6"}]}
-        output-relic {:name    ""
-                      :level   6
-                      :effects [{:effect "Mod 0"
-                                 :level  2}
-                                {:effect "Mod 1"
-                                 :level  2}
-                                {:effect "Mod 2"
-                                 :level  1}]}]))
+        output-relic {:name      ""
+                      :level     6
+                      :base-type "armour"
+                      :effects   [{:effect "Mod 0"
+                                   :level  2}
+                                  {:effect "Mod 1"
+                                   :level  2}
+                                  {:effect "Mod 2"
+                                   :level  1}]}]))

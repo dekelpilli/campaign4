@@ -17,13 +17,6 @@
                        (update :randoms randoms/randoms->fn))))
          {})))
 
-(u/defdelayed ^:private crs
-  (->> (db/execute!
-         {:select   [[[:distinct :cr] :cr]]
-          :from     :monsters
-          :order-by [[:cr :asc]]})
-       (mapv :cr)))
-
 (defn- ->output [monster trait]
   (-> (dissoc monster :traits)
       (assoc :trait trait)))
@@ -79,9 +72,6 @@
   (let [monster-traits (monster-traits-by-cr cr)]
     (cond->> monster-traits
              (> (count monster-traits) amount) (r/sample-without-replacement amount))))
-
-(defn cr->gem [cr]
-  (some-> (cr) cr->output))
 
 (defn gem-by-monster-type [cr monster-type]
   (->> (db/execute! {:select [:*]
