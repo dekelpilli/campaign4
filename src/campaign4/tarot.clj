@@ -1,7 +1,7 @@
 (ns campaign4.tarot
   (:require
     [campaign4.enchants :as e]
-    [campaign4.randoms :as randoms]
+    [campaign4.formatting :as formatting]
     [campaign4.talismans :as talismans]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
@@ -17,11 +17,11 @@
    :unique-2 8})
 
 (def exotic-mods (->> (u/load-data :exotic-mods)
-                      (mapv #(update % :randoms randoms/randoms->fn))))
+                      (mapv formatting/load-mod)))
 (def aura-mods (->> (u/load-data :aura-mods)
-                    (mapv #(update % :randoms randoms/randoms->fn))))
+                    (mapv formatting/load-mod)))
 (def racial-mods (->> (u/load-data :racial-mods)
-                      (mapv #(update % :randoms randoms/randoms->fn))))
+                      (mapv formatting/load-mod)))
 
 (defn- levelled-unique-mods [{:keys [mods name]}]
   (let [prepare-unique-mod (fn [m] (-> (select-keys m [:effect :tags])
@@ -47,7 +47,7 @@
                :unique-1 (get unique-mods 1)
                :unique-2 (get unique-mods 2))]
     (-> (r/sample coll)
-        u/fill-randoms)))
+        formatting/display-mod)))
 
 (defn- add-pool-mod [mods type-generator tag-advantages]
   (let [type (type-generator)

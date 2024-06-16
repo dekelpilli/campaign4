@@ -22,14 +22,12 @@
  {:name   "The Beacon"
   :effect "You emit bright light in a radius of 5 feet from you for each ring worn."
   :points 2}
- {:name    "The Trained"
-  :effect  "If all of your worn synergy rings are 'The Trained', with a minimum of 3, you may choose to gain a feat from one of your rings. This ring grants the option of `%s`. You may change the chosen ring during a long rest."
-  :randoms [{:preset :feats}]
-  :points  2}
- {:name    "The Able"
-  :effect  "+1 %s while not wearing any synergy rings that are not 'The Able'"
-  :randoms [{:preset :ability-scores}]
-  :points  3}
+ {:name   "The Trained"
+  :effect "If all of your worn synergy rings are 'The Trained', with a minimum of 3, you may choose to gain a feat from one of your rings. This ring grants the option of `{{x|randoms:feats}}`. You may change the chosen ring during a long rest."
+  :points 2}
+ {:name   "The Able"
+  :effect "+1 {{x|random|ability-scores}} while not wearing any synergy rings that are not 'The Able'"
+  :points 3}
  {:name   "Vengeful"
   :effect "Once per short rest, as a reaction to being damaged, you may cast Hex on the creature that damaged you. Normal range/visibility/concentration restrictions apply."
   :points 4}
@@ -42,22 +40,15 @@
  {:name   "Restless"
   :effect "You do not suffer disadvantage on Perception checks while asleep."
   :points 3}
- {:name    "Divergent"
-  :effect  "You take %s damage as %s damage instead."
-  :randoms {:preset :without-replacement
-            :amount 2
-            :from   {:preset :damage-types
-                     :type   :non-physical}}
-  :points  1}
- {:name    "Multilingual"
-  :effect  "You can speak, read, and write %s if worn for at least 24 hours."
-  :randoms [{:preset :languages}]
-  :points  1}
- {:name    "Protected"
-  :effect  "You lose proficiency in a saving throw of your choice. You gain proficiency in %s saving throws."
-  :randoms [{:preset :ability-scores
-             :type   :uncommon}]
-  :points  1}
+ {:name   "Divergent"
+  :effect "{% with x=x|random|without-replacement:damage-types:2:non-physical %}You take {{x.0}} damage as {{x.1}} damage instead.{% endwith %}"
+  :points 1}
+ {:name   "Multilingual"
+  :effect "You can speak, read, and write {{x|random|languages}} if worn for at least 24 hours."
+  :points 1}
+ {:name   "Protected"
+  :effect "You lose proficiency in a saving throw of your choice. You gain proficiency in {{x|random|ability-scores:uncommon}} saving throws."
+  :points 1}
  {:name   "Powerful"
   :effect "Your strength is considered to be 15 for the purpose of wearing armour and wielding weapons."
   :points 5}

@@ -1,6 +1,6 @@
 (ns campaign4.db
   (:require
-    [campaign4.util :as u]
+    [campaign4.util :refer [defdelayed] :as u]
     [honey.sql :as hsql]
     [jsonista.core :as j]
     [next.jdbc :as jdbc]
@@ -21,7 +21,7 @@
 
 (defn- connect ^Connection [] (jdbc/get-connection data-src))
 
-(u/defdelayed ^:private c (connect))
+(defdelayed ^:private c (connect))
 (def ^:dynamic *txn* nil)
 
 (defmacro in-transaction [& body]

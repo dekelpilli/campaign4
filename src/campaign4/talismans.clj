@@ -1,7 +1,7 @@
 (ns campaign4.talismans
   (:require
     [campaign4.db :as db]
-    [campaign4.randoms :as randoms]
+    [campaign4.formatting :as formatting]
     [campaign4.util :as u]
     [randy.core :as r]
     [randy.rng :as rng]))
@@ -13,8 +13,7 @@
            (update acc category
                    (fnil conj [])
                    (-> (dissoc e :category)
-                       (update :tags set)
-                       (update :randoms randoms/randoms->fn))))
+                       formatting/load-mod)))
          {})))
 
 (defn- ->output [monster trait]
@@ -84,4 +83,4 @@
 
 (defn new-talisman []
   (update-vals talisman-enchants-by-category
-               (comp u/fill-randoms r/sample)))
+               (comp formatting/display-mod r/sample)))

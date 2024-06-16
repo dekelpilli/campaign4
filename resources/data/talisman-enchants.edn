@@ -62,9 +62,8 @@
   :tags     #{:survivability}}
 
  {:category "below"
-  :effect   "If %1$s is the creature's highest ability score, +2 maximum %1$s."
-  :tags     #{:utility}
-  :randoms  [{:preset :ability-scores}]}
+  :effect   "{% with x=x|random|ability-scores %}If {{x}} is the creature's highest ability score, +2 maximum {{x}}.{% endwith %}"
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has multiattack, your basic maneuvers have a 50% chance to be done as a free action."
   :tags     #{:utility}}

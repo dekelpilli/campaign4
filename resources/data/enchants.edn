@@ -9,10 +9,9 @@
  {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -[1] to saving throws against spells and conditions."
   :points 30
   :tags   #{:accuracy :control :magic}}
- {:effect  "+1 %s."
-  :points  20
-  :randoms [{:preset :ability-scores}]
-  :tags    #{:utility}}
+ {:effect "+1 {{x:random|ability-scores}}."
+  :points 20
+  :tags   #{:utility}}
  {:effect       "When you cause a condition on a creature, +10% chance to replace that condition with debilitation."
   :points       20
   :tags         #{:control}
@@ -26,10 +25,9 @@
  {:effect "+5 feet range for applying stabilising Medicine checks."
   :points 20
   :tags   #{:utility}}
- {:effect  "+1 maximum %s."
-  :points  20
-  :randoms [{:preset :ability-scores}]
-  :tags    #{:utility}}
+ {:effect "+1 maximum {{x:random|ability-scores}}."
+  :points 20
+  :tags   #{:utility}}
  {:effect "You have [1] additional second level spell slot if you already have at least one."
   :points 15
   :tags   #{:magic}}
@@ -63,10 +61,8 @@
   :tags   #{:critical :survivability :utility}}
  {:effect "You have [1] additional first level spell slot if you already have at least one."
   :tags   #{:magic}}
- {:effect  "+5ft %s."
-  :randoms [{:preset :literal
-             :values ["blindsight" "tremorsense"]}]
-  :tags    #{:utility}}
+ {:effect "+5ft {{x|random|literal:blindsight:tremorsense}}."
+  :tags   #{:utility}}
  {:effect "Creatures that have hit you with a critical hit in the last minute have -[1]AB."
   :tags   #{:control}}
  {:effect       "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."
@@ -88,10 +84,8 @@
   :tags   #{:survivability}}
  {:effect "+1 to initiative rolls."
   :tags   #{:utility}}
- {:effect  "+5ft %s speed."
-  :randoms [{:preset :literal
-             :values ["burrow" "fly"]}]
-  :tags    #{:utility}}
+ {:effect "+5ft {{x|random|literal:burrow:fly}} speed."
+  :tags   #{:utility}}
  {:effect "+10ft climb speed."
   :tags   #{:utility}}
  {:effect "+10ft swimming speed, and you can breath under water."
@@ -99,12 +93,10 @@
  {:effect       "You can jump without a run-up as if you had taken a run-up."
   :tags         #{:utility}
   :upgradeable? false}
- {:effect  "+1 expertise die with %s."
-  :randoms [{:preset :skills}]
-  :tags    #{:utility}}
- {:effect  "You may cast %s once per long rest."
-  :randoms [{:preset :cantrips}]
-  :tags    #{:magic}}
+ {:effect "+1 expertise die with {{x|random|skills}}."
+  :tags   #{:utility}}
+ {:effect "You may cast {{x|random|cantrips}} once per long rest."
+  :tags   #{:magic}}
  {:effect "This item sells for an extra [1]d20 gold. You only roll after the item is sold."
   :tags   #{:wealth}}
  {:effect "+1 to your loot rolls on loot rolls obtained via positive random encounters."
@@ -130,10 +122,7 @@
  {:effect       "You have resistance to all damage while affected by the benefits of the Dodge action."
   :tags         #{:survivability}
   :upgradeable? false}
- {:effect "+1 damage to %s attacks."
-  :randoms [{:preset :literal
-             :values ["melee and touch"
-                      "ranged and thrown"]}]
+ {:effect "+1 damage to {{x|random|literal:melee and touch:ranged and thrown}} attacks."
   :tags   #{:damage}}
  {:effect "[Once] per short rest, recover a 1st-level spell slot on Killing Blow."
   :tags   #{:magic}}
@@ -186,27 +175,20 @@
   :points    20
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+1 to %s saving throws."
+  :effect    "+1 to {{x|random|ability-scores:common}} saving throws."
   :points    20
-  :randoms   [{:preset :ability-scores
-               :type   :common}]
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "Gain maximum physical barrier equal to the CR of your highest CR active minion."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+[2:2] maximum %s barrier."
-  :randoms   [{:preset :damage-types
-               :type   :non-physical}]
+  :effect    "+[2:2] maximum {{x|random|damage-types:non-physical}} barrier."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+1 to %s saving throws."
-  :randoms   [{:preset :ability-scores
-               :type   :uncommon}]
+  :effect    "+1 to {{x|random|ability-scores:uncommon}} saving throws."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+2 maximum %s barrier."
-  :randoms   [{:preset :damage-types}]
+  :effect    "+2 maximum {{x|random|damage-types}} barrier."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "Once per round, when you take damage from a melee or touch attack, the attacker takes true damage equal to half your level, rounded down."
@@ -255,12 +237,6 @@
   :effect    "+1 to Dexterity saving throws if wearing a light or unarmoured body armour and not using a shield."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+1 to death saves in %s."
-  :points    5
-  :randoms   [{:preset :literal
-               :values ["sunlight" "darkness"]}]
-  :tags      #{:survivability}}
- {:base-type "armour"
   :effect    "+[2] to saving throws against effects that can petrify."
   :points    5
   :tags      #{:survivability}}
@@ -277,9 +253,8 @@
   :points    30
   :tags      #{:accuracy}}
  {:base-type "weapon"
-  :effect    "+1 AB while wielding a %s weapons."
+  :effect    "+1 AB while wielding a {{x|random|weapon-categories}} weapons."
   :points    30
-  :randoms   [{:preset :weapon-categories}]
   :tags      #{:accuracy}}
  {:base-type    "weapon"
   :effect       "Your base damage dice are automatically rolled at their maximum on critical hits."
@@ -287,10 +262,9 @@
   :tags         #{:critical}
   :upgradeable? false}
  {:base-type      "weapon"
-  :effect         "+[1d4] %s damage with attacks."
+  :effect         "+[1d4] {{x|random|damage-types}} damage with attacks."
   :points         30
-  :randoms        [{:factor 1
-                    :preset :damage-types}]
+  :weighting      1
   :tags           #{:damage}
   :upgrade-points 10}
  {:base-type    "weapon"
@@ -299,11 +273,9 @@
   :tags         #{:utility}
   :upgradeable? false}
  {:base-type      "weapon"
-  :effect         "+[2:1] %s damage."
+  :effect         "+[2:1] {{x|random|damage-types:physical}} damage."
   :points         20
-  :randoms        [{:factor 1
-                    :preset :damage-types
-                    :type   :physical}]
+  :weighting      1
   :tags           #{:damage}
   :upgrade-points 10}
  {:base-type "weapon"
@@ -319,20 +291,13 @@
   :points    20
   :tags      #{:utility}}
  {:base-type      "weapon"
-  :effect         "+[2:1] %s damage."
+  :effect         "+[2:1] {{x|random|damage-types:non-physical}} damage."
   :points         15
-  :randoms        [{:factor 1
-                    :preset :damage-types
-                    :type   :non-physical}]
+  :weighting      1
   :tags           #{:damage}
   :upgrade-points 10}
  {:base-type "weapon"
-  :effect    "+1 AB with opportunity attacks while you %s."
-  :randoms   [{:preset :literal
-               :values ["have temporary HP"
-                        "are on 100% HP"
-                        "are flanked"
-                        "are flanking the target"]}]
+  :effect    "+1 AB with opportunity attacks while you {{x|random|literal:have temporary HP:are on 100% HP:are flanked:are flanking the target}}."
   :tags      #{:accuracy}}
  {:base-type "weapon"
   :effect    "+1 to base damage die size."
@@ -354,8 +319,7 @@
   :tags         #{:control}
   :upgradeable? false}
  {:base-type "weapon"
-  :effect    "+4 damage against %s creatures."
-  :randoms   [{:preset :monster-types}]
+  :effect    "+4 damage against {{x|random|monster-types}} creatures."
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "Missed weapon attacks have a [20:5]% chance to be critical hits instead while you are below 20% hit points."
@@ -379,9 +343,7 @@
   :effect    "+[2:1] damage against enemies you are flanking."
   :tags      #{:damage}}
  {:base-type "weapon"
-  :effect    "+[2:1] global damage against creatures %s in the initiative tracker."
-  :randoms   [{:preset :literal
-               :values ["behind you" "ahead of you"]}]
+  :effect    "+[2:1] global damage against creatures {{x|random|literal:behind:ahead of}} you in the initiative tracker."
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "+2 global damage while you are bloodied."

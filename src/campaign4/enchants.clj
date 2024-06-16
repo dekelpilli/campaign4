@@ -1,5 +1,6 @@
 (ns campaign4.enchants
   (:require
+    [campaign4.formatting :as formatting]
     [campaign4.randoms :as randoms]
     [campaign4.util :as u]
     [randy.core :as r]))
@@ -32,16 +33,13 @@
 
 (def enchants-by-base
   (->> (u/load-data :enchants)
-       (mapv (fn [{:keys [randoms points upgradeable?]
-                   :or   {points       10
-                          upgradeable? true}
+       (mapv (fn [{:keys [randoms points]
+                   :or   {points 10}
                    :as   enchant}]
                (-> (assoc enchant
-                     :weighting (randoms/randoms->weighting-multiplier randoms)
-                     :points points
-                     :upgradeable? upgradeable?)
-                   (cond-> upgradeable? (update :upgrade-points (fnil identity points)))
-                   (update :randoms randoms/randoms->fn))))
+                     :weighting (randoms/randoms->weighting-multiplier randoms) ;TODO
+                     :points points)
+                   formatting/load-mod)))
        (reduce
          (fn [acc {:keys [base-type] :as enchant}]
            (if base-type
@@ -55,7 +53,7 @@
 (defn valid-enchants [base-type]
   (get enchants-by-base base-type))
 
-(def prep-enchant (comp u/filter-vals u/fill-randoms))
+(def prep-enchant (comp u/filter-vals #(formatting/display-mod % {:level 1})))
 
 (defn add-enchants-totalling [points-target enchants-fn]
   (loop [points-sum 0
