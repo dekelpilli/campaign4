@@ -2,12 +2,10 @@
   :tags   #{:control}}
  {:effect "Creatures of your choice within 10 feet of you have can use your barriers instead of their own when taking damage. If a creature does this, gain 2 in each of your barriers at the end of the current turn."
   :tags   #{:survivability}}
- {:effect  "Creatures of your choice within 10 feet of you take 1 %s thorns damage when they attack creatures other than you."
-  :randoms [{:preset :damage-types}]
-  :tags    #{:damage}}
- {:effect  "When creatures within 20 feet of you other than yourself deal damage, you may choose for all of that damage to be converted to %s."
-  :randoms [{:preset :damage-types}]
-  :tags    #{:damage :survivability}}
+ {:effect "Creatures of your choice within 10 feet of you take 1 {{x|random:damage-types}} thorns damage when they attack creatures other than you."
+  :tags   #{:damage}}
+ {:effect "When creatures within 20 feet of you other than yourself deal damage, you may choose for all of that damage to be converted to {{x|random:damage-types}}."
+  :tags   #{:damage :survivability}}
  {:effect "When creatures within 10 feet of you other than yourself deal damage, you may choose for all of that damage to be converted to a damage type of your choice."
   :tags   #{:damage :survivability}}
  {:effect "When creatures of your choice within 30 feet of you scores a critical hit, they may use a reaction to immediately ask 3 questions about a creature they can see within that radius."

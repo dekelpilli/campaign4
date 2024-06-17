@@ -10,7 +10,7 @@
 
 (defn new-rings [n]
   (->> (r/sample-without-replacement n rings)
-       (mapv formatting/display-mod)))
+       (mapv formatting/format-mod)))
 
 (defn sacrifice [sacrificials-used sacrificed-rings]
   (let [remaining-rings (into [] (remove (comp (set sacrificed-rings) :name)) rings)
@@ -18,4 +18,4 @@
                         (* (inc sacrificials-used))
                         (min (count remaining-rings)))]
     (->> (r/sample-without-replacement num-options remaining-rings)
-         (mapv formatting/display-mod))))
+         (mapv formatting/format-mod))))

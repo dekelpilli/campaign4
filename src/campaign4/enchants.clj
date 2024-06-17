@@ -53,7 +53,7 @@
 (defn valid-enchants [base-type]
   (get enchants-by-base base-type))
 
-(def prep-enchant (comp u/filter-vals #(formatting/display-mod % {:level 1})))
+(def prep-enchant (comp u/filter-vals #(formatting/format-mod % {:level 1})))
 
 (defn add-enchants-totalling [points-target enchants-fn]
   (loop [points-sum 0

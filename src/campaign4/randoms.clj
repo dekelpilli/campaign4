@@ -16,7 +16,7 @@
 (defn- sample-fn [vs]
   (fn sample-random [] (r/sample vs)))
 
-(defn randoms->fn [preset args]
+(defn preset->fn [preset args]
   (let [v (randoms-preset preset args)]
     (cond-> v
             (vector? v) sample-fn)))
@@ -43,8 +43,7 @@
    "Resilient" "Ritual Caster" "Sentinel" "Sharpshooter" "Shield Master" "Skilled" "Skulker" "Socialite" "Specialist"
    "Spell Touched" "Summoner" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
 
-(m/defmethod randoms-factor :skills [_]
-  5)
+(m/defmethod randoms-factor :skills [_] 5)
 (m/defmethod randoms-preset :skills [_ _]
   ["acrobatics" "animal handling" "arcana" "athletics" "deception" "engineering" "history" "insight"
    "intimidation" "investigation" "medicine" "nature" "perception" "performance" "persuasion" "religion"

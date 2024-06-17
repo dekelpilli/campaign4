@@ -14,6 +14,7 @@
 
            methodical/methodical             {:mvn/version "1.0.111"}
            selmer/selmer                     {:mvn/version "1.12.61"}
+           org.clj-commons/humanize          {:mvn/version "1.0"}
 
            com.github.seancorfield/honeysql  {:mvn/version "2.6.1126"}
            org.postgresql/postgresql         {:mvn/version "42.7.3"}

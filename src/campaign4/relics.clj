@@ -2,6 +2,7 @@
   (:require
     [campaign4.db :as db]
     [campaign4.enchants :as e]
+    [campaign4.formatting :as f]
     [campaign4.util :as u]
     [clojure.core.match :refer [match]]
     [randy.core :as r]))
@@ -250,7 +251,7 @@
                   :progress progress-mods ;(= amount (count progress-mods)) is always true
                   :pool (r/sample-without-replacement amount remaining-pool)
                   :upgrade (r/sample-without-replacement amount upgradeable-mods)
-                  :random (let [f (comp e/prep-enchant (e/enchants-fns base-type))]
+                  :random (let [f (comp f/format-mod (e/enchants-fns base-type))]
                             (loop [opts #{(f)}]
                               (if (= (count opts) amount)
                                 opts

@@ -1,5 +1,3 @@
 - Offer players more information before choosing divinity path
-- Come up with some DSL for upgrading mods to make this more automatic
-- Antiquities: when levelled, the choices available to the player 1. mod from mod pool, 2. random mod, 3. random mod
 Talismans:
   - Consider out of combat triggering?

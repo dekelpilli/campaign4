@@ -83,4 +83,4 @@
 
 (defn new-talisman []
   (update-vals talisman-enchants-by-category
-               (comp formatting/display-mod r/sample)))
+               (comp formatting/format-mod r/sample)))

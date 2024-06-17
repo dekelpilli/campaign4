@@ -47,7 +47,7 @@
                :unique-1 (get unique-mods 1)
                :unique-2 (get unique-mods 2))]
     (-> (r/sample coll)
-        formatting/display-mod)))
+        formatting/format-mod)))
 
 (defn- add-pool-mod [mods type-generator tag-advantages]
   (let [type (type-generator)
