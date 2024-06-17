@@ -33,7 +33,6 @@
 (defn- scale-dice [n]
   (loop [n n
          acc []]
-    (println n)
     (let [modded (mod n 5)
           consume (if (zero? modded) 5 modded)
           remaining (- n consume)
