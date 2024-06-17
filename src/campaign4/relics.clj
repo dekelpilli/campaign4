@@ -3,6 +3,7 @@
     [campaign4.db :as db]
     [campaign4.enchants :as e]
     [campaign4.formatting :as f]
+    [campaign4.levels :as levels]
     [campaign4.util :as u]
     [clojure.core.match :refer [match]]
     [randy.core :as r]))
@@ -180,8 +181,8 @@
 ;                  :where  [:= :name name]})
 ;    (select-keys relic [:name :base-type :base])))
 
-(defn- upgrade-points [mod]
-  (when (:upgradeable? mod true)
+(defn- upgrade-points [{:keys [level template]}]
+  (when (or (nil? level) (levels/upgradeable? level template))
     (or (:upgrade-points mod)
         (:points mod)
         10)))
@@ -230,7 +231,8 @@
                            (-> (apply disj (set pool) chosen-pool-mods)
                                vec)
                            pool)
-          current-mods (current-relic-mods relic)
+          current-mods (->> (current-relic-mods relic)
+                            (mapv f/load-mod))
           remaining-points (* 10 (- 6 level))
           upgradeable-mods (if antiquity
                              []
@@ -249,7 +251,8 @@
                 (map (fn [o] {option-type o}))
                 (case option-type
                   :progress progress-mods ;(= amount (count progress-mods)) is always true
-                  :pool (r/sample-without-replacement amount remaining-pool)
+                  :pool (->> (r/sample-without-replacement amount remaining-pool)
+                            (mapv f/load-mod))
                   :upgrade (r/sample-without-replacement amount upgradeable-mods)
                   :random (let [f (comp f/format-mod (e/enchants-fns base-type))]
                             (loop [opts #{(f)}]

@@ -67,7 +67,7 @@
       (throw (ex-info "Failed to load mod" mod e)))))
 
 (defn format-mod
-  ([mod] (format-mod mod {}))
+  ([mod] (format-mod mod {:level 1}))
   ([{:keys [template] :as mod} context]
    (binding [su/*escape-variables* false
              su/*missing-value-formatter* regurgitating-missing-value-formatter]

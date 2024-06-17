@@ -1,4 +1,4 @@
-[{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:30:10:3}}% chance to retain that spell slot."
+[{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:10:30:3}}% chance to retain that spell slot."
   :points         20
   :tags           #{:magic}
   :upgrade-points 10}
