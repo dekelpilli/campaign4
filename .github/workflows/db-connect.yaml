@@ -15,6 +15,6 @@ jobs:
           --port=${{ secrets.DB_PORT }}
           --username=${{ secrets.DB_USER }}
           --dbname=${{ secrets.DB_NAME }}
-          --command='SHOW DATABASES;'
+          --command='SHOW SERVER_VERSION;'
         env:
           PGPASSWORD: ${{ secrets.DB_PASS }}
