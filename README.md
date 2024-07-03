@@ -62,9 +62,10 @@ Antiquities are a type of relic obtained only via tarot cards. When antiquities 
   - Only character enchants are affected by this (non-char enchants can be added on creation via tarot cards)
 
 ### Tarot
-- Players may turn in tarot sets with 3
-- The base result of a tarot turn in is an antiquity on a random base. It has 1 starting mod and a random mod pool, all taken from antiquity mods. 
-- Players draw 2 cards per loot result
+- Players may turn in tarot sets with exactly 3 cards.
+- The base result of a tarot turn in is an antiquity. It has 1 base (starting) mod from the regular mod pool and a random mod pool with mods taken from antiquity mods.
+- You must decide if the generated antiquity will be a weapon or an armour before you turn in sets as this influences the base mod.
+- Players draw 2 cards per loot result.
 
 ### Vendor valuations
 - Helmets: N/A
@@ -83,7 +84,7 @@ Antiquities are a type of relic obtained only via tarot cards. When antiquities 
 - Orbs of Disavowment: 10
 - Vial of Cleansing: 2
 - Vial of Essence: 5
-- Choose randomised mod on a vial: 5 + original matching vial (e.g. player gives vial with 'damage' Generosity and chooses to get 'survivabiltiy' Generosity.)
+- Choose randomised mod on a vial: 5 + original matching vial (e.g. player gives vial with 'damage' Generosity and chooses to get 'survivability' Generosity.)
 - Mundanes: 5
 - Empty receptacles/moving modifiers: Free
 

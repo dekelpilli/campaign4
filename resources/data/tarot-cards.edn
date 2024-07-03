@@ -1,12 +1,11 @@
 ;TODO
 ; implement all relevant cards
-; define all cards
 [{:name   "The Fool"
   :order  0
   :effect "This turn in uses random cards (drawn from the deck) instead of the ones actually turned in (same amount). The cards used are still discarded."}
  {:name   "The Magician"
-  :order  nil
-  :effect ""}
+  :order  40
+  :effect "The resulting antiquity will have an additional 'magic' or 'survivability' tagged starting modifier."}
  {:name   "The High Priestess"
   :order  11
   :effect "The mods in the resulting antiquity's mod pool are more likely to be racial powers."}
@@ -14,8 +13,8 @@
   :order  11
   :effect "The mods in the resulting antiquity's mod pool are more likely to be exotic mods."}
  {:name   "The Emperor"
-  :order  nil
-  :effect ""}
+  :order  40
+  :effect "The resulting antiquity will have an additional 'damage' or 'accuracy' tagged starting modifier."}
  {:name   "The Hierophant"
   :order  61
   :effect "You may choose to the random values in mods on the generated antiquity (functions like an Orb of Perfection)."}
@@ -23,8 +22,8 @@
   :order  60
   :effect "When turning in this set, you may also sacrifice a relic. If you do so, generate an additional antiquity from this turn in, with its level being equal to that of the sacrificed relic."}
  {:name   "The Chariot"
-  :order  nil
-  :effect ""}
+  :order  40
+  :effect "The resulting antiquity will have an additional 'utility' or 'control' tagged starting modifier."}
  {:name   "Strength"
   :order  40
   :effect "The resulting antiquity contains an additional ability score related exotic starting modifier."}
@@ -32,14 +31,14 @@
   :order  11
   :effect "The mods in the resulting antiquity's mod pool are more likely to be unique mods."}
  {:name   "Wheel of Fortune"
-  :order  nil
-  :effect ""}
+  :order  40
+  :effect "The resulting antiquity will have an additional 'critical' or 'wealth' tagged starting modifier."}
  {:name   "Justice"
   :order  10
   :effect "Antiquity mod types are equally weighted for the pool. This applies before any other cards that modify pool weightings."}
  {:name   "The Hanging Man"
   :order  30
-  :effect "Each modifier in the antiquity's mod pool has a 50% to be replaced by a once-upgraded regular enchantment. You must decide if the generated antiquity will be a weapon or an armour before you turn in this set."}
+  :effect "Each modifier in the antiquity's mod pool has a 50% to be replaced by a once-upgraded regular enchantment."}
  {:name   "Death"
   :effect "You can discard this card with any number of other tarot cards to draw an equal number of Tarot cards from the deck."}
  {:name   "Temperance"
@@ -82,13 +81,13 @@
 
  {:name   "Court of Swords"
   :order  41
-  :effect "The resulting antiquity will have an additional 'damage' or 'accuracy' tagged starting modifier."}
+  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'damage' and 'accuracy' tagged modifiers."}
  {:name   "Court of Wands"
   :order  41
-  :effect "The resulting antiquity will have an additional 'magic' or 'critical' tagged starting modifier."}
+  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'magic' and 'critical' tagged modifiers."}
  {:name   "Court of Cups"
   :order  41
-  :effect "The resulting antiquity will have an additional 'survivability' or 'control' tagged starting modifier."}
+  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'survivability' and 'control' tagged modifiers."}
  {:name   "Court of Pentacles"
   :order  41
-  :effect "The resulting antiquity will have an additional 'utility' or 'wealth' tagged starting modifier."}]
+  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'utility' and 'wealth' tagged modifiers."}]

@@ -2,9 +2,11 @@
   (:require
     [campaign4.enchants :as e]
     [campaign4.formatting :as formatting]
+    [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
+    [clojure.set :as s]
     [randy.core :as r]))
 
 (def cards (u/load-data :tarot-cards))
@@ -39,13 +41,16 @@
              {1 [] 2 []}
              uniques/uniques))
 
+(defn- mods-of-type [type]
+  (case type
+    :exotic exotic-mods
+    :aura aura-mods
+    :racial racial-mods
+    :unique-1 (get unique-mods 1) ;TODO split weapon and armour unique mods?
+    :unique-2 (get unique-mods 2)))
+
 (defn- mod-of-type [type]
-  (let [coll (case type
-               :exotic exotic-mods
-               :aura aura-mods
-               :racial racial-mods
-               :unique-1 (get unique-mods 1)
-               :unique-2 (get unique-mods 2))]
+  (let [coll (mods-of-type type)]
     (-> (r/sample coll)
         formatting/format-mod)))
 
@@ -131,13 +136,43 @@
                                                            new-mod)))
                                                  pool))
                                              %1 %1)))
-        "Temperance" (->> (talismans/talisman-enchants-by-category "unconditional")
-                          r/sample
-                          u/fill-randoms
+        "Temperance" (->> (r/sample rings/rings)
+                          formatting/format-mod
                           (update acc :pool conj))
         (update acc :cards conj card)))
     {:pool  pool
      :cards []}
+    cards))
+
+(defn- antiquity-mod-of-tag [pool tags]
+  (loop [weights antiquity-weights]
+    (let [mod-type (r/weighted-sample weights)
+          mods (mods-of-type mod-type)
+          valid-mods (into []
+                           (comp (remove pool)
+                                 (filter (comp seq #(s/intersection tags %) :tags)))
+                           mods)]
+      (if (empty? valid-mods)
+        (recur (dissoc weights mod-type))
+        (-> (r/sample valid-mods)
+            formatting/format-mod)))))
+
+(defn- handle-starting-mod-cards [pool cards]
+  (reduce
+    (fn [acc card]
+      (if-let [mod (case (:name card)
+                     "The Magician" (antiquity-mod-of-tag pool #{:magic :survivability})
+                     "The Emperor" (antiquity-mod-of-tag pool #{:damage :accuracy})
+                     "The Chariot" (antiquity-mod-of-tag pool #{:utility :control})
+                     "The Fortune" (antiquity-mod-of-tag pool #{:critical :wealth})
+                     "The World" (->> (talismans/talisman-enchants-by-category "unconditional")
+                                      r/sample
+                                      formatting/format-mod)
+                     nil)]
+        (update acc :starting conj mod)
+        (update acc :cards conj card)))
+    {:starting []
+     :cards    []}
     cards))
 
 (defn generate-antiquity [cards base-type]
@@ -146,8 +181,8 @@
         {:keys [cards tags]} (handle-tag-advantage-cards cards)
         type-generator (r/alias-method-sampler weights)
         pool (reduce (fn [mods _] (add-pool-mod mods type-generator tags)) #{} (range 6))
-        {:keys [pool cards]} (handle-post-pool-cards pool base-type cards)]
-    ;TODO decide on what starting mods a relic has before cards
+        {:keys [cards pool]} (handle-post-pool-cards pool base-type cards)
+        {:keys [cards starting]} (handle-starting-mod-cards pool cards)]
     ;TODO finish implementing
     {:antiquity       pool
      :remaining-cards cards}))

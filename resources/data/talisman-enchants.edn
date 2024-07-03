@@ -126,7 +126,7 @@
   :effect   "+5 proc threshold per consecutive round where the contained gem wasn't triggered, across any period of time."
   :tags     #{:utility}}
  {:category "unconditional"
-  :effect   "Instead of being random, this power is always active on even rounds and always inactive on odd rounds of combat."
+  :effect   "This power's proc chance is 100% on even rounds and 0% on odd rounds of combat."
   :tags     #{:utility}}
  {:category "unconditional"
   :effect   "You have +1 to your DCs if this monster power hasn't been activated since your last long rest, and +1 AB while the power is active."
