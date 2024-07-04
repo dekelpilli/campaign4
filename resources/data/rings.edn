@@ -41,7 +41,7 @@
   :effect "You do not suffer disadvantage on Perception checks while asleep."
   :points 3}
  {:name   "Divergent"
-  :effect "{% with x=x|random:without-replacement:damage-types:2:non-physical %}You take {{x.0}} damage as {{x.1}} damage instead.{% endwith %}"
+  :effect "{% with x=x|random:without-replacement:2:damage-types:non-physical %}You take {{x.0}} damage as {{x.1}} damage instead.{% endwith %}"
   :points 1}
  {:name   "Multilingual"
   :effect "You can speak, read, and write {{x|random:languages}} if worn for at least 24 hours."

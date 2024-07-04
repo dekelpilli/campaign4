@@ -104,7 +104,7 @@
 (m/defmethod randoms-preset :literal [_ values] (vec values))
 
 (m/defmethod randoms-factor :without-replacement [{:keys [amount from]}] (max amount (randoms-factor from)))
-(m/defmethod randoms-preset :without-replacement [_ [preset amount & preset-args]]
+(m/defmethod randoms-preset :without-replacement [_ [amount preset & preset-args]]
   (let [vs (randoms-preset (keyword preset) preset-args)
         amount (parse-long amount)]
     #(r/sample-without-replacement amount vs)))

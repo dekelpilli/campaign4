@@ -1,25 +1,18 @@
-;TODO update randoms for selmer
 [{:effect "+1 to wisdom, charisma, and intelligence."
   :tags   #{:utility}}
  {:effect "+1 to dexterity and strength."
   :tags   #{:utility}}
  {:effect "+1 to constitution and maximum constitution."
   :tags   #{:utility}}
- {:effect  "Increases to your ability score maximums also increase those scores by the same amount if your %s is a unique."
-  :tags    #{:utility}
-  :randoms [{:preset :gear-slots}]}
+ {:effect "Increases to your ability score maximums also increase those scores by the same amount if your {{x|random:gear-slots}} is a unique."
+  :tags   #{:utility}}
  {:effect "+4 barrier for each active omen you have."
   :tags   #{:survivability}}
  {:effect "When you or someone in your party draws tarot cards, draw one additional card and place one of the drawn cards back in the deck."
   :tags   #{:wealth}}
- {:effect  "Until proven otherwise, intelligent creatures perceive you as having %d AC."
-  :randoms [{:preset :literal
-             :values [10 20]}]
-  :tags    #{:utility}}
- {:effect  "While your %s slot it empty, treat it as if it contains the same object you have in your %s slot."
-  :randoms {:preset :without-replacement
-            :amount 2
-            :from   {:preset :gear-slots}}
+ {:effect "Until proven otherwise, intelligent creatures perceive you as having {{x|random:literal:10:20}} AC."
+  :tags   #{:utility}}
+ {:effect  "{% with x=x|random:without-replacement:2:gear-slots %}While your {{x.0}} slot it empty, treat it as if it contains the same object you have in your {{x.1}} slot.{% endwith %}"
   :tags    #{:utility}}
  {:effect "This antiquity gains a level whenever a vial is applied to it (excluding purchased vials), but cannot have vials applied to it once it is at maximum level."
   :tags   #{:wealth}}
@@ -27,16 +20,9 @@
   :tags   #{:wealth}}
  {:effect "Your critical failures count as critical successes instead."
   :tags   #{:critical}}
- {:effect  "+1 %1$s damage. Increases to %1$s add damage instead of increasing damage."
-  :randoms [{:preset :damage-types}]
+ {:effect  "{% with x=x|random:damage-types %}+1 {{x}} damage. Increases to {{x}} add damage instead of increasing damage.{% endwith %}"
   :tags    #{:damage}}
- {:effect  "When you would otherwise gain the condition '%s', gain '%s' instead."
-  :randoms {:preset :without-replacement
-            :amount 2
-            :from   {:preset :conditions}}
+ {:effect  "{% with x=x|random:without-replacement:2:conditions %}When you would otherwise gain the condition '{{x.0}}', gain '{{x.1}}' instead.{% endwith %}"
   :tags    #{:survivability}}
- {:effect  "No more than once per short rest, when you would otherwise inflict the condition '%s' on a creature, inflict '%s' instead."
-  :randoms {:preset :without-replacement
-            :amount 2
-            :from   {:preset :conditions}}
+ {:effect  "{% with x=x|random:without-replacement:2:conditions %}No more than once per short rest, when you would otherwise inflict the condition '{{x.0}}' on a creature, inflict '{{x.1}}' instead.{% endwith %}"
   :tags    #{:control}}]
