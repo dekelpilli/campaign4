@@ -50,7 +50,7 @@
                                              (+ existing-multiplier multiplier)))
                                 (assoc acc tag multiplier))))
                           {}))
-        enchants-fn (->> (e/valid-enchants base-type)
+        enchants-fn (->> (e/enchants-by-base base-type)
                          (mapv (fn [{:keys [tags weighting] :as e}]
                                  (let [weighting-multi (reduce
                                                          (fn [multi tag]

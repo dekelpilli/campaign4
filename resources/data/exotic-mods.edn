@@ -1,3 +1,4 @@
+;TODO update randoms for selmer
 [{:effect "+1 to wisdom, charisma, and intelligence."
   :tags   #{:utility}}
  {:effect "+1 to dexterity and strength."
@@ -7,7 +8,7 @@
  {:effect  "Increases to your ability score maximums also increase those scores by the same amount if your %s is a unique."
   :tags    #{:utility}
   :randoms [{:preset :gear-slots}]}
- {:effect "+4 maximum barrier for each active omen you have."
+ {:effect "+4 barrier for each active omen you have."
   :tags   #{:survivability}}
  {:effect "When you or someone in your party draws tarot cards, draw one additional card and place one of the drawn cards back in the deck."
   :tags   #{:wealth}}

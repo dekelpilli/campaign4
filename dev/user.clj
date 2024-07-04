@@ -66,9 +66,9 @@
 
   (-> (mapv #(choose-by-name % tarot/cards)
             ["x of swords"
-             "devil"
+             "hierophant"
              "empress"])
-      (tarot/generate-antiquity nil))
+      (tarot/generate-antiquity "weapon"))
 
   (talismans/cr->output 3)
   (talismans/new-gem 0)

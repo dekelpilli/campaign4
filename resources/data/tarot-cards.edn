@@ -16,8 +16,8 @@
   :order  40
   :effect "The resulting antiquity will have an additional 'damage' or 'accuracy' tagged starting modifier."}
  {:name   "The Hierophant"
-  :order  61
-  :effect "You may choose to the random values in mods on the generated antiquity (functions like an Orb of Perfection)."}
+  :order  12
+  :effect "Unique antiquity modifiers added to the pool will always be from level 2 uniques."}
  {:name   "The Lovers"
   :order  60
   :effect "When turning in this set, you may also sacrifice a relic. If you do so, generate an additional antiquity from this turn in, with its level being equal to that of the sacrificed relic."}

@@ -8,7 +8,7 @@
   :effect   "If the contained creature is a Celestial, you may cast the Bless spell twice per long rest."
   :tags     #{:magic}}
  {:category "above"
-  :effect   "If the contained creature is a Construct, gain +10 maximum barrier against Psychic and Necrotic damage."
+  :effect   "If the contained creature is a Construct, gain +10 barrier against Psychic and Necrotic damage."
   :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature is a Dragon, gain a bonus to your loot rolls equal to the contained gem's CR."
@@ -34,7 +34,7 @@
   :effect   "If the contained creature is an Ooze, creatures within 5 feet of you that hit you while this power is active must make a Constitution saving throw or becomes slowed until the start of their next turn."
   :tags     #{:control}}
  {:category "above"
-  :effect   "If the contained creature is a Plant, you become immune to disease and gain +10 maximum barrier against Poison damage."
+  :effect   "If the contained creature is a Plant, you become immune to disease and gain +10 barrier against Poison damage."
   :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature is an Undead, +15 to the gem's proc threshold while you are bloodied."
@@ -120,7 +120,7 @@
   :effect   "The contained gem's CR is considered to be one higher for the purposes of calculating its proc threshold."
   :tags     #{:utility}}
  {:category "unconditional"
-  :effect   "You have +6 maximum barrier while this power is active."
+  :effect   "You have +6 barrier while this power is active."
   :tags     #{:survivability}}
  {:category "unconditional"
   :effect   "+5 proc threshold per consecutive round where the contained gem wasn't triggered, across any period of time."

@@ -46,33 +46,32 @@
     :exotic exotic-mods
     :aura aura-mods
     :racial racial-mods
-    :unique-1 (get unique-mods 1) ;TODO split weapon and armour unique mods?
+    :unique-1 (get unique-mods 1) ;TODO split weapon and armour unique mods
     :unique-2 (get unique-mods 2)))
 
-(defn- mod-of-type [type]
-  (let [coll (mods-of-type type)]
-    (-> (r/sample coll)
-        formatting/format-mod)))
+(defn- tag-advantaged-mod [mods new-mod-fn tag-advantages]
+  (loop [mod-tags tag-advantages]
+    (let [mod (new-mod-fn)]
+      (cond
+        (mods mod) (recur mod-tags)
+        (some (comp (:tags mod) key) mod-tags) mod
+        :else (let [depleted-tags (reduce-kv (fn [tags tag advs]
+                                               (cond-> tags
+                                                       (> advs 1) (assoc tag (dec advs))))
+                                             {}
+                                             mod-tags)]
+                (if (seq depleted-tags)
+                  (recur depleted-tags)
+                  (loop [mod (new-mod-fn)]
+                    (if (mods mod)
+                      (recur (new-mod-fn))
+                      mod))))))))
 
 (defn- add-pool-mod [mods type-generator tag-advantages]
   (let [type (type-generator)
-        new-mod-fn #(mod-of-type type)
-        new-mod (loop [mod-tags tag-advantages]
-                  (let [mod (new-mod-fn)]
-                    (cond
-                      (mods mod) (recur mod-tags)
-                      (some (comp (:tags mod) key) mod-tags) mod
-                      :else (let [depleted-tags (reduce-kv (fn [tags tag advs]
-                                                             (cond-> tags
-                                                                     (> advs 1) (assoc tag (dec advs))))
-                                                           {}
-                                                           mod-tags)]
-                              (if (seq depleted-tags)
-                                (recur depleted-tags)
-                                (loop [mod (new-mod-fn)]
-                                  (if (mods mod)
-                                    (recur (new-mod-fn))
-                                    mod)))))))]
+        new-mod-fn #(-> (mods-of-type type)
+                        r/sample)
+        new-mod (tag-advantaged-mod mods new-mod-fn tag-advantages)]
     (conj mods new-mod)))
 
 (defn- handle-pool-weight-cards [cards]
@@ -91,12 +90,20 @@
                           "The Hermit" (-> (update weights :unique-1 + 12)
                                            (update :unique-2 + 8))
                           "The Star" (update weights :aura + 20)
+                          "The Hierophant" (-> (update weights :unique-2 + (:unique-1 weights))
+                                               (assoc :unique-1 0))
                           nil)]
         (recur cards
                (cond-> unused-cards (nil? new-weights) (conj card))
                (or new-weights weights)))
       {:cards   unused-cards
        :weights weights})))
+
+(defn- add-advantaged-tags [tags new-tags]
+  (reduce (fn [tags new-tag]
+            (update tags new-tag (fnil inc 0)))
+          tags
+          new-tags))
 
 (defn- handle-tag-advantage-cards [cards]
   (loop [[card & cards] cards
@@ -111,10 +118,7 @@
                        nil)]
         (recur cards
                (cond-> unused-cards (nil? new-tags) (conj card))
-               (reduce (fn [tags new-tag]
-                         (update tags new-tag (fnil inc 0)))
-                       advantaged-tags
-                       new-tags)))
+               (add-advantaged-tags advantaged-tags new-tags)))
       {:cards unused-cards
        :tags  advantaged-tags})))
 
@@ -175,6 +179,31 @@
      :cards    []}
     cards))
 
+(defn- handle-base-mod-cards [pool base-type cards]
+  (let [{:keys [cards tags points]} (reduce
+                                      (fn [acc card]
+                                        (if-let [new-tags (case (:name card)
+                                                            "Court of Swords" #{:damage :accuracy}
+                                                            "Court of Wands" #{:magic :critical}
+                                                            "Court of Cups" #{:survivability :control}
+                                                            "Court of Pentacles" #{:utility :wealth}
+                                                            nil)]
+                                          (-> (update acc :tags add-advantaged-tags new-tags)
+                                              (update :points + 10))
+                                          (update acc :cards conj card)))
+                                      {:tags   {}
+                                       :points 10
+                                       :cards  []}
+                                      cards)
+        new-mod-fn (->> (e/enchants-by-base base-type)
+                        (filterv #(or (:upgradeable? %)
+                                      (>= (:points %) points)))
+                        u/weighted-sampler)
+        {mod-points :points :as mod} (tag-advantaged-mod pool new-mod-fn tags)]
+    {:cards cards
+     :base  (formatting/format-mod mod {:level (-> (/ points mod-points)
+                                                   (max 1))})}))
+
 (defn generate-antiquity [cards base-type]
   (let [cards (sort-by :order cards)
         {:keys [cards weights]} (handle-pool-weight-cards cards)
@@ -182,9 +211,14 @@
         type-generator (r/alias-method-sampler weights)
         pool (reduce (fn [mods _] (add-pool-mod mods type-generator tags)) #{} (range 6))
         {:keys [cards pool]} (handle-post-pool-cards pool base-type cards)
-        {:keys [cards starting]} (handle-starting-mod-cards pool cards)]
-    ;TODO finish implementing
-    {:antiquity       pool
+        {:keys [cards starting]} (handle-starting-mod-cards pool cards)
+        {:keys [cards base]} (handle-base-mod-cards pool base-type cards)]
+    {:antiquity       {:starting  (conj starting base)
+                       :sold      false
+                       :antiquity true
+                       :base-type base-type
+                       :level     1
+                       :pool      (mapv formatting/format-mod pool)}
      :remaining-cards cards}))
 
 ;1. modify antiquity mod weights

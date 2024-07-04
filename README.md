@@ -84,7 +84,6 @@ Antiquities are a type of relic obtained only via tarot cards. When antiquities 
 - Orbs of Disavowment: 10
 - Vial of Cleansing: 2
 - Vial of Essence: 5
-- Choose randomised mod on a vial: 5 + original matching vial (e.g. player gives vial with 'damage' Generosity and chooses to get 'survivability' Generosity.)
 - Mundanes: 5
 - Empty receptacles/moving modifiers: Free
 
@@ -108,4 +107,4 @@ Antiquities are a type of relic obtained only via tarot cards. When antiquities 
 ### Barrier
 - Whenever you take damage, if it matches a barrier you have, it depletes the barrier before depleting your hit points. If it matches multiple barriers, you can choose which barrier is depleted first.
 - Your barrier values are set to their maximums at the end of your turn and when you roll for initiative.
-- Whenever you gain/lose maximum barrier, you gain/lose an equal amount of barrier (min 0).
+- Whenever you gain/lose barrier, you gain/lose an equal amount of barrier (min 0).

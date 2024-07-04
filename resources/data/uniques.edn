@@ -302,7 +302,7 @@
               {:effect "When a creature dies at the end of their turn due to this weapon's effect, you may cast Soul Cage as a reaction. You may do this as many times as you wish, but not while you have an active trapped soul via an instance of Soul Cage."
                :tags   #{:magic}
                :levels [:skip :keep]}
-              {:effect "No more than once per long rest, when a creature restrained by this a critical attack from your weapons dies, you may cast Soul Cage as a reaction. You may not do this while you have an active trapped soul via an instance of Soul Cage."
+              {:effect "No more than once per long rest, when a creature restrained by a critical attack from your weapons dies, you may cast Soul Cage as a reaction. You may not do this while you have an active trapped soul via an instance of Soul Cage."
                :tags   #{:magic}
                :levels [:skip :keep]}]}
  {:name      "Raven's Talon"
@@ -328,7 +328,7 @@
                :tags   #{:survivability}}
               {:effect "You may make an opportunity attack against creatures within 5 feet of you when you block their melee attacks."
                :tags   #{:damage}}
-              {:effect "Opportunities attack you make that are not substantial hits refund the reaction used to make them."
+              {:effect "Opportunity attacks you make that are not substantial hits refund the reaction used to make them."
                :levels [:skip :keep]
                :tags   #{:damage}}
               {:effect "You take 2 true damage whenever you make an attack on your turn."}]}

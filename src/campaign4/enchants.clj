@@ -50,9 +50,6 @@
 
 (def enchants-fns (update-vals enchants-by-base u/weighted-sampler))
 
-(defn valid-enchants [base-type]
-  (get enchants-by-base base-type))
-
 (def prep-enchant (comp u/filter-vals #(formatting/format-mod % {:level 1})))
 
 (defn add-enchants-totalling [points-target enchants-fn]
