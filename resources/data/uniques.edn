@@ -12,7 +12,7 @@
               {:effect "You cannot cast damaging spells on consecutive turns in a combat."}
               {:effect "Damage you deal with cantrips is halved."
                :levels [:keep :skip]}
-              {:effect "Non-damaging spells always consume a spell slot 1 level lower than their usual while you are concentrating or while not in combat."
+              {:effect "Non-damaging spells consume a spell slot 1 level lower than their usual (min 1) while you are concentrating or while not in combat."
                :levels [:skip :keep]
                :tags   #{:magic}}
               {:effect "Spells you cast targeting willing creatures have a 50% chance to not require concentration (optionally)."
@@ -125,7 +125,7 @@
               {:effect "If you cast a concentration spell that would curse a creature while you are already concentrating on a curse, the spell shares concentration with your existing concentration. You can concentrate on %d such spells at a time."
                :levels [2 3]
                :tags   #{:magic}}
-              {:effect "+1 to your DCs with necromancy spells while you are concentrating on multiple spells."
+              {:effect "+1 AB with necromancy spells while you are concentrating on multiple spells."
                :levels [:skip :keep]
                :tags   #{:accuracy}}
               {:effect "After you cast a non-necromancy spell, you have a 20% chance to lose an additional equivalent spell slot, if available."}
@@ -273,20 +273,18 @@
                :tags   #{:damage}}]}
  {:name      "Excalibur"
   :base-type "weapon"
-  :mods      [{:effect "This weapon gains the 'dual-wielding' trait."
+  :mods      [{:effect "One of your weapons gains the 'offhand' trait."
                :tags   #{:utility}}
-              {:effect "If this weapon previously had the 'heavy' trait, it loses that trait."
+              {:effect "If both of your weapons have the 'offhand' trait, you main hand weapon gains all of the other traits of your offhand weapon."
                :tags   #{:utility}}
-              {:effect "This weapon gains the 'finesse' trait."
+              {:effect "Add Dexterity instead of Strength to your weapon attacks' damage. This has no effect on weapons that don't add Strength to their damage."
                :tags   #{:utility}}
-              {:effect "+5 damage with weapons against enemies on very high health (80%+)."
-               :tags   #{:damage}}
-              {:effect "-3 melee damage with weapons if your dexterity score is less than the dexterity score of the target."}
-              {:effect "Requires 22 dexterity to wield."}
-              {:effect "+3 melee damage with weapons if your dexterity score is greater than the dexterity score of the target."
+              {:effect "-3 melee damage with weapons if your Dexterity score is less than the Dexterity score of the target."}
+              {:effect "You cannot make weapon attacks while your Dexterity score is less than 22."}
+              {:effect "+3 melee damage with weapons if your Dexterity score is greater than the Dexterity score of the target."
                :tags   #{:damage}
                :levels [:skip :keep]}
-              {:effect "+1 expertise die with charisma skill checks if your dexterity score is higher than any of the audience."
+              {:effect "+1 expertise die with Charisma skill checks if your Dexterity score is higher than any of the audience members' Dexterity scores."
                :tags   #{:utility}
                :levels [:skip :keep]}]}
  {:name      "Pasha"
@@ -386,7 +384,7 @@
               {:effect "All physical damage from your weapons is converted to necrotic damage."
                :levels [:skip :keep]
                :tags   #{:damage}}]}
- {:name      "Amenonuhoko"
+ {:name      "Amenonuhoko" ;TODO replace concentration mechanic/rethink completely
   :base-type "weapon"
   :mods      [{:effect "%s you hit a creature with this weapon, you %scast Earth Tremor as a first level spell."
                :levels [["The first time on your turn that" ""]
@@ -494,3 +492,4 @@
   :mods      [{:effect "description"}]
   :enabled?  false}]
 ;TODO make 'this weapon' effects instead apply to all weapons + rebalance
+;TODO remove CON related mods

@@ -2,10 +2,9 @@
   :points         20
   :tags           #{:magic}
   :upgrade-points 10}
- {:effect       "On your turn, your melee attacks have 10 feet of reach."
-  :points       30
-  :tags         #{:utility}
-  :upgradeable? false}
+ {:effect "On your turn, your melee attacks have 10 feet of reach."
+  :points 30
+  :tags   #{:utility}}
  {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -{{level|level:+:1}} to saving throws against spells and conditions."
   :points 30
   :tags   #{:accuracy :control :magic}}
@@ -284,6 +283,10 @@
   :upgrade-points 20
   :tags           #{:damage}}
  {:base-type "weapon"
+  :effect    "When you hit a creature with an attack, they are marked to take +{{level|level:+}} damage from creatures other than yourself for 1 minute. This does not stack."
+  :points    20
+  :tags      #{:damage}}
+ {:base-type "weapon"
   :effect    "+{{level|level:+}} global damage."
   :tags      #{:damage}}
  {:base-type "weapon"
@@ -303,9 +306,6 @@
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "+{{level|level:+}} to damage while dual-wielding weapons."
-  :tags      #{:damage}}
- {:base-type "weapon"
-  :effect    "When you hit a creature with an attack, they are marked to take +1 damage from creatures other than yourself for {{level|level:+}} minute. This does not stack."
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "Every third spell you cast deals +{{level|level:2:5}} damage, across any amount of time."

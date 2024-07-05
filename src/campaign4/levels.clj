@@ -1,5 +1,6 @@
 (ns campaign4.levels
   (:require
+    [campaign4.util :as u]
     [clojure.string :as s]
     [methodical.core :as m]))
 
@@ -21,7 +22,7 @@
   (when-let [level-sections (-> (keep (comp :tag-value :tag meta) template)
                                 seq)]
     (let [max-levels (keep
-                       (fn [s] (let [[_ preset & args] (re-seq #"(?:[^:\"]|\"[^\"]*\")+" s)]
+                       (fn [s] (let [[_ preset & args] (u/extract-format-tags s)]
                                  (max-level (keyword preset) args)))
                        level-sections)]
       (or (empty? max-levels)

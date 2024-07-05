@@ -65,10 +65,12 @@
       (uniques/at-level 2))
 
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["x of swords"
+            ["court of swords"
              "hierophant"
              "empress"])
       (tarot/generate-antiquity "weapon"))
+
+  (tarot/save-antiquity! (:antiquity *1))
 
   (talismans/cr->output 3)
   (talismans/new-gem 0)

@@ -2,10 +2,10 @@
   (:require
     [campaign4.db :as db]))
 
-(declare current-session)
+(def current-session (atom nil))
 
 (defn record! [event amount]
-  (when (bound? #'current-session)
+  (when-let [current-session @current-session]
     (db/execute! {:insert-into   :analytics
                   :values        [{:type    event
                                    :session current-session
@@ -14,4 +14,4 @@
                   :do-update-set {:amount [:+ :EXCLUDED.amount amount]}})))
 
 (defn set-session! [n]
-  (alter-var-root #'current-session (constantly n)))
+  (reset! current-session n))

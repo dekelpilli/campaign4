@@ -33,13 +33,10 @@
 
 (def enchants-by-base
   (->> (u/load-data :enchants)
-       (mapv (fn [{:keys [randoms points]
-                   :or   {points 10}
-                   :as   enchant}]
-               (-> (assoc enchant
-                     :weighting (randoms/randoms->weighting-multiplier randoms) ;TODO
-                     :points points)
-                   formatting/load-mod)))
+       (mapv (fn [enchant]
+               (-> (formatting/load-mod enchant)
+                   randoms/attach-weightings
+                   (update :points (fnil identity 10)))))
        (reduce
          (fn [acc {:keys [base-type] :as enchant}]
            (if base-type

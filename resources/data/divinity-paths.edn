@@ -42,21 +42,21 @@
             :tags   #{:utility}}
            {:effect "You may learn any Divination spell as if it were on your class' spell list."
             :tags   #{:magic}}
-           {:effect "You gain one question about a creature you can see at the start of each round in combat while under the effect of a Divination spell. You have +1AC against attacks from creatures you've learned about directly via a question. Your non-cantrip Divination spells no longer require concentration."
+           {:effect "You gain one question about a creature you can see at the start of each round in combat while under the effect of a Divination spell. You have +1AC against attacks from creatures you've learned about directly via a question. Your non-cantrip Divination spells no longer require concentration." ;TODO consider in context of concentration change
             :tags   #{:magic :utility :survivability}}
-           {:effect "At the start of each of your turns in combat while conscious, you have a percent chance to be affected by Warrior's Instincts until the start of your next turn equal to double the number of Divination spells you have prepared, to a minimum of 10%."
+           {:effect "At the start of each of your turns in combat while conscious, you have a percent chance to be affected by Warrior's Instincts until the start of your next turn equal to double the number of Divination spells (including cantrips) you have prepared, to a minimum of 10%."
             :tags   #{:magic :survivability :utility :accuracy}}]}
  {:name   "Unrelenting Fortune"
   :info   "Improves your luck and your ability to acquire better items."
-  :levels [{:effect "The quantity of crafting items and tarot cards you find from loot rolls is increased by 1."
+  :levels [{:effect "The quantity of crafting items and tarot cards you find from loot rolls is increased by 1." ;TODO crafting items are now only 1, rethink?
             :tags   #{:wealth}}
-           {:effect "The cost of upgrading your relic levels is reduced by 10%."
+           {:effect "The cost of upgrading your relic levels is reduced by 10%." ;TODO complicates relic selling, rethink?
             :tags   #{:wealth}}
            {:effect "Your chance to fracture helmets with Orbs of Personality is halved. When mending helmets: -5% chance to keep modifiers the same, +5% chance to upgrade."
             :tags   #{:wealth}}
            {:effect "You may cast Fortune's Favour at any spell level as a free action on your turn once per round. You can use no more than 10 spell slot levels on this per long rest."
             :tags   #{:magic}}
-           {:effect "Your amulet's trait is always active. When rolling the trait in an amulet, you may choose for the trait to belong to a creature up to 2 CR higher."
+           {:effect "Your amulet's trait is always active. When rolling the trait in an amulet, you may choose for the trait to belong to a creature up to 2 CR higher." ;TODO replace
             :tags   #{:utility}}]}
  {:name   "Wrathful Judgement"
   :info   "Grants a mark and improves your marks, with a focus on revenge."
@@ -90,9 +90,9 @@
             :tags   #{:magic}}
            {:effect "You may cast spells with a range that isn't Self as if they had a range of Touch instead. Creatures you hit with spells cast with a range of Touch become rattled until the start of their next turn."
             :tags   #{:magic :control}}
-           {:effect "Once per short rest, when you fail a Concentration Save, you may choose to succeed instead."
+           {:effect "Once per short rest, when you fail a Concentration Save, you may choose to succeed instead." ;TODO replace
             :tags   #{:magic}}
-           {:effect "Whenever you cast a spell that was ineffective (e.g. a spell attack that missed, but not a spell that dealt half damage due to a successful save), you may make Constitution saving throw against a DC of 10 + twice the spell slot level used. On a success, you regain the consumed spell slot."
+           {:effect "Whenever you cast a spell that was ineffective (e.g. a spell attack that missed, but not a spell that dealt half damage due to a successful save), you may make Constitution saving throw against a DC of 10 + twice the spell slot level used. On a success, you regain the consumed spell slot." ;TODO replace (ineffective definition, CON)
             :tags   #{:magic}}]}
  {:name   "Arcane Combat"
   :info   "Improves spellcasting and weapon attacks for characters that utilise both."
@@ -102,7 +102,7 @@
             :tags   #{:utility}}
            {:effect "You are considered to be proficient in all saving throws against magical effects when the source is a creature you have attacked with a weapon."
             :tags   #{:survivability}}
-           {:effect "You have +1 AB with weapon attacks while you are concentrating on a spell or are under the effect of a spell you have cast, and +1 AB and +1 DC with spells against enemies you have hit with a weapon attack."
+           {:effect "You have +1 AB with weapon attacks while you are concentrating on a spell or are under the effect of a spell you have cast, and +1 AB and +1 DC with spells against enemies you have hit with a weapon attack." ;TODO rethink (conc, AB, DC)
             :tags   #{:accuracy}}
            {:effect "If you have made a weapon attacked in the last 18 seconds, you have +4 spell damage, and minions from your spells have +4 damage. If you have used a spell slot or finished casting a spell with a duration of at least an action in the last 18 seconds, you have +4 weapon damage."
             :tags   #{:damage}}]}
@@ -148,7 +148,7 @@
             :tags   #{:damage :survivability}}
            {:effect "You and your undead minions gain +1 necrotic damage for a minute (stacking) whenever you cast a Necromancy spell as an action."
             :tags   #{:damage :magic}}
-           {:effect "You and your undead minions are proficient in Constitution saving throws while you are concentrating on a non-cantrip Necromancy spell."
+           {:effect "You and your undead minions are proficient in Constitution saving throws while you are concentrating on a non-cantrip Necromancy spell." ;TODO rethink (conc, CON)
             :tags   #{:magic :survivability}}
            {:effect "You learn the Finger of Death spell with the Cyneburg’s Shadowed Finger of Death variation. In addition to regular casting you may be permitted with this spell, you may cast it on yourself once per long rest without consuming a spell slot. If this spell kills a living creature, you may cast Soul Cage to capture its soul."
             :tags   #{:magic}}

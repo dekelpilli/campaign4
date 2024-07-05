@@ -59,3 +59,7 @@
                  .build)]
     (fn [o]
       (some #(seq (.parseText trie (str %))) o))))
+
+(defn extract-format-tags [tag-value]
+  (when tag-value
+    (re-seq #"(?:[^:\"]|\"[^\"]*\")+" tag-value)))

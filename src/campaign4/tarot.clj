@@ -2,11 +2,12 @@
   (:require
     [campaign4.enchants :as e]
     [campaign4.formatting :as formatting]
+    [campaign4.levels :as levels]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
-    [clojure.set :as s]
+    [clojure.set :as set]
     [randy.core :as r]))
 
 (def cards (u/load-data :tarot-cards))
@@ -19,15 +20,16 @@
    :unique-2 8})
 
 (def exotic-mods (->> (u/load-data :exotic-mods)
-                      (mapv formatting/load-mod)))
+                      (mapv (comp formatting/load-mod #(assoc % :type "exotic")))))
 (def aura-mods (->> (u/load-data :aura-mods)
-                    (mapv formatting/load-mod)))
+                    (mapv (comp formatting/load-mod #(assoc % :type "aura")))))
 (def racial-mods (->> (u/load-data :racial-mods)
                       (mapv formatting/load-mod)))
 
 (defn- levelled-unique-mods [{:keys [mods name]}]
   (let [prepare-unique-mod (fn [m] (-> (select-keys m [:effect :tags])
-                                       (assoc :unique name)))
+                                       (assoc :unique name :type "unique")
+                                       formatting/load-mod))
         tagged-mods (filterv :tags mods)]
     {1 (keep #(uniques/mod-at-level % 1) tagged-mods)
      2 (->> (filter :levels tagged-mods)
@@ -126,9 +128,7 @@
   (reduce
     (fn [acc card]
       (case (:name card)
-        "The Hanging Man" (let [generator (->> (e/enchants-by-base base-type)
-                                               (filterv #(:upgradeable? % true))
-                                               r/alias-method-sampler)]
+        "The Hanging Man" (let [generator (e/enchants-fns base-type)]
                             (update acc :pool
                                     #(reduce (fn [pool mod]
                                                (if (u/occurred? 1/2)
@@ -154,7 +154,7 @@
           mods (mods-of-type mod-type)
           valid-mods (into []
                            (comp (remove pool)
-                                 (filter (comp seq #(s/intersection tags %) :tags)))
+                                 (filter (comp seq #(set/intersection tags %) :tags)))
                            mods)]
       (if (empty? valid-mods)
         (recur (dissoc weights mod-type))
@@ -172,12 +172,21 @@
                      "The World" (->> (talismans/talisman-enchants-by-category "unconditional")
                                       r/sample
                                       formatting/format-mod)
+                     "Strength" nil ;TODO
                      nil)]
         (update acc :starting conj mod)
         (update acc :cards conj card)))
     {:starting []
      :cards    []}
     cards))
+
+(defn- mod-target-level [{:keys [upgrade-points points]} target-points]
+  (let [upgrade-points (or upgrade-points points)]
+    (loop [level 1
+           remaining (- target-points points)]
+      (if (> remaining 0)
+        (recur (inc level) (- remaining upgrade-points))
+        level))))
 
 (defn- handle-base-mod-cards [pool base-type cards]
   (let [{:keys [cards tags points]} (reduce
@@ -196,13 +205,14 @@
                                        :cards  []}
                                       cards)
         new-mod-fn (->> (e/enchants-by-base base-type)
-                        (filterv #(or (:upgradeable? %)
-                                      (>= (:points %) points)))
+                        (filterv #(or (>= (:points %) points)
+                                      (-> (mod-target-level % points)
+                                          dec
+                                          (levels/upgradeable? (:template %)))))
                         u/weighted-sampler)
-        {mod-points :points :as mod} (tag-advantaged-mod pool new-mod-fn tags)]
+        mod (tag-advantaged-mod pool new-mod-fn tags)]
     {:cards cards
-     :base  (formatting/format-mod mod {:level (-> (/ points mod-points)
-                                                   (max 1))})}))
+     :base  (formatting/format-mod mod {:level (mod-target-level mod points)})}))
 
 (defn generate-antiquity [cards base-type]
   (let [cards (sort-by :order cards)
@@ -221,7 +231,12 @@
                        :pool      (mapv formatting/format-mod pool)}
      :remaining-cards cards}))
 
-;1. modify antiquity mod weights
-;2. Roll pool mods, including advantages/disadv
-;3. Add starting modifiers, including avoiding duplicates with pool mods
-;4. post creation effects
+(defn- saved-mod [mod]
+  (-> (select-keys mod [:formatted :tags :race :subrace :type])
+      (set/rename-keys {:formatted :effect})))
+
+(defn save-antiquity! [antiquity]
+  (let [relic (-> (update antiquity :starting #(mapv saved-mod %))
+                  (update :pool #(mapv saved-mod %)))]
+    ;TODO DB interaction
+    relic))
