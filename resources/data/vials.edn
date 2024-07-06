@@ -5,8 +5,8 @@
   :character "+10 feet to each of your speeds (0+) while your items have at least one modifier that relates to jumping."
   :item      "+15 feet to each of your speeds (0+) while this item has at least one modifier that relates to jumping."}
  {:name      "Hardy"
-  :character "+2 barrier while your items have at least one modifier that grants you AC."
-  :item      "+2 barrier while this item has at least one modifier that grants AC to the wearer, including conditional modifiers regardless of if they apply."}
+  :character "+2 barrier while your items have at least one modifier that grants you Armour."
+  :item      "+2 barrier while this item has at least one modifier that grants Armour to the wearer, including conditional modifiers regardless of if they apply."}
  {:name      "Hale"
   :character "You regenerate 1 hit point at the start of each turn in combat for each item you're wearing that has modifiers that relate to healing, regeneration, and temporary hit points."
   :item      "+1 to the values of all modifiers on this item that relate to healing, regeneration, and temporary hit points."}
@@ -29,8 +29,8 @@
   :character "Choose a modifier tag. Modifiers on your items with this tag apply to your minions instead of to yourself."
   :item      "Choose a modifier tag. Modifiers on this item with this tag apply to your minions instead of to yourself."}
  {:name      "Reckless"
-  :character "Modifiers on your items that grant barrier instead grant half that much damage, including types and conditions (e.g. +2 maximum cold barrier while bloodied -> +1 cold damage while bloodied)."
-  :item      "Modifiers on this item that grant barrier instead grant half that much damage, including types and conditions (e.g. +2 maximum cold barrier while bloodied -> +1 cold damage while bloodied)."}
+  :character "Modifiers on your items that grant barrier instead grant half that much damage, including types and conditions (e.g. +2 cold barrier while bloodied -> +1 cold damage while bloodied)."
+  :item      "Modifiers on this item that grant barrier instead grant half that much damage, including types and conditions (e.g. +2 cold barrier while bloodied -> +1 cold damage while bloodied)."}
  {:name      "Maleficarum"
   :character "Creatures affected by your marks or curses take +1 damage while your items have at least one modifier that relates to marks or curses."
   :item      "Creatures affected by your marks or curses take +1 damage while this item has at least one modifier that relates to marks or curses."}
@@ -44,8 +44,8 @@
   :character "Choose a skill. Modifiers to specific skills on your items also apply to this skill, but modifiers that specifically apply to this skill have no effect."
   :item      "Choose a skill. Modifiers to skills on this item also apply to this skill (this has no effect on modifiers that already apply to this skill)."}
  {:name      "Aggressive"
-  :character "Your AC is always exactly 16 while your weapons only have 'damage' tagged modifiers on them, and have at least 2 modifiers in total."
-  :item      "'Damage' tagged modifiers on this item have no effect. +1 AC if this item has at least 2 damage tagged modifiers."}
+  :character "Your Armour is always exactly 3 while your gloves only have 'damage' tagged modifiers on them, and have at least 2 modifiers in total."
+  :item      "'Damage' tagged modifiers on this item have no effect. +1 Armour if this item has at least 3 damage tagged modifiers."}
  {:name      "Amplified"
   :character "While all of your worn items are relics, one relic of your choice you are wearing is treated as if it is at level 6."
   :item      "This can only be applied to relics. If this relic is your only worn relic, it is treated as if it is level 6."}

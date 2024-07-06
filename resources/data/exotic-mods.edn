@@ -10,7 +10,7 @@
   :tags   #{:survivability}}
  {:effect "When you or someone in your party draws tarot cards, draw one additional card and place one of the drawn cards back in the deck."
   :tags   #{:wealth}}
- {:effect "Until proven otherwise, intelligent creatures perceive you as having {{x|random:literal:10:20}} AC."
+ {:effect "Until proven otherwise, intelligent creatures perceive you as having {{x|random:literal:0:5}} Armour."
   :tags   #{:utility}}
  {:effect  "{% with x=x|random:without-replacement:2:gear-slots %}While your {{x.0}} slot it empty, treat it as if it contains the same object you have in your {{x.1}} slot.{% endwith %}"
   :tags    #{:utility}}

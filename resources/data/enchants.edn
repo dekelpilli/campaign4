@@ -1,3 +1,4 @@
+;TODO change for SNS
 [{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:10:30:3}}% chance to retain that spell slot."
   :points         20
   :tags           #{:magic}
@@ -161,16 +162,16 @@
   :points    20
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "Gain maximum physical barrier equal to {{level|level:+}}x the CR of your highest CR active minion."
+  :effect    "Gain physical barrier equal to {{level|level:+}}x the CR of your highest CR active minion."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+{{level|level:+:2}} maximum {{x|random:damage-types:non-physical}} barrier."
+  :effect    "+{{level|level:+:2}} {{x|random:damage-types:non-physical}} barrier."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "+{{level|level:+}} to {{x|random:ability-scores:uncommon}} saving throws."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+{{level|level:+:2}} maximum {{x|random:damage-types}} barrier."
+  :effect    "+{{level|level:+:2}} {{x|random:damage-types}} barrier."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "Once per round, when you take damage from a melee or touch attack, the attacker takes true damage equal to {{level|level:+:0.5}}x your level, rounded down."
@@ -194,7 +195,7 @@
   :effect    "At the start of your turn in combat, if you haven't taken damage since the start of your last turn, gain {{level|level:+}} temporary hit point. This stacks with any existing temporary hit points."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+{{level|level:+:4}} maximum physical barrier while taking Damage Over Time."
+  :effect    "+{{level|level:+:4}} physical barrier while taking Damage Over Time."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "You may expend {{level|level:+}} hit die when roll for initiative, gaining health from its usage as normal."
@@ -207,10 +208,10 @@
   :points    20
   :tags      #{:utility}}
  {:base-type "armour"
-  :effect    "+{{level|level:+:2}} maximum physical barrier."
+  :effect    "+{{level|level:+:2}} physical barrier."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+{{level|level:+:2}} maximum non-physical barrier."
+  :effect    "+{{level|level:+:2}} non-physical barrier."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "+{{level|level:+}} to Dexterity saving throws if wearing a light or unarmoured body armour and not using a shield."

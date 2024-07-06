@@ -47,7 +47,7 @@
   :race   "Autognome"
   :name   "Built for Success"
   :book   "AAG"}
- {:effect "If the mending spell is cast on you, you can spend a Hit Die, roll it, and regain a number of hit points equal to the roll plus your Constitution modifier (minimum of 1 hit point)."
+ {:effect "If the mending spell is cast on you, you can spend a Hit Die to regain hit points as if during a short rest."
   :tags   #{:survivability}
   :race   "Autognome"
   :name   "Healing Machine"
@@ -77,7 +77,7 @@
   :race   "Centaur"
   :name   "Fey"
   :book   "GGR"}
- {:effect "If an attack deals over half of your current remaining hit points in damage, (even if your hit points are reduced to 0 by the attack) you immediately regain hit points equal to 1d12 + your Constitution Modifier. If your hit points are reduced to 0, you still gain a failed death save and go prone. You can't use this feature again until you have completed a long rest."
+ {:effect "If an Armour attack deals over half of your current remaining hit points in damage, (even if your hit points are reduced to 0 by the attack) you immediately regain hit points equal to 1d12 + your Fortitude. If your hit points are reduced to 0, you still gain a failed death save and go prone. You can't use this feature again until you have completed a long rest."
   :tags   #{:survivability}
   :race   "Cervan"
   :name   "Surge of Vigor"
@@ -253,7 +253,7 @@
   :race   "Goliath"
   :name   "Mountain Born"
   :book   "Various"}
- {:effect "When you take damage, you can use your reaction to roll a d12. Add your Constitution modifier to the number rolled and reduce the damage by that total. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+ {:effect "When you take damage, you can use your reaction to roll a d12. Add your Fortitude to the number rolled and reduce the damage by that total. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
   :tags   #{:survivability}
   :race   "Goliath"
   :name   "Stone's Endurance"
@@ -263,7 +263,7 @@
   :race   "Grung"
   :name   "Poison Immunity"
   :book   "OGA"}
- {:effect "Any creature that grapples you or otherwise comes into direct contact with your skin must succeed on a DC 12 Constitution saving throw or become poisoned for 1 minute. A poisoned creature no longer in direct contact with you can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. You can also apply this poison to any piercing weapon as part of an attack with that weapon, though when you hit the poison reacts differently. The target must succeed on a DC 12 Constitution saving throw or take 2d4 poison damage."
+ {:effect "Any creature that grapples you or otherwise comes into direct contact with your skin is targeted by a disadvantaged Fortitude attack, causing them to become poisoned for 1 minute on a hit. A poisoned creature no longer in direct contact with you can make a saving throw at the end of each of its turns, ending the effect on itself on a success. You can also apply a poison to any piercing weapon as part of an attack with that weapon, adding 2d4 poison damage on a major success."
   :tags   #{:control :damage}
   :race   "Grung"
   :name   "Poisonous Skin"
@@ -492,7 +492,7 @@
   :race   "Loxodon"
   :name   "Loxodon Serenity"
   :book   "GGR"}
- {:effect "When you aren't wearing armor, your AC is 12 + your Constitution modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor."
+ {:effect "When you aren't wearing armor, your Armour is at least equal to 1 + half of your Fortitude."
   :tags   #{:survivability}
   :race   "Loxodon"
   :name   "Natural Armor"
@@ -657,12 +657,12 @@
   :race   "Tiefling"
   :name   "Hellish Resistance"
   :book   "PHB"}
- {:effect "You have a base AC of 17 (your Dexterity modifier doesn't affect this number). You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal."
+ {:effect "You have 3 Armour. You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal."
   :tags   #{:survivability}
   :race   "Tortle"
   :name   "Natural Armor"
   :book   "Various"}
- {:effect "You can withdraw into your shell as an action. Until you emerge, you gain a +4 bonus to your AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell."
+ {:effect "You can withdraw into your shell as an action. Until you emerge, you gain a +2 bonus to your Armour, and you have advantaged defence with Fortitude. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell."
   :tags   #{:survivability}
   :race   "Tortle"
   :name   "Shell Defense"

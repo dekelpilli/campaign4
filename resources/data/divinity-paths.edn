@@ -28,7 +28,7 @@
             :tags   #{:survivability}}
            {:effect "You have +3 to maximum hit points, and you have +1 maximum hit points per armour relic level."
             :tags   #{:survivability}}
-           {:effect "You take half damage from attacks that hit you within 1 point of your AC (i.e. equal or one above)."
+           {:effect "Armour attacks against you need to score at least 9 to be considered a standard success."
             :tags   #{:survivability}}
            {:effect "You take no additional damage from critical hits."
             :tags   #{:survivability}}
@@ -42,7 +42,7 @@
             :tags   #{:utility}}
            {:effect "You may learn any Divination spell as if it were on your class' spell list."
             :tags   #{:magic}}
-           {:effect "You gain one question about a creature you can see at the start of each round in combat while under the effect of a Divination spell. You have +1AC against attacks from creatures you've learned about directly via a question. Your non-cantrip Divination spells no longer require concentration." ;TODO consider in context of concentration change
+           {:effect "You gain one question about a creature you can see at the start of each round in combat while under the effect of a Divination spell. You have +1 Armour against attacks from creatures you've learned about directly via a question. Your non-cantrip Divination spells no longer require concentration."
             :tags   #{:magic :utility :survivability}}
            {:effect "At the start of each of your turns in combat while conscious, you have a percent chance to be affected by Warrior's Instincts until the start of your next turn equal to double the number of Divination spells (including cantrips) you have prepared, to a minimum of 10%."
             :tags   #{:magic :survivability :utility :accuracy}}]}
@@ -124,7 +124,7 @@
             :tags   #{:control}}
            {:effect "You may replace your movement with teleportation (limited to spaces you can see), allowing you to move across otherwise uncrossable/difficult terrain, move vertically, and always avoid opportunity attacks. Teleporting any distance consumes your entire regular movement for the turn."
             :tags   #{:utility}}
-           {:effect "Once per turn, as a free action, you may either conjure or remove up to 5 stone pillars (5x5 feet each) from the ground on unoccupied spaces you can see within 60 feet of you. These pillars are up to 20 feet tall. These pillars last for 10 minutes, and have 17AC and have HP equal to twice your level, disappearing when reaching 0 life. Max 15 active pillars at one time."
+           {:effect "Once per turn, as a free action, you may either conjure or remove up to 5 stone pillars (5x5 feet each) from the ground on unoccupied spaces you can see within 60 feet of you. These pillars are up to 20 feet tall. These pillars last for 10 minutes, and have 4 AC and have HP equal to twice your level, disappearing when reaching 0 life. Max 15 active pillars at one time."
             :tags   #{:utility}}
            {:effect "When within 5 feet of one of your pillars, you have full visibility from the perspectives of any of your pillars. Additionally, you may choose to cause any spell or attack you use originate from another pillar you have created in the same plane. For example, a pillar 500 feet away might make a sword attack against an adjacent creature, or cast Fireball into a room you would otherwise not be able to see. At the end of your turn, any pillar from which an effect originated is destroyed."
             :tags   #{:utility}}

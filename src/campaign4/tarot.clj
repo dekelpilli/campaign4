@@ -172,7 +172,15 @@
                      "The World" (->> (talismans/talisman-enchants-by-category "unconditional")
                                       r/sample
                                       formatting/format-mod)
-                     "Strength" nil ;TODO
+                     "Strength" (->> (mods-of-type :exotic)
+                                     (filterv (u/str-contains-any-fn ["strength"
+                                                                      "dexterity"
+                                                                      "wisdom"
+                                                                      "intelligence"
+                                                                      "charisma"
+                                                                      "ability score"]))
+                                     r/sample
+                                     formatting/format-mod)
                      nil)]
         (update acc :starting conj mod)
         (update acc :cards conj card)))
