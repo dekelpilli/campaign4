@@ -63,5 +63,4 @@
                                        new-weighting (* (or weighting-multi 1) weighting)]
                                    (assoc e :weighting (or new-weighting weighting)))))
                          u/weighted-sampler)]
-    (e/add-enchants-totalling (* 10 (count curio-kws))
-                              enchants-fn)))
+    (e/add-enchants-totalling (count curio-kws) enchants-fn)))

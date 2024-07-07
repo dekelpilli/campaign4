@@ -206,10 +206,10 @@
                                                             "Court of Pentacles" #{:utility :wealth}
                                                             nil)]
                                           (-> (update acc :tags add-advantaged-tags new-tags)
-                                              (update :points + 10))
+                                              (update :points inc))
                                           (update acc :cards conj card)))
                                       {:tags   {}
-                                       :points 10
+                                       :points 1
                                        :cards  []}
                                       cards)
         new-mod-fn (->> (e/enchants-by-base base-type)
@@ -237,7 +237,7 @@
                        :base-type base-type
                        :level     1
                        :pool      (mapv formatting/format-mod pool)}
-     :remaining-cards cards}))
+     :remaining-cards (mapv (fn [card] (update card :order #(if (< % 10) :before :after))) cards)}))
 
 (defn- saved-mod [mod]
   (-> (select-keys mod [:formatted :tags :race :subrace :type])

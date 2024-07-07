@@ -132,7 +132,7 @@
   :base-type "armour"
   :mods      [{:effect "+1d4 cold damage."
                :tags   #{:damage}}
-              {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies have +2 cold vulnerability, gain fire resistance, and are restrained. CON save at end of turn to end, or until taking fire damage."
+              {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies have +2 cold vulnerability, gain fire resistance, and are restrained. Save at end of turn to end, or until taking fire damage."
                :tags   #{:control :critical}}
               {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
                :tags   #{:control}}
@@ -154,7 +154,7 @@
                :tags   #{:damage}}
               {:effect "-3 to damage with hits."}
               {:effect "Damage from your hits is delayed by one round."}
-              {:effect "DoTs on you inflict deal damage for one round after they end (including being ended with a save)."}
+              {:effect "DoTs on you inflict deal damage for one round after they end."}
               {:effect "Enemies under the effect of your DoTs become resistant to damage types dealt by those DoTs if they were originally immune to them."
                :levels [:skip :keep]
                :tags   #{:damage}}
@@ -293,7 +293,7 @@
                :tags   #{:damage}}
               {:effect "+1 critical hit range against non-blind enemies."
                :tags   #{:critical}}
-              {:effect "Non-blind enemies you naturally critically hit become blinded for a minute, or until you do not damage them during your turn, CON save at turn end."
+              {:effect "Non-blind enemies you naturally critically hit become blinded. This ends if they succeed on saving throw at the end of their turns, or if you do not damage them during your turn."
                :tags   #{:control :accuracy}}
               {:effect "You cannot critically hit blinded enemies; your critical hits against blinded enemies are major successes instead."}
               {:effect "Creatures blinded by you have -1 to non-Armour defences while blind."

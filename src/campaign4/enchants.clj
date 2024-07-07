@@ -36,7 +36,7 @@
        (mapv (fn [enchant]
                (-> (formatting/load-mod enchant)
                    randoms/attach-weightings
-                   (update :points (fnil identity 10)))))
+                   (update :points (fnil identity 1)))))
        (reduce
          (fn [acc {:keys [base-type] :as enchant}]
            (if base-type
@@ -47,8 +47,6 @@
 
 (def enchants-fns (update-vals enchants-by-base u/weighted-sampler))
 
-(def prep-enchant (comp u/filter-vals #(formatting/format-mod % {:level 1})))
-
 (defn add-enchants-totalling [points-target enchants-fn]
   (loop [points-sum 0
          enchants []]
@@ -56,7 +54,7 @@
           new-points-sum (+ points points-sum)
           new-enchants (conj enchants e)]
       (if (>= new-points-sum points-target)
-        (mapv prep-enchant new-enchants)
+        (mapv formatting/format-mod new-enchants)
         (recur new-points-sum new-enchants)))))
 
 (defn add-typed-enchants [base-type points-target]

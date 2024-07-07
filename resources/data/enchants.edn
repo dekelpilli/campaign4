@@ -1,34 +1,35 @@
 ;TODO change for SNS
+;TODO migrate to 1 point instead of 10 by default?
 [{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:10:30:3}}% chance to retain that spell slot."
-  :points         20
+  :points         2
   :tags           #{:magic}
-  :upgrade-points 10}
+  :upgrade-points 1}
  {:effect "On your turn, your melee attacks have 10 feet of reach."
-  :points 30
+  :points 3
   :tags   #{:utility}}
- {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -{{level|level:+:1}} to saving throws against spells and conditions."
-  :points 30
+ {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -{{level|level:+:1}} to saving throws."
+  :points 3
   :tags   #{:accuracy :control :magic}}
  {:effect "+{{level|level:+}} {{x|random:ability-scores}}."
-  :points 20
+  :points 2
   :tags   #{:utility}}
  {:effect "When you cause a condition on a creature, +10% chance to replace that condition with debilitation."
-  :points 20
+  :points 2
   :tags   #{:control}}
  {:effect "+{{level|level:+}} to journey activity checks."
-  :points 20
+  :points 2
   :tags   #{:utility}}
  {:effect "Your loot rolls always grant you {{level|level:+}} additional gold (even from non-gold results)."
-  :points 20
+  :points 2
   :tags   #{:wealth}}
  {:effect "+{{level|level:+:5}} feet range for applying stabilising Medicine checks."
-  :points 20
+  :points 2
   :tags   #{:utility}}
  {:effect "+{{level|level:+}} maximum {{x|random:ability-scores}}."
-  :points 20
+  :points 2
   :tags   #{:utility}}
- {:effect "You have {{level|level:+}} additional second level spell slot(s) if you already have at least one."
-  :points 15
+ {:effect "You have +{{level|level:+}} second level spell slot(s) if you already have at least one spell slot of any level."
+  :points 2
   :tags   #{:magic}}
  {:effect "Recover a {{level|level:+|ordinal}}-level spell slot when you roll for initiative.{{level|level:literal: :If this is higher than your maximum spell slot, recover your maximum spell slot instead.}}"
   :tags   #{:magic}}
@@ -50,11 +51,11 @@
   :tags   #{:damage}}
  {:effect "Creatures that start their turn within {{level|level:+:5}} feet of you have their speed reduced by 10 feet, to a minimum of 5 feet."
   :tags   #{:control}}
- {:effect "{{level|level:+|times|capitalize}} per long rest, as an action, you can make a Persuasion check contested by a non-hostile creature's Wisdom save. The creature must be within 60 feet of you. On a success, you can give them a command as per the Command spell."
+ {:effect "{{level|level:+|times|capitalize}} per long rest, as an action, you can make a Persuasion check contested by a non-hostile creature's Insight check. The creature must be within 60 feet of you. On a success, you can give them a command as per the Command spell."
   :tags   #{:control}}
  {:effect "If you take damage exceeding 25% of your maximum hit points in one round and do not reach 0 hit points by its end, you may move up one place in the initiative tracker, if possible."
   :tags   #{:utility}}
- {:effect "{{level|level:+|times|capitalize}} per long rest, when you need make an attack roll, ability check, or saving throw, you can use your reaction to replace it with a 50% chance to critically succeed and 50% chance to to critically fail."
+ {:effect "{{level|level:+|times|capitalize}} per long rest, when you need make an attack roll or ability check, you can use your reaction to replace it with a 50% chance to critically succeed and 50% chance to to critically fail."
   :tags   #{:critical :survivability :utility}}
  {:effect "You have {{level|level:+}} additional first level spell slot if you already have at least one."
   :tags   #{:magic}}
@@ -130,7 +131,7 @@
   :tags   #{:damage}}
  {:effect "Upon cursing a creature, you may ask {{level|level:+}} question about it."
   :tags   #{:utility}}
- {:effect "Creatures that were cursed by you in the last minute are not currently cursed have -{{level|level:+}} to saving throws against your curses."
+ {:effect "+1 AB with curses against creatures that were cursed by you in the last minute but are not currently cursed cursed."
   :tags   #{:accuracy}}
  {:effect "+1 to initiative rolls when at least one of the enemies you can see is of size {{level|level:literal:Large:Medium:Small:Tiny}} or greater."
   :tags   #{:utility}}
@@ -143,32 +144,32 @@
  {:effect "Armour can no longer cause your Stealth checks to be made with disadvantage."
   :tags   #{:utility}}
  {:effect "You cannot be deafened."
-  :points 5
   :tags   #{:utility}}
  {:base-type "armour"
-  :effect    "+{{level|level:+}} AC."
-  :points    30
+  :effect    "+{{level|level:+}} Armour."
+  :points    5
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+{{level|level:+}} AC while using a Shield or a Targe weapon."
-  :points    25
+  :effect    "+{{level|level:+}} to {{x|random:defences:non-armour}}."
+  :points    4
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+{{level|level:+}} AC while unarmoured and not using a Shield or Targe weapons."
-  :points    20
+  :effect    "+{{level|level:+}} to {{x|random:defences}} if it is your lowest Defence."
+  :points    3
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "+{{level|level:+}} to {{x|random:ability-scores:common}} saving throws."
-  :points    20
+  :effect    "+{{level|level:+}} Armour while using a Shield or a Targe weapon."
+  :points    4
+  :tags      #{:survivability}}
+ {:base-type "armour"
+  :effect    "+{{level|level:+}} Armour while unarmoured and not using a Shield or Targe weapons."
+  :points    3
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "Gain physical barrier equal to {{level|level:+}}x the CR of your highest CR active minion."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "+{{level|level:+:2}} {{x|random:damage-types:non-physical}} barrier."
-  :tags      #{:survivability}}
- {:base-type "armour"
-  :effect    "+{{level|level:+}} to {{x|random:ability-scores:uncommon}} saving throws."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "+{{level|level:+:2}} {{x|random:damage-types}} barrier."
@@ -189,9 +190,6 @@
   :effect    "Gain temporary hit points equal to your lowest ability score (not bonus) whenever you roll for initiative."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "Allies within 5 feet of you have +{{level|level:+}} to saving throws made to end ongoing conditions."
-  :tags      #{:survivability}}
- {:base-type "armour"
   :effect    "At the start of your turn in combat, if you haven't taken damage since the start of your last turn, gain {{level|level:+}} temporary hit point. This stacks with any existing temporary hit points."
   :tags      #{:survivability}}
  {:base-type "armour"
@@ -204,70 +202,51 @@
   :effect    "+{{level|level:+:25:25:4}}% chance to ignore bonus damage from incoming critical hits."
   :tags      #{:survivability}}
  {:base-type "armour"
-  :effect    "You may ignore the Heavy trait on armour."
-  :points    20
-  :tags      #{:utility}}
- {:base-type "armour"
   :effect    "+{{level|level:+:2}} physical barrier."
   :tags      #{:survivability}}
  {:base-type "armour"
   :effect    "+{{level|level:+:2}} non-physical barrier."
   :tags      #{:survivability}}
- {:base-type "armour"
-  :effect    "+{{level|level:+}} to Dexterity saving throws if wearing a light or unarmoured body armour and not using a shield."
-  :tags      #{:survivability}}
- {:base-type "armour"
-  :effect    "+{{level|level:+:2}} to saving throws against effects that can petrify."
+ {:base-type "weapon"
+  :effect    "+{{level|level:+}} AB."
   :points    5
-  :tags      #{:survivability}}
- {:base-type "weapon"
-  :effect    "+{{level|level:+}} to global AB."
-  :points    35
-  :tags      #{:accuracy}}
- {:base-type "weapon"
-  :effect    "+{{level|level:+}} to your DCs."
-  :points    35
   :tags      #{:accuracy}}
  {:base-type "weapon"
   :effect    "+{{level|level:+}} weapon attack AB with attacks that deal non-physical damage."
-  :points    30
+  :points    3
   :tags      #{:accuracy}}
  {:base-type "weapon"
   :effect    "+{{level|level:+}} AB while wielding a {{x|random:weapon-categories}} weapons."
-  :points    30
+  :points    3
   :tags      #{:accuracy}}
  {:base-type "weapon"
   :effect    "Your base damage dice are automatically rolled at their maximum on critical hits."
-  :points    30
+  :points    3
   :tags      #{:critical}}
  {:base-type      "weapon"
   :effect         "+{{level|level:+|dice}} {{x|random:damage-types}} damage with attacks."
-  :points         30
+  :points         3
   :weighting      1
   :tags           #{:damage}
-  :upgrade-points 10}
+  :upgrade-points 1}
  {:base-type "weapon"
   :effect    "While you are wielding a Reach weapon, enemies are considered to enter and leave your reach at 5 feet, as well as at your regular reach."
-  :points    25
+  :points    3
   :tags      #{:utility}}
  {:base-type      "weapon"
   :effect         "+{{level|level:+:1:2}} {{x|random:damage-types}} damage."
-  :points         20
+  :points         2
   :weighting      2
   :tags           #{:damage}
-  :upgrade-points 10}
+  :upgrade-points 1}
  {:base-type "weapon"
   :effect    "+{{level|level:+}} critical hit range with attacks."
-  :points    20
+  :points    3
   :tags      #{:critical}}
- {:base-type "weapon"
-  :effect    "+{{level|level:+}} DC for saves made to end your ongoing effects."
-  :points    20
-  :tags      #{:accuracy}}
  {:base-type      "weapon"
   :effect         "+{{level|level:+:10:20}} feet to both range options on ranged and thrown weapons."
-  :points         20
-  :upgrade-points 10
+  :points         2
+  :upgrade-points 1
   :tags           #{:utility}}
  {:base-type "weapon"
   :effect    "+{{level|level:+}} AB with opportunity attacks while you {{x|random:literal:have temporary HP:are on 100% HP:are flanked:are flanking the target}}."
@@ -276,19 +255,19 @@
   :effect    "+{{level|level:+}} to base damage die size."
   :tags      #{:damage}}
  {:base-type      "weapon"
-  :effect         "Your critical hits add {{level|level:+}} additional damage die from the source's base damage."
-  :upgrade-points 20
+  :effect         "Your critical hits add your relevant ability score bonus {{level|level:+}} additional time."
+  :upgrade-points 2
   :tags           #{:critical}}
  {:base-type      "weapon"
   :effect         "+{{level|level:+}} damage against creatures for each condition on them that you caused."
-  :upgrade-points 20
+  :upgrade-points 2
   :tags           #{:damage}}
  {:base-type "weapon"
   :effect    "When you hit a creature with an attack, they are marked to take +{{level|level:+}} damage from creatures other than yourself for 1 minute. This does not stack."
-  :points    20
+  :points    2
   :tags      #{:damage}}
  {:base-type "weapon"
-  :effect    "+{{level|level:+}} global damage."
+  :effect    "+{{level|level:+}} damage."
   :tags      #{:damage}}
  {:base-type "weapon"
   :effect    "When you hit a creature with an attack, they are silenced until the end of their next turn."

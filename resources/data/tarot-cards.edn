@@ -79,13 +79,13 @@
 
  {:name   "Court of Swords"
   :order  41
-  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'damage' and 'accuracy' tagged modifiers."}
+  :effect "+1 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'damage' and 'accuracy' tagged modifiers."}
  {:name   "Court of Wands"
   :order  41
-  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'magic' and 'critical' tagged modifiers."}
+  :effect "+1 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'magic' and 'critical' tagged modifiers."}
  {:name   "Court of Cups"
   :order  41
-  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'survivability' and 'control' tagged modifiers."}
+  :effect "+1 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'survivability' and 'control' tagged modifiers."}
  {:name   "Court of Pentacles"
   :order  41
-  :effect "+10 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'utility' and 'wealth' tagged modifiers."}]
+  :effect "+1 to this antiquity's base modifier's point minimum (mod will be levelled if necessary). The mod is also advantaged towards 'utility' and 'wealth' tagged modifiers."}]

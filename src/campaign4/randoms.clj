@@ -15,7 +15,7 @@
     (cond-> v
             (vector? v) sample-fn)))
 
-(defn attach-weightings [{:keys [template] :as mod}]
+(defn- calculate-template-weightings [template]
   (let [weighting (transduce
                     (comp (keep (comp u/extract-format-tags :tag-value :tag meta))
                           (filter (comp #{"x|random"} first))
@@ -23,9 +23,11 @@
                     +
                     0
                     template)]
-    (assoc mod
-      :weighting
-      (max 1 weighting))))
+    (max 1 weighting)))
+
+(defn attach-weightings [{:keys [template weighting] :as mod}]
+  (cond-> mod
+          (nil? weighting) (assoc :weighting (calculate-template-weightings template))))
 
 (m/defmethod randoms-factor :languages [_] 1)
 (m/defmethod randoms-preset :languages [_ _]
@@ -85,6 +87,13 @@
 (m/defmethod randoms-factor :gear-slots [_ _] 2) ;TODO remove weapons/offhand, replace
 (m/defmethod randoms-preset :gear-slots [_ _]
   ["weapon" "offhand" "body armour" "boots" "gloves"])
+
+(m/defmethod randoms-factor :defences [_ [type]]
+  (cond-> 4
+          (= "non-armour" type) dec))
+(m/defmethod randoms-preset :defences [_ [type]]
+  (cond-> ["Fortitude" "Reflexes" "Will"]
+          (not= "non-armour" type) (conj "Armour")))
 
 (m/defmethod randoms-factor :conditions [_ _] 2)
 (m/defmethod randoms-preset :conditions [_ _]

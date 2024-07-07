@@ -21,4 +21,6 @@
  {:effect "Creatures of your choice within 15 feet of you are rattled while they have at least 3 of your auras affecting them."
   :tags   #{:control}}
  {:effect "Creatures of your choice within 20 feet of you, other than yourself, deal additional damage with critical hits equal to the number of auras affecting them."
-  :tags   #{:critical}}]
+  :tags   #{:critical}}
+ {:effect "Conscious allies within 10 feet of you have +1 to saving throws made to end ongoing conditions."
+  :tags   #{:survivability}}]

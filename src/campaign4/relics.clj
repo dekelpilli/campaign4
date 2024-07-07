@@ -68,14 +68,14 @@
   (when (or (nil? level) (levels/upgradeable? level template))
     (or (:upgrade-points mod)
         (:points mod)
-        10)))
+        1)))
 
 (defn- upgrade-mod [mod]
-  (if (>= (+ 10 (:progress mod 0))
+  (if (>= (inc (:progress mod 0))
           (upgrade-points mod))
     (-> (dissoc mod :progress)
         (update :level (fnil inc 1)))
-    (update mod :progress (fnil + 0) 10)))
+    (update mod :progress (fnil inc 0))))
 
 (defn current-relic-mods [{:keys [starting levels level]}]
   (reduce (fn [mods level]
@@ -116,12 +116,12 @@
                            pool)
           current-mods (->> (current-relic-mods relic)
                             (mapv f/load-mod))
-          remaining-points (* 10 (- 6 level))
+          remaining-levels (- 6 level)
           upgradeable-mods (if antiquity
                              []
                              (filterv (fn [mod]
                                         (some-> (upgrade-points mod)
-                                                (<= remaining-points)))
+                                                (<= remaining-levels)))
                                       current-mods))
           progress-mods (if antiquity
                           []
@@ -154,14 +154,14 @@
      :base-type "armour"
      :level     5
      :levels    [{:pool {:effect "Mod 1"
-                         :points 20}}
+                         :points 2}}
                  {:pool {:effect "Mod 2"}}
                  {:upgrade {:effect "Mod 0"}}
                  {:upgrade {:effect "Mod 1"
-                            :points 20}}]
+                            :points 2}}]
      :starting  [{:effect "Mod 0"}]
      :pool      [{:effect "Mod 1"
-                  :points 20}
+                  :points 2}
                  {:effect "Mod 2"}
                  {:effect "Mod 3"}
                  {:effect "Mod 4"}
@@ -175,15 +175,15 @@
                   :base-type "armour"
                   :level     6
                   :levels    [{:pool {:effect "Mod 1"
-                                      :points 20}}
+                                      :points 2}}
                               {:pool {:effect "Mod 2"}}
                               {:upgrade {:effect "Mod 0"}}
                               {:upgrade {:effect "Mod 1"
-                                         :points 20}}
+                                         :points 2}}
                               {:progress {:effect "Mod 1"}}] ;can also have :random {whatever}, and nil for no changes
                   :starting  [{:effect "Mod 0"}]
                   :pool      [{:effect "Mod 1"
-                               :points 20}
+                               :points 2}
                               {:effect "Mod 2"}
                               {:effect "Mod 3"}
                               {:effect "Mod 4"}
