@@ -162,7 +162,7 @@
                :levels [:skip :keep]
                :tags   #{:damage}}]}
  {:name      "Thunderfist"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "+1d4 thunder damage with attacks."
                :tags   #{:damage}}
               {:effect "+15 temporary hit points when you take thunder damage, no more than once per minute."
@@ -196,7 +196,7 @@
                :levels [:skip :keep]
                :tags   #{:survivability}}]}
  {:name      "Pashupatastra"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "Modifiers to minion damage%s apply to your ranged attacks, as your attack projectiles are replaced by spectral tigers."
                :levels [""
                         " and accuracy"]
@@ -221,7 +221,7 @@
                :tags   #{:damage}
                :levels [:skip :keep]}]}
  {:name      "Gungir"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "+1AB with thrown attacks for each prior consecutive attack you've missed across any time period.%s"
                :levels [""
                         " If this modifier did not increase the AB of a thrown attack you make, roll its damage with advantage."]
@@ -235,7 +235,7 @@
               {:effect "+3 damage taken from beasts while bloodied."}
               {:effect "-2 damage with attacks against creatures that are not larger than you."}]}
  {:name      "Mjolnir"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "+1d6 thunder damage with attacks."
                :tags   #{:damage}}
               {:effect "Your weapon attacks' base damage is converted to lightning."
@@ -254,7 +254,7 @@
                :levels [:skip :keep]
                :tags   #{:damage}}]}
  {:name      "Excalibur"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "One of your weapons gains the 'offhand' trait."
                :tags   #{:utility}}
               {:effect "If both of your weapons have the 'offhand' trait, your main hand weapon gains all of the other traits of your offhand weapon."
@@ -270,7 +270,7 @@
                :tags   #{:utility}
                :levels [:skip :keep]}]}
  {:name      "Pasha"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "Enemies you critically hit with a single-target attack become restrained for 18 seconds, or until they use an action to end the effect."
                :tags   #{:control}}
               {:effect "+2 critical hit range."
@@ -286,7 +286,7 @@
                :tags   #{:magic}
                :levels [:skip :keep]}]}
  {:name      "Raven's Talon"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "+%s damage against blinded enemies."
                :levels ["1d4"
                         "1d8"]
@@ -313,7 +313,7 @@
                :tags   #{:damage}}
               {:effect "You take 2 true damage whenever you make an attack on your turn."}]}
  {:name      "Hidden"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "While you have an unsheathed weapon, you are invisible if you haven't attacked or cast a spell in the last %d seconds."
                :levels [18 12]
                :tags   #{:survivability :damage :accuracy}}
@@ -351,7 +351,7 @@
                :levels [:skip :keep]
                :tags   #{:damage}}]}
  {:name      "Dáinsleif"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "+%s necrotic damage with attacks."
                :levels ["1d4"
                         "1d8"]
@@ -369,7 +369,7 @@
                :levels [:skip :keep]
                :tags   #{:damage}}]}
  {:name      "Amenonuhoko" ;TODO replace concentration mechanic/rethink completely
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "%s you hit a creature with this weapon, you %scast Earth Tremor as a first level spell."
                :levels [["The first time on your turn that" ""]
                         ["No more than once per turn when" "may "]]
@@ -402,7 +402,7 @@
                :levels [3 2]}
               {:effect "You are vulnerable to piercing and poison damage while you have less than 24 Wisdom."}]}
  {:name      "Lorg Mór"
-  :base-type "weapon"
+  :base-type "gloves"
   :mods      [{:effect "Your main hand weapon gains the 'sweep' trait."
                :tags   #{:accuracy}}
               {:effect "+5 to Medicine checks%s."

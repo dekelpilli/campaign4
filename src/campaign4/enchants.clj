@@ -5,8 +5,8 @@
     [campaign4.util :as u]
     [randy.core :as r]))
 
-(def ^:private new-base-type (r/alias-method-sampler {"weapon" 1
-                                                      "armour" 2}))
+(def ^:private new-base-type (r/alias-method-sampler {"gloves" 2
+                                                      "armour" 3}))
 
 (def ^:private _tags
   [::accuracy
@@ -42,7 +42,7 @@
            (if base-type
              (update acc base-type conj enchant)
              (update-vals acc #(conj % enchant))))
-         {"weapon" []
+         {"gloves" []
           "armour" []})))
 
 (def enchants-fns (update-vals enchants-by-base u/weighted-sampler))

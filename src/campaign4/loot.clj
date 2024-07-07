@@ -32,7 +32,7 @@
     :omen   :enchanted
     :action (fn enchanted-receptacle [] (e/random-enchanted 30))} ;TODO replace?
    {:name   "Crafting item"
-    :omen   :crafting-item
+    :omen   :crafting
     :action crafting/crafting-loot}
    {:name   "Receptacle + Curios"
     :omen   :curio

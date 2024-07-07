@@ -86,11 +86,11 @@
 
 (m/defmethod randoms-factor :gear-slots [_ _] 2) ;TODO remove weapons/offhand, replace
 (m/defmethod randoms-preset :gear-slots [_ _]
-  ["weapon" "offhand" "body armour" "boots" "gloves"])
+  ["left glove" "right glove" "body armour" "boots" "belt"])
 
 (m/defmethod randoms-factor :defences [_ [type]]
-  (cond-> 4
-          (= "non-armour" type) dec))
+  (cond-> 3
+          (not= "non-armour" type) inc))
 (m/defmethod randoms-preset :defences [_ [type]]
   (cond-> ["Fortitude" "Reflexes" "Will"]
           (not= "non-armour" type) (conj "Armour")))
