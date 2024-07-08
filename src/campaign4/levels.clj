@@ -1,7 +1,7 @@
 (ns campaign4.levels
   (:require
     [campaign4.util :as u]
-    [clojure.string :as s]
+    [clojure.string :as str]
     [methodical.core :as m]))
 
 (m/defmulti level-value (fn [preset _level _args] (keyword preset)))
@@ -38,7 +38,7 @@
 
 (defn- literal-arg [s]
   (cond-> s
-          (s/starts-with? s "_") (subs 1)))
+          (str/starts-with? s "_") (subs 1)))
 
 (m/defmethod level-value :literal [_ level vals]
   (let [vals (into [] (keep literal-arg) vals)

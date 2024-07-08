@@ -327,7 +327,7 @@
               {:effect "Creatures that can see you take no extra damage from critical hits from your attacks."}]}
  {:name      "The Resilient"
   :base-type "armour"
-  :mods      [{:effect "You are resistant to all damage from standard success Armour hits."
+  :mods      [{:effect "You are resistant to all damage from standard success Armour hits that are up to 2 away from being minor successes ()."
                :tags   #{:survivability}}
               {:effect "You gain proficiency with shields and 'targe' weapons."
                :tags   #{:utility}}
@@ -335,7 +335,7 @@
               {:effect "Damage you are resistant to does not deplete your barriers."
                :levels [:skip :keep]
                :tags   #{:survivability}}
-              {:effect "Gain resistance to Armour attacks equal to your Armour."
+              {:effect "Gain resistance to Armour attacks equal to half your Armour."
                :levels [:skip :keep]
                :tags   #{:survivability}}]}
  {:name      "Thornwall"
@@ -475,5 +475,3 @@
   :base-type "weapon|armour"
   :mods      [{:effect "description"}]
   :enabled?  false}]
-;TODO make 'this weapon' effects instead apply to all weapons + rebalance
-;TODO remove CON related mods

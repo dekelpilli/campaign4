@@ -1,4 +1,4 @@
-(ns campaign4.formatting
+(ns campaign4.dynamic-mods
   (:require
     [campaign4.levels :as levels]
     [campaign4.randoms :as randoms]

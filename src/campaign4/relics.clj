@@ -2,7 +2,7 @@
   (:require
     [campaign4.db :as db]
     [campaign4.enchants :as e]
-    [campaign4.formatting :as f]
+    [campaign4.dynamic-mods :as dyn]
     [campaign4.levels :as levels]
     [campaign4.util :as u]
     [clojure.core.match :refer [match]]
@@ -92,6 +92,10 @@
           starting
           (take level levels)))
 
+(defn current-relic-state [relic]
+  (-> (select-keys relic [:level :name :base-type])
+      (assoc :mods (current-relic-mods relic))))
+
 (defn- level-options-types [antiquity? remaining-pool num-progress-mods has-upgradeable?]
   (let [pool-option (if (seq remaining-pool) :pool :random)]
     (if antiquity?
@@ -115,7 +119,7 @@
                                vec)
                            pool)
           current-mods (->> (current-relic-mods relic)
-                            (mapv f/load-mod))
+                            (mapv dyn/load-mod))
           remaining-levels (- 6 level)
           upgradeable-mods (if antiquity
                              []
@@ -135,9 +139,9 @@
                 (case option-type
                   :progress progress-mods ;(= amount (count progress-mods)) is always true
                   :pool (->> (r/sample-without-replacement amount remaining-pool)
-                            (mapv f/load-mod))
+                             (mapv dyn/load-mod))
                   :upgrade (r/sample-without-replacement amount upgradeable-mods)
-                  :random (let [f (comp f/format-mod (e/enchants-fns base-type))]
+                  :random (let [f (comp dyn/format-mod (e/enchants-fns base-type))]
                             (loop [opts #{(f)}]
                               (if (= (count opts) amount)
                                 opts

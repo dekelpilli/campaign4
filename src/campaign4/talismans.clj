@@ -1,7 +1,7 @@
 (ns campaign4.talismans
   (:require
     [campaign4.db :as db]
-    [campaign4.formatting :as formatting]
+    [campaign4.dynamic-mods :as dyn]
     [campaign4.util :as u]
     [randy.core :as r]
     [randy.rng :as rng]))
@@ -13,7 +13,7 @@
            (update acc category
                    (fnil conj [])
                    (-> (dissoc e :category)
-                       formatting/load-mod)))
+                       dyn/load-mod)))
          {})))
 
 (defn- ->output [monster trait]
@@ -83,4 +83,4 @@
 
 (defn new-talisman []
   (update-vals talisman-enchants-by-category
-               (comp formatting/format-mod r/sample)))
+               (comp dyn/format-mod r/sample)))

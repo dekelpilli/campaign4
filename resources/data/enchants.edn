@@ -1,5 +1,3 @@
-;TODO change for SNS
-;TODO migrate to 1 point instead of 10 by default?
 [{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:10:30:3}}% chance to retain that spell slot."
   :points         2
   :tags           #{:magic}
@@ -12,7 +10,7 @@
   :tags   #{:accuracy :control :magic}}
  {:effect "+{{level|level:+}} {{x|random:ability-scores}}."
   :points 2
-  :tags   #{:utility}}
+  :tags   #{:utility :damage}}
  {:effect "When you cause a condition on a creature, +10% chance to replace that condition with debilitation."
   :points 2
   :tags   #{:control}}
@@ -27,7 +25,7 @@
   :tags   #{:utility}}
  {:effect "+{{level|level:+}} maximum {{x|random:ability-scores}}."
   :points 2
-  :tags   #{:utility}}
+  :tags   #{:utility :damage}}
  {:effect "You have +{{level|level:+}} second level spell slot(s) if you already have at least one spell slot of any level."
   :points 2
   :tags   #{:magic}}

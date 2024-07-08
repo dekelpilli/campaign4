@@ -29,9 +29,10 @@
 
 (defn at-level [unique level]
   (let [level-fn #(mod-at-level % level)]
-    (update
-      unique :mods
-      #(into [] (keep level-fn) %))))
+    (-> (update
+          unique :mods
+          #(into [] (keep level-fn) %))
+        (assoc :level level))))
 
 (defn new-unique []
   (r/sample uniques))
@@ -55,7 +56,8 @@
     (run!
       #(reduce
          (fn [unique-at-previous-level current-level]
-           (let [unique-at-current-level (at-level % current-level)]
+           (let [unique-at-current-level (-> (at-level % current-level)
+                                             (dissoc :level))]
              (when (= unique-at-previous-level unique-at-current-level)
                (println)
                (pr unique-at-previous-level)

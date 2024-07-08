@@ -30,19 +30,19 @@
     :action (fn ring-loot [] (rings/new-rings 2))}
    {:name   "Enchanted Receptacle"
     :omen   :enchanted
-    :action (fn enchanted-receptacle [] (e/random-enchanted 30))} ;TODO replace?
+    :action (fn enchanted-receptacle [] (e/random-enchanted 3))}
    {:name   "Crafting item"
     :omen   :crafting
     :action crafting/crafting-loot}
    {:name   "Receptacle + Curios"
     :omen   :curio
-    :action (fn curios-loot [] (repeatedly 2 curios/new-curio))}
+    :action (fn curios-loot [] (repeatedly 4 curios/new-curio))}
    {:name   "Vial"
     :omen   :vial
     :action vials/new-vial}
    {:name   "Helmet"
     :omen   :helmet
-    :action (constantly "helmets/new-helmet")} ;TODO
+    :action (constantly "One helmet (character specific)")} ;TODO
    {:name   "Tarot card"
     :omen   :tarot
     :action (constantly "Two tarot cards")}

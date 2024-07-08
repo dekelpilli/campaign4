@@ -1,28 +1,26 @@
-[{:effect "+1 to wisdom, charisma, and intelligence."
-  :tags   #{:utility}}
- {:effect "+1 to dexterity and strength."
-  :tags   #{:utility}}
- {:effect "+1 to constitution and maximum constitution."
-  :tags   #{:utility}}
+[{:effect "+1 to Wisdom, Charisma, and Intelligence."
+  :tags   #{:utility :damage}}
+ {:effect "+1 to Dexterity and Strength."
+  :tags   #{:utility :damage}}
  {:effect "Increases to your ability score maximums also increase those scores by the same amount if your {{x|random:gear-slots}} is a unique."
-  :tags   #{:utility}}
+  :tags   #{:utility :damage}}
  {:effect "+4 barrier for each active omen you have."
   :tags   #{:survivability}}
  {:effect "When you or someone in your party draws tarot cards, draw one additional card and place one of the drawn cards back in the deck."
   :tags   #{:wealth}}
  {:effect "Until proven otherwise, intelligent creatures perceive you as having {{x|random:literal:0:5}} Armour."
   :tags   #{:utility}}
- {:effect  "{% with x=x|random:without-replacement:2:gear-slots %}While your {{x.0}} slot it empty, treat it as if it contains the same object you have in your {{x.1}} slot.{% endwith %}"
-  :tags    #{:utility}}
+ {:effect "{% with x=x|random:without-replacement:2:gear-slots %}While your {{x.0}} slot it empty, treat it as if it contains the same object you have in your {{x.1}} slot.{% endwith %}"
+  :tags   #{:utility}}
  {:effect "This antiquity gains a level whenever a vial is applied to it (excluding purchased vials), but cannot have vials applied to it once it is at maximum level."
   :tags   #{:wealth}}
  {:effect "Whenever you would gain an omen for a loot category, you may choose which omen for that category you receive."
   :tags   #{:wealth}}
  {:effect "Your critical failures count as critical successes instead."
   :tags   #{:critical}}
- {:effect  "{% with x=x|random:damage-types %}+1 {{x}} damage. Increases to {{x}} add damage instead of increasing damage.{% endwith %}"
-  :tags    #{:damage}}
- {:effect  "{% with x=x|random:without-replacement:2:conditions %}When you would otherwise gain the condition '{{x.0}}', gain '{{x.1}}' instead.{% endwith %}"
-  :tags    #{:survivability}}
- {:effect  "{% with x=x|random:without-replacement:2:conditions %}No more than once per short rest, when you would otherwise inflict the condition '{{x.0}}' on a creature, inflict '{{x.1}}' instead.{% endwith %}"
-  :tags    #{:control}}]
+ {:effect "{% with x=x|random:damage-types %}+1 {{x}} damage. Increases to {{x}} add damage instead of increasing damage.{% endwith %}"
+  :tags   #{:damage}}
+ {:effect "{% with x=x|random:without-replacement:2:conditions %}When you would otherwise gain the condition '{{x.0}}', gain '{{x.1}}' instead.{% endwith %}"
+  :tags   #{:survivability}}
+ {:effect "{% with x=x|random:without-replacement:2:conditions %}No more than once per short rest, when you would otherwise inflict the condition '{{x.0}}' on a creature, inflict '{{x.1}}' instead.{% endwith %}"
+  :tags   #{:control}}]

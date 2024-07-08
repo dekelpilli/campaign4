@@ -44,7 +44,7 @@
   :character "Choose a skill. Modifiers to specific skills on your items also apply to this skill, but modifiers that specifically apply to this skill have no effect."
   :item      "Choose a skill. Modifiers to skills on this item also apply to this skill (this has no effect on modifiers that already apply to this skill)."}
  {:name      "Aggressive"
-  :character "Your Armour is always exactly 3 while your gloves only have 'damage' tagged modifiers on them, and have at least 2 modifiers in total."
+  :character "Your Armour is always exactly 3 while your gloves only have 'damage' tagged modifiers on them (across both), and have at least 2 modifiers in total."
   :item      "'Damage' tagged modifiers on this item have no effect. +1 Armour if this item has at least 3 damage tagged modifiers."}
  {:name      "Amplified"
   :character "While all of your worn items are relics, one relic of your choice you are wearing is treated as if it is at level 6."

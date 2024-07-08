@@ -1,6 +1,6 @@
 (ns campaign4.enchants
   (:require
-    [campaign4.formatting :as formatting]
+    [campaign4.dynamic-mods :as dyn]
     [campaign4.randoms :as randoms]
     [campaign4.util :as u]
     [randy.core :as r]))
@@ -9,6 +9,7 @@
                                                       "armour" 3}))
 
 (def ^:private _tags
+  "Explicitly defined for better IDE prompting"
   [::accuracy
    ::control
    ::critical
@@ -34,7 +35,7 @@
 (def enchants-by-base
   (->> (u/load-data :enchants)
        (mapv (fn [enchant]
-               (-> (formatting/load-mod enchant)
+               (-> (dyn/load-mod enchant)
                    randoms/attach-weightings
                    (update :points (fnil identity 1)))))
        (reduce
@@ -54,7 +55,7 @@
           new-points-sum (+ points points-sum)
           new-enchants (conj enchants e)]
       (if (>= new-points-sum points-target)
-        (mapv formatting/format-mod new-enchants)
+        (mapv dyn/format-mod new-enchants)
         (recur new-points-sum new-enchants)))))
 
 (defn add-typed-enchants [base-type points-target]

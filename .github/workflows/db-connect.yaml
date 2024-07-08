@@ -18,3 +18,5 @@ jobs:
           --command='SHOW SERVER_VERSION;'
         env:
           PGPASSWORD: ${{ secrets.DB_PASS }}
+      - run: >
+          curl "https://${{ secrets.SUPABASE_API_HOST }}/rest/v1/" -H "apikey: ${{ secrets.SUPABASE_API_KEY }}" >> /dev/null

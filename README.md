@@ -90,14 +90,14 @@ Antiquities are a type of relic obtained only via tarot cards. When antiquities 
 ### Tags
 - Drawbacks/negative mods have no tags
 - The following tags exist:
-  - Damage: Directly increases or grants damage (such as with an aura or thorns), either with flat additions or modifiers to the damage itself, ignore res/imm, minion damage, damage conversion
+  - Damage: Directly increases or grants damage (such as with an aura or thorns), either with flat additions or modifiers to the damage itself, ignore res/imm, minion damage, damage conversion, ability score improvements
   - Critical: Inflicts staggered, reduces crit req, improves crit damage (e.g. via adding crit dice), triggers effect on crit
   - Accuracy: Grants AB, grants attacks advantage, grants enemies disadvantaged defence (dazed, staggered, blinded, restrained), grants DCs bonuses, lower enemy AC/saves
   - Survivability: Grants AC, spell save bonuses/adv, advantaged defence, health regen, incoming healing, max HP, minion defences, change incoming damage, barrier
   - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
   - Magic: Grants bonuses to spell slots, concentration, spell levels, spells known, non-accuracy/damage buffs to spell behaviour
   - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
-  - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points
+  - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points, ability score improvements
 
 ### Journey Activities & Travel
 - Which journey activity is performed is decided at the start of the day by each player, after learning the weather

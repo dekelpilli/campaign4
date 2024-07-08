@@ -14,7 +14,7 @@
  {:name   "Orb of Perfection"
   :effect "Replace a random value, or grouping of values, from a chosen modifier on an item with any possible random value of your choice."}
  {:name   "Sacrificial Orb"
-  :effect "Use when performing a ring sacrifice increase the amount of generated options by an amount equal to the number of rings sacrificed."}
+  :effect "Use when performing a ring sacrifice to increase the amount of generated options by an amount equal to the number of rings sacrificed."}
  {:name   "Orb of Favouritism"
   :effect "Reroll the monster & trait in an gem 5 times, forcing a specific monster type. If none are available of that type in the appropriate CR, you may roll with a lower CR."}
  {:name   "Orb of Discovery"

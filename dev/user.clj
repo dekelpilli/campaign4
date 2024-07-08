@@ -1,26 +1,34 @@
 (ns user
   (:require
-    [org.fversnel.dnddice.core :as d]
-    [randy.core :as r]
     [campaign4.analytics :as analytics]
-    [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
     [campaign4.encounters :as encounters]
-    [campaign4.helmets :as helmets]
     [campaign4.loot :as loot]
     [campaign4.paths :as paths]
-    [campaign4.randoms :as randoms]
-    [campaign4.relics :as relics]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
+    [campaign4.reporting :as reporting]
     [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
-    [campaign4.vials :as vials]
-    [puget.printer :refer [cprint]]))
+    [org.fversnel.dnddice.core :as d]
+    [puget.printer :refer [cprint]]
+    [randy.rng :as rng]))
+
+(require
+  '[randy.core :as r]
+  '[campaign4.crafting :as crafting]
+  '[campaign4.helmets :as helmets]
+  '[campaign4.randoms :as randoms]
+  '[campaign4.relics :as relics]
+  '[campaign4.vials :as vials])
 
 (defmacro cp [] `(cprint *1))
+
+(defmacro pf
+  ([] `(println (reporting/format-loot *1)))
+  ([x] `(println (reporting/format-loot ~x))))
 
 (defn roll [n x]
   (-> (str n \d x)
@@ -37,7 +45,9 @@
 (comment
   (analytics/set-session! 1)
 
-  (loot/loot 100)
+  (pf (loot/loot (rng/next-int @r/default-rng 1 101)))
+  (pf)
+  (pf (loot/loot ))
   (loot/loots 100 50 1)
 
   (encounters/pass-time 1 ::encounters/clear)
@@ -68,7 +78,7 @@
             ["court of swords"
              "hierophant"
              "empress"])
-      (tarot/generate-antiquity "weapon"))
+      (tarot/generate-antiquity "gloves"))
 
   (tarot/save-antiquity! (:antiquity *1))
 
