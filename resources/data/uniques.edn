@@ -424,7 +424,9 @@
               {:effect "You are large."}
               {:effect "You cannot dual-wield weapons."}
               {:effect "-2 to your two lowest mental ability scores (choose if equal)."}
+              {:effect "-2 Dexterity."}
               {:effect "When you grant magical healing to a creature, it may immediately attempt to save out of any ongoing effects on it with saving throws that repeat each round."
+               :levels [:skip :keep]
                :tags   #{:magic :survivability}}]}
  {:name      "Reckless Replenishment"
   :base-type "armour"

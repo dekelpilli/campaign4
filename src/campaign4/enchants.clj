@@ -64,4 +64,5 @@
 
 (defn random-enchanted [points-target]
   (let [base-type (new-base-type)]
-    [base-type (add-typed-enchants base-type points-target)]))
+    {:base     base-type
+     :enchants (add-typed-enchants base-type points-target)}))

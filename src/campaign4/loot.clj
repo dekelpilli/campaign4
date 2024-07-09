@@ -6,6 +6,7 @@
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
     [campaign4.omens :as omens]
+    [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
     [campaign4.uniques :as uniques]
@@ -19,7 +20,8 @@
     :action (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
    {:name   "Unique + 1 ancient orb"
     :omen   :unique
-    :action (fn unique-loot [] ["1 Ancient Orb"
+    :action (fn unique-loot [] [{:name   "Ancient Orb"
+                                 :effect "Reroll a unique into a random different unique item at level 1."}
                                 (-> (uniques/new-unique)
                                     (uniques/at-level 1))])}
    {:name   "Talisman"
@@ -36,7 +38,8 @@
     :action crafting/crafting-loot}
    {:name   "Receptacle + Curios"
     :omen   :curio
-    :action (fn curios-loot [] (repeatedly 4 curios/new-curio))}
+    :action (fn curios-loot [] {:curios (-> (repeatedly 4 curios/new-curio)
+                                            vec)})}
    {:name   "Vial"
     :omen   :vial
     :action vials/new-vial}
@@ -86,7 +89,8 @@
 
 (defn loot [n]
   (analytics/record! (str "loot:" n) 1)
-  (loot* n))
+  #_(let [loot (loot* n)] ;TODO make this work better
+      (reporting/report-loot! loot)))
 
 (defn loots* [ns]
   (mapv (fn collect-loot [n]
@@ -99,4 +103,9 @@
 (defn loots [& ns]
   (doseq [[n amount] (frequencies ns)]
     (analytics/record! (str "loot:" n) amount))
-  (loots* ns))
+  #_(let [loot (loots* ns)] ;TODO make this work better
+      (run! reporting/report-loot! loot))
+  loot)
+
+(comment
+  (loots 10 20 30 40))
