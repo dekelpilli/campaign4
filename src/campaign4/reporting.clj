@@ -2,7 +2,7 @@
   (:require
     [campaign4.util :as u]
     [clojure.core.async :as a]
-    [clj-yaml.core :as yaml]
+    [puget.printer :as pp]
     [clojure.string :as str]
     [clojure.walk :as walk]
     [hato.client :as hato]
@@ -114,11 +114,10 @@
     (let [{:keys [channel_id id]} (-> (hato/request {:method       :post
                                                      :url          (:detailed-loot-webhook u/config)
                                                      :query-params {:wait true}
-                                                     :as           :json
                                                      :content-type :application/json
                                                      :body         (j/write-value-as-string
-                                                                     {:content    (str "```yaml\n"
-                                                                                       (yaml/generate-string
+                                                                     {:content    (str "```edn\n"
+                                                                                       (pp/pprint-str
                                                                                          (walk/prewalk
                                                                                            (fn [x] (if (map? x)
                                                                                                      (->> (dissoc x :template)
@@ -149,8 +148,7 @@
       (campaign4.uniques/at-level 1)
       report-loot!)
   (-> (campaign4.vials/new-vial)
-      format-loot
-      println)
+      report-loot!)
   (-> (campaign4.crafting/crafting-loot)
       report-loot!)
   (-> {:curios (-> (repeatedly 4 campaign4.curios/new-curio)

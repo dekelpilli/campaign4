@@ -182,7 +182,7 @@
  {:name      "Dominion"
   :base-type "armour"
   :mods      [{:effect "+%d physical barrier per minion you control, to a maximum of 6 barrier."
-               :level  [2 3]
+               :levels [2 3]
                :tags   #{:survivability}}
               {:effect "No more than once per combat, when you have at least one minion at the end of your turn, gain temporary hit points equal to your level."
                :tags   #{:survivability}}
@@ -203,21 +203,21 @@
                :tags   #{:damage :accuracy}}
               {:effect "Your ranged attacks' base damage is radiant."
                :tags   #{:damage}}
+              {:effect "Ranged weapon attacks made during your turn have their success tier increased by one, including potentially turning a major success into a critical hit."
+               :tags   #{:accuracy :critical}}
+              {:effect "When you trigger a major effect%s, trigger two major effects instead. You may choose to trigger the same major effect twice."
+               :levels [" after landing a critical hit"
+                        ""]
+               :tags   #{:utility}}
               {:effect "When you score a critical hit with a ranged attack, all creatures of your choice within 30 feet of the target take radiant damage equal to%s your level."
                :levels [""
                         " twice"]
-               :tags   #{:damage}}
-              {:effect "You cannot attack more than once per %s." ;TODO replace/rethink whole relic
-               :levels ["round"
-                        "turn"]}
-              {:effect "Ranged attacks made during your turn have advantage if you would otherwise be able to make more than one attack on your turns."
-               :tags   #{:accuracy}}
-              {:effect "+5 radiant damage for each attack you would normally be able to make on your turn (can scale with things such as Action Surge or ki points, still consuming the resource). This does not get multiplied by the single target enchant multiplier."
-               :tags   #{:damage}}
-              {:effect "If a minion of yours deals radiant damage to a creature you can see, you may use a reaction to make a ranged weapon attack against that creature."
+               :tags   #{:damage :critical}}
+              {:effect "After attacking with a weapon, you must spend an action preparing yourself before you can make a weapon attack again."}
+              {:effect "If a minion of yours deals radiant damage to a creature you can see, you may use a reaction to make a ranged weapon attack against that creature. This does not require yourself or the weapon to be prepared."
                :levels [:skip :keep]
                :tags   #{:damage}}
-              {:effect "Your minions gain +1d6 radiant damage to attacks if you have dealt radiant damage since the end of their last turn (you also benefit from this modifier)."
+              {:effect "When a creature you can see takes radiant damage, your minions gain +1d6 radiant damage to their next attack (you also benefit from this modifier). This does not stack."
                :tags   #{:damage}
                :levels [:skip :keep]}]}
  {:name      "Gungir"
@@ -368,22 +368,22 @@
               {:effect "All physical damage from your attacks is converted to necrotic damage."
                :levels [:skip :keep]
                :tags   #{:damage}}]}
- {:name      "Amenonuhoko" ;TODO replace concentration mechanic/rethink completely
+ {:name      "Amenonuhoko"
   :base-type "gloves"
-  :mods      [{:effect "%s you hit a creature with this weapon, you %scast Earth Tremor as a first level spell."
-               :levels [["The first time on your turn that" ""]
-                        ["No more than once per turn when" "may "]]
+  :mods      [{:effect "You learn the Earth Tremor spell and %scast it as a first level spell, consuming no resources, after you attack a creature within 5 feet of you."
+               :levels ["" "may "]
                :tags   #{:magic}}
-              {:effect "When learning spells, treat spells with 'earth' in the name as if they were on your class' spell list."
+              {:effect "+1 bludgeoning damage with spells for each spell with 'earth' in its name that you have prepared."
+               :tags   #{:magic :damage}}
+              {:effect "When preparing spells, treat spells with 'earth' in their name as if they were on your class' spell list."
                :tags   #{:magic}}
               {:effect "You cannot be knocked prone by the Earth Tremor and Earthquake spells."
                :tags   #{:survivability}}
-              {:effect "You must concentrate to hold this weapon. Whenever you lose concentration, you may either drop the weapon or immediately cast Earth Tremor, centred on you. When cast in this way, the spell also affects you, but does not invoke further concentration saves."}
-              {:effect "This weapon requires an action to pick up."}
-              {:effect "No more than once per long rest, when you lose concentration on holding this weapon, you may immediately cast Earthquake as a reaction. When cast in this way, you choose the locations of the fissures."
-               :tags   #{:magic}
-               :levels [:skip :keep]}
-              {:effect "While concentrating on a spell with 'earth' in the name, other such spells consume a spell slot one lower than their usual spell slot. This modifier continues to take effect while you have a free hand (as you can't wield this weapon while concentrating on a spell), and from Earthquakes cast via this weapon."
+              {:effect "As a major effect, you may cast Earth Tremor targeted around a target of major success hit, consuming no resources."
+               :tags   #{:magic}}
+              {:effect "You cannot use major effects not granted by this item."}
+              {:effect "Whenever you are hit by an attack that is at least a major success, you immediately cast Earth Tremor. When cast in this way, the spell also affects you."}
+              {:effect "While concentrating on a spell with 'earth' in the name, other such spells consume a spell slot one lower than their usual spell slot."
                :tags   #{:magic}
                :levels [:skip :keep]}]}
  {:name      "Babr-e Bayan"
