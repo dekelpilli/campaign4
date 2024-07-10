@@ -37,8 +37,8 @@
     :action      crafting/crafting-loot}
    {:id          :curio
     :description "Receptacle + 4 Curios"
-    :action      (fn curios-loot [] {:curios (-> (repeatedly 4 curios/new-curio)
-                                                 vec)})}
+    :action      (fn curios-loot [] (-> (repeatedly 4 curios/new-curio)
+                                        vec))}
    {:id     :vial
     :action vials/new-vial}
    {:id     :helmet
@@ -78,14 +78,16 @@
         (cond-> (contains? loot-table n) (assoc :omen (omens/new-omen id))))))
 
 (defn loot! [n]
-  (analytics/record! (str "loot:" n) 1)
-  (doto (loot-result n)
-    reporting/report-loot!))
+  (let [{:keys [id]
+         :as   result} (loot-result n)]
+    (analytics/record! (str "loot" id) 1)
+    (doto result
+      reporting/report-loot!)))
 
 (defn loots! [& ns]
-  (doseq [[n amount] (frequencies ns)]
-    (analytics/record! (str "loot:" n) amount))
   (let [loot (mapv loot-result ns)]
+    (doseq [[id loots] (group-by :id loot)]
+      (analytics/record! (str "loot" id) (count loots)))
     (run! reporting/report-loot! loot)
     loot))
 

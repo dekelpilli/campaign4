@@ -21,7 +21,7 @@
 (defn- derive-type [loot]
   (cond
     (:id loot) :loot
-    (-> loot meta ::type) (-> loot meta ::type name keyword) ;TODO separate loot result formatting from loot formatting
+    (-> loot meta ::type) (-> loot meta ::type name keyword)
     (string? loot) :string
     (sequential? loot) :sequential
     (some? (:synergy? loot)) :ring
@@ -29,6 +29,7 @@
     (and (:name loot)
          (:level loot)) :unique
     (:item loot) :vial
+    (:enchants loot) :enchanted
     (get loot "above") :talisman
     (:cr loot) :gem
     (and (:name loot)
@@ -38,6 +39,17 @@
     (:tier loot) :divinity))
 
 (m/defmulti format-loot derive-type)
+(m/defmulti format-loot-result :id)
+
+(m/defmethod format-loot-result :unique [{:keys [result]}]
+  (mapv format-loot result))
+
+(m/defmethod format-loot-result :curio [{:keys [result]}]
+  (-> (with-meta result {::type :curios})
+      format-loot))
+
+(m/defmethod format-loot-result :default [{:keys [result]}]
+  (format-loot result))
 
 (defn- format-coll [coll]
   (->> (mapv #(str "- " %) coll)
@@ -77,7 +89,7 @@
                       " (crafting consumable)"))
    :body  effect})
 
-(m/defmethod format-loot :curios [{curios :result}]
+(m/defmethod format-loot :curios [curios]
   {:title "Curios"
    :body  (->> (sort-by (juxt #(str/starts-with? % "negated-")
                               identity) curios)
@@ -90,26 +102,30 @@
                               (str ":white_check_mark: ")))))
                format-coll)})
 
-(m/defmethod format-loot :loot [{:keys [omen result id n]}]
-  (let [result (cond-> result
-                       (coll? result) (with-meta {::type id}))
-        {:keys [title body]} (format-loot result)
+(defn- loot-title [title roll-title id]
+  (if title
+    (str title roll-title)
+    (-> id
+        name
+        (str/split #"-")
+        (->> (mapv str/capitalize)
+             (str/join " "))
+        (str roll-title))))
+
+(m/defmethod format-loot :loot [{:keys [omen id n] :as loot}]
+  (let [formatted (format-loot-result loot)
         roll-title (format " (roll=%s)" n)
-        title (if title
-                (str title roll-title)
-                (-> id
-                    name
-                    (str/split #"-")
-                    (->> (mapv str/capitalize)
-                         (str/join " "))
-                    (str roll-title)))]
-    (cond->> [{:body  body
-               :title title}]
+        formatted-results (mapv
+                            #(update % :title loot-title roll-title id)
+                            formatted)]
+    (cond->> formatted-results
              omen (into [{:title "Omen"
                           :body  omen}]))))
 
-(m/defmethod format-loot :enchanted [loot]
-  {:body (str loot)}) ;TODO
+(m/defmethod format-loot :enchanted [{:keys [base enchants]}]
+  {:title (format "Enchanted %s (receptacle)" base)
+   :body  (-> (mapv :formatted enchants)
+              format-coll)})
 
 (m/defmethod format-loot :divinity [loot]
   {:body (str loot)}) ;TODO
@@ -163,12 +179,15 @@
                                       :username   discord-username})}))))
 
 (comment
-  (-> (campaign4.uniques/new-unique)
-      (campaign4.uniques/at-level 1)
-      report-loot!)
+  (-> {:result [{:name "ancient" :effect "reroll unique"}
+                (-> (campaign4.uniques/new-unique)
+                    (campaign4.uniques/at-level 1))]
+       :id     :unique
+       :n      20}
+      format-loot)
   (-> {:id     :gold
        :result "20 gold"
-       :n 6}
+       :n      6}
       format-loot
       format-loot-message)
   (-> (campaign4.crafting/crafting-loot)
