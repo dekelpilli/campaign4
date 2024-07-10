@@ -45,10 +45,10 @@
 (comment
   (analytics/set-session! 1)
 
-  (pf (loot/loot (rng/next-int @r/default-rng 1 101)))
+  (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot ))
-  (loot/loots 100 50 1)
+  (pf (loot/loot!))
+  (loot/loots! 100 50 1)
 
   (encounters/pass-time 1 ::encounters/clear)
   (encounters/travel 1 ::encounters/sweltering)

@@ -15,45 +15,40 @@
     [randy.rng :as rng]))
 
 (def loot-actions
-  [{:name   "20-30 gold"
-    :omen   :gold
-    :action (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
-   {:name   "Unique + 1 ancient orb"
-    :omen   :unique
-    :action (fn unique-loot [] [{:name   "Ancient Orb"
-                                 :effect "Reroll a unique into a random different unique item at level 1."}
-                                (-> (uniques/new-unique)
-                                    (uniques/at-level 1))])}
-   {:name   "Talisman"
-    :omen   :talisman
+  [{:id          :gold
+    :description "20-30 gold"
+    :action      (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
+   {:id          :unique
+    :description "Unique + 1 ancient orb"
+    :action      (fn unique-loot [] [{:name   "Ancient Orb"
+                                      :effect "Reroll a unique into a random different unique item at level 1."}
+                                     (-> (uniques/new-unique)
+                                         (uniques/at-level 1))])}
+   {:id     :talisman
     :action talismans/new-talisman}
-   {:name   "Rings"
-    :omen   :ring
-    :action (fn ring-loot [] (rings/new-rings 2))}
-   {:name   "Enchanted Receptacle"
-    :omen   :enchanted
-    :action (fn enchanted-receptacle [] (e/random-enchanted 3))}
-   {:name   "Crafting item"
-    :omen   :crafting
-    :action crafting/crafting-loot}
-   {:name   "Receptacle + Curios"
-    :omen   :curio
-    :action (fn curios-loot [] {:curios (-> (repeatedly 4 curios/new-curio)
-                                            vec)})}
-   {:name   "Vial"
-    :omen   :vial
+   {:description "2 distinct rings"
+    :id          :ring
+    :action      (fn ring-loot [] (rings/new-rings 2))}
+   {:id          :enchanted
+    :description "Enchanted Receptacle"
+    :action      (fn enchanted-receptacle [] (e/random-enchanted 3))}
+   {:description "Crafting consumable or shrine"
+    :id          :crafting
+    :action      crafting/crafting-loot}
+   {:id          :curio
+    :description "Receptacle + 4 Curios"
+    :action      (fn curios-loot [] {:curios (-> (repeatedly 4 curios/new-curio)
+                                                 vec)})}
+   {:id     :vial
     :action vials/new-vial}
-   {:name   "Helmet"
-    :omen   :helmet
+   {:id     :helmet
     :action (constantly "One helmet (character specific)")} ;TODO
-   {:name   "Tarot card"
-    :omen   :tarot
-    :action (constantly "Two tarot cards")}
-   {:name   "New relic"
-    :omen   :relic
+   {:id          :tarot
+    :description "Draw two tarot cards"
+    :action      (constantly "Draw two tarot cards")}
+   {:id     :relic
     :action (constantly "relics/new-relic!")} ;TODO
-   {:name   "Divine dust"
-    :omen   :divine-dust
+   {:id     :divine-dust
     :action (constantly "Divine Dust")}])
 
 (def loot-table
@@ -63,49 +58,36 @@
         omens-width (mod 100 width)]
     (loop [max-roll omens-width
            [action & actions] loot-actions
-           table (sorted-map omens-width {:name   "Reroll, granting an omen"
-                                          :action (constantly "Reroll, granting an omen. If this slot is rolled again, gain an omen for a loot type where you don't currently have an omen and roll again.")})]
+           table (sorted-map omens-width {:description "Reroll, granting an omen"
+                                          :id          :omen
+                                          :action      (constantly "Reroll, granting an omen. If this slot is rolled again, gain an omen for a loot type where you don't currently have an omen and roll again.")})]
       (if action
         (let [max-roll (+ max-roll width)]
           (->> (assoc table max-roll action)
                (recur max-roll actions)))
         table))))
 
-(defn- ->action [n]
-  (let [action (-> (subseq loot-table >= n)
-                   first
-                   val)]
-    (if (and (contains? loot-table n)
-             (:omen action))
-      (update action :omen omens/new-omen)
-      (dissoc action :omen))))
+(defn loot-result [n]
+  (let [{:keys [id action]
+         :as   result} (-> (subseq loot-table >= n)
+                           first
+                           val
+                           (assoc :n n))]
+    (-> (dissoc result :action)
+        (assoc :result (action))
+        (cond-> (contains? loot-table n) (assoc :omen (omens/new-omen id))))))
 
-(defn loot* [n]
-  (when-let [{:keys [action omen]} (->action n)]
-    (if omen
-      {:result (action)
-       :omen   omen}
-      (action))))
-
-(defn loot [n]
+(defn loot! [n]
   (analytics/record! (str "loot:" n) 1)
-  #_(let [loot (loot* n)] ;TODO make this work better
-      (reporting/report-loot! loot)))
+  (doto (loot-result n)
+    reporting/report-loot!))
 
-(defn loots* [ns]
-  (mapv (fn collect-loot [n]
-          (let [{:keys [name action omen]} (->action n)]
-            (cond-> {:name   (str name " (" n ")")
-                     :result (when action (action))}
-                    omen (assoc :omen omen))))
-        ns))
-
-(defn loots [& ns]
+(defn loots! [& ns]
   (doseq [[n amount] (frequencies ns)]
     (analytics/record! (str "loot:" n) amount))
-  #_(let [loot (loots* ns)] ;TODO make this work better
-      (run! reporting/report-loot! loot))
-  loot)
+  (let [loot (mapv loot-result ns)]
+    (run! reporting/report-loot! loot)
+    loot))
 
 (comment
-  (loots 10 20 30 40))
+  (loots! 10 20 30))

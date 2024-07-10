@@ -2,12 +2,12 @@
   (:require
     [campaign4.util :as u]
     [clojure.core.async :as a]
-    [puget.printer :as pp]
     [clojure.string :as str]
     [clojure.walk :as walk]
     [hato.client :as hato]
     [jsonista.core :as j]
-    [methodical.core :as m]))
+    [methodical.core :as m]
+    [puget.printer :as pp]))
 
 (def ^:private discord-username "\uD83D\uDCB0 Placeholder DMs \uD83D\uDCB0")
 
@@ -20,7 +20,8 @@
 
 (defn- derive-type [loot]
   (cond
-    ;(:loot-type loot) (:loot-type loot)
+    (:id loot) :loot
+    (-> loot meta ::type) (-> loot meta ::type name keyword) ;TODO separate loot result formatting from loot formatting
     (string? loot) :string
     (sequential? loot) :sequential
     (some? (:synergy? loot)) :ring
@@ -38,76 +39,93 @@
 
 (m/defmulti format-loot derive-type)
 
-(m/defmethod format-loot :sequential [coll]
-  (->> (mapv #(->> (format-loot %)
-                   (str "- ")) coll)
+(defn- format-coll [coll]
+  (->> (mapv #(str "- " %) coll)
        (str/join \newline)))
 
+(m/defmethod format-loot :sequential [coll]
+  {:body (format-coll coll)})
+
 (m/defmethod format-loot :unique [{:keys [name base-type level mods]}]
-  (-> (format "## %s (level %s unique; %s)\n" name level base-type)
-      (str (format-loot (mapv :effect mods)))))
+  {:title (format "%s (level %s unique; %s)" name level base-type)
+   :body  (format-coll (mapv :effect mods))})
 
 (m/defmethod format-loot :relic [{:keys [name base-type level mods]}]
-  (-> (format "## %s (level %s relicl; %s)\n" name level base-type)
-      (str (format-loot (mapv :formatted mods)))))
+  {:title (format "%s (level %s relic; %s)" name level base-type)
+   :body  (format-coll (mapv :formatted mods))})
 
 (m/defmethod format-loot :vial [{:keys [name character item]}]
-  (format "## %s (vial)\n### Effects when drunk:\n%s\n### Effects when applied to item:\n%s"
-          name
-          character
-          item))
+  {:title (format "%s (vial)" name)
+   :body  (format "### Effects when drunk:\n%s\n### Effects when applied to item:\n%s"
+                  character item)})
 
 (m/defmethod format-loot :talisman [{:strs [above below unconditional]}]
-  (->> [above below unconditional]
-       (mapv :formatted)
-       format-loot
-       (str "## Talisman\n")))
+  {:title "Talisman"
+   :body  (format-coll (mapv :formatted [above below unconditional]))})
 
 (m/defmethod format-loot :gem [{:keys                 [name type cr]
                                 {trait-name :name
                                  entries    :entries} :trait}]
-  (format "## Gem (CR%s; %s; %s) - %s\n```%s```"
-          (long cr)
-          type
-          name
-          trait-name
-          (format-loot entries)))
+  {:title (format "Gem (CR%s; %s; %s) - %s"
+                  (long cr) type name trait-name)
+   :body  (->> (format-coll entries)
+               (format "```%s```"))})
 
 (m/defmethod format-loot :crafting [{:keys [name effect]}]
-  (format "## %s%s\n%s"
-          name
-          (if (str/includes? name "Shrine")
-            ""
-            " (crafting consumable)")
-          effect))
+  {:title (str name (if (str/includes? name "Shrine")
+                      ""
+                      " (crafting consumable)"))
+   :body  effect})
 
 (m/defmethod format-loot :curios [{curios :result}]
-  (->> (sort-by (juxt #(str/starts-with? % "negated-")
-                      identity) curios)
-       (mapv (fn [s]
-               (if (str/starts-with? s "negated-")
-                 (->> (subs s 8)
-                      str/capitalize
-                      (str ":x: "))
-                 (->> (str/capitalize s)
-                      (str ":white_check_mark: ")))))
-       format-loot
-       (str "## Curios\n")))
+  {:title "Curios"
+   :body  (->> (sort-by (juxt #(str/starts-with? % "negated-")
+                              identity) curios)
+               (mapv (fn [s]
+                       (if (str/starts-with? s "negated-")
+                         (->> (subs s 8)
+                              str/capitalize
+                              (str ":x: "))
+                         (->> (str/capitalize s)
+                              (str ":white_check_mark: ")))))
+               format-coll)})
 
-(defn _format-loot-result [n {:keys [omen result]}] ;TODO(?)
-  (str
-    (if omen
-      (str "## Omen\n" omen \newline)
-      "")
-    (if (vector? result)
-      (->> (mapv format-loot result)
-           (str/join \newline))
-      (format-loot result))))
+(m/defmethod format-loot :loot [{:keys [omen result id n]}]
+  (let [result (cond-> result
+                       (coll? result) (with-meta {::type id}))
+        {:keys [title body]} (format-loot result)
+        roll-title (format " (roll=%s)" n)
+        title (if title
+                (str title roll-title)
+                (-> id
+                    name
+                    (str/split #"-")
+                    (->> (mapv str/capitalize)
+                         (str/join " "))
+                    (str roll-title)))]
+    (cond->> [{:body  body
+               :title title}]
+             omen (into [{:title "Omen"
+                          :body  omen}]))))
+
+(m/defmethod format-loot :enchanted [loot]
+  {:body (str loot)}) ;TODO
 
 (m/defmethod format-loot :divinity [loot]
-  (str loot)) ;TODO
+  {:body (str loot)}) ;TODO
 
-(m/defmethod format-loot :default [loot] (str loot))
+(m/defmethod format-loot :ring [loot]
+  {:body (str loot)}) ;TODO
+
+(m/defmethod format-loot :default [loot]
+  {:body (str loot)})
+
+(defn format-loot-message [v]
+  (->> (cond-> v (map? v) vector)
+       (mapv (fn [{:keys [title body]}]
+               (str (when title (str "## " title \newline))
+                    body)))
+       (str/join \newline)))
 
 (defn report-loot! [loot]
   (a/go
@@ -133,7 +151,8 @@
                      :url          (:loot-webhook u/config)
                      :content-type :application/json
                      :body         (j/write-value-as-string
-                                     {:content    (format-loot loot)
+                                     {:content    (-> (format-loot loot)
+                                                      format-loot-message)
                                       :embeds     [{:title "Full details"
                                                     :type  "link"
                                                     :url   (format "https://discord.com/channels/%s/%s/%s"
@@ -147,8 +166,11 @@
   (-> (campaign4.uniques/new-unique)
       (campaign4.uniques/at-level 1)
       report-loot!)
-  (-> (campaign4.vials/new-vial)
-      report-loot!)
+  (-> {:id     :gold
+       :result "20 gold"
+       :n 6}
+      format-loot
+      format-loot-message)
   (-> (campaign4.crafting/crafting-loot)
       report-loot!)
   (-> {:curios (-> (repeatedly 4 campaign4.curios/new-curio)
