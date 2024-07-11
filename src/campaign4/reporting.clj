@@ -109,22 +109,20 @@
                               (str ":white_check_mark: ")))))
                format-coll)})
 
-(defn- loot-title [title roll-title id]
-  (if title
-    (str title roll-title)
-    (-> id
-        name
-        (str/split #"-")
-        (->> (mapv str/capitalize)
-             (str/join " "))
-        (str roll-title))))
+(defn- loot-title [title id]
+  (or title
+      (-> id
+          name
+          (str/split #"-")
+          (->> (mapv str/capitalize)
+               (str/join " ")))))
 
 (m/defmethod format-loot :loot [{:keys [omen id n] :as loot}]
   (let [formatted (format-loot-result loot)
         formatted (if (vector? formatted) formatted [formatted])
-        roll-title (format " [roll=%s]" n)
         formatted-results (update formatted 0
-                                  update :title loot-title roll-title id)]
+                                  (fn [formatted] (-> (assoc formatted :roll n)
+                                                      (update :title loot-title id))))]
     (cond-> formatted-results
             omen (conj {:title "Omen"
                         :body  omen}))))
@@ -146,8 +144,9 @@
 
 (defn format-loot-message [v]
   (->> (cond-> v (map? v) vector)
-       (mapv (fn [{:keys [title body]}]
-               (str (when title (str "## " title \newline))
+       (mapv (fn [{:keys [roll title body]}]
+               (str (when roll (format "# Roll: %s\n" roll))
+                    (when title (str "## " title \newline))
                     body)))
        (str/join \newline)))
 
