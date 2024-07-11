@@ -20,17 +20,17 @@
     :action      (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
    {:id          :unique
     :description "Unique + 1 ancient orb"
-    :action      (fn unique-loot [] [{:name   "Ancient Orb"
-                                      :effect "Reroll a unique into a random different unique item at level 1."}
-                                     (-> (uniques/new-unique)
-                                         (uniques/at-level 1))])}
+    :action      (fn unique-loot [] [(-> (uniques/new-unique)
+                                         (uniques/at-level 1))
+                                     {:name   "Ancient Orb"
+                                      :effect "Reroll a unique into a random different unique item at level 1."}])}
    {:id     :talisman
     :action talismans/new-talisman}
    {:description "2 distinct rings"
     :id          :ring
     :action      (fn ring-loot [] (rings/new-rings 2))}
    {:id          :enchanted
-    :description "Enchanted Receptacle"
+    :description "Enchanted Receptacle with at least 3 points of mods"
     :action      (fn enchanted-receptacle [] (e/random-enchanted 3))}
    {:description "Crafting consumable or shrine"
     :id          :crafting
@@ -60,7 +60,7 @@
            [action & actions] loot-actions
            table (sorted-map omens-width {:description "Reroll, granting an omen"
                                           :id          :omen
-                                          :action      (constantly "Reroll, granting an omen. If this slot is rolled again, gain an omen for a loot type where you don't currently have an omen and roll again.")})]
+                                          :action      (constantly "Reroll, granting an omen. If this slot is rolled again, or if the reroll also grants an omen, gain an omen for a loot type where you don't currently have an omen and resolve the roll as normal.")})]
       (if action
         (let [max-roll (+ max-roll width)]
           (->> (assoc table max-roll action)

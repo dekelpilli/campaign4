@@ -44,9 +44,16 @@
 (m/defmethod format-loot-result :unique [{:keys [result]}]
   (mapv format-loot result))
 
+(m/defmethod format-loot-result :ring [{:keys [result]}]
+  (mapv format-loot result))
+
 (m/defmethod format-loot-result :curio [{:keys [result]}]
   (-> (with-meta result {::type :curios})
       format-loot))
+
+(m/defmethod format-loot-result :omen [{:keys [result]}]
+  {:title "Reroll and gain omen"
+   :body  result})
 
 (m/defmethod format-loot-result :default [{:keys [result]}]
   (format-loot result))
@@ -114,13 +121,13 @@
 
 (m/defmethod format-loot :loot [{:keys [omen id n] :as loot}]
   (let [formatted (format-loot-result loot)
-        roll-title (format " (roll=%s)" n)
-        formatted-results (mapv
-                            #(update % :title loot-title roll-title id)
-                            formatted)]
-    (cond->> formatted-results
-             omen (into [{:title "Omen"
-                          :body  omen}]))))
+        formatted (if (vector? formatted) formatted [formatted])
+        roll-title (format " [roll=%s]" n)
+        formatted-results (update formatted 0
+                                  update :title loot-title roll-title id)]
+    (cond-> formatted-results
+            omen (conj {:title "Omen"
+                        :body  omen}))))
 
 (m/defmethod format-loot :enchanted [{:keys [base enchants]}]
   {:title (format "Enchanted %s (receptacle)" base)
@@ -130,8 +137,9 @@
 (m/defmethod format-loot :divinity [loot]
   {:body (str loot)}) ;TODO
 
-(m/defmethod format-loot :ring [loot]
-  {:body (str loot)}) ;TODO
+(m/defmethod format-loot :ring [{:keys [name points formatted]}]
+  {:title (format "%s (%s point ring)" name points)
+   :body  formatted})
 
 (m/defmethod format-loot :default [loot]
   {:body (str loot)})

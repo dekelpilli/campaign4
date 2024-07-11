@@ -7,5 +7,6 @@
                 (into {} (map (juxt :type :options)))))
 
 (defn new-omen [omen-type]
-  (-> (get omens omen-type)
-      r/sample))
+  (when-not (= :omen omen-type)
+    (-> (get omens omen-type)
+        r/sample)))
