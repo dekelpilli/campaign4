@@ -6,9 +6,9 @@
     [campaign4.encounters :as encounters]
     [campaign4.loot :as loot]
     [campaign4.paths :as paths]
+    [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
-    [campaign4.reporting :as reporting]
     [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
@@ -27,8 +27,18 @@
 (defmacro cp [] `(cprint *1))
 
 (defmacro pf
-  ([] `(println (reporting/format-loot *1)))
-  ([x] `(println (reporting/format-loot ~x))))
+  ([] `(-> (reporting/format-loot *1)
+           reporting/format-loot-message
+           println))
+  ([x] `(-> (reporting/format-loot ~x)
+            reporting/format-loot-message
+            println)))
+
+(defmacro r!
+  ([] `(-> (reporting/format-loot *1)
+           reporting/report-loot!))
+  ([x] `(-> (reporting/format-loot ~x)
+            reporting/report-loot!)))
 
 (defn roll [n x]
   (-> (str n \d x)
@@ -47,7 +57,7 @@
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot!))
+  (pf (loot/loot! 99))
   (loot/loots! 100 50 1)
 
   (encounters/pass-time 1 ::encounters/clear)
@@ -74,6 +84,11 @@
   (-> (choose-by-name (:name *1) uniques/uniques)
       (uniques/at-level 2))
 
+  (-> (mapv #(choose-by-name % tarot/cards)
+            ["hanging"
+             "empress"])
+      (with-meta {::reporting/type :tarot})
+      (doto reporting/report-loot!))
   (-> (mapv #(choose-by-name % tarot/cards)
             ["court of swords"
              "hierophant"

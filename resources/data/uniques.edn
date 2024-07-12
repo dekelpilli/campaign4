@@ -242,15 +242,13 @@
                :tags   #{:damage}}
               {:effect "+2 lightning damage."
                :tags   #{:damage}}
-              {:effect "One of your weapons gains the 'conduit' trait."
-               :tags   #{:magic :utility}}
               {:effect "+1d4 lightning damage with thrown attacks."
                :tags   #{:damage}}
               {:effect "Requires 22 Strength to wield."}
               {:effect "If you have at least 24 Strength, you may use Strength as your spellcasting ability."
                :levels [:skip :keep]
                :tags   #{:magic}}
-              {:effect "When you damage a creature with lightning damage, another creature of your choice within 10 feet of it takes lightning damage equal to your Strength modifier. This cannot damage a creature more than once in a turn."
+              {:effect "When you damage a creature with lightning damage, another creature of your choice within 10 feet of it takes 111lightning damage equal to your Strength modifier. This cannot damage a creature more than once in a turn."
                :levels [:skip :keep]
                :tags   #{:damage}}]}
  {:name      "Excalibur"
@@ -312,22 +310,28 @@
                :levels [:skip :keep]
                :tags   #{:damage}}
               {:effect "You take 2 true damage whenever you make an attack on your turn."}]}
- {:name      "Hidden"
+ {:name      "Carnwennan"
   :base-type "gloves"
-  :mods      [{:effect "While you have an unsheathed weapon, you are invisible if you haven't attacked or cast a spell in the last %d seconds."
-               :levels [18 12]
-               :tags   #{:survivability :damage :accuracy}}
-              {:effect "Gain 5 temporary hit points when you critically hit with an attack."
-               :tags   #{:survivability}}
-              {:effect "+3 critical hit range with attacks while you are invisible."
+  :mods      [{:effect "After you roll initiative, you become shrouded in a magical darkness that engulfs you until you make an attack, or until the end of the combat. You can see through this darkness, but other creatures need magical darkvision or truesight to do so."
+               :tags   #{:utility}}
+              {:effect "+%d slashing damage while in magical darkness."
+               :level  [2 4]
+               :tags   #{:damage}}
+              {:effect "+2 critical hit range with attacks while in magical darkness."
                :tags   #{:critical}}
-              {:effect "+1 critical hit range while you have temporary hit points."
+              {:effect "You become shrouded in magical darkness (as per first mod) when you attack while you are hidden and not already in magical darkness."
+               :tags   #{:utility}}
+              {:effect "Minor successes deal full slashing damage to you while you are not in magical darkness."}
+              {:effect "-1 Reflexes and Armour against spell attacks."}
+              {:effect "+1 critical hit range."
                :levels [:skip :keep]
                :tags   #{:critical}}
-              {:effect "Creatures that can see you take no extra damage from critical hits from your attacks."}]}
+              {:effect "You become shrouded in magical darkness when you score a critical hit."
+               :levels [:skip :keep]
+               :tags   #{:utility :critical}}]}
  {:name      "The Resilient"
   :base-type "armour"
-  :mods      [{:effect "You are resistant to all damage from standard success Armour hits that are up to 2 away from being minor successes ()."
+  :mods      [{:effect "You are resistant to all damage from standard success Armour hits that are up to 2 away from being minor successes (7 & 8 by default)."
                :tags   #{:survivability}}
               {:effect "You gain proficiency with shields and 'targe' weapons."
                :tags   #{:utility}}

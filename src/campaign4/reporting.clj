@@ -63,7 +63,7 @@
        (str/join \newline)))
 
 (m/defmethod format-loot :sequential [coll]
-  {:body (format-coll coll)})
+  {:body (format-loot coll)})
 
 (m/defmethod format-loot :unique [{:keys [name base-type level mods]}]
   {:title (format "%s (level %s unique; %s)" name level base-type)
@@ -108,6 +108,13 @@
                          (->> (str/capitalize s)
                               (str ":white_check_mark: ")))))
                format-coll)})
+
+(m/defmethod format-loot :tarot [cards]
+  (mapv
+    (fn [{:keys [name effect]}]
+      {:title name
+       :body  effect})
+    cards))
 
 (defn- loot-title [title id]
   (or title
