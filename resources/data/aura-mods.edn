@@ -1,3 +1,4 @@
+;TODO make mods levellable
 [{:effect "Creatures of your choice within 5 feet of you have disadvantage on opportunity attacks against targets other than you."
   :tags   #{:control}}
  {:effect "Creatures of your choice within 10 feet of you have can use your barriers instead of their own when taking damage. If a creature does this, replenish 2 in each of your barriers at the end of the current turn."

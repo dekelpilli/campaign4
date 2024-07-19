@@ -19,4 +19,4 @@ jobs:
         env:
           PGPASSWORD: ${{ secrets.DB_PASS }}
       - run: >
-          curl "https://${{ secrets.SUPABASE_API_HOST }}/rest/v1/" -H "apikey: ${{ secrets.SUPABASE_API_KEY }}" >> /dev/null
+          curl --fail-with-body "https://${{ secrets.SUPABASE_API_HOST }}/rest/v1/campaign4" -H "apikey: ${{ secrets.SUPABASE_API_KEY }}" >> /dev/null

@@ -31,32 +31,6 @@
 ;    (update-relic!
 ;      (update relic :levels (comp u/jsonb-lift vector first)))))
 ;
-;(defn- find-relic! [{:keys [start] :as relic}]
-;  (-> (assoc relic
-;        :levels [{:existing   (mapv prep-new-mod start)
-;                  :progressed []}]
-;        :found true)
-;      update-relic!))
-;
-;(defn new-relic! []
-;  (let [relic (-> (db/execute! {:select [:*]
-;                                :from   [:relics]
-;                                :where  [:= :found false]})
-;                  r/sample)
-;        start-relic (select-keys relic [:name :start :base-type])]
-;    (puget/cprint start-relic)
-;    (find-relic! relic)
-;    start-relic))
-;
-;(defn reveal-relic! []
-;  (when-let [relic (->> (db/execute! {:select [:*]
-;                                      :from   [:relics]
-;                                      :where  [:= :found false]})
-;                        (u/assoc-by :name)
-;                        (p/>>item "Relic:"))]
-;    (-> relic (select-keys [:name :start :base-type]) puget/cprint)
-;    (find-relic! relic)))
-;
 ;(defn sell-relic! []
 ;  (when-let [{:keys [name] :as relic} (choose-found-relic)]
 ;    (db/execute! {:update [:relics]
@@ -94,22 +68,22 @@
 
 (defn current-relic-state [relic]
   (-> (select-keys relic [:level :name :base-type])
-      (assoc :mods (current-relic-mods relic))))
+      (assoc :mods (mapv
+                     #(select-keys % [:formatted :points :level :tags])
+                     (current-relic-mods relic)))))
 
-(defn- level-options-types [antiquity? remaining-pool num-progress-mods has-upgradeable?]
+(defn- level-options-types [remaining-pool num-progress-mods has-upgradeable?]
   (let [pool-option (if (seq remaining-pool) :pool :random)]
-    (if antiquity?
-      [:random :random pool-option]
-      (match [num-progress-mods has-upgradeable?]
-             [2 _] [:progress :progress pool-option]
-             [1 true] [:progress pool-option (r/sample [:random :upgrade])]
-             [1 false] [:progress pool-option :random]
-             [0 true] [:random pool-option :upgrade]
-             [0 false] [:random pool-option (if (>= (count remaining-pool) 2)
-                                              (r/sample [:random pool-option])
-                                              :random)]))))
+    (match [num-progress-mods has-upgradeable?]
+           [2 _] [:progress :progress pool-option]
+           [1 true] [:progress pool-option (r/sample [:random :upgrade])]
+           [1 false] [:progress pool-option :random]
+           [0 true] [:random pool-option :upgrade]
+           [0 false] [:random pool-option (if (>= (count remaining-pool) 2)
+                                            (r/sample [:random pool-option])
+                                            :random)])))
 
-(defn relic-level-options [{:keys [pool antiquity levels level sold base-type] :as relic}]
+(defn relic-level-options [{:keys [pool levels level sold base-type] :as relic}]
   (if-not (or sold
               (= level 6)
               (not= (dec level) (count levels)))
@@ -121,16 +95,12 @@
           current-mods (->> (current-relic-mods relic)
                             (mapv dyn/load-mod))
           remaining-levels (- 6 level)
-          upgradeable-mods (if antiquity
-                             []
-                             (filterv (fn [mod]
-                                        (some-> (upgrade-points mod)
-                                                (<= remaining-levels)))
-                                      current-mods))
-          progress-mods (if antiquity
-                          []
-                          (filterv :progress current-mods))
-          option-types (level-options-types antiquity remaining-pool (count progress-mods) (-> upgradeable-mods seq some?))
+          upgradeable-mods (filterv (fn [mod]
+                                      (some-> (upgrade-points mod)
+                                              (<= remaining-levels)))
+                                    current-mods)
+          progress-mods (filterv :progress current-mods)
+          option-types (level-options-types remaining-pool (count progress-mods) (-> upgradeable-mods seq some?))
           option-freqs (frequencies option-types)]
       (reduce-kv
         (fn [options option-type amount]
@@ -154,7 +124,6 @@
   (relic-level-options
     {:name      ""
      :sold      false
-     :antiquity false
      :base-type "armour"
      :level     5
      :levels    [{:pool {:effect "Mod 1"
@@ -175,7 +144,6 @@
   (let [db-relic {:name      ""
                   :sold      false
                   :found     true
-                  :antiquity false
                   :base-type "armour"
                   :level     6
                   :levels    [{:pool {:effect "Mod 1"

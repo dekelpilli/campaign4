@@ -26,9 +26,25 @@
  {:effect "+{{level|level:+}} maximum {{x|random:ability-scores}}."
   :points 2
   :tags   #{:utility :damage}}
+ {:effect "Increases to your ability score maximums from gear also increase those scores by the same amount if your {{x|random:gear-slots}} is a unique."
+  :points 2
+  :tags   #{:utility :damage}}
  {:effect "You have +{{level|level:+}} second level spell slot(s) if you already have at least one spell slot of any level."
   :points 2
   :tags   #{:magic}}
+ {:effect "When you or someone in your party draws tarot cards, draw one additional card and place one of the drawn cards back in the deck."
+  :tags   #{:wealth}}
+ {:effect "{% with x=x|random:without-replacement:2:gear-slots %}While your {{x.0}} slot it empty, treat it as if it contains the same object you have in your {{x.1}} slot.{% endwith %}"
+  :tags   #{:utility}}
+ {:effect "Applying a vial to a relic has a +{{level|level:+:5:10}}% chance to cause it to gain a level. This does not include purchased vials."
+  :tags   #{:wealth}}
+ {:effect "Whenever you would gain an omen for a loot category, you may choose which omen for that category you receive."
+  :tags   #{:wealth}}
+ {:effect "{% with x=x|random:without-replacement:2:conditions %}When you would otherwise gain the condition '{{x.0}}', gain '{{x.1}}' instead.{% endwith %}"
+  :tags   #{:survivability}}
+ {:effect "{% with x=x|random:without-replacement:2:conditions %}No more than once per short rest, when you would otherwise inflict the condition '{{x.0}}' on a creature, inflict '{{x.1}}' instead.{% endwith %}"
+  :points 2
+  :tags   #{:control}}
  {:effect "Recover a {{level|level:+|ordinal}}-level spell slot when you roll for initiative.{{level|level:literal: :If this is higher than your maximum spell slot, recover your maximum spell slot instead.}}"
   :tags   #{:magic}}
  {:effect "Recover {{level|level:+:10}}% of your maximum class points (minimum 1) when you roll for initiative."
@@ -205,6 +221,12 @@
  {:base-type "armour"
   :effect    "+{{level|level:+:2}} non-physical barrier."
   :tags      #{:survivability}}
+ {:base-type "armour"
+  :effect    "Until proven otherwise, intelligent creatures perceive you as having {{x|random:literal:0:5}} Armour."
+  :tags      #{:utility}}
+ {:base-type "armour"
+  :effect    "+{{level|level:+:2:4}} barrier for each active omen you have."
+  :tags      #{:survivability}}
  {:base-type "gloves"
   :effect    "+{{level|level:+}} AB."
   :points    5
@@ -263,6 +285,13 @@
  {:base-type "gloves"
   :effect    "When you hit a creature with an attack, they are marked to take +{{level|level:+}} damage from creatures other than yourself for 1 minute. This does not stack."
   :points    2
+  :tags      #{:damage}}
+ {:base-type "gloves"
+  :effect    "Your critical failures count as critical successes instead."
+  :points    2
+  :tags      #{:critical}}
+ {:base-type "gloves"
+  :effect    "Increases to {{x|random:damage-types}} add damage instead of increasing damage."
   :tags      #{:damage}}
  {:base-type "gloves"
   :effect    "+{{level|level:+}} damage."

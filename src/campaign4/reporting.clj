@@ -112,7 +112,7 @@
 (m/defmethod format-loot :tarot [cards]
   (mapv
     (fn [{:keys [name effect]}]
-      {:title name
+      {:title (str name "(tarot card)")
        :body  effect})
     cards))
 

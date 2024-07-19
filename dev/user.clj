@@ -91,13 +91,16 @@
       (doto reporting/report-loot!))
   (-> (mapv #(choose-by-name % tarot/cards)
             ["court of swords"
-             "hierophant"
+             "strength"
              "empress"])
-      (tarot/generate-antiquity "gloves"))
+      (tarot/generate-relic "gloves"))
 
-  (tarot/save-antiquity! (:antiquity *1))
+  (relics/current-relic-state (:relic *1))
 
-  (talismans/cr->output 3)
+  (-> (:relic *1)
+      (assoc :name "MyRelicNameHere")
+      tarot/save-relic!)
+
   (talismans/new-gem 0)
 
   (roll 10 4)

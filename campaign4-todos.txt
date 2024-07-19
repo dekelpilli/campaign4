@@ -1,3 +1,5 @@
 - Offer players more information before choosing divinity path
 Talismans:
   - Consider out of combat triggering?
+Vials:
+  - Can these stack? e.g. multiple Abundants (of same type or otherwise)

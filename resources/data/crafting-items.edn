@@ -12,7 +12,7 @@
   :effect "Creates a copy of a magic item. On each of these copies, each mod has a 50% chance to be removed."}
 
  {:name   "Orb of Perfection"
-  :effect "Replace a random value, or grouping of values, from a chosen modifier on an item with any possible random value of your choice."}
+  :effect "Alter the randomised values on a modifier to your liking. For modifiers with only one random value, replace the random value with any possible random value of your choice. For modifiers with multiple random values, roll the mod 5 times and choose one of the results, or to keep it as it was before."}
  {:name   "Sacrificial Orb"
   :effect "Use when performing a ring sacrifice to increase the amount of generated options by an amount equal to the number of rings sacrificed."}
  {:name   "Orb of Favouritism"

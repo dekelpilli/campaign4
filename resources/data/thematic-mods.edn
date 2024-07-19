@@ -1,0 +1,25 @@
+[{:tags   #{:utility}
+  :effect "You may dash as a free action no more than [once] per combat."}
+ {:tags   #{:utility}
+  :effect "You may dash as a free action no more than [once] per combat A."}
+ {:tags   #{:utility}
+  :effect "You may dash as a free action no more than [once] per combat B."}
+ {:tags   #{:utility}
+  :effect "You may dash as a free action no more than [once] per combat C."}
+ {:tags   #{:utility}
+  :effect "You may dash as a free action no more than [once] per combat D."}
+ {:tags   #{:survivability}
+  :points 2
+  :effect "+[1] Armour if you have poisoned or blinded an enemy in the last minute."}
+ {:tags   #{:control}
+  :effect "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}
+ ;TODO replace stand-in mods with actually thematic mods
+ ;TODO avoid deity specific thematic mods as those can be used for divine paths
+ ;  instead, favour mods based on past characters (PCs and NPCs)
+ {:tags   #{:survivability}
+  :origin :vuneta
+  :effect "Your barriers are twice as effective against damage from enemies you haven't damaged before."}
+ {:tags   #{:survivability}
+  :origin :vuneta
+  :effect "You become immortal and win the game."} ;TODO remove
+ ]

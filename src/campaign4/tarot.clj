@@ -1,7 +1,8 @@
 (ns campaign4.tarot
   (:require
-    [campaign4.enchants :as e]
+    [campaign4.db :as db]
     [campaign4.dynamic-mods :as dyn]
+    [campaign4.enchants :as e]
     [campaign4.levels :as levels]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
@@ -12,15 +13,15 @@
 
 (def cards (u/load-data :tarot-cards))
 
-(def antiquity-weights
-  {:exotic   40
+(def pool-weights
+  {:thematic 40
    :aura     20
    :racial   20
    :unique-1 12
    :unique-2 8})
 
-(def exotic-mods (->> (u/load-data :exotic-mods)
-                      (mapv (comp dyn/load-mod #(assoc % :type "exotic")))))
+(def thematic-mods (->> (u/load-data :thematic-mods)
+                        (mapv (comp dyn/load-mod #(assoc % :type "thematic")))))
 (def aura-mods (->> (u/load-data :aura-mods)
                     (mapv (comp dyn/load-mod #(assoc % :type "aura")))))
 (def racial-mods (->> (u/load-data :racial-mods)
@@ -47,7 +48,7 @@
 
 (defn- mods-of-type [type base-type]
   (case type
-    :exotic exotic-mods
+    :thematic thematic-mods
     :aura aura-mods
     :racial racial-mods
     :unique-1 (get-in unique-mods [base-type 1])
@@ -71,26 +72,26 @@
                       (recur (new-mod-fn))
                       mod))))))))
 
-(defn- add-pool-mod [mods base-type type-generator tag-advantages]
+(defn- add-pool-mod [mods exclude base-type type-generator tag-advantages]
   (let [type (type-generator)
         new-mod-fn #(-> (mods-of-type type base-type)
                         r/sample)
-        new-mod (tag-advantaged-mod mods new-mod-fn tag-advantages)]
+        new-mod (tag-advantaged-mod (into exclude mods) new-mod-fn tag-advantages)]
     (conj mods new-mod)))
 
 (defn- handle-pool-weight-cards [cards]
   (loop [[card & cards] cards
          unused-cards []
-         weights antiquity-weights]
+         weights pool-weights]
     (if card
       (let [new-weights (case (:name card)
-                          "Justice" {:exotic   25
+                          "Justice" {:thematic 25
                                      :aura     25
                                      :racial   25
                                      :unique-1 12.5
                                      :unique-2 12.5}
                           "The High Priestess" (update weights :racial + 20)
-                          "The Empress" (update weights :exotic + 20)
+                          "The Empress" (update weights :thematic + 20)
                           "The Hermit" (-> (update weights :unique-1 + 12)
                                            (update :unique-2 + 8))
                           "The Star" (update weights :aura + 20)
@@ -150,47 +151,40 @@
      :cards []}
     cards))
 
-(defn- antiquity-mod-of-tag [pool base-type tags]
-  (loop [weights antiquity-weights]
+(defn- relic-mod-of-tag [exclude base-type tags]
+  (loop [weights pool-weights]
     (let [mod-type (r/weighted-sample weights)
           mods (mods-of-type mod-type base-type)
           valid-mods (into []
-                           (comp (remove pool)
+                           (comp (remove exclude)
                                  (filter (comp seq #(set/intersection tags %) :tags)))
                            mods)]
       (if (empty? valid-mods)
         (recur (dissoc weights mod-type))
-        (-> (r/sample valid-mods)
-            dyn/format-mod)))))
+        (r/sample valid-mods)))))
 
-(defn- handle-starting-mod-cards [pool base-type cards]
+(defn- handle-starting-mod-cards [base base-type cards]
   (reduce
-    (fn [acc card]
+    (fn [{:keys [starting] :as acc} card]
       (if-let [mod (case (:name card)
-                     "The Magician" (antiquity-mod-of-tag pool base-type #{:magic :survivability})
-                     "The Emperor" (antiquity-mod-of-tag pool base-type #{:damage :accuracy})
-                     "The Chariot" (antiquity-mod-of-tag pool base-type #{:utility :control})
-                     "The Fortune" (antiquity-mod-of-tag pool base-type #{:critical :wealth})
+                     "Strength" (->> (filterv #(and (= (:origin base) (:origin %))
+                                                    (not (starting %))) thematic-mods)
+                                     r/sample)
+                     "The Magician" (relic-mod-of-tag starting base-type #{:magic :survivability})
+                     "The Emperor" (relic-mod-of-tag starting base-type #{:damage :accuracy})
+                     "The Chariot" (relic-mod-of-tag starting base-type #{:utility :control})
+                     "Wheel of Fortune" (relic-mod-of-tag starting base-type #{:critical :wealth})
                      "The World" (->> (talismans/talisman-enchants-by-category "unconditional")
-                                      r/sample
-                                      dyn/format-mod)
-                     "Strength" (->> (mods-of-type :exotic base-type)
-                                     (filterv (u/str-contains-any-fn ["strength"
-                                                                      "dexterity"
-                                                                      "wisdom"
-                                                                      "intelligence"
-                                                                      "charisma"
-                                                                      "ability score"]))
-                                     r/sample
-                                     dyn/format-mod)
+                                      r/sample)
                      nil)]
         (update acc :starting conj mod)
         (update acc :cards conj card)))
-    {:starting []
+    {:starting #{base}
      :cards    []}
     cards))
 
-(defn- mod-target-level [{:keys [upgrade-points points]} target-points]
+(defn- mod-target-level [{:keys [upgrade-points points]
+                          :or   {points 1}} target-points]
   (let [upgrade-points (or upgrade-points points)]
     (loop [level 1
            remaining (- target-points points)]
@@ -198,7 +192,7 @@
         (recur (inc level) (- remaining upgrade-points))
         level))))
 
-(defn- handle-base-mod-cards [pool base-type cards]
+(defn- handle-base-mod-cards [cards]
   (let [{:keys [cards tags points]} (reduce
                                       (fn [acc card]
                                         (if-let [new-tags (case (:name card)
@@ -214,28 +208,31 @@
                                        :points 1
                                        :cards  []}
                                       cards)
-        new-mod-fn (->> (e/enchants-by-base base-type)
-                        (filterv #(or (>= (:points %) points)
-                                      (-> (mod-target-level % points)
-                                          dec
-                                          (levels/upgradeable? (:template %)))))
-                        u/weighted-sampler)
-        mod (tag-advantaged-mod pool new-mod-fn tags)]
+        possible-base-mods (filterv #(or (>= (:points % 1) points)
+                                         (-> (mod-target-level % points)
+                                             dec
+                                             (levels/upgradeable? (:template %))))
+                                    thematic-mods)
+        mod (tag-advantaged-mod #{} #(r/sample possible-base-mods) tags)]
     {:cards cards
-     :base  (dyn/format-mod mod {:level (mod-target-level mod points)})}))
+     :base  (with-meta mod {:level (mod-target-level mod points)})}))
 
-(defn generate-antiquity [cards base-type]
+(defn generate-relic [cards base-type]
   (let [cards (sort-by :order cards)
+        {:keys [cards base]} (handle-base-mod-cards cards)
+        {:keys [cards starting]} (handle-starting-mod-cards base base-type cards)
         {:keys [cards weights]} (handle-pool-weight-cards cards)
         {:keys [cards tags]} (handle-tag-advantage-cards cards)
         type-generator (r/alias-method-sampler weights)
-        pool (reduce (fn [mods _] (add-pool-mod mods base-type type-generator tags)) #{} (range 6))
-        {:keys [cards pool]} (handle-post-pool-cards pool base-type cards)
-        {:keys [cards starting]} (handle-starting-mod-cards pool base-type cards)
-        {:keys [cards base]} (handle-base-mod-cards pool base-type cards)]
-    {:antiquity       {:starting  (conj starting base)
+        pool (reduce (fn [mods _] (add-pool-mod mods starting base-type type-generator tags)) #{} (range 6))
+        {:keys [cards pool]} (handle-post-pool-cards pool base-type cards)]
+    {:relic           {:starting  (mapv
+                                    (fn [mod]
+                                      (if-let [context (meta mod)]
+                                        (dyn/format-mod mod context)
+                                        (dyn/format-mod mod)))
+                                    starting)
                        :sold      false
-                       :antiquity true
                        :base-type base-type
                        :level     1
                        :pool      (mapv dyn/format-mod pool)}
@@ -245,8 +242,11 @@
   (-> (select-keys mod [:formatted :tags :race :subrace :type])
       (set/rename-keys {:formatted :effect})))
 
-(defn save-antiquity! [antiquity]
-  (let [relic (-> (update antiquity :starting #(mapv saved-mod %))
+(defn save-relic! [relic]
+  (let [relic (-> (update relic :starting #(mapv saved-mod %))
                   (update :pool #(mapv saved-mod %)))]
-    ;TODO DB interaction
+    (db/execute! {:insert-into :relics
+                  :values      [(-> (update relic :starting u/jsonb-lift)
+                                    (update :pool u/jsonb-lift)
+                                    (assoc :levels (u/jsonb-lift [])))]})
     relic))

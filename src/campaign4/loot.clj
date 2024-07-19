@@ -44,10 +44,8 @@
    {:id     :helmet
     :action (constantly "One helmet (character specific)")} ;TODO
    {:id          :tarot
-    :description "Draw two tarot cards"
-    :action      (constantly "Draw two tarot cards")}
-   {:id     :relic
-    :action (constantly "relics/new-relic!")} ;TODO
+    :description "Draw four tarot cards"
+    :action      (constantly "Draw four tarot cards")}
    {:id     :divine-dust
     :action (constantly "Divine Dust")}])
 
