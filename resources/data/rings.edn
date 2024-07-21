@@ -3,7 +3,7 @@
   :points 4}
  {:name   "The Hardened"
   :effect "+1 physical damage reduction for each non-synergy ring worn."
-  :points 5}
+  :points 4}
  {:name   "The Lone Wolf"
   :effect "+1 critical hit range while not wearing any synergy rings that are not The Lone Wolf."
   :points 5}
@@ -27,10 +27,10 @@
   :points 2}
  {:name   "The Able"
   :effect "+1 {{x|random:ability-scores}} while not wearing any synergy rings that are not 'The Able'"
-  :points 3}
+  :points 2}
  {:name   "Vengeful"
-  :effect "Once per short rest, as a reaction to being damaged, you may cast Hex on the creature that damaged you. Normal range/visibility/concentration restrictions apply."
-  :points 4}
+  :effect "Once per short rest, as a reaction to being damaged, you may cast Hellish Rebuke on the creature that damaged you, ignoring range restrictions."
+  :points 3}
  {:name   "Jack of All Trades"
   :effect "None of your ability scores can be below 10. Any ability scores below 10 are considered to be 10 instead."
   :points 2}
@@ -47,11 +47,11 @@
   :effect "You can speak, read, and write {{x|random:languages}} if worn for at least 24 hours."
   :points 1}
  {:name   "Protected"
-  :effect "You lose proficiency in a saving throw of your choice. You gain proficiency in {{x|random:ability-scores:uncommon}} saving throws."
-  :points 1}
- {:name   "Powerful"
-  :effect "Your strength is considered to be 15 for the purpose of wearing armour and wielding weapons."
-  :points 5}
+  :effect "-1 to a Defence of your choice, to a minimum of 0. +1 {{x|random:defences:non-armour}}."
+  :points 2}
+ {:name   "Dabbler"
+  :effect "For each ability score type, if you have no proficiencies in skills from that ability score, gain a proficiency in one such skill of your choice."
+  :points 3}
  {:name   "Acrobat"
   :effect "You may take high and long jumps without a run-up."
   :points 1}

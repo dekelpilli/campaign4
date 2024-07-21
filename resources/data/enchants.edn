@@ -2,9 +2,6 @@
   :points         2
   :tags           #{:magic}
   :upgrade-points 1}
- {:effect "On your turn, your melee attacks have 10 feet of reach."
-  :points 3
-  :tags   #{:utility}}
  {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -{{level|level:+:1}} to saving throws."
   :points 3
   :tags   #{:accuracy :control :magic}}
@@ -249,10 +246,6 @@
   :weighting      1
   :tags           #{:damage}
   :upgrade-points 1}
- {:base-type "gloves"
-  :effect    "While you are wielding a Reach weapon, enemies are considered to enter and leave your reach at 5 feet, as well as at your regular reach."
-  :points    3
-  :tags      #{:utility}}
  {:base-type      "gloves"
   :effect         "+{{level|level:+:1:2}} {{x|random:damage-types}} damage."
   :points         2

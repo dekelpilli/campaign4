@@ -1,27 +1,29 @@
-;TODO make mods levellable
-[{:effect "Creatures of your choice within 5 feet of you have disadvantage on opportunity attacks against targets other than you."
+[{:effect "Creatures of your choice within {{level|level:+:5}} feet of you have disadvantage on opportunity attacks against targets other than you."
+  :points 2
   :tags   #{:control}}
- {:effect "Creatures of your choice within 10 feet of you have can use your barriers instead of their own when taking damage. If a creature does this, replenish 2 in each of your barriers at the end of the current turn."
+ {:effect "Creatures of your choice within {{level|level:+:5:10}} feet of you have can use your barriers instead of their own when taking damage. If a creature does this, replenish 2 in each of your barriers at the end of the current turn."
   :tags   #{:survivability}}
- {:effect "Creatures of your choice within 10 feet of you take 1 {{x|random:damage-types}} thorns damage when they attack creatures other than you."
+ {:effect "Creatures of your choice within {{level|level:+:5:10}} feet of you take 1 {{x|random:damage-types}} thorns damage when they attack creatures other than you."
   :tags   #{:damage}}
- {:effect "When creatures within 20 feet of you other than yourself deal damage, you may choose for all of that damage to be converted to {{x|random:damage-types}}."
+ {:effect "When creatures within {{level|level:+:10:20}} feet of you other than yourself deal damage, you may choose for all of that damage to be converted to {{x|random:damage-types}}."
   :tags   #{:damage :survivability}}
- {:effect "When creatures within 10 feet of you other than yourself deal damage, you may choose for all of that damage to be converted to a damage type of your choice."
+ {:effect "When creatures within {{level|level:+:5:10}} feet of you other than yourself deal damage, you may choose for all of that damage to be converted to a damage type of your choice."
   :tags   #{:damage :survivability}}
- {:effect "When creatures of your choice within 30 feet of you scores a critical hit, they may use a reaction to immediately ask 3 questions about a creature they can see within that radius."
+ {:effect "When creatures of your choice within {{level|level:+:15:30}} feet of you scores a critical hit, they may use a reaction to immediately ask 3 questions about a creature they can see within that radius."
   :tags   #{:utility}}
- {:effect "Creatures killed within 5 feet of you have 50% chance to generate an additional loot roll."
-  :tags   #{:wealth}}
- {:effect "Whenever you cast a spell centered on a space or a single creature, creatures within 20 feet of that space or creature generate 1 gold whenever they fail a saving throw, including potentially from that spell, until the end of your next turn."
+ {:effect         "Creatures killed within {{level|level:+:5}} feet of you have 30% chance to generate an additional loot roll."
+  :upgrade-points 2
+  :tags           #{:wealth}}
+ {:effect "Whenever you cast a spell centered on a space or a single creature, creatures within {{level|level:+:10:20}} feet of that space or creature drop 1 gold whenever they are hit by a spell attack, including potentially from that spell, until the end of your next turn."
   :tags   #{:wealth :magic}}
- {:effect "Creatures of your choice within 5 feet of you gain +1 damage for each creature currently affected by this aura."
-  :tags   #{:damage}}
- {:effect "Creatures of your choice that start their turns within 15 feet of you gain 5 feet of speed for each of your auras that is affecting them."
+ {:effect         "Creatures of your choice within {{level|level:+:5}} feet of you gain +1 damage for each creature currently affected by this aura."
+  :upgrade-points 2
+  :tags           #{:damage}}
+ {:effect "Creatures of your choice that start their turns within {{level|level:+:5:10}} feet of you gain 5 feet of speed for each of your auras that is affecting them."
   :tags   #{:utility}}
- {:effect "Creatures of your choice within 15 feet of you are rattled while they have at least 3 of your auras affecting them."
+ {:effect "Creatures of your choice within {{level|level:+:5:10}} feet of you are rattled while they are in the area of at least 3 of your auras."
   :tags   #{:control}}
- {:effect "Creatures of your choice within 20 feet of you, other than yourself, deal additional damage with critical hits equal to the number of auras affecting them."
+ {:effect "Creatures of your choice within {{level|level:+:10:20}} feet of you, other than yourself, deal additional damage with critical hits equal to the number of your auras that they are in the area of."
   :tags   #{:critical}}
- {:effect "Conscious allies within 10 feet of you have +1 to saving throws made to end ongoing conditions."
+ {:effect "Conscious allies within {{level|level:+:5:10}} feet of you have +1 to saving throws made to end ongoing conditions."
   :tags   #{:survivability}}]

@@ -103,6 +103,9 @@
 
   (talismans/new-gem 0)
 
+  (u/insight-truth 5 30)
+  (u/insight-lie 5)
+
   (roll 10 4)
   (cp)
 

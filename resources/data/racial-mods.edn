@@ -1,15 +1,10 @@
-;TODO update for SNS
 [{:effect "You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray."
   :tags   #{:utility}
   :name   "Darkvision"
   :race   "Various"
   :book   "Various"}
- {:effect "You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray."
-  :tags   #{:utility}
-  :name   "Keen Senses"
-  :race   "Various"
-  :book   "Various"}
  {:effect "You have resistance to necrotic damage and radiant damage."
+  :points 3
   :tags   #{:survivability}
   :race   "Aasimar"
   :name   "Celestial Resistance"
@@ -24,6 +19,7 @@
   :name   "Celestial Revelation"
   :book   "Various"}
  {:effect "You have resistance to necrotic damage."
+  :points 2
   :tags   #{:survivability}
   :race   "Various"
   :name   "Various"
@@ -38,12 +34,14 @@
   :race   "Astral Elf"
   :name   "Astral Trance"
   :book   "AAG"}
- {:effect "While you aren't wearing armor, your base Armor Class is 13 + your Dexterity modifier."
+ {:effect "While you aren't wearing armor, +1 Armour."
+  :points 3
   :tags   #{:survivability}
   :race   "Autognome"
   :name   "Armored Casing"
   :book   "AAG"}
  {:effect "You can add a d4 to one attack roll, ability check, or saving throw you make, and you can do so after seeing the d20 roll but before the effects of the roll are resolved. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :points 2
   :tags   #{:survivability :utility :accuracy}
   :race   "Autognome"
   :name   "Built for Success"
@@ -53,7 +51,8 @@
   :race   "Autognome"
   :name   "Healing Machine"
   :book   "AAG"}
- {:effect "You have resistance to poison damage and immunity to disease, and you have advantage on saving throws against being staggered or poisoned. You don't need to eat, drink, or breathe."
+ {:effect "You have resistance to poison damage and immunity to disease. You don't need to eat, drink, or breathe."
+  :points 2
   :tags   #{:survivability :utility}
   :race   "Autognome"
   :name   "Mechanical Nature"
@@ -64,6 +63,7 @@
   :name   "Hawkeyed"
   :book   "PSD"}
  {:effect "When you make a melee attack on your turn, your reach for it is 5 feet greater than normal."
+  :points 4
   :tags   #{:utility}
   :race   "Bugbear"
   :name   "Long-Limbed"
@@ -89,11 +89,13 @@
   :name   "Shapechanger"
   :book   "Various"}
  {:effect "You gain proficiency with two of the following skills of your choice: Deception, Insight, Intimidation, and Persuasion."
+  :points 2
   :tags   #{:utility}
   :race   "Changeling"
   :name   "Changeling Instincts"
   :book   "ERLW"}
  {:effect "You gain proficiency with two of the following skills of your choice: Deception, Insight, Intimidation, Performance, or Persuasion."
+  :points 2
   :tags   #{:utility}
   :race   "Changeling"
   :name   "Changeling Instincts"
@@ -109,6 +111,7 @@
   :name   "Appraising Eye"
   :book   "HWCS"}
  {:effect "You gain one feat of your choice for which you qualify."
+  :points 5
   :tags   #{:utility}
   :race   "Custom Lineage"
   :name   "Feat"
@@ -134,6 +137,7 @@
   :name   "Spider Climb"
   :book   "VRGR"}
  {:effect "You can send telepathic messages to any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand these messages, but it must be able to understand at least one language to comprehend them."
+  :points 3
   :tags   #{:utility}
   :race   "Dragonborn (Gem)"
   :name   "Psionic Mind"
@@ -149,11 +153,12 @@
   :name   "Duergar Magic"
   :book   "MPMM"}
  {:effect "You have advantage on saving throws you make to avoid or end the poisoned condition on yourself. You also have resistance to poison damage."
+  :points 2
   :tags   #{:survivability}
   :race   "Duergar"
   :name   "Dwarven Resilience"
   :book   "MPMM"}
- {:effect "You have advantage on saving throws you make to avoid or end the charmed or debilitated condition on yourself."
+ {:effect "You have advantage on saving throws you make to avoid or end the charmed or debilitated conditions on yourself."
   :tags   #{:survivability}
   :race   "Duergar"
   :name   "Psionic Fortitude"
@@ -169,6 +174,7 @@
   :name   "Stonecunning"
   :book   "PHB"}
  {:effect "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
+  :points 3
   :tags   #{:survivability}
   :race   "Dwarf (Kaladesh)"
   :name   "Dwarven Toughness"
@@ -179,6 +185,7 @@
   :name   "Artisan's Expertise"
   :book   "PSK"}
  {:effect "As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. Additionally, {{x|random:literal:immediately after you teleport in this way, up to two creatures of your choice that you can see within 10 feet of you must succeed on a Wisdom saving throw or be charmed by you for 1 minute, or until you or your companions deal any damage to the creatures:one creature of your choice that you can see within 5 feet of you before you teleport in this way must succeed on a Wisdom saving throw or be frightened of you until the end of your next turn:when you use this feature, you can touch one willing creature within 5 feet of you. That creature then teleports instead of you, appearing in an unoccupied space of your choice that you can see within 30 feet of you:immediately after you teleport in this way, each creature of your choice that you can see within 5 feet of you takes fire damage equal to your proficiency bonus.}}. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :points 2
   :tags   #{:utility}
   :race   "Eladrin"
   :name   "Fey Step"
@@ -213,12 +220,12 @@
   :race   "Giff"
   :name   "Astral Spark"
   :book   "AAG"}
- {:effect "You have proficiency with all ranged weapons and ignore the loading property of any ranged weapon. In addition, attacking at long range with a ranged weapon doesn't impose disadvantage on your attack roll."
+ {:effect "You have proficiency with all ranged weapons and ignore the Prepared trait of any ranged weapon. In addition, attacking at long range with a ranged weapon doesn't impose disadvantage on your attack roll."
   :tags   #{:accuracy :utility}
   :race   "Giff"
   :name   "Firearms Mastery"
   :book   "AAG"}
- {:effect "You have advantage on Strength-based ability checks and Strength saving throws."
+ {:effect "You have advantage on Strength-based ability."
   :tags   #{:survivability :utility}
   :race   "Giff"
   :name   "Hippo Build"
@@ -238,8 +245,8 @@
   :race   "Githzerai"
   :name   "Mental Discipline"
   :book   "MPMM"}
-
  {:effect "You can take the Disengage or Hide action as a bonus action on each of your turns."
+  :points 4
   :tags   #{:utility}
   :race   "Goblin"
   :name   "Nimble Escape"
@@ -265,6 +272,7 @@
   :name   "Poison Immunity"
   :book   "OGA"}
  {:effect "Any creature that grapples you or otherwise comes into direct contact with your skin is targeted by a disadvantaged Fortitude attack, causing them to become poisoned for 1 minute on a hit. A poisoned creature no longer in direct contact with you can make a saving throw at the end of each of its turns, ending the effect on itself on a success. You can also apply a poison to any piercing weapon as part of an attack with that weapon, adding 2d4 poison damage on a major success."
+  :points 3
   :tags   #{:control :damage}
   :race   "Grung"
   :name   "Poisonous Skin"
@@ -274,7 +282,7 @@
   :race   "Various"
   :name   "Various"
   :book   "Various"}
- {:effect "If you fail to immerse yourself in water for at least 1 hour during a day, you suffer one level of fatigue at the end of that day. You can only recover from this exhaustion through magic or by immersing yourself in water for at least 1 hour."
+ {:effect "If you fail to immerse yourself in water for at least 1 hour during a day, you suffer one level of fatigue at the end of that day. You can only recover from this fatigue through magic or by immersing yourself in water for at least 1 hour."
   :race   "Grung"
   :name   "Water Dependency"
   :book   "OGA"}
@@ -294,11 +302,13 @@
   :name   "Hadozee Dodge"
   :book   "AAG"}
  {:effect "You gain proficiency in two skills of your choice."
+  :points 2
   :tags   #{:utility}
   :race   "Half-Elf"
   :name   "Skill Versatility"
   :book   "PHB"}
  {:effect "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest."
+  :points 4
   :tags   #{:survivability}
   :race   "Various"
   :name   "Relentless Endurance"
@@ -313,7 +323,7 @@
   :race   "Various"
   :name   "Lucky"
   :book   "Various"}
- {:effect "You have advantage on saving throws against being frightened."
+ {:effect "Attacks that can frighten you have disadvantage against you."
   :tags   #{:survivability}
   :race   "Various"
   :name   "Brave"
@@ -324,11 +334,13 @@
   :name   "Halfling Nimbleness"
   :book   "PHB"}
  {:effect "You can add your proficiency bonus to your initiative rolls."
+  :points 2
   :tags   #{:utility}
   :race   "Harengon"
   :name   "Hare-Trigger"
   :book   "Various"}
- {:effect "When you fail a Dexterity saving throw, you can use your reaction to roll a d4 and add it to the save, potentially turning the failure into a success. You can't use this reaction if you're prone or your speed is 0."
+ {:effect "When you miss with a Reflexes attack, you can use your reaction to add 1 to the attack, potentially turning the miss into a hit. You can't use this reaction if you're prone or your speed is 0."
+  :points 2
   :tags   #{:survivability}
   :race   "Harengon"
   :name   "Lucky Footwork"
@@ -343,12 +355,13 @@
   :race   "Hedge"
   :name   "Natural Burrowers"
   :book   "HWCS"}
- {:effect "You have a base armor class of 14 + your Dexterity modifier, but you can't wear armor."
+ {:effect "You have +2 Armour, but you can't wear armor."
+  :points 4
   :tags   #{:survivability}
   :race   "Hedge"
   :name   "Spiny Quills"
   :book   "HWCS"}
- {:effect "You can use your action to curl up, exposing attackers to a wall of your toughened quills. While curled up you cannot move, attack, or cast spells with somatic components, and your base armor class becomes 19. You cannot benefit from any Dexterity bonus to armor class while curled up, but you can still use shields. Any creature that misses you with a melee attack while you are curled up takes 2d4 points of piercing thorns damage from your sharp quills. If a creature hits you while you are curled up, you are knocked prone in your space at the end of the turn. You may uncurl yourself at any point during your turn."
+ {:effect "You can use your action to curl up, exposing attackers to a wall of your toughened quills. While curled up you cannot move, attack, or cast spells with somatic components, and your Armour is 5. Any creature that misses you with a melee attack while you are curled up takes 2d4 points of piercing thorns damage from your sharp quills. If a creature hits you while you are curled up, you are knocked prone in your space at the end of the turn. You may uncurl yourself at any point during your turn."
   :tags   #{:survivability :damage}
   :race   "Hedge"
   :name   "Curl Up"
@@ -358,7 +371,6 @@
   :race   "Hedge"
   :name   "Speak With Bugs"
   :book   "HWCS"}
-
  {:effect "As a bonus action, you can harmlessly remove a lock of your hair, one of your nails, or one of your teeth. This token is imbued with magic until you finish a long rest. While the token is imbued in this way, {{x|random:literal:as an action, you can send a telepathic message to the creature holding or carrying the token, as long as you are within 10 miles of it. The message can contain up to twenty-five words:if you are within 10 miles of the token, you can enter a trance as an action. The trance lasts for 1 minute, but it ends early if you dismiss it (no action required) or are incapacitated. During this trance, you can see and hear from the token as if you were located where it is. While you are using your senses at the token's location, you are blinded and deafened in regard to your own surroundings. When the trance ends, the token is harmlessly destroyed}}. Once you create a token using this feature, you can't do so again until you finish a long rest, at which point your missing part regrows."
   :tags   #{:utility}
   :race   "Hexblood"
@@ -374,16 +386,17 @@
   :race   "Hobgoblin"
   :name   "Fey Gift"
   :book   "MPMM"}
- {:effect "If you miss with an attack roll or fail an ability check or a saving throw, you can gain a bonus to the roll equal to the number of allies you can see within 30 feet of you (maximum bonus of +5). You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+ {:effect "If you miss with an attack roll or fail an ability check or a saving throw, you can gain a bonus to the roll equal to the number of allies you can see within 30 feet of you (maximum bonus of +5). Once you use this trait, you cannot do so again until you finish a long rest."
   :race   "Hobgoblin"
   :name   "Various"
   :book   "Various"}
  {:effect "You are proficient with two weapons of your choice and with light armor."
+  :points 2
   :tags   #{:utility}
   :race   "Hobgoblin"
   :name   "Martial Training"
   :book   "VGM"}
- {:effect "You have advantage on Strength saving throws and saving throws against being frightened as long as you are within 5 feet of an ally who isn't frightened or incapacitated that you can both see and hear."
+ {:effect "You have advantaged defence against attacks that can frighten as long as you are within 5 feet of an ally who isn't frightened or incapacitated that you can both see and hear."
   :tags   #{:survivability}
   :race   "Jerbeen"
   :name   "Take Heart"
@@ -393,17 +406,19 @@
   :race   "Jerbeen"
   :name   "Team Tactics"
   :book   "HWCS"}
- {:effect "You have advantage on all Wisdom saving throws."
+ {:effect "You have advantaged defence with Will."
+  :points 4
   :tags   #{:survivability}
   :race   "Kalashtar"
   :name   "Dual Mind"
   :book   "ERLW"}
  {:effect "You can speak telepathically to any creature you can see, provided the creature is within a number of feet of you equal to 10 times your level. You don't need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language. When you're using this trait to speak telepathically to a creature, you can use your action to give that creature the ability to speak telepathically with you for 1 hour or until you end this effect as an action. To use this ability, the creature must be able to see you and must be within this trait's range. You can give this ability to only one creature at a time; giving it to a creature takes it away from another creature who has it."
+  :points 5
   :tags   #{:utility}
   :race   "Kalashtar"
   :name   "Mind Link"
   :book   "ERLW"}
- {:effect "You are immune to spells and other magical effects that require you to dream, like dream, but not to spells and other magical effects that put you to sleep, like sleep."
+ {:effect "You are immune to spells and other magical effects that require you to dream, like Dream."
   :tags   #{:survivability}
   :race   "Kalashtar"
   :name   "Severed from Dreams"
@@ -413,7 +428,8 @@
   :race   "Kender"
   :name   "Fearless"
   :book   "DSotDQ"}
- {:effect "You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. The target must succeed on a Wisdom saving throw, or it has disadvantage on attack rolls against targets other than you until the start of your next turn. You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+ {:effect "You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. Make a Will attack against the target, causing it have disadvantage on attack rolls against targets other than you until the start of your next turn on a hit. You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :points 2
   :tags   #{:control}
   :race   "Kender"
   :name   "Taunt"
@@ -429,6 +445,7 @@
   :name   "Expert Duplication"
   :book   "Various"}
  {:effect "You have proficiency in two skills of your choice. Moreover, when you make an ability check using any skill in which you have proficiency, you can give yourself advantage on the check before rolling the d20. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+  :points 3
   :tags   #{:utility}
   :race   "Kenku"
   :name   "Kenku Recall"
@@ -448,12 +465,13 @@
   :race   "Kobold"
   :name   "Grovel, Cower, and Beg"
   :book   "VGM"}
- {:effect "You also have a climbing speed of 30 feet as long as you are not wearing heavy armor."
+ {:effect "You have a climbing speed of 30 feet as long as you are not wearing heavy armor."
   :tags   #{:utility}
   :race   "Kor"
   :name   "Climbing"
   :book   "PSZ"}
  {:effect "You have proficiency in the Athletics and Acrobatics skills."
+  :points 2
   :tags   #{:utility}
   :race   "Kor"
   :name   "Kor Climbing"
@@ -464,21 +482,19 @@
   :name   "Hold Breath"
   :book   "Various"}
  {:effect "You gain proficiency with two of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival."
+  :points 2
   :tags   #{:utility}
   :race   "Lizardfolk"
   :name   "Nature's Intuition"
   :book   "MPMM"}
- {:effect "You have a swimming speed of 30 feet."
-  :tags   #{:utility}
-  :race   "Various"
-  :name   "Swim Speed"
-  :book   "Various"}
  {:effect "You have proficiency in the Athletics and Perception skills."
+  :points 2
   :tags   #{:utility}
   :race   "Locathah"
   :name   "Observant & Athletic"
   :book   "LR"}
- {:effect "You have advantage on saving throws against being charmed, frightened, staggered, poisoned, stunned, or put to sleep."
+ {:effect "You have advantage on saving throws made to end the following conditions: charmed, frightened, staggered, poisoned, or debilitated."
+  :points 3
   :tags   #{:survivability}
   :race   "Locathah"
   :name   "Leviathan Will"
@@ -493,7 +509,7 @@
   :race   "Loxodon"
   :name   "Loxodon Serenity"
   :book   "GGR"}
- {:effect "When you aren't wearing armor, your Armour is at least equal to 1 + half of your Fortitude."
+ {:effect "When you aren't wearing armor, your Armour is at least equal to 1 + half of your Fortitude, rounded down."
   :tags   #{:survivability}
   :race   "Loxodon"
   :name   "Natural Armor"
@@ -518,12 +534,7 @@
   :race   "Various"
   :name   "Various"
   :book   "Various"}
- {:effect "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one melee attack as a bonus action."
-  :tags   #{:damage}
-  :race   "Minotaur"
-  :name   "Goring Rush"
-  :book   "Various"}
- {:effect "Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to shove that target. The target must be no more than one size larger than you and within 5 feet of you. Unless it succeeds on a Strength saving throw, you push it up to 10 feet away from you."
+ {:effect "Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to shove that target. The target must be no more than one size larger than you and within 5 feet of you. You do so with an Armour attack, and push it up to 10 feet away from you on a hit. This attack cannot trigger major effects."
   :tags   #{:control}
   :race   "Minotaur"
   :name   "Hammering Horns"
@@ -544,26 +555,29 @@
   :name   "Aggressive"
   :book   "Various"}
  {:effect "You have proficiency in two of the following skills of your choice: Animal Handling, Insight, Intimidation, Medicine, Nature, Perception, and Survival."
+  :points 2
   :tags   #{:utility}
   :race   "Orc"
   :name   "Primal Intuition"
   :book   "Various"}
  {:effect "You can take the Dash action as a bonus action. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. When you dash in this way, you gain a number of temporary hit points equal to your proficiency bonus."
+  :points 2
   :tags   #{:utility :survivability}
   :race   "Orc"
   :name   "Adrenaline Rush"
   :book   "MPMM"}
  {:effect "You can squeeze through a space as narrow as 1 inch wide, provided you are wearing and carrying nothing. You have advantage on ability checks you make to initiate or escape a grapple."
-  :tags   #{:utility :survivability}
+  :tags   #{:utility :control :survivability}
   :race   "Plasmoid"
   :name   "Amorphous"
   :book   "AAG"}
  {:effect "You can hold your breath for 1 hour."
-  :tags   #{:survivability}
+  :tags   #{:survivability :utility}
   :race   "Various"
   :name   "Hold Breath"
   :book   "Various"}
- {:effect "You have resistance to acid and poison damage, and you have advantage on saving throws against being poisoned."
+ {:effect "You have resistance to acid and poison damage, and you have advantaged defence against attacks that cause the poisoned condition."
+  :points 2
   :tags   #{:survivability}
   :race   "Plasmoid"
   :name   "Natural Resilience"
@@ -573,12 +587,14 @@
   :race   "Raptor"
   :name   "Hunter's Training"
   :book   "HWCS"}
- {:effect "\"You have advantage on saving throws against disease and being poisoned, and you have resistance to poison damage.\""
+ {:effect "You have advantage on saving throws against diseases, and you have resistance to poison damage."
+  :points 2
   :tags   #{:survivability}
   :race   "Reborn"
   :name   "Deathless Nature 1"
   :book   "VRGR"}
  {:effect "You have advantage on death saving throws."
+  :points 3
   :tags   #{:survivability}
   :race   "Reborn"
   :name   "Deathless Nature 2"
@@ -587,11 +603,6 @@
   :tags   #{:utility}
   :race   "Reborn"
   :name   "Deathless Nature 3"
-  :book   "VRGR"}
- {:effect "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in an inactive, motionless state, during which you retain consciousness."
-  :tags   #{:utility}
-  :race   "Reborn"
-  :name   "Deathless Nature 4"
   :book   "VRGR"}
  {:effect "When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
   :tags   #{:utility}
@@ -619,6 +630,7 @@
   :name   "Friend of the Sea"
   :book   "MPMM"}
  {:effect "As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. You also gain resistance to all damage when you teleport using this trait. The resistance lasts until the start of your next turn. During that time, you appear ghostly and translucent."
+  :points 3
   :tags   #{:utility :survivability}
   :race   "Shadar-Kai"
   :name   "Blessing of the Raven Queen"
@@ -629,6 +641,7 @@
   :name   "Patterned Feathers"
   :book   "HWCS"}
  {:effect "You have proficiency in the Perception and Stealth skills."
+  :points 2
   :tags   #{:utility}
   :race   "Tabaxi"
   :name   "Cat's Talent"
@@ -659,6 +672,7 @@
   :name   "Hellish Resistance"
   :book   "PHB"}
  {:effect "You have 3 Armour. You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal."
+  :points 3
   :tags   #{:survivability}
   :race   "Tortle"
   :name   "Natural Armor"
@@ -668,7 +682,7 @@
   :race   "Tortle"
   :name   "Shell Defense"
   :book   "Various"}
- {:effect "You learn fog cloud. gust of wind, and water walk, and can cast them without consuming a spell slot. Once you cast any of these in this way, you can't cast that spell with it again until you finish a long rest."
+ {:effect "You learn fog cloud, gust of wind, and water walk, and can cast them without consuming a spell slot. Once you cast any of these in this way, you can't cast that spell with it again until you finish a long rest."
   :tags   #{:magic}
   :race   "Triton"
   :name   "Control Air and Water"
@@ -703,7 +717,8 @@
   :race   "Verdan"
   :name   "Limited Telepathy"
   :book   "AI"}
- {:effect "You add your Intelligence modifier as a bonus on all Dexterity saving throws."
+ {:effect "+1 Reflexes if you have at least 18 Intelligence."
+  :points 2
   :tags   #{:survivability}
   :race   "Vulpin"
   :name   "Evasive"
@@ -713,11 +728,6 @@
   :race   "Vulpin"
   :name   "Bewitching Guile"
   :book   "HWCS"}
- {:effect "You gain a +1 bonus to Armor Class."
-  :tags   #{:survivability}
-  :race   "Warforged"
-  :name   "Integrated Protection"
-  :book   "ERLW"}
  {:subrace "Ibis-Headed"
   :effect  "You can add half your proficiency bonus, rounded down, to any Intelligence check you make that doesn't already include your proficiency bonus."
   :tags    #{:utility}
@@ -760,12 +770,6 @@
   :race    "Dwarf"
   :name    "Duergar Resilience"
   :book    "MTF"}
- {:subrace "Hill"
-  :effect  "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
-  :tags    #{:survivability}
-  :race    "Dwarf"
-  :name    "Dwarven Toughness"
-  :book    "PHB"}
  {:subrace "Mark of Warding"
   :effect  "You learn the alarm, mage armor, and arcane lock and may cast them without consuming a spell slot. You may only cast each of these once per long rest in this way."
   :tags    #{:magic}
@@ -774,12 +778,14 @@
   :book    "ERLW"}
  {:subrace "Mark of Shadow"
   :effect  "You gain an expertise die with Charisma (Performance) and Dexterity (Stealth) checks."
+  :points 2
   :tags    #{:utility}
   :race    "Elf"
   :name    "Cunning Intuition"
   :book    "ERLW"}
  {:subrace "Pallid"
   :effect  "You have advantage on Intelligence (Investigation) and Wisdom (Insight) checks."
+  :points 3
   :tags    #{:utility}
   :race    "Elf"
   :name    "Incisive Sense"
@@ -827,22 +833,10 @@
   :name    "Earth Walk"
   :book    "Various"}
  {:subrace "Fire"
-  :effect  "You have resistance to fire damage."
+  :effect  "You have resistance to {{x|randoms:literal:fire:acid:lightning}} damage."
   :tags    #{:survivability}
   :race    "Genasi"
   :name    "Fire Resistance"
-  :book    "Various"}
- {:subrace "Water"
-  :tags    #{:survivability}
-  :effect  "You have resistance to acid damage."
-  :race    "Genasi"
-  :name    "Acid Resistance"
-  :book    "Various"}
- {:subrace "Air"
-  :effect  "You have resistance to lightning damage."
-  :tags    #{:survivability}
-  :race    "Genasi"
-  :name    "Lightning Resistance"
   :book    "Various"}
  {:subrace "Deep"
   :effect  "You have advantage on Dexterity (Stealth) checks to hide in rocky terrain."
@@ -869,12 +863,6 @@
   :name    "Healing Touch"
   :book    "ERLW"}
  {:subrace "Keldon"
-  :effect  "You have proficiency in Strength saving throws."
-  :tags    #{:survivability}
-  :race    "Human"
-  :name    "Keldon Resilience"
-  :book    "PSD"}
- {:subrace "Keldon"
   :effect  "You are naturally adapted to cold climates."
   :tags    #{:utility}
   :race    "Human"
@@ -900,6 +888,7 @@
   :book    "ERLW"}
  {:subrace "Mark of Sentinel"
   :effect  "You gain an expertise die with Wisdom (Insight) and Wisdom (Perception) checks."
+  :points 2
   :tags    #{:utility}
   :race    "Human"
   :name    "Sentinel's Intuition"
@@ -930,12 +919,14 @@
   :book    "PSI"}
  {:subrace "Kessig"
   :effect  "When you make a melee attack against a creature, you don't provoke opportunity attacks from that creature for the rest of your turn, whether you hit or not."
+  :points 2
   :tags    #{:utility}
   :race    "Human (Innistrad)"
   :name    "Spring Attack"
   :book    "PSI"}
  {:subrace "Sable"
   :effect  "When someone performs a Wisdom (Insight) check against you, they have disadvantage on their roll. Additionally, you gain advantage on Charisma (Deception) checks made against creatures that are not lumas."
+  :points 4
   :tags    #{:utility}
   :race    "Luma"
   :name    "Hard to Read"
@@ -953,7 +944,7 @@
   :name    "Aerial Defense"
   :book    "HWCS"}
  {:subrace "Beasthide"
-  :effect  "Whenever you shapeshift, you gain 1d6 temporary hit points. While shifted, you have a +1 bonus to your Armor Class."
+  :effect  "Whenever you shapeshift, you gain 1d6 temporary hit points. While shifted, you have a +1 bonus to your Armour."
   :tags    #{:survivability}
   :race    "Shifter"
   :name    "Shifting Feature"
@@ -965,7 +956,7 @@
   :name    "Shifting Feature"
   :book    "ERLW"}
  {:subrace "Wildhunt"
-  :effect  "While shapeshifted, you have advantage on Wisdom checks, and no creature within 30 feet of you can make an attack roll with advantage against you, unless you're incapacitated."
+  :effect  "While shapeshifted, you have advantage on Wisdom checks, and no creature within 30 feet of you can make an attack roll with advantage against you."
   :tags    #{:survivability}
   :race    "Shifter"
   :name    "Shifting Feature"

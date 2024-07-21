@@ -21,7 +21,57 @@
        read
        (filterv #(:enabled? % true))))
 
-(def characters #{::nailo}) ; TODO
+(def character-insights {::nailo 1}) ; TODO
+(def characters (-> (keys character-insights)
+                    set))
+
+(defn- d20 []
+  (rng/next-int @r/default-rng 1 21))
+
+(defn insight-truth [persuasion-bonus believability-dc]
+  (let [persuasion-roll (+ (d20) persuasion-bonus)]
+    (reduce-kv
+      (fn [acc character bonus]
+        (let [insight-roll (d20)
+              output (case insight-roll
+                       1 {:trust :no-trust
+                          :diff  :crit}
+                       20 {:trust :trust
+                           :diff  :crit}
+                       (let [sum (-> (+ insight-roll bonus)
+                                     (+ persuasion-roll))
+                             diff (- sum believability-dc)
+                             trust-status (cond
+                                            (<= (abs diff) 1) :unsure
+                                            (pos? diff) :trust
+                                            :else :no-trust)]
+                         {:trust trust-status
+                          :diff  diff}))]
+          (assoc acc character output)))
+      {}
+      character-insights)))
+
+(defn insight-lie [deception-bonus]
+  (let [deception-roll (+ (d20) deception-bonus)]
+    (reduce-kv
+      (fn [acc character bonus]
+        (let [insight-roll (d20)
+              output (case insight-roll
+                       20 {:trust :no-trust
+                           :diff  :crit}
+                       1 {:trust :trust
+                          :diff  :crit}
+                       (let [diff (-> (+ (d20) bonus)
+                                      (- deception-roll))
+                             trust-status (cond
+                                            (<= (abs diff) 1) :unsure
+                                            (neg? diff) :trust
+                                            :else :no-trust)]
+                         {:trust trust-status
+                          :diff  diff}))]
+          (assoc acc character output)))
+      {}
+      character-insights)))
 
 (defn jsonb-lift [x]
   (when x [:lift x]))
