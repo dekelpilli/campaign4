@@ -24,7 +24,7 @@
 
 (defn- load-json-file [file]
   (-> (slurp file)
-      (j/read-value j/keyword-keys-object-mapper)))
+      u/parse-json))
 
 (defn insert-monsters! []
   (doseq [file (->> "5et/monsters"
@@ -48,9 +48,8 @@
            (p/insert-data! ::p/monsters)))))
 
 (defn reformat-race-powers! []
-  (let [races (j/read-value
-                (File. "5et/races.json")
-                j/keyword-keys-object-mapper)
+  (let [races (-> (File. "5et/races.json")
+                  u/parse-json)
         skip-power-type? #{"Speed" "Age" "Size" "Languages" "Language" "Creature Type" "Alignment" "Cantrip"
                            "Elf Weapon Training" "Amphibious" "Powerful Build" "Sunlight Sensitivity" "Extra Language"
                            "Khenra Weapon Training" "Drow Weapon Training" "Darkvision" "Keen Senses" "Fey Ancestry"

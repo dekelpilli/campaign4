@@ -72,7 +72,7 @@
      ::e/negated-damage])
 
   (paths/progress-path! ::u/nailo)
-  (paths/new-path-progress! ::u/nailo "subjective truth")
+  (paths/new-path-progress! ::u/nailo ::paths/subjective-truth)
 
   (->> ["lone"
         "Restless"]

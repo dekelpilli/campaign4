@@ -246,8 +246,4 @@
 (defn save-relic! [relic]
   (let [relic (-> (update relic :starting #(mapv saved-mod %))
                   (update :pool #(mapv saved-mod %)))]
-    (p/insert-data! ::p/relics
-                    [(-> (update relic :pool j/write-value-as-string) ;TODO remove json handling once persistence ns handles coercion
-                         (update :levels j/write-value-as-string)
-                         (update :starting j/write-value-as-string)
-                         (set/rename-keys {:base-type :base}))])))
+    (p/insert-data! ::p/relics [relic])))

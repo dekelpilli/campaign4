@@ -176,7 +176,7 @@
                                                                       :avatar_url (:discord-avatar u/config)
                                                                       :username   discord-username})})
                                       :body
-                                      (j/read-value j/keyword-keys-object-mapper))]
+                                      u/parse-json)]
       (hato/request {:method       :post
                      :url          (:loot-webhook u/config)
                      :content-type :application/json

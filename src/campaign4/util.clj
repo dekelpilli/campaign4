@@ -2,10 +2,10 @@
   (:require
     [aero.core :as aero]
     [clojure.java.io :as jio]
+    [jsonista.core :as j]
     [randy.core :as r]
     [randy.rng :as rng])
   (:import
-    (clojure.lang Delay)
     (java.io PushbackReader)
     (java.util Collection)
     (org.ahocorasick.trie Trie)))
@@ -27,6 +27,9 @@
 
 (defn- d20 []
   (rng/next-int @r/default-rng 1 21))
+
+(defn parse-json [?s]
+  (j/read-value ?s j/keyword-keys-object-mapper))
 
 (defn insight-truth [persuasion-bonus believability-dc]
   (let [persuasion-roll (+ (d20) persuasion-bonus)]
@@ -73,17 +76,11 @@
       {}
       character-insights)))
 
-(defn jsonb-lift [x]
-  (when x [:lift x]))
-
 (defn occurred? [likelihood-probability]
   (< (rng/next-double @r/default-rng) likelihood-probability))
 
 (defn assoc-by [f coll]
   (into {} (map (juxt f identity)) coll))
-
-(defn filter-vals [m]
-  (into {} (filter (comp some? val)) m))
 
 (defn weighted-sampler [coll]
   (r/alias-method-sampler
@@ -95,12 +92,6 @@
     `(when-let [~(first bindings) ~(second bindings)]
        (when-let* ~(drop 2 bindings) ~@body))
     `(do ~@body)))
-
-(defmacro defdelayed [name body]
-  (let [delayed-name-sym (gensym (str name "-delayed"))]
-    `(do
-       (def ~(with-meta delayed-name-sym {:tag Delay :private true}) (delay ~body))
-       (defn ~name [] (.deref ~delayed-name-sym)))))
 
 (defn str-contains-any-fn [coll]
   (let [trie (-> (Trie/builder)

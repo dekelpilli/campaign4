@@ -5,16 +5,13 @@
     [campaign4.levels :as levels]
     [campaign4.persistence :as p]
     [clojure.core.match :refer [match]]
-    [jsonista.core :as j]
     [randy.core :as r]))
 
 (defn update-relic! [{:keys [name] :as relic}]
   (p/update-data! ::p/relics
                   {:filter {:name [name]}
                    :limit  1}
-                  (constantly
-                    (-> (select-keys relic [:levels :base :found :sold]) ;TODO remove json handling once persistence ns handles coercion
-                        (update :levels j/write-value-as-string)))))
+                  (constantly (select-keys relic [:levels :base :found :sold]))))
 
 ;(defn unveil-relic-levels! []
 ;  (when-let [{:keys [levels] :as relic} (choose-found-relic)]
