@@ -1,14 +1,15 @@
 (ns campaign4.tarot
   (:require
-    [campaign4.db :as db]
     [campaign4.dynamic-mods :as dyn]
     [campaign4.enchants :as e]
     [campaign4.levels :as levels]
+    [campaign4.persistence :as p]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
     [clojure.set :as set]
+    [jsonista.core :as j]
     [randy.core :as r]))
 
 (def cards (u/load-data :tarot-cards))
@@ -226,16 +227,16 @@
         type-generator (r/alias-method-sampler weights)
         pool (reduce (fn [mods _] (add-pool-mod mods starting base-type type-generator tags)) #{} (range 6))
         {:keys [cards pool]} (handle-post-pool-cards pool base-type cards)]
-    {:relic           {:starting  (mapv
-                                    (fn [mod]
-                                      (if-let [context (meta mod)]
-                                        (dyn/format-mod mod context)
-                                        (dyn/format-mod mod)))
-                                    starting)
-                       :sold      false
-                       :base-type base-type
-                       :level     1
-                       :pool      (mapv dyn/format-mod pool)}
+    {:relic           {:starting (mapv
+                                   (fn [mod]
+                                     (if-let [context (meta mod)]
+                                       (dyn/format-mod mod context)
+                                       (dyn/format-mod mod)))
+                                   starting)
+                       :sold     false
+                       :base     base-type
+                       :level    1
+                       :pool     (mapv dyn/format-mod pool)}
      :remaining-cards (mapv (fn [card] (update card :order #(if (< % 10) :before :after))) cards)}))
 
 (defn- saved-mod [mod]
@@ -245,8 +246,8 @@
 (defn save-relic! [relic]
   (let [relic (-> (update relic :starting #(mapv saved-mod %))
                   (update :pool #(mapv saved-mod %)))]
-    (db/execute! {:insert-into :relics
-                  :values      [(-> (update relic :starting u/jsonb-lift)
-                                    (update :pool u/jsonb-lift)
-                                    (assoc :levels (u/jsonb-lift [])))]})
-    relic))
+    (p/insert-data! ::p/relics
+                    [(-> (update relic :pool j/write-value-as-string) ;TODO remove json handling once persistence ns handles coercion
+                         (update :levels j/write-value-as-string)
+                         (update :starting j/write-value-as-string)
+                         (set/rename-keys {:base-type :base}))])))

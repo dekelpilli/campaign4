@@ -1,7 +1,7 @@
 (ns campaign4.talismans
   (:require
-    [campaign4.db :as db]
     [campaign4.dynamic-mods :as dyn]
+    [campaign4.persistence :as p]
     [campaign4.util :as u]
     [randy.core :as r]
     [randy.rng :as rng]))
@@ -28,9 +28,7 @@
     monsters))
 
 (defn- monster-traits-by-cr [cr]
-  (-> (db/execute! {:select [:*]
-                    :from   [:monsters]
-                    :where  [:= :cr cr]})
+  (-> (p/query-data ::p/monsters {:filter {:cr [cr]}})
       monsters->traits))
 
 (def cr->output (comp r/sample (memoize monster-traits-by-cr)))
@@ -73,13 +71,11 @@
              (> (count monster-traits) amount) (r/sample-without-replacement amount))))
 
 (defn gem-by-monster-type [cr monster-type]
-  (->> (db/execute! {:select [:*]
-                     :from   [:monsters]
-                     :where  [:and
-                              [:= :cr cr]
-                              [:= :type monster-type]]})
-       monsters->traits
-       r/sample))
+  (some->> (p/query-data ::p/monsters {:filter {:cr   [cr]
+                                                :type [monster-type]}})
+           monsters->traits
+           not-empty
+           r/sample))
 
 (defn new-talisman []
   (update-vals talisman-enchants-by-category

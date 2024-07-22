@@ -1,18 +1,20 @@
 (ns campaign4.relics
   (:require
-    [campaign4.db :as db]
-    [campaign4.enchants :as e]
     [campaign4.dynamic-mods :as dyn]
+    [campaign4.enchants :as e]
     [campaign4.levels :as levels]
-    [campaign4.util :as u]
+    [campaign4.persistence :as p]
     [clojure.core.match :refer [match]]
+    [jsonista.core :as j]
     [randy.core :as r]))
 
 (defn update-relic! [{:keys [name] :as relic}]
-  (db/execute! {:update [:relics]
-                :set    (-> (select-keys relic [:levels :base :found])
-                            (update :levels u/jsonb-lift))
-                :where  [:= :name name]}))
+  (p/update-data! ::p/relics
+                  {:filter {:name [name]}
+                   :limit  1}
+                  (constantly
+                    (-> (select-keys relic [:levels :base :found :sold]) ;TODO remove json handling once persistence ns handles coercion
+                        (update :levels j/write-value-as-string)))))
 
 ;(defn unveil-relic-levels! []
 ;  (when-let [{:keys [levels] :as relic} (choose-found-relic)]
@@ -30,13 +32,6 @@
 ;  (when-let [relic (choose-found-relic)]
 ;    (update-relic!
 ;      (update relic :levels (comp u/jsonb-lift vector first)))))
-;
-;(defn sell-relic! []
-;  (when-let [{:keys [name] :as relic} (choose-found-relic)]
-;    (db/execute! {:update [:relics]
-;                  :set    {:sold true}
-;                  :where  [:= :name name]})
-;    (select-keys relic [:name :base-type :base])))
 
 (defn- upgrade-points [{:keys [level template]}]
   (when (or (nil? level) (levels/upgradeable? level template))
@@ -83,7 +78,7 @@
                                             (r/sample [:random pool-option])
                                             :random)])))
 
-(defn relic-level-options [{:keys [pool levels level sold base-type] :as relic}]
+(defn relic-level-options [{:keys [pool levels level sold base] :as relic}]
   (if-not (or sold
               (= level 6)
               (not= (dec level) (count levels)))
@@ -111,7 +106,7 @@
                   :pool (->> (r/sample-without-replacement amount remaining-pool)
                              (mapv dyn/load-mod))
                   :upgrade (r/sample-without-replacement amount upgradeable-mods)
-                  :random (let [f (comp dyn/format-mod (e/enchants-fns base-type))]
+                  :random (let [f (comp dyn/format-mod (e/enchants-fns base))]
                             (loop [opts #{(f)}]
                               (if (= (count opts) amount)
                                 opts

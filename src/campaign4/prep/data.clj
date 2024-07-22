@@ -1,6 +1,6 @@
 (ns campaign4.prep.data
   (:require
-    [campaign4.db :as db]
+    [campaign4.persistence :as p]
     [campaign4.util :as u]
     [clojure.edn :as edn]
     [clojure.java.io :as io]
@@ -9,10 +9,6 @@
     [jsonista.core :as j])
   (:import
     (java.io File)))
-
-(defn- write-data! [path coll]
-  (with-open [writer (io/writer path)]
-    (pprint/pprint coll writer)))
 
 (defn- find-cr [cr]
   (when-let [cr (edn/read-string (if (map? cr) (:cr cr) cr))]
@@ -30,21 +26,7 @@
   (-> (slurp file)
       (j/read-value j/keyword-keys-object-mapper)))
 
-(defn- drop! [table]
-  (db/execute! {:drop-table [:if-exists table]}))
-
-(defn create-monsters! []
-  (db/execute! {:create-table :monsters
-                :with-columns [[:name :text [:not nil]]
-                               [:type :text [:not nil]]
-                               [:book :text [:not nil]]
-                               [:cr :real [:not nil]]
-                               [:traits :jsonb [:not nil]]
-                               [[:primary-key :cr :name :book]]]}))
-
 (defn insert-monsters! []
-  (drop! :monsters)
-  (create-monsters!)
   (doseq [file (->> "5et/monsters"
                     (File.)
                     (file-seq)
@@ -53,47 +35,17 @@
                              (into []
                                    (comp (remove #(contains? % :_copy))
                                          (map prepare-monster)
-                                         (filter :cr)
+                                         (filter (fn [{:keys [cr]}] (and cr
+                                                                         (>= cr 2))))
                                          (remove (comp #{"Template Monster"} :name))
                                          (filter (comp seq :trait))))
                              not-empty)]
-      (db/execute! {:insert-into [:monsters]
-                    :values      (->> (mapv (fn [{:keys [trait source] :as monster}]
-                                              (-> (dissoc monster :trait :source)
-                                                  (assoc :traits (u/jsonb-lift trait)
-                                                         :book source)))
-                                            monsters))}))))
-
-(defn create-analytics! []
-  (db/execute! {:create-table :analytics
-                :with-columns [[:type :text [:not nil]]
-                               [:session :integer [:not nil]]
-                               [:amount :integer [:not nil]]
-                               [[:primary-key :type :session]]]}))
-
-(defn create-relics! []
-  (db/execute! {:create-table :relics
-                :with-columns [[:name :text [:primary-key] [:not nil]]
-                               [:sold :boolean [:not nil]]
-                               [:base-type :text [:not nil]]
-                               [:level :integer [:not nil]]
-                               [:starting :jsonb [:not nil]]
-                               [:pool :jsonb [:not nil]]
-                               [:levels :jsonb]]}))
-
-(defn- backup-table! [table]
-  (->> (db/execute! {:select [:*] :from [table]})
-       (write-data! (str "db/current-state/" (name table) ".edn"))))
-
-(defn create-divinity-progress! []
-  (db/execute! {:create-table :divinity-progress
-                :with-columns [[:character :text [:not nil]]
-                               [:path :text [:not nil]]
-                               [:progress :integer [:not nil]]
-                               [[:primary-key :character :path]]]}))
-
-(defn backup-data! []
-  (run! backup-table! [:divinity-progress :relics :analytics]))
+      (->> (mapv (fn [{:keys [trait source] :as monster}]
+                   (-> (dissoc monster :trait :source)
+                       (assoc :traits (j/write-value-as-string trait)
+                              :book source)))
+                 monsters)
+           (p/insert-data! ::p/monsters)))))
 
 (defn reformat-race-powers! []
   (let [races (j/read-value

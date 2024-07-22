@@ -1,12 +1,11 @@
-(ns campaign4.analytics
-  (:require
-    [campaign4.db :as db]))
+(ns campaign4.analytics)
 
 (def current-session (atom nil))
 
 (defn record! [event amount]
   (when-let [current-session @current-session]
-    (db/execute! {:insert-into   :analytics
+    ;TODO upsert with persistence ns
+    #_(db/execute! {:insert-into   :analytics
                   :values        [{:type    event
                                    :session current-session
                                    :amount  amount}]

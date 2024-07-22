@@ -6,6 +6,7 @@
     [campaign4.encounters :as encounters]
     [campaign4.loot :as loot]
     [campaign4.paths :as paths]
+    [campaign4.persistence :as p]
     [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
@@ -70,8 +71,8 @@
      ::e/utility
      ::e/negated-damage])
 
-  (paths/progress-path ::u/nailo)
-  (paths/new-path-progress ::u/nailo "subjective truth")
+  (paths/progress-path! ::u/nailo)
+  (paths/new-path-progress! ::u/nailo "subjective truth")
 
   (->> ["lone"
         "Restless"]
@@ -100,6 +101,11 @@
   (-> (:relic *1)
       (assoc :name "MyRelicNameHere")
       tarot/save-relic!)
+
+  (p/update-data!
+    ::p/relics
+    {:filter {:name ["Update relic name"]}}
+    (constantly {:name "new relic name"}))
 
   (talismans/new-gem 0)
 

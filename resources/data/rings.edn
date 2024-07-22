@@ -50,7 +50,7 @@
   :effect "-1 to a Defence of your choice, to a minimum of 0. +1 {{x|random:defences:non-armour}}."
   :points 2}
  {:name   "Dabbler"
-  :effect "For each ability score type, if you have no proficiencies in skills from that ability score, gain a proficiency in one such skill of your choice."
+  :effect "For each ability score type, if you have no proficiencies in skills from that ability score, gain proficiency in one such skill of your choice."
   :points 3}
  {:name   "Acrobat"
   :effect "You may take high and long jumps without a run-up."
