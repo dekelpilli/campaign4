@@ -147,7 +147,8 @@
    :body  formatted})
 
 (m/defmethod format-loot :default [loot]
-  {:body (str loot)})
+  (when loot
+    {:body (str loot)}))
 
 (defn format-loot-message [v]
   (->> (cond-> v (map? v) vector)
@@ -157,40 +158,44 @@
                     body)))
        (str/join \newline)))
 
+(defn- format-and-report! [loot]
+  (let [{:keys [channel_id id]} (-> (hato/request {:method       :post
+                                                   :url          (:detailed-loot-webhook u/config)
+                                                   :query-params {:wait true}
+                                                   :content-type :application/json
+                                                   :body         (j/write-value-as-string
+                                                                   {:content    (str "```edn\n"
+                                                                                     (pp/pprint-str
+                                                                                       (walk/prewalk
+                                                                                         (fn [x] (if (map? x)
+                                                                                                   (->> (dissoc x :template)
+                                                                                                        (into (sorted-map-by priority-comparator)))
+                                                                                                   x))
+                                                                                         loot))
+                                                                                     (str "\n```"))
+                                                                    :avatar_url (:discord-avatar u/config)
+                                                                    :username   discord-username})})
+                                    :body
+                                    u/parse-json)]
+    (hato/request {:method       :post
+                   :url          (:loot-webhook u/config)
+                   :content-type :application/json
+                   :body         (j/write-value-as-string
+                                   {:content    (-> (format-loot loot)
+                                                    format-loot-message)
+                                    :embeds     [{:title "Full details"
+                                                  :type  "link"
+                                                  :url   (format "https://discord.com/channels/%s/%s/%s"
+                                                                 (:discord-server-id u/config)
+                                                                 channel_id
+                                                                 id)}]
+                                    :avatar_url (:discord-avatar u/config)
+                                    :username   discord-username})})))
+
 (defn report-loot! [loot]
-  (a/go
-    (let [{:keys [channel_id id]} (-> (hato/request {:method       :post
-                                                     :url          (:detailed-loot-webhook u/config)
-                                                     :query-params {:wait true}
-                                                     :content-type :application/json
-                                                     :body         (j/write-value-as-string
-                                                                     {:content    (str "```edn\n"
-                                                                                       (pp/pprint-str
-                                                                                         (walk/prewalk
-                                                                                           (fn [x] (if (map? x)
-                                                                                                     (->> (dissoc x :template)
-                                                                                                          (into (sorted-map-by priority-comparator)))
-                                                                                                     x))
-                                                                                           loot))
-                                                                                       (str "\n```"))
-                                                                      :avatar_url (:discord-avatar u/config)
-                                                                      :username   discord-username})})
-                                      :body
-                                      u/parse-json)]
-      (hato/request {:method       :post
-                     :url          (:loot-webhook u/config)
-                     :content-type :application/json
-                     :body         (j/write-value-as-string
-                                     {:content    (-> (format-loot loot)
-                                                      format-loot-message)
-                                      :embeds     [{:title "Full details"
-                                                    :type  "link"
-                                                    :url   (format "https://discord.com/channels/%s/%s/%s"
-                                                                   (:discord-server-id u/config)
-                                                                   channel_id
-                                                                   id)}]
-                                      :avatar_url (:discord-avatar u/config)
-                                      :username   discord-username})}))))
+  (when loot
+    (a/go
+      (format-and-report! loot))))
 
 (comment
   (-> {:result [{:name "ancient" :effect "reroll unique"}

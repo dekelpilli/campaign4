@@ -1,16 +1,22 @@
-(ns campaign4.analytics)
+(ns campaign4.analytics
+  (:require [campaign4.persistence :as p]
+            [clojure.core.async :as a]))
 
 (def current-session (atom nil))
 
 (defn record! [event amount]
   (when-let [current-session @current-session]
-    ;TODO upsert with persistence ns
-    #_(db/execute! {:insert-into   :analytics
-                  :values        [{:type    event
-                                   :session current-session
-                                   :amount  amount}]
-                  :on-conflict   [:type :session]
-                  :do-update-set {:amount [:+ :EXCLUDED.amount amount]}})))
+    (a/go
+      (or (p/update-data!
+            ::p/analytics
+            {:filter {:type    [event]
+                      :session [current-session]}}
+            (fn [data] (update data :amount + amount)))
+          (p/insert-data!
+            ::p/analytics
+            [{:type    event
+              :session current-session
+              :amount  amount}])))))
 
 (defn set-session! [n]
   (reset! current-session n))

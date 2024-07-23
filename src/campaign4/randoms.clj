@@ -84,7 +84,7 @@
 (m/defmethod randoms-preset :weapon-categories [_ _]
   ["club" "knife" "brawling" "axe" "spear" "caster" "dart" "bow" "sling" "sword" "flail" "polearm" "pick" "shield" "knife"])
 
-(m/defmethod randoms-factor :gear-slots [_ _] 2) ;TODO remove weapons/offhand, replace
+(m/defmethod randoms-factor :gear-slots [_ _] 2)
 (m/defmethod randoms-preset :gear-slots [_ _]
   ["left glove" "right glove" "body armour" "boots" "belt"])
 

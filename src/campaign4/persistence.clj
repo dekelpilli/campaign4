@@ -25,24 +25,28 @@
 (def ^:private models
   (let [json-type [:string {:encode/string j/write-value-as-string
                             :decode/string u/parse-json}]]
-    {::monsters [:map
-                 [:name :string]
-                 [:type :string]
-                 [:book :string]
-                 [:cr :int]
-                 [:traits json-type]]
-     ::relics   [:map
-                 [:name :string]
-                 [:sold :boolean]
-                 [:base :string]
-                 [:level :int]
-                 [:starting json-type]
-                 [:pool json-type]
-                 [:levels json-type]]
-     ::divinity [:map
-                 [:character :string]
-                 [:path :string]
-                 [:progress :int]]}))
+    {::monsters  [:map
+                  [:name :string]
+                  [:type :string]
+                  [:book :string]
+                  [:cr :int]
+                  [:traits json-type]]
+     ::relics    [:map
+                  [:name :string]
+                  [:sold :boolean]
+                  [:base :string]
+                  [:level :int]
+                  [:starting json-type]
+                  [:pool json-type]
+                  [:levels json-type]]
+     ::divinity  [:map
+                  [:character :string]
+                  [:path :string]
+                  [:progress :int]]
+     ::analytics [:map
+                  [::type :string]
+                  [:session :int]
+                  [:amount :int]]}))
 
 (defn- records-path [table]
   (str "/docs/" (:document-id grist-config)
