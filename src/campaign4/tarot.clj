@@ -9,17 +9,16 @@
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
     [clojure.set :as set]
-    [jsonista.core :as j]
     [randy.core :as r]))
 
 (def cards (u/load-data :tarot-cards))
 
 (def pool-weights
-  {:thematic 40
+  {:thematic 50
    :aura     20
    :racial   20
-   :unique-1 12
-   :unique-2 8})
+   :unique-1 6
+   :unique-2 4})
 
 (def thematic-mods (->> (u/load-data :thematic-mods)
                         (mapv (comp dyn/load-mod #(assoc % :type "thematic")))))
@@ -40,9 +39,9 @@
 
 (def unique-mods
   (reduce
-    (fn [acc {:keys [base-type] :as unique}]
+    (fn [acc {:keys [base] :as unique}]
       (cond-> acc
-              (acc base-type) (update base-type (partial merge-with into) (levelled-unique-mods unique))))
+              (acc base) (update base (partial merge-with into) (levelled-unique-mods unique))))
     {"gloves" {1 [] 2 []}
      "armour" {1 [] 2 []}}
     uniques/uniques))
@@ -93,8 +92,8 @@
                                      :unique-2 12.5}
                           "The High Priestess" (update weights :racial + 20)
                           "The Empress" (update weights :thematic + 20)
-                          "The Hermit" (-> (update weights :unique-1 + 12)
-                                           (update :unique-2 + 8))
+                          "The Hermit" (-> (update weights :unique-1 + 6)
+                                           (update :unique-2 + 4))
                           "The Star" (update weights :aura + 20)
                           "The Hierophant" (-> (update weights :unique-2 + (:unique-1 weights))
                                                (assoc :unique-1 0))

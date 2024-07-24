@@ -1,483 +1,483 @@
-[{:name      "Pacifist's Vow"
-  :base-type "armour"
-  :mods      [{:effect "Non-damaging spells have a 50% chance consume a spell slot 1 level lower than their usual."
-               :tags   #{:magic}}
-              {:effect "+1 AB with effects that cannot deal damage."
-               :tags   #{:accuracy}}
-              {:effect "You may forego dealing damage with a spell to make it count as a non-damaging spell."
-               :tags   #{:magic :utility}}
-              {:effect "Your weapons gain the 'non-lethal' trait."
-               :tags   #{:utility}}
-              {:effect "You cannot upcast damaging spells."}
-              {:effect "You cannot cast damaging spells on consecutive turns in a combat."}
-              {:effect "Damage you deal with cantrips is halved."
-               :levels [:keep :skip]}
-              {:effect "Non-damaging spells consume a spell slot 1 level lower than their usual (min 1) while you are concentrating or while not in combat."
-               :levels [:skip :keep]
-               :tags   #{:magic}}
-              {:effect "Spells you cast targeting willing creatures have a 50% chance to not require concentration (optionally)."
-               :levels [:skip :keep]
-               :tags   #{:magic}}]}
- {:name      "Researcher's Power"
-  :base-type "armour"
-  :mods      [{:effect "Your mental ability scores are capped at exactly 26."
-               :tags   #{:utility}}
-              {:effect "+4 Intelligence."
-               :tags   #{:utility}}
-              {:effect "+2 to your lowest mental ability score (choose if equal)."
-               :tags   #{:utility}}
-              {:effect "Treat your mental ability scores as if they have a minimum value of 14."
-               :tags   #{:utility}
-               :levels [:skip :keep]}
-              {:effect "Gain an expertise die for all Intelligence skill checks in which you are proficient."
-               :tags   #{:utility}
-               :levels [:skip :keep]}
-              {:effect "You cannot use Intelligence to cast spells."}
-              {:effect "You can use a different mental ability score for spells that you would normally cast with Intelligence."}]}
- {:name      "Wrestler's Perseverance"
-  :base-type "armour"
-  :mods      [{:effect "You have advantage with melee attacks while grappled or restrained. You do not suffer disadvantage on melee attacks while restrained."
-               :tags   #{:accuracy}}
-              {:effect "+1 AB with maneuvers."
-               :tags   #{:accuracy}}
-              {:effect "Grapples caused by your maneuvers impose a 1d4 bludgeoning DoT while the grapple is active."
-               :tags   #{:damage}}
-              {:effect "Creatures you are grappling are considered to be restrained."
-               :tags   #{:control}}
-              {:effect "You are restrained while you are grappling a creature."}
-              {:effect "Using a basic maneuver as part of your attack no longer imposes disadvantage on your attack."
-               :levels [:skip :keep]
-               :tags   #{:accuracy}}
-              {:effect "+%s Armour while you are restrained."
-               :levels [:skip 1]
-               :tags   #{:survivability}}]}
- {:name      "Garb of the Divine"
-  :base-type "armour"
-  :mods      [{:effect "You gain Divinity until the end of your next turn when you hit a creature with an attack while you do not have Divinity."}
-              {:effect "If you have at least 20 Charisma, +10 fire, radiant, cold, and lightning damage while you have Divinity."
-               :tags   #{:damage}}
-              {:effect "If you have at least 20 Charisma, you are immune to curses."
-               :tags   #{:survivability}}
-              {:effect "If you have at least 20 Strength, you may convert any physical damage you deal to fire, radiant, cold, or lightning damage while you have Divinity."
-               :tags   #{:damage}}
-              {:effect "If you have at least 20 Strength, you take no extra damage from critical hits from creatures within 5 feet of you."
-               :tags   #{:survivability}}
-              {:effect "You may not add your Charisma or Strength modifiers to any damage you deal."}
-              {:effect "Your Strength and Charisma scores become equal to the highest of your Strength and Charisma scores."
-               :levels [:skip :keep]
-               :tags   #{:utility}}
-              {:effect "Gain Divinity until the end of your next turn when you take fire, radiant, cold, or lightning damage, or when you receive a critical hit."
-               :levels [:skip :keep]}]}
- {:name      "Werebear's Pelt"
-  :base-type "armour"
-  :mods      [{:effect "Your hit die size is increased by 2. This increases your maximum hit points."
-               :tags   #{:survivability}}
-              {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, regenerate 2 hit points."
-               :tags   #{:survivability}}
-              {:effect "You may add your %sStrength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
-               :levels [""
-                        "twice "]
-               :tags   #{:survivability}}
-              {:effect "+2 to your Strength maximum."
-               :tags   #{:utility}}
-              {:effect "You cannot cast spells."}
-              {:effect "You cannot wear relics."}
-              {:effect "You cannot be affected by healing spells and buffs from spells while conscious."
-               :levels [:keep :skip]}
-              {:effect "+2 Strength."
-               :tags   #{:utility}
-               :levels [:skip :keep]}]}
- {:name      "Steadfast"
-  :base-type "armour"
-  :mods      [{:effect "You are immune to being grappled and restrained."
-               :tags   #{:survivability}}
-              {:effect "You have advantaged defence against effects that would move you%s."
-               :levels [""
-                        " or knock you prone."]
-               :tags   #{:survivability}}
-              {:effect "+1 Fortitude."
-               :tags   #{:utility}}
-              {:effect "Your speed is reduced by 10 feet."}
-              {:effect "You cannot use bonus action if you used your bonus action during your previous turn in the current combat."}
-              {:effect "Your Will and Reflexes are considered to be no lower than your Fortitude minus 2."
-               :tags   #{:survivability}
-               :levels [:skip :keep]}]}
- {:name      "Black Magic"
-  :base-type "armour"
-  :mods      [{:effect "Replenish a first level spell slot when you expend a spell slot to cast a curse spell."
-               :tags   #{:magic}}
-              {:effect "If you cast a concentration spell that would curse a creature while you are already concentrating on a curse, the spell shares concentration with your existing concentration. You can concentrate on %d such spells at a time."
-               :levels [2 3]
-               :tags   #{:magic}}
-              {:effect "+1 AB with necromancy spells while you are concentrating on multiple spells."
-               :levels [:skip :keep]
-               :tags   #{:accuracy}}
-              {:effect "After you cast a non-necromancy spell, you have a 20% chance to lose an additional equivalent spell slot, if available."}
-              {:effect "You cannot deal radiant damage."}]}
- {:name      "Relentless"
-  :base-type "armour"
-  :mods      [{:effect "Gain temporary hit points equal to twice your level when you roll for initiative and do not have full health."
-               :tags   #{:survivability}}
-              {:effect "+5 incoming healing from magic while bloodied."
-               :tags   #{:survivability}}
-              {:effect "Healing you receive also replenishes each of your barrier types."
-               :tags   #{:survivability}}
-              {:effect "Healing you receive while you have temporary hit points is always rolled at its maximum value (if the healing applies to multiple people, this still only applies to the healing you receive)."
-               :levels [:skip :keep]
-               :tags   #{:survivability}}
-              {:effect "-5 incoming healing from magic while healthy."}
-              {:effect "Healing you receive while not in combat is instead applied at the end of your first turn during your next combat."}
-              {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}]}
- {:name      "Cryomancer's Obsession"
-  :base-type "armour"
-  :mods      [{:effect "+1d4 cold damage."
-               :tags   #{:damage}}
-              {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies have +2 cold vulnerability, gain fire resistance, and are restrained. Save at end of turn to end, or until taking fire damage."
-               :tags   #{:control :critical}}
-              {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
-               :tags   #{:control}}
-              {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have just hit with a critical). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}
-              {:effect "-2 to non-physical, non-cold damage types."}
-              {:effect "+1 critical hit range with attacks that deal cold damage, and no other non-physical damage."
-               :levels [:skip :keep]
-               :tags   #{:critical}}
-              {:effect "Your attacks that deal cold damage also have this major effect: make a Fortitude attack against the target, freezing them until the end of their next turn on a hit. This major effect can trigger further major effects."
-               :levels [:skip :keep]
-               :tags   #{:control}}]}
- {:name      "Extended Demise"
-  :base-type "armour"
-  :mods      [{:effect "DoTs you inflict deal damage for one round after they end (including being ended with a save, or moving out of their area)."
-               :tags   #{:damage}}
-              {:effect "+3 to damage over time."
-               :tags   #{:damage}}
-              {:effect "Damage from your hits also counts as damage over time, but does not have its duration extended by this item."
-               :tags   #{:damage}}
-              {:effect "-3 to damage with hits."}
-              {:effect "Damage from your hits is delayed by one round."}
-              {:effect "DoTs on you inflict deal damage for one round after they end."}
-              {:effect "Enemies under the effect of your DoTs become resistant to damage types dealt by those DoTs if they were originally immune to them."
-               :levels [:skip :keep]
-               :tags   #{:damage}}
-              {:effect "Enemies under the effect of your DoTs are no longer resistant to damage types dealt by those DoTs if they were originally resistant to them."
-               :levels [:skip :keep]
-               :tags   #{:damage}}]}
- {:name      "Thunderfist"
-  :base-type "gloves"
-  :mods      [{:effect "+1d4 thunder damage with attacks."
-               :tags   #{:damage}}
-              {:effect "+15 temporary hit points when you take thunder damage, no more than once per minute."
-               :tags   #{:survivability}}
-              {:effect "You cannot be deafened."
-               :tags   #{:survivability}}
-              {:effect "You may force enemies that take thunder damage from a critical hit from your melee or touch attacks to be affected by the Shove or Knockdown maneuvers (no attack necessary)."
-               :tags   #{:control}}
-              {:effect "If you have dealt thunder damage in the last 2 rounds, you may convert all of your damage to thunder damage."
-               :tags   #{:damage}}
-              {:effect "-3 damage with non-thunder damage types."}
-              {:effect "You are vulnerable to lightning damage."}
-              {:effect "Deafened enemies have advantaged defence against you."}
-              {:effect "Other tagged modifiers related to thunder damage on items you are using, whether incoming or outgoing, have their magnitudes increased by 1 (where possible)."
-               :levels [:skip :keep]
-               :tags   #{:damage :survivability}}]}
- {:name      "Dominion"
-  :base-type "armour"
-  :mods      [{:effect "+%d physical barrier per minion you control, to a maximum of 6 barrier."
-               :levels [2 3]
-               :tags   #{:survivability}}
-              {:effect "No more than once per combat, when you have at least one minion at the end of your turn, gain temporary hit points equal to your level."
-               :tags   #{:survivability}}
-              {:effect "Your minions' hit point maximums are increased by twice the spell level used to create or summon them."
-               :tags   #{:survivability}}
-              {:effect "Your minions' damage is halved."}
-              {:effect "Creatures of your choice within 5 feet of at least one of your minions have +1 to non-Armour defences."
-               :levels [:skip :keep]
-               :tags   #{:survivability}}
-              {:effect "When a minion of yours ends it turn, creatures of your choice within 5 feet of it replenish all of their barriers."
-               :levels [:skip :keep]
-               :tags   #{:survivability}}]}
- {:name      "Pashupatastra"
-  :base-type "gloves"
-  :mods      [{:effect "Modifiers to minion damage%s apply to your ranged attacks, as your attack projectiles are replaced by spectral tigers."
-               :levels [""
-                        " and accuracy"]
-               :tags   #{:damage :accuracy}}
-              {:effect "Your ranged attacks' base damage is radiant."
-               :tags   #{:damage}}
-              {:effect "Ranged weapon attacks made during your turn have their success tier increased by one, including potentially turning a major success into a critical hit."
-               :tags   #{:accuracy :critical}}
-              {:effect "When you trigger a major effect%s, trigger two major effects instead. You may choose to trigger the same major effect twice."
-               :levels [" after landing a critical hit"
-                        ""]
-               :tags   #{:utility}}
-              {:effect "When you score a critical hit with a ranged attack, all creatures of your choice within 30 feet of the target take radiant damage equal to%s your level."
-               :levels [""
-                        " twice"]
-               :tags   #{:damage :critical}}
-              {:effect "After attacking with a weapon, you must spend an action preparing yourself before you can make a weapon attack again."}
-              {:effect "If a minion of yours deals radiant damage to a creature you can see, you may use a reaction to make a ranged weapon attack against that creature. This does not require yourself or the weapon to be prepared."
-               :levels [:skip :keep]
-               :tags   #{:damage}}
-              {:effect "When a creature you can see takes radiant damage, your minions gain +1d6 radiant damage to their next attack (you also benefit from this modifier). This does not stack."
-               :tags   #{:damage}
-               :levels [:skip :keep]}]}
- {:name      "Gungir"
-  :base-type "gloves"
-  :mods      [{:effect "+1AB with thrown attacks for each prior consecutive attack you've missed across any time period.%s"
-               :levels [""
-                        " If this modifier did not increase the AB of a thrown attack you make, roll its damage with advantage."]
-               :tags   #{:damage :accuracy}}
-              {:effect "Your thrown attacks do no suffer disadvantage from long range."
-               :tags   #{:accuracy}}
-              {:effect "You may immediately ask a question about a creature you hitwith an attack."
-               :tags   #{:utility}}
-              {:effect "You are blinded until the end of your next turn when you critically fail a skill check to ask questions."}
-              {:effect "Damage from beasts disregards your barriers."}
-              {:effect "+3 damage taken from beasts while bloodied."}
-              {:effect "-2 damage with attacks against creatures that are not larger than you."}]}
- {:name      "Mjolnir"
-  :base-type "gloves"
-  :mods      [{:effect "+1d6 thunder damage with attacks."
-               :tags   #{:damage}}
-              {:effect "Your weapon attacks' base damage is converted to lightning."
-               :tags   #{:damage}}
-              {:effect "+2 lightning damage."
-               :tags   #{:damage}}
-              {:effect "+1d4 lightning damage with thrown attacks."
-               :tags   #{:damage}}
-              {:effect "Requires 22 Strength to wield."}
-              {:effect "If you have at least 24 Strength, you may use Strength as your spellcasting ability."
-               :levels [:skip :keep]
-               :tags   #{:magic}}
-              {:effect "When you damage a creature with lightning damage, another creature of your choice within 10 feet of it takes 111lightning damage equal to your Strength modifier. This cannot damage a creature more than once in a turn."
-               :levels [:skip :keep]
-               :tags   #{:damage}}]}
- {:name      "Excalibur"
-  :base-type "gloves"
-  :mods      [{:effect "One of your weapons gains the 'offhand' trait."
-               :tags   #{:utility}}
-              {:effect "If both of your weapons have the 'offhand' trait, your main hand weapon gains all of the other traits of your offhand weapon."
-               :tags   #{:utility}}
-              {:effect "Add Dexterity instead of Strength to your weapon attacks' damage. This has no effect on weapons that don't add Strength to their damage."
-               :tags   #{:utility}}
-              {:effect "-3 melee damage with weapons if your Dexterity score is less than the Dexterity score of the target."}
-              {:effect "You cannot make weapon attacks while your Dexterity score is less than 22."}
-              {:effect "+3 melee damage with weapons if your Dexterity score is greater than the Dexterity score of the target."
-               :tags   #{:damage}
-               :levels [:skip :keep]}
-              {:effect "+1 expertise die with Charisma skill checks if your Dexterity score is higher than any of the audience members' Dexterity scores."
-               :tags   #{:utility}
-               :levels [:skip :keep]}]}
- {:name      "Pasha"
-  :base-type "gloves"
-  :mods      [{:effect "Enemies you critically hit with a single-target attack become restrained for 18 seconds, or until they use an action to end the effect."
-               :tags   #{:control}}
-              {:effect "+2 critical hit range."
-               :tags   #{:critical}}
-              {:effect "+2 damage with against grappled and restrained enemies."
-               :tags   #{:damage}}
-              {:effect "You cannot critically hit restrained enemies."}
-              {:effect "When you would otherwise land a killing blow with a weapon, the enemy instead dies at the end of their next turn. They can still die if they take damage from out sources before their turn, but are immune to damage until the end of their turn once it starts. You know when this happens."}
-              {:effect "When a creature dies at the end of their turn due to this unique's effect, you may cast Soul Cage as a reaction. You may do this as many times as you wish, but not while you have an active trapped soul via an instance of Soul Cage."
-               :tags   #{:magic}
-               :levels [:skip :keep]}
-              {:effect "No more than once per long rest, when a creature restrained by a critical attack from your weapons dies, you may cast Soul Cage as a reaction. You may not do this while you have an active trapped soul via an instance of Soul Cage."
-               :tags   #{:magic}
-               :levels [:skip :keep]}]}
- {:name      "Raven's Talon"
-  :base-type "gloves"
-  :mods      [{:effect "+%s damage against blinded enemies."
-               :levels ["1d4"
-                        "1d8"]
-               :tags   #{:damage}}
-              {:effect "+1 critical hit range against non-blind enemies."
-               :tags   #{:critical}}
-              {:effect "Non-blind enemies you naturally critically hit become blinded. This ends if they succeed on saving throw at the end of their turns, or if you do not damage them during your turn."
-               :tags   #{:control :accuracy}}
-              {:effect "You cannot critically hit blinded enemies; your critical hits against blinded enemies are major successes instead."}
-              {:effect "Creatures blinded by you have -1 to non-Armour defences while blind."
-               :tags   #{:control :accuracy}
-               :levels [:skip :keep]}]}
- {:name      "The Sentinel"
-  :base-type "armour"
-  :mods      [{:effect "+%d physical barrier."
-               :levels [2 4]
-               :tags   #{:survivability}}
-              {:effect "Regenerate 1 hit point when you block an attack."
-               :tags   #{:survivability}}
-              {:effect "You may make an opportunity attack against creatures within 5 feet of you when you block their melee attacks."
-               :tags   #{:damage}}
-              {:effect "Opportunity attacks you make that are not substantial hits refund the reaction used to make them."
-               :levels [:skip :keep]
-               :tags   #{:damage}}
-              {:effect "You take 2 true damage whenever you make an attack on your turn."}]}
- {:name      "Carnwennan"
-  :base-type "gloves"
-  :mods      [{:effect "After you roll initiative, you become shrouded in a magical darkness that engulfs you until you make an attack, or until the end of the combat. You can see through this darkness, but other creatures need magical darkvision or truesight to do so."
-               :tags   #{:utility}}
-              {:effect "+%d slashing damage while in magical darkness."
-               :level  [2 4]
-               :tags   #{:damage}}
-              {:effect "+2 critical hit range with attacks while in magical darkness."
-               :tags   #{:critical}}
-              {:effect "You become shrouded in magical darkness (as per first mod) when you attack while you are hidden and not already in magical darkness."
-               :tags   #{:utility}}
-              {:effect "Minor successes deal full slashing damage to you while you are not in magical darkness."}
-              {:effect "-1 Reflexes and Armour against spell attacks."}
-              {:effect "+1 critical hit range."
-               :levels [:skip :keep]
-               :tags   #{:critical}}
-              {:effect "You become shrouded in magical darkness when you score a critical hit."
-               :levels [:skip :keep]
-               :tags   #{:utility :critical}}]}
- {:name      "The Resilient"
-  :base-type "armour"
-  :mods      [{:effect "You are resistant to all damage from standard success Armour hits that are up to 2 away from being minor successes (7 & 8 by default)."
-               :tags   #{:survivability}}
-              {:effect "You gain proficiency with shields and 'targe' weapons."
-               :tags   #{:utility}}
-              {:effect "-1 Armour."}
-              {:effect "Damage you are resistant to does not deplete your barriers."
-               :levels [:skip :keep]
-               :tags   #{:survivability}}
-              {:effect "Gain resistance to Armour attacks equal to half your Armour."
-               :levels [:skip :keep]
-               :tags   #{:survivability}}]}
- {:name      "Thornwall"
-  :base-type "armour"
-  :mods      [{:effect "Deal 1 piecing thorns damage to melee attackers within 5 feet of you on blocking their attacks."
-               :tags   #{:damage}}
-              {:effect "Creatures of your choice within 5 feet of you take 1 piercing damage whenever you deal thorns damage with this item.%s"
-               :levels [""
-                        " This counts as thorns damage, but does not cyclically trigger this effect."]
-               :tags   #{:damage}}
-              {:effect "-1 non-thorns damage."}
-              {:effect "+2 thorns damage."
-               :levels [:skip :keep]
-               :tags   #{:damage}}]}
- {:name      "Dáinsleif"
-  :base-type "gloves"
-  :mods      [{:effect "+%s necrotic damage with attacks."
-               :levels ["1d4"
-                        "1d8"]
-               :tags   #{:damage}}
-              {:effect "When you damage a creature with an attack, its maximum hit points are reduced by an amount equal to the necrotic damage dealt, until its next long rest."
-               :tags   #{:utility}}
-              {:effect "When you remove more than half of a creature's remaining hit points with an attack, the creature is killed. This supersedes non-lethal."
-               :tags   #{:damage}}
-              {:effect "When you ask a question about a bloodied creature, you may ask exactly how many hit points it has remaining."
-               :tags   #{:utility}}
-              {:effect "Take true damage equal to your level when you end a combat without landing a killing blow. This damage cannot reduce you to 0 hit points."}
-              {:effect "Slashing damage you take is increased by 2."}
-              {:effect "Slashing damage you take cannot be reduced by barriers."}
-              {:effect "All physical damage from your attacks is converted to necrotic damage."
-               :levels [:skip :keep]
-               :tags   #{:damage}}]}
- {:name      "Amenonuhoko"
-  :base-type "gloves"
-  :mods      [{:effect "You learn the Earth Tremor spell and %scast it as a first level spell, consuming no resources, after you attack a creature within 5 feet of you."
-               :levels ["" "may "]
-               :tags   #{:magic}}
-              {:effect "+1 bludgeoning damage with spells for each spell with 'earth' in its name that you have prepared."
-               :tags   #{:magic :damage}}
-              {:effect "When preparing spells, treat spells with 'earth' in their name as if they were on your class' spell list."
-               :tags   #{:magic}}
-              {:effect "You cannot be knocked prone by the Earth Tremor and Earthquake spells."
-               :tags   #{:survivability}}
-              {:effect "As a major effect, you may cast Earth Tremor targeted around a target of major success hit, consuming no resources."
-               :tags   #{:magic}}
-              {:effect "You cannot use major effects not granted by this item."}
-              {:effect "Whenever you are hit by an attack that is at least a major success, you immediately cast Earth Tremor. When cast in this way, the spell also affects you."}
-              {:effect "While concentrating on a spell with 'earth' in the name, other such spells consume a spell slot one lower than their usual spell slot."
-               :tags   #{:magic}
-               :levels [:skip :keep]}]}
- {:name      "Babr-e Bayan"
-  :base-type "armour"
-  :mods      [{:effect "+1 armour while you have at least 22 Wisdom."
-               :tags   #{:survivability}}
-              {:effect "Gain an expertise die on journey activity checks using Wisdom."
-               :tags   #{:utility}}
-              {:effect "Your Fortitude is at least equal to your Wisdom modifier minus %d."
-               :levels [3 2]
-               :tags   #{:survivability}}
-              {:effect "When you make an insight check, you must declare if you think the target is being truthful. If you are correct, +%d for that roll."
-               :levels [3 4]
-               :tags   #{:utility}}
-              {:effect "If you are incorrect about the truthfulness of the target before an insight check, -%d to that roll."
-               :levels [3 2]}
-              {:effect "You are vulnerable to piercing and poison damage while you have less than 24 Wisdom."}]}
- {:name      "Lorg Mór"
-  :base-type "gloves"
-  :mods      [{:effect "Your main hand weapon gains the 'sweep' trait."
-               :tags   #{:accuracy}}
-              {:effect "+5 to Medicine checks%s."
-               :levels [" for healing downed allies"
-                        ""]
-               :tags   #{:utility :survivability}}
-              {:effect "+2 incoming healing from magic."
-               :tags   #{:survivability}}
-              {:effect "+2 outgoing healing with magic."
-               :tags   #{:magic :survivability}}
-              {:effect "%s"
-               :levels ["Healing granted via your Medicine checks is considered magical."
-                        "You may choose for any healing granted by you to be considered magical healing."]
-               :tags   #{:utility :survivability}}
-              {:effect "+2 bludgeoning damage against creatures smaller than you%s."
-               :levels [""
-                        ", or the same size as you"]
-               :tags   #{:damage}}
-              {:effect "You are large."}
-              {:effect "You cannot dual-wield weapons."}
-              {:effect "-2 to your two lowest mental ability scores (choose if equal)."}
-              {:effect "-2 Dexterity."}
-              {:effect "When you grant magical healing to a creature, it may immediately attempt to save out of any ongoing effects on it with saving throws that repeat each round."
-               :levels [:skip :keep]
-               :tags   #{:magic :survivability}}]}
- {:name      "Reckless Replenishment"
-  :base-type "armour"
-  :mods      [{:effect "At the end of each of your turns, gain temporary hit points equal to %s%% of your missing hit points."
-               :levels [10 20]
-               :tags   #{:survivability}}
-              {:effect "%s whenever you gain temporary hit points."
-               :levels ["Gain 1 additional temporary hit point"
-                        "Gain additional temporary hit points equal to your level"]
-               :tags   #{:survivability}}
-              {:effect "Gain damage equal to your temporary hit points."
-               :tags   #{:damage}}
-              {:effect "Whenever you deal damage, lose all of your temporary hit points."}
-              {:effect "Take true damage equal to half your level whenever you deal damage while you have no temporary hit points. This damage cannot reduce you below 1 hit point."}]}
- {:name      "Volatile Consistency"
-  :base-type "talisman"
-  :mods      [{:effect "Your gem procs whenever another party member's gem procs."
-               :tags   #{:utility}}
-              {:effect "Your monster passive activates as normal while you are down."
-               :tags   #{:utility}}
-              {:effect "This modifier can be replaced by talisman modifiers from slot 1."
-               :tags   #{:utility}}
-              {:effect "This modifier can be replaced by talisman modifiers from slot 2."
-               :tags   #{:utility}}
-              {:effect "Modifiers on this talisman cannot be locked."
-               :tags   #{:utility}}
-              {:effect "When you roll for initiative, randomise a monster passive as if the contained gem's CR limit was 2 higher. For the duration of the combat, your gem contains this monster passive instead of the one previously in the gem."}
-              {:effect "Your gem proc threshold is always 0."}
-              {:effect "This modifier can be replaced by talisman modifiers from slot 3."
-               :levels [:skip :keep]
-               :tags   #{:utility}}
-              {:effect "When you roll for initiative and randomise a monster power, you may choose to randomise the monster power again. You must then accept this result."
-               :levels [:skip :keep]
-               :tags   #{:utility}}]}
- {:name      "Power Addiction"
-  :base-type "talisman"
-  :mods      [{:effect "You have advantaged offence while you have an active monster power."
-               :tags   #{:accuracy}}
-              {:effect "For each ally within 30ft of you with an active monster power, including yourself, +5 incoming healing from magic from creatures with an active monster power."
-               :tags   #{:survivability}}
-              {:effect "You have disadvantaged defence while you are up and %s"
-               :levels ["don't have an active monster power."
-                        "neither you, nor any allies within 5 feet of you, have an active monster power."]}
-              {:effect "You and allies you can see within 20 feet of you have +5 gem proc threshold, and another +1 gem proc threshold for each creature benefiting from this effect."
-               :levels [:skip :keep]
-               :tags   #{:utility}}]}
- {:name      "Template"
-  :base-type "weapon|armour"
-  :mods      [{:effect "description"}]
-  :enabled?  false}]
+[{:name "Pacifist's Vow"
+  :base "armour"
+  :mods [{:effect "Non-damaging spells have a 50% chance consume a spell slot 1 level lower than their usual."
+          :tags   #{:magic}}
+         {:effect "+1 AB with effects that cannot deal damage."
+          :tags   #{:accuracy}}
+         {:effect "You may forego dealing damage with a spell to make it count as a non-damaging spell."
+          :tags   #{:magic :utility}}
+         {:effect "Your weapons gain the 'non-lethal' trait."
+          :tags   #{:utility}}
+         {:effect "You cannot upcast damaging spells."}
+         {:effect "You cannot cast damaging spells on consecutive turns in a combat."}
+         {:effect "Damage you deal with cantrips is halved."
+          :levels [:keep :skip]}
+         {:effect "Non-damaging spells consume a spell slot 1 level lower than their usual (min 1) while you are concentrating or while not in combat."
+          :levels [:skip :keep]
+          :tags   #{:magic}}
+         {:effect "Spells you cast targeting willing creatures have a 50% chance to not require concentration (optionally)."
+          :levels [:skip :keep]
+          :tags   #{:magic}}]}
+ {:name "Researcher's Power"
+  :base "armour"
+  :mods [{:effect "Your mental ability scores are capped at exactly 26."
+          :tags   #{:utility}}
+         {:effect "+4 Intelligence."
+          :tags   #{:utility}}
+         {:effect "+2 to your lowest mental ability score (choose if equal)."
+          :tags   #{:utility}}
+         {:effect "Treat your mental ability scores as if they have a minimum value of 14."
+          :tags   #{:utility}
+          :levels [:skip :keep]}
+         {:effect "Gain an expertise die for all Intelligence skill checks in which you are proficient."
+          :tags   #{:utility}
+          :levels [:skip :keep]}
+         {:effect "You cannot use Intelligence to cast spells."}
+         {:effect "You can use a different mental ability score for spells that you would normally cast with Intelligence."}]}
+ {:name "Wrestler's Perseverance"
+  :base "armour"
+  :mods [{:effect "You have advantage with melee attacks while grappled or restrained. You do not suffer disadvantage on melee attacks while restrained."
+          :tags   #{:accuracy}}
+         {:effect "+1 AB with maneuvers."
+          :tags   #{:accuracy}}
+         {:effect "Grapples caused by your maneuvers impose a 1d4 bludgeoning DoT while the grapple is active."
+          :tags   #{:damage}}
+         {:effect "Creatures you are grappling are considered to be restrained."
+          :tags   #{:control}}
+         {:effect "You are restrained while you are grappling a creature."}
+         {:effect "Using a basic maneuver as part of your attack no longer imposes disadvantage on your attack."
+          :levels [:skip :keep]
+          :tags   #{:accuracy}}
+         {:effect "+%s Armour while you are restrained."
+          :levels [:skip 1]
+          :tags   #{:survivability}}]}
+ {:name "Garb of the Divine"
+  :base "armour"
+  :mods [{:effect "You gain Divinity until the end of your next turn when you hit a creature with an attack while you do not have Divinity."}
+         {:effect "If you have at least 20 Charisma, +10 fire, radiant, cold, and lightning damage while you have Divinity."
+          :tags   #{:damage}}
+         {:effect "If you have at least 20 Charisma, you are immune to curses."
+          :tags   #{:survivability}}
+         {:effect "If you have at least 20 Strength, you may convert any physical damage you deal to fire, radiant, cold, or lightning damage while you have Divinity."
+          :tags   #{:damage}}
+         {:effect "If you have at least 20 Strength, you take no extra damage from critical hits from creatures within 5 feet of you."
+          :tags   #{:survivability}}
+         {:effect "You may not add your Charisma or Strength modifiers to any damage you deal."}
+         {:effect "Your Strength and Charisma scores become equal to the highest of your Strength and Charisma scores."
+          :levels [:skip :keep]
+          :tags   #{:utility}}
+         {:effect "Gain Divinity until the end of your next turn when you take fire, radiant, cold, or lightning damage, or when you receive a critical hit."
+          :levels [:skip :keep]}]}
+ {:name "Werebear's Pelt"
+  :base "armour"
+  :mods [{:effect "Your hit die size is increased by 2. This increases your maximum hit points."
+          :tags   #{:survivability}}
+         {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, regenerate 2 hit points."
+          :tags   #{:survivability}}
+         {:effect "You may add your %sStrength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
+          :levels [""
+                   "twice "]
+          :tags   #{:survivability}}
+         {:effect "+2 to your Strength maximum."
+          :tags   #{:utility}}
+         {:effect "You cannot cast spells."}
+         {:effect "You cannot wear relics."}
+         {:effect "You cannot be affected by healing spells and buffs from spells while conscious."
+          :levels [:keep :skip]}
+         {:effect "+2 Strength."
+          :tags   #{:utility}
+          :levels [:skip :keep]}]}
+ {:name "Steadfast"
+  :base "armour"
+  :mods [{:effect "You are immune to being grappled and restrained."
+          :tags   #{:survivability}}
+         {:effect "You have advantaged defence against effects that would move you%s."
+          :levels [""
+                   " or knock you prone."]
+          :tags   #{:survivability}}
+         {:effect "+1 Fortitude."
+          :tags   #{:utility}}
+         {:effect "Your speed is reduced by 10 feet."}
+         {:effect "You cannot use bonus action if you used your bonus action during your previous turn in the current combat."}
+         {:effect "Your Will and Reflexes are considered to be no lower than your Fortitude minus 2."
+          :tags   #{:survivability}
+          :levels [:skip :keep]}]}
+ {:name "Black Magic"
+  :base "armour"
+  :mods [{:effect "Replenish a first level spell slot when you expend a spell slot to cast a curse spell."
+          :tags   #{:magic}}
+         {:effect "If you cast a concentration spell that would curse a creature while you are already concentrating on a curse, the spell shares concentration with your existing concentration. You can concentrate on %d such spells at a time."
+          :levels [2 3]
+          :tags   #{:magic}}
+         {:effect "+1 AB with necromancy spells while you are concentrating on multiple spells."
+          :levels [:skip :keep]
+          :tags   #{:accuracy}}
+         {:effect "After you cast a non-necromancy spell, you have a 20% chance to lose an additional equivalent spell slot, if available."}
+         {:effect "You cannot deal radiant damage."}]}
+ {:name "Relentless"
+  :base "armour"
+  :mods [{:effect "Gain temporary hit points equal to twice your level when you roll for initiative and do not have full health."
+          :tags   #{:survivability}}
+         {:effect "+5 incoming healing from magic while bloodied."
+          :tags   #{:survivability}}
+         {:effect "Healing you receive also replenishes each of your barrier types."
+          :tags   #{:survivability}}
+         {:effect "Healing you receive while you have temporary hit points is always rolled at its maximum value (if the healing applies to multiple people, this still only applies to the healing you receive)."
+          :levels [:skip :keep]
+          :tags   #{:survivability}}
+         {:effect "-5 incoming healing from magic while healthy."}
+         {:effect "Healing you receive while not in combat is instead applied at the end of your first turn during your next combat."}
+         {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}]}
+ {:name "Cryomancer's Obsession"
+  :base "armour"
+  :mods [{:effect "+1d4 cold damage."
+          :tags   #{:damage}}
+         {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies have +2 cold vulnerability, gain fire resistance, and are restrained. Save at end of turn to end, or until taking fire damage."
+          :tags   #{:control :critical}}
+         {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
+          :tags   #{:control}}
+         {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have just hit with a critical). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}
+         {:effect "-2 to non-physical, non-cold damage types."}
+         {:effect "+1 critical hit range with attacks that deal cold damage, and no other non-physical damage."
+          :levels [:skip :keep]
+          :tags   #{:critical}}
+         {:effect "Your attacks that deal cold damage also have this major effect: make a Fortitude attack against the target, freezing them until the end of their next turn on a hit. This major effect can trigger further major effects."
+          :levels [:skip :keep]
+          :tags   #{:control}}]}
+ {:name "Extended Demise"
+  :base "armour"
+  :mods [{:effect "DoTs you inflict deal damage for one round after they end (including being ended with a save, or moving out of their area)."
+          :tags   #{:damage}}
+         {:effect "+3 to damage over time."
+          :tags   #{:damage}}
+         {:effect "Damage from your hits also counts as damage over time, but does not have its duration extended by this item."
+          :tags   #{:damage}}
+         {:effect "-3 to damage with hits."}
+         {:effect "Damage from your hits is delayed by one round."}
+         {:effect "DoTs on you inflict deal damage for one round after they end."}
+         {:effect "Enemies under the effect of your DoTs become resistant to damage types dealt by those DoTs if they were originally immune to them."
+          :levels [:skip :keep]
+          :tags   #{:damage}}
+         {:effect "Enemies under the effect of your DoTs are no longer resistant to damage types dealt by those DoTs if they were originally resistant to them."
+          :levels [:skip :keep]
+          :tags   #{:damage}}]}
+ {:name "Thunderfist"
+  :base "gloves"
+  :mods [{:effect "+1d4 thunder damage with attacks."
+          :tags   #{:damage}}
+         {:effect "+15 temporary hit points when you take thunder damage, no more than once per minute."
+          :tags   #{:survivability}}
+         {:effect "You cannot be deafened."
+          :tags   #{:survivability}}
+         {:effect "You may force enemies that take thunder damage from a critical hit from your melee or touch attacks to be affected by the Shove or Knockdown maneuvers (no attack necessary)."
+          :tags   #{:control}}
+         {:effect "If you have dealt thunder damage in the last 2 rounds, you may convert all of your damage to thunder damage."
+          :tags   #{:damage}}
+         {:effect "-3 damage with non-thunder damage types."}
+         {:effect "You are vulnerable to lightning damage."}
+         {:effect "Deafened enemies have advantaged defence against you."}
+         {:effect "Other tagged modifiers related to thunder damage on items you are using, whether incoming or outgoing, have their magnitudes increased by 1 (where possible)."
+          :levels [:skip :keep]
+          :tags   #{:damage :survivability}}]}
+ {:name "Dominion"
+  :base "armour"
+  :mods [{:effect "+%d physical barrier per minion you control, to a maximum of 6 barrier."
+          :levels [2 3]
+          :tags   #{:survivability}}
+         {:effect "No more than once per combat, when you have at least one minion at the end of your turn, gain temporary hit points equal to your level."
+          :tags   #{:survivability}}
+         {:effect "Your minions' hit point maximums are increased by twice the spell level used to create or summon them."
+          :tags   #{:survivability}}
+         {:effect "Your minions' damage is halved."}
+         {:effect "Creatures of your choice within 5 feet of at least one of your minions have +1 to non-Armour defences."
+          :levels [:skip :keep]
+          :tags   #{:survivability}}
+         {:effect "When a minion of yours ends it turn, creatures of your choice within 5 feet of it replenish all of their barriers."
+          :levels [:skip :keep]
+          :tags   #{:survivability}}]}
+ {:name "Pashupatastra"
+  :base "gloves"
+  :mods [{:effect "Modifiers to minion damage%s apply to your ranged attacks, as your attack projectiles are replaced by spectral tigers."
+          :levels [""
+                   " and accuracy"]
+          :tags   #{:damage :accuracy}}
+         {:effect "Your ranged attacks' base damage is radiant."
+          :tags   #{:damage}}
+         {:effect "Ranged weapon attacks made during your turn have their success tier increased by one, including potentially turning a major success into a critical hit."
+          :tags   #{:accuracy :critical}}
+         {:effect "When you trigger a major effect%s, trigger two major effects instead. You may choose to trigger the same major effect twice."
+          :levels [" after landing a critical hit"
+                   ""]
+          :tags   #{:utility}}
+         {:effect "When you score a critical hit with a ranged attack, all creatures of your choice within 30 feet of the target take radiant damage equal to%s your level."
+          :levels [""
+                   " twice"]
+          :tags   #{:damage :critical}}
+         {:effect "After attacking with a weapon, you must spend an action preparing yourself before you can make a weapon attack again."}
+         {:effect "If a minion of yours deals radiant damage to a creature you can see, you may use a reaction to make a ranged weapon attack against that creature. This does not require yourself or the weapon to be prepared."
+          :levels [:skip :keep]
+          :tags   #{:damage}}
+         {:effect "When a creature you can see takes radiant damage, your minions gain +1d6 radiant damage to their next attack (you also benefit from this modifier). This does not stack."
+          :tags   #{:damage}
+          :levels [:skip :keep]}]}
+ {:name "Gungir"
+  :base "gloves"
+  :mods [{:effect "+1AB with thrown attacks for each prior consecutive attack you've missed across any time period.%s"
+          :levels [""
+                   " If this modifier did not increase the AB of a thrown attack you make, roll its damage with advantage."]
+          :tags   #{:damage :accuracy}}
+         {:effect "Your thrown attacks do no suffer disadvantage from long range."
+          :tags   #{:accuracy}}
+         {:effect "You may immediately ask a question about a creature you hit with an attack."
+          :tags   #{:utility}}
+         {:effect "You are blinded until the end of your next turn when you critically fail a skill check to ask questions."}
+         {:effect "Damage from beasts disregards your barriers."}
+         {:effect "+3 damage taken from beasts while bloodied."}
+         {:effect "-2 damage with attacks against creatures that are not larger than you."}]}
+ {:name "Mjolnir"
+  :base "gloves"
+  :mods [{:effect "+1d6 thunder damage with attacks."
+          :tags   #{:damage}}
+         {:effect "Your weapon attacks' base damage is converted to lightning."
+          :tags   #{:damage}}
+         {:effect "+2 lightning damage."
+          :tags   #{:damage}}
+         {:effect "+1d4 lightning damage with thrown attacks."
+          :tags   #{:damage}}
+         {:effect "Requires 22 Strength to wield."}
+         {:effect "If you have at least 24 Strength, you may use Strength as your spellcasting ability."
+          :levels [:skip :keep]
+          :tags   #{:magic}}
+         {:effect "When you damage a creature with lightning damage, another creature of your choice within 10 feet of it takes 111lightning damage equal to your Strength modifier. This cannot damage a creature more than once in a turn."
+          :levels [:skip :keep]
+          :tags   #{:damage}}]}
+ {:name "Excalibur"
+  :base "gloves"
+  :mods [{:effect "One of your weapons gains the 'offhand' trait."
+          :tags   #{:utility}}
+         {:effect "If both of your weapons have the 'offhand' trait, your main hand weapon gains all of the other traits of your offhand weapon."
+          :tags   #{:utility}}
+         {:effect "Add Dexterity instead of Strength to your weapon attacks' damage. This has no effect on weapons that don't add Strength to their damage."
+          :tags   #{:utility}}
+         {:effect "-3 melee damage with weapons if your Dexterity score is less than the Dexterity score of the target."}
+         {:effect "You cannot make weapon attacks while your Dexterity score is less than 22."}
+         {:effect "+3 melee damage with weapons if your Dexterity score is greater than the Dexterity score of the target."
+          :tags   #{:damage}
+          :levels [:skip :keep]}
+         {:effect "+1 expertise die with Charisma skill checks if your Dexterity score is higher than any of the audience members' Dexterity scores."
+          :tags   #{:utility}
+          :levels [:skip :keep]}]}
+ {:name "Pasha"
+  :base "gloves"
+  :mods [{:effect "Enemies you critically hit with a single-target attack become restrained for 18 seconds, or until they use an action to end the effect."
+          :tags   #{:control}}
+         {:effect "+2 critical hit range."
+          :tags   #{:critical}}
+         {:effect "+2 damage with against grappled and restrained enemies."
+          :tags   #{:damage}}
+         {:effect "You cannot critically hit restrained enemies."}
+         {:effect "When you would otherwise land a killing blow with a weapon, the enemy instead dies at the end of their next turn. They can still die if they take damage from out sources before their turn, but are immune to damage until the end of their turn once it starts. You know when this happens."}
+         {:effect "When a creature dies at the end of their turn due to this unique's effect, you may cast Soul Cage as a reaction. You may do this as many times as you wish, but not while you have an active trapped soul via an instance of Soul Cage."
+          :tags   #{:magic}
+          :levels [:skip :keep]}
+         {:effect "No more than once per long rest, when a creature restrained by a critical attack from your weapons dies, you may cast Soul Cage as a reaction. You may not do this while you have an active trapped soul via an instance of Soul Cage."
+          :tags   #{:magic}
+          :levels [:skip :keep]}]}
+ {:name "Raven's Talon"
+  :base "gloves"
+  :mods [{:effect "+%s damage against blinded enemies."
+          :levels ["1d4"
+                   "1d8"]
+          :tags   #{:damage}}
+         {:effect "+1 critical hit range against non-blind enemies."
+          :tags   #{:critical}}
+         {:effect "Non-blind enemies you naturally critically hit become blinded. This ends if they succeed on saving throw at the end of their turns, or if you do not damage them during your turn."
+          :tags   #{:control :accuracy}}
+         {:effect "You cannot critically hit blinded enemies; your critical hits against blinded enemies are major successes instead."}
+         {:effect "Creatures blinded by you have -1 to non-Armour defences while blind."
+          :tags   #{:control :accuracy}
+          :levels [:skip :keep]}]}
+ {:name "The Sentinel"
+  :base "armour"
+  :mods [{:effect "+%d physical barrier."
+          :levels [2 4]
+          :tags   #{:survivability}}
+         {:effect "Regenerate 1 hit point when you block an attack."
+          :tags   #{:survivability}}
+         {:effect "You may make an opportunity attack against creatures within 5 feet of you when you block their melee attacks."
+          :tags   #{:damage}}
+         {:effect "Opportunity attacks you make that are not substantial hits refund the reaction used to make them."
+          :levels [:skip :keep]
+          :tags   #{:damage}}
+         {:effect "You take 2 true damage whenever you make an attack on your turn."}]}
+ {:name "Carnwennan"
+  :base "gloves"
+  :mods [{:effect "After you roll initiative, you become shrouded in a magical darkness that engulfs you until you make an attack, or until the end of the combat. You can see through this darkness, but other creatures need magical darkvision or truesight to do so."
+          :tags   #{:utility}}
+         {:effect "+%d slashing damage while in magical darkness."
+          :level  [2 4]
+          :tags   #{:damage}}
+         {:effect "+2 critical hit range with attacks while in magical darkness."
+          :tags   #{:critical}}
+         {:effect "You become shrouded in magical darkness (as per first mod) when you attack while you are hidden and not already in magical darkness."
+          :tags   #{:utility}}
+         {:effect "Minor successes deal full slashing damage to you while you are not in magical darkness."}
+         {:effect "-1 Reflexes and Armour against spell attacks."}
+         {:effect "+1 critical hit range."
+          :levels [:skip :keep]
+          :tags   #{:critical}}
+         {:effect "You become shrouded in magical darkness when you score a critical hit."
+          :levels [:skip :keep]
+          :tags   #{:utility :critical}}]}
+ {:name "The Resilient"
+  :base "armour"
+  :mods [{:effect "You are resistant to all damage from standard success Armour hits that are up to 2 away from being minor successes (7 & 8 by default)."
+          :tags   #{:survivability}}
+         {:effect "You gain proficiency with shields and 'targe' weapons."
+          :tags   #{:utility}}
+         {:effect "-1 Armour."}
+         {:effect "Damage you are resistant to does not deplete your barriers."
+          :levels [:skip :keep]
+          :tags   #{:survivability}}
+         {:effect "Gain resistance to Armour attacks equal to half your Armour."
+          :levels [:skip :keep]
+          :tags   #{:survivability}}]}
+ {:name "Thornwall"
+  :base "armour"
+  :mods [{:effect "Deal 1 piecing thorns damage to melee attackers within 5 feet of you on blocking their attacks."
+          :tags   #{:damage}}
+         {:effect "Creatures of your choice within 5 feet of you take 1 piercing damage whenever you deal thorns damage with this item.%s"
+          :levels [""
+                   " This counts as thorns damage, but does not cyclically trigger this effect."]
+          :tags   #{:damage}}
+         {:effect "-1 non-thorns damage."}
+         {:effect "+2 thorns damage."
+          :levels [:skip :keep]
+          :tags   #{:damage}}]}
+ {:name "Dáinsleif"
+  :base "gloves"
+  :mods [{:effect "+%s necrotic damage with attacks."
+          :levels ["1d4"
+                   "1d8"]
+          :tags   #{:damage}}
+         {:effect "When you damage a creature with an attack, its maximum hit points are reduced by an amount equal to the necrotic damage dealt, until its next long rest."
+          :tags   #{:utility}}
+         {:effect "When you remove more than half of a creature's remaining hit points with an attack, the creature is killed. This supersedes non-lethal."
+          :tags   #{:damage}}
+         {:effect "When you ask a question about a bloodied creature, you may ask exactly how many hit points it has remaining."
+          :tags   #{:utility}}
+         {:effect "Take true damage equal to your level when you end a combat without landing a killing blow. This damage cannot reduce you to 0 hit points."}
+         {:effect "Slashing damage you take is increased by 2."}
+         {:effect "Slashing damage you take cannot be reduced by barriers."}
+         {:effect "All physical damage from your attacks is converted to necrotic damage."
+          :levels [:skip :keep]
+          :tags   #{:damage}}]}
+ {:name "Amenonuhoko"
+  :base "gloves"
+  :mods [{:effect "You learn the Earth Tremor spell and %scast it as a first level spell, consuming no resources, after you attack a creature within 5 feet of you."
+          :levels ["" "may "]
+          :tags   #{:magic}}
+         {:effect "+1 bludgeoning damage with spells for each spell with 'earth' in its name that you have prepared."
+          :tags   #{:magic :damage}}
+         {:effect "When preparing spells, treat spells with 'earth' in their name as if they were on your class' spell list."
+          :tags   #{:magic}}
+         {:effect "You cannot be knocked prone by the Earth Tremor and Earthquake spells."
+          :tags   #{:survivability}}
+         {:effect "As a major effect, you may cast Earth Tremor targeted around a target of major success hit, consuming no resources."
+          :tags   #{:magic}}
+         {:effect "You cannot use major effects not granted by this item."}
+         {:effect "Whenever you are hit by an attack that is at least a major success, you immediately cast Earth Tremor. When cast in this way, the spell also affects you."}
+         {:effect "While concentrating on a spell with 'earth' in the name, other such spells consume a spell slot one lower than their usual spell slot."
+          :tags   #{:magic}
+          :levels [:skip :keep]}]}
+ {:name "Babr-e Bayan"
+  :base "armour"
+  :mods [{:effect "+1 armour while you have at least 22 Wisdom."
+          :tags   #{:survivability}}
+         {:effect "Gain an expertise die on journey activity checks using Wisdom."
+          :tags   #{:utility}}
+         {:effect "Your Fortitude is at least equal to your Wisdom modifier minus %d."
+          :levels [3 2]
+          :tags   #{:survivability}}
+         {:effect "When you make an insight check, you must declare if you think the target is being truthful. If you are correct, +%d for that roll."
+          :levels [3 4]
+          :tags   #{:utility}}
+         {:effect "If you are incorrect about the truthfulness of the target before an insight check, -%d to that roll."
+          :levels [3 2]}
+         {:effect "You are vulnerable to piercing and poison damage while you have less than 24 Wisdom."}]}
+ {:name "Lorg Mór"
+  :base "gloves"
+  :mods [{:effect "Your main hand weapon gains the 'sweep' trait."
+          :tags   #{:accuracy}}
+         {:effect "+5 to Medicine checks%s."
+          :levels [" for healing downed allies"
+                   ""]
+          :tags   #{:utility :survivability}}
+         {:effect "+2 incoming healing from magic."
+          :tags   #{:survivability}}
+         {:effect "+2 outgoing healing with magic."
+          :tags   #{:magic :survivability}}
+         {:effect "%s"
+          :levels ["Healing granted via your Medicine checks is considered magical."
+                   "You may choose for any healing granted by you to be considered magical healing."]
+          :tags   #{:utility :survivability}}
+         {:effect "+2 bludgeoning damage against creatures smaller than you%s."
+          :levels [""
+                   ", or the same size as you"]
+          :tags   #{:damage}}
+         {:effect "You are large."}
+         {:effect "You cannot dual-wield weapons."}
+         {:effect "-2 to your two lowest mental ability scores (choose if equal)."}
+         {:effect "-2 Dexterity."}
+         {:effect "When you grant magical healing to a creature, it may immediately attempt to save out of any ongoing effects on it with saving throws that repeat each round."
+          :levels [:skip :keep]
+          :tags   #{:magic :survivability}}]}
+ {:name "Reckless Replenishment"
+  :base "armour"
+  :mods [{:effect "At the end of each of your turns, gain temporary hit points equal to %s%% of your missing hit points."
+          :levels [10 20]
+          :tags   #{:survivability}}
+         {:effect "%s whenever you gain temporary hit points."
+          :levels ["Gain 1 additional temporary hit point"
+                   "Gain additional temporary hit points equal to your level"]
+          :tags   #{:survivability}}
+         {:effect "Gain damage equal to your temporary hit points."
+          :tags   #{:damage}}
+         {:effect "Whenever you deal damage, lose all of your temporary hit points."}
+         {:effect "Take true damage equal to half your level whenever you deal damage while you have no temporary hit points. This damage cannot reduce you below 1 hit point."}]}
+ {:name "Volatile Consistency"
+  :base "talisman"
+  :mods [{:effect "Your gem procs whenever another party member's gem procs."
+          :tags   #{:utility}}
+         {:effect "Your monster passive activates as normal while you are down."
+          :tags   #{:utility}}
+         {:effect "This modifier can be replaced by talisman modifiers from slot 1."
+          :tags   #{:utility}}
+         {:effect "This modifier can be replaced by talisman modifiers from slot 2."
+          :tags   #{:utility}}
+         {:effect "Modifiers on this talisman cannot be locked."
+          :tags   #{:utility}}
+         {:effect "When you roll for initiative, randomise a monster passive as if the contained gem's CR limit was 2 higher. For the duration of the combat, your gem contains this monster passive instead of the one previously in the gem."}
+         {:effect "Your gem proc threshold is always 0."}
+         {:effect "This modifier can be replaced by talisman modifiers from slot 3."
+          :levels [:skip :keep]
+          :tags   #{:utility}}
+         {:effect "When you roll for initiative and randomise a monster power, you may choose to randomise the monster power again. You must then accept this result."
+          :levels [:skip :keep]
+          :tags   #{:utility}}]}
+ {:name "Power Addiction"
+  :base "talisman"
+  :mods [{:effect "You have advantaged offence while you have an active monster power."
+          :tags   #{:accuracy}}
+         {:effect "For each ally within 30ft of you with an active monster power, including yourself, +5 incoming healing from magic from creatures with an active monster power."
+          :tags   #{:survivability}}
+         {:effect "You have disadvantaged defence while you are up and %s"
+          :levels ["don't have an active monster power."
+                   "neither you, nor any allies within 5 feet of you, have an active monster power."]}
+         {:effect "You and allies you can see within 20 feet of you have +5 gem proc threshold, and another +1 gem proc threshold for each creature benefiting from this effect."
+          :levels [:skip :keep]
+          :tags   #{:utility}}]}
+ {:name     "Template"
+  :base     "weapon|armour"
+  :mods     [{:effect "description"}]
+  :enabled? false}]

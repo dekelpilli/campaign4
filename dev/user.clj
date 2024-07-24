@@ -7,6 +7,7 @@
     [campaign4.loot :as loot]
     [campaign4.paths :as paths]
     [campaign4.persistence :as p]
+    [campaign4.relics :as relics]
     [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
@@ -22,7 +23,6 @@
   '[campaign4.crafting :as crafting]
   '[campaign4.helmets :as helmets]
   '[campaign4.randoms :as randoms]
-  '[campaign4.relics :as relics]
   '[campaign4.vials :as vials])
 
 (defmacro cp [] `(cprint *1))
@@ -36,10 +36,8 @@
             println)))
 
 (defmacro r!
-  ([] `(-> (reporting/format-loot *1)
-           reporting/report-loot!))
-  ([x] `(-> (reporting/format-loot ~x)
-            reporting/report-loot!)))
+  ([] `(do (reporting/report-loot! *1) *1))
+  ([x] `(let [x# ~x] (reporting/report-loot! x#) x#)))
 
 (defn roll [n x]
   (-> (str n \d x)
@@ -60,6 +58,7 @@
   (pf)
   (pf (loot/loot! 99))
   (loot/loots! 100 50 1)
+  (loot/loot-result 42)
 
   (encounters/pass-time 1 ::encounters/clear)
   (encounters/travel 1 ::encounters/sweltering)
@@ -80,10 +79,12 @@
        (rings/sacrifice 0))
 
   (uniques/new-unique)
+  (uniques/at-level *1 1)
   (uniques/at-level *2 2)
-  (choose-by-name "pashupa" uniques/uniques)
-  (-> (choose-by-name (:name *1) uniques/uniques)
-      (uniques/at-level 2))
+  (choose-by-name "reckle" uniques/uniques)
+  (-> (choose-by-name "reckle" uniques/uniques)
+      (uniques/at-level 2)
+      r!)
 
   (-> (mapv #(choose-by-name % tarot/cards)
             ["hanging"
@@ -91,9 +92,7 @@
       (with-meta {::reporting/type :tarot})
       (doto reporting/report-loot!))
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["court of swords"
-             "strength"
-             "empress"])
+            ["court of swords", "strength", "empress"])
       (tarot/generate-relic "gloves"))
 
   (relics/current-relic-state (:relic *1))
@@ -114,6 +113,7 @@
 
   (roll 10 4)
   (cp)
+  (r!)
 
   ;---------------------------------------------------------------------------
 

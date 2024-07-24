@@ -7,7 +7,9 @@
     [hato.client :as hato]
     [jsonista.core :as j]
     [methodical.core :as m]
-    [puget.printer :as pp]))
+    [puget.printer :as pp])
+  (:import
+    (name.fraser.neil.plaintext diff_match_patch$Diff diff_match_patch$Operation)))
 
 (def ^:private discord-username "\uD83D\uDCB0 Placeholder DMs \uD83D\uDCB0")
 
@@ -65,12 +67,41 @@
 (m/defmethod format-loot :sequential [coll]
   {:body (format-loot coll)})
 
-(m/defmethod format-loot :unique [{:keys [name base-type level mods]}]
-  {:title (format "%s (level %s unique; %s)" name level base-type)
-   :body  (format-coll (mapv :effect mods))})
+(defn- ansi-colour [s colour]
+  (let [colour (case colour
+                 :red 31
+                 :green 32)]
+    (str "\u001b[0;" colour "m" s "\u001b[0m")))
 
-(m/defmethod format-loot :relic [{:keys [name base-type level mods]}]
-  {:title (format "%s (level %s relic; %s)" name level base-type)
+(defn- unique-changelog [mods]
+  (keep
+    (fn [{:keys [effect change]}]
+      (cond
+        (nil? change) nil
+        (= :new change) (str "- " (ansi-colour effect :green))
+        (= :removed change) (str "- " (ansi-colour effect :red))
+        (:diff change) (doto (->> (mapv
+                              (fn [diff]
+                                (cond
+                                  (= diff_match_patch$Operation/EQUAL (.-operation diff)) (.-text diff)
+                                  (= diff_match_patch$Operation/INSERT (.-operation diff)) (ansi-colour (.-text diff) :green)
+                                  (= diff_match_patch$Operation/DELETE (.-operation diff)) (ansi-colour (.-text diff) :red)))
+                              (:diff change))
+                            str/join
+                            (str "- "))
+                         println)))
+    mods))
+
+(m/defmethod format-loot :unique [{:keys [name base level mods]}]
+  (let [item (format-coll (mapv :effect mods))
+        changelog (when (> level 1)
+                    (unique-changelog mods))]
+    {:title (format "%s (level %s unique; %s)" name level base)
+     :body  (cond-> item
+                    changelog (str "\n## Changelog:\n```ansi\n" (str/join \newline changelog) "```"))}))
+
+(m/defmethod format-loot :relic [{:keys [name base level mods]}]
+  {:title (format "%s (level %s relic; %s)" name level base)
    :body  (format-coll (mapv :formatted mods))})
 
 (m/defmethod format-loot :vial [{:keys [name character item]}]
@@ -112,7 +143,7 @@
 (m/defmethod format-loot :tarot [cards]
   (mapv
     (fn [{:keys [name effect]}]
-      {:title (str name "(tarot card)")
+      {:title (str name " (tarot card)")
        :body  effect})
     cards))
 

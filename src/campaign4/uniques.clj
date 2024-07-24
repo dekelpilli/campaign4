@@ -1,9 +1,13 @@
 (ns campaign4.uniques
   (:require
     [campaign4.util :as u]
-    [randy.core :as r]))
+    [randy.core :as r])
+  (:import
+    (name.fraser.neil.plaintext diff_match_patch)))
 
 (def uniques (u/load-data :uniques))
+
+(def ^:private dmp (diff_match_patch.))
 
 (defn mod-at-level [{:keys [levels] :as mod} level]
   (let [new-mod (if levels
@@ -22,10 +26,13 @@
     (cond
       new-mod (-> (dissoc new-mod :levels)
                   (cond-> (and (> level 1)
-                               (not= new-mod previously)) (assoc :changed? true)))
+                               (not= new-mod previously)) (assoc :change (if previously
+                                                                           {:diff (.diff_main dmp (:effect previously) (:effect new-mod))}
+                                                                           :new))))
       (and (nil? new-mod)
            (and (some? previously)
-                (not (:removed? previously)))) {:effect (:effect previously) :removed? true})))
+                (not (:removed? previously)))) {:effect (:effect previously)
+                                                :change :removed})))
 
 (defn at-level [unique level]
   (let [level-fn #(mod-at-level % level)]
@@ -41,15 +48,15 @@
   (r/sample-without-replacement n uniques))
 
 (defn new-unique-glove []
-  (-> (filterv (comp #{"gloves"} :base-type) uniques)
+  (-> (filterv (comp #{"gloves"} :base) uniques)
       r/sample))
 
 (defn new-unique-armour []
-  (-> (filterv (comp #{"armour"} :base-type) uniques)
+  (-> (filterv (comp #{"armour"} :base) uniques)
       r/sample))
 
 (comment
-  (-> (group-by :base-type uniques) ;TODO consider adding some unique armours
+  (-> (group-by :base uniques) ;TODO consider adding some unique armours
       (update-vals count))
 
   (let [levels 2] ;prints any uniques without levels defined up to {level}

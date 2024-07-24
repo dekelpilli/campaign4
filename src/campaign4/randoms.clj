@@ -45,9 +45,9 @@
 
 (m/defmethod randoms-factor :skills [_ _] 5)
 (m/defmethod randoms-preset :skills [_ _]
-  ["acrobatics" "animal handling" "arcana" "athletics" "brawn" "deception" "engineering" "history" "insight"
-   "intimidation" "investigation" "medicine" "nature" "perception" "performance" "persuasion" "religion"
-   "sleight of hand" "stealth" "survival"])
+  ["Acrobatics" "Animal handling" "Arcana" "Athletics" "Brawn" "Deception" "Engineering" "History" "Insight"
+   "Intimidation" "Investigation" "Medicine" "Nature" "Perception" "Performance" "Persuasion" "Religion"
+   "Sleight of hand" "Stealth" "Survival"])
 
 (m/defmethod randoms-factor :damage-types [_ [type]]
   (case (or type "all")
@@ -82,7 +82,7 @@
 
 (m/defmethod randoms-factor :weapon-categories [_ _] 2)
 (m/defmethod randoms-preset :weapon-categories [_ _]
-  ["club" "knife" "brawling" "axe" "spear" "caster" "dart" "bow" "sling" "sword" "flail" "polearm" "pick" "shield" "knife"])
+  ["Axe" "Bow" "Brawling" "Caster" "Category" "Club" "Dart" "Flail" "Hammer" "Knife" "Pick" "Polearm" "Sling" "Spear" "Sword" "Targe" "Trap"])
 
 (m/defmethod randoms-factor :gear-slots [_ _] 2)
 (m/defmethod randoms-preset :gear-slots [_ _]
