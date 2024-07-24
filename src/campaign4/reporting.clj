@@ -9,7 +9,7 @@
     [methodical.core :as m]
     [puget.printer :as pp])
   (:import
-    (name.fraser.neil.plaintext diff_match_patch$Diff diff_match_patch$Operation)))
+    (name.fraser.neil.plaintext diff_match_patch$Operation)))
 
 (def ^:private discord-username "\uD83D\uDCB0 Placeholder DMs \uD83D\uDCB0")
 
@@ -81,19 +81,21 @@
         (= :new change) (str "- " (ansi-colour effect :green))
         (= :removed change) (str "- " (ansi-colour effect :red))
         (:diff change) (doto (->> (mapv
-                              (fn [diff]
-                                (cond
-                                  (= diff_match_patch$Operation/EQUAL (.-operation diff)) (.-text diff)
-                                  (= diff_match_patch$Operation/INSERT (.-operation diff)) (ansi-colour (.-text diff) :green)
-                                  (= diff_match_patch$Operation/DELETE (.-operation diff)) (ansi-colour (.-text diff) :red)))
-                              (:diff change))
-                            str/join
-                            (str "- "))
+                                    (fn [diff]
+                                      (cond
+                                        (= diff_match_patch$Operation/EQUAL (.-operation diff)) (.-text diff)
+                                        (= diff_match_patch$Operation/INSERT (.-operation diff)) (ansi-colour (.-text diff) :green)
+                                        (= diff_match_patch$Operation/DELETE (.-operation diff)) (ansi-colour (.-text diff) :red)))
+                                    (:diff change))
+                                  str/join
+                                  (str "- "))
                          println)))
     mods))
 
 (m/defmethod format-loot :unique [{:keys [name base level mods]}]
-  (let [item (format-coll (mapv :effect mods))
+  (let [item (->> (remove (comp #{:removed} :change) mods)
+                  (mapv :effect)
+                  format-coll)
         changelog (when (> level 1)
                     (unique-changelog mods))]
     {:title (format "%s (level %s unique; %s)" name level base)
