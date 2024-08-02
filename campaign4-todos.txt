@@ -3,3 +3,5 @@ Talismans:
   - Consider out of combat triggering?
 Vials:
   - Can these stack? e.g. multiple Abundants (of same type or otherwise)
+
+Add "sturdiness" keyword for flat res (to distinguish from element res being 50%)?

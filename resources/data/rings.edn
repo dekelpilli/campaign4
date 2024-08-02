@@ -4,6 +4,9 @@
  {:name   "The Hardened"
   :effect "+1 physical damage reduction for each non-synergy ring worn."
   :points 4}
+ {:name   "The Dangerous"
+  :effect "+1 damage for each synergy ring type worn."
+  :points 5}
  {:name   "The Lone Wolf"
   :effect "+1 critical hit range while not wearing any synergy rings that are not The Lone Wolf."
   :points 5}

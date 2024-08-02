@@ -1,25 +1,32 @@
-[{:tags   #{:utility}
-  :effect "You may dash as a free action no more than [once] per combat."}
- {:tags   #{:utility}
-  :effect "You may dash as a free action no more than [once] per combat A."}
- {:tags   #{:utility}
-  :effect "You may dash as a free action no more than [once] per combat B."}
- {:tags   #{:utility}
-  :effect "You may dash as a free action no more than [once] per combat C."}
- {:tags   #{:utility}
-  :effect "You may dash as a free action no more than [once] per combat D."}
- {:tags   #{:survivability}
-  :points 2
-  :effect "+[1] Armour if you have poisoned or blinded an enemy in the last minute."}
- {:tags   #{:control}
-  :effect "No more than [once] per short rest, when you are hit by a melee or touch attack, the attacker must make a CON save or be poisoned (1min, repeat at turn starts)."}
- ;TODO replace stand-in mods with actually thematic mods
- ;TODO avoid deity specific thematic mods as those can be used for divine paths
- ;  instead, favour mods based on past characters (PCs and NPCs)
- {:tags   #{:survivability}
-  :origin :vuneta
-  :effect "Your barriers are twice as effective against damage from enemies you haven't damaged before."}
- {:tags   #{:survivability}
-  :origin :vuneta
-  :effect "You become immortal and win the game."} ;TODO remove
- ]
+[{:effect         "+{{level|level:+}} AB with unarmed weapon attacks while your highest ability score is Intelligence, Wisdom, or Charisma."
+  :tags           #{:accuracy}
+  :upgrade-points 3
+  :origin         :zed}
+ {:effect "When learning spells, you may learn maneuvers from the {{x|randoms:maneuvers-traditions}} tradition as if they are spells. You may activate these maneuvers by consuming a spell slot of level at least equal to the point cost of the maneuver."
+  :tags   #{:utility}
+  :origin :zed}
+ {:effect "If you know any concentration spells that can summon or create minions as an action, you may cast one such spell when you roll for initiative.{{level|level:literal:_: When you choose to do so, make your initiative roll with advantage.}}"
+  :tags   #{:utility}
+  :origin :zed}
+
+ {:effect "Creatures frightened by you have disadvantage on all attack rolls against {{x|literal:you:targets other than you}}."
+  :tags   #{:control}
+  :origin :urian}
+ {:effect "+{{levels|level:+1:2}} non-magical incoming healing."
+  :tags   #{:survivability}
+  :origin :urian}
+ {:effect         "+{{level|level:+}} Armour if you haven't been hit by an Armour attack since the end of your last turn."
+  :tags           #{:survivability}
+  :upgrade-points 3
+  :origin         :urian}
+
+ {:effect "Your amulet's proc roll is made with advantage if you scored a critical hit in the previous round."
+  :tags   #{:critical :utility}
+  :origin :truvat}
+ {:effect "Conditions you apply with a critical hit always last {{level|level:+}} round longer than usual (including persisting for a round after a successful saving throw)."
+  :tags   #{:critical :control}
+  :origin :truvat}
+ {:effect         "+{{level|level:+}} critical hit range against creatures you're grabbing on to (see Grab On maneuever)."
+  :tags           #{:critical}
+  :upgrade-points 2
+  :origin         :truvat}]

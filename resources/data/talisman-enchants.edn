@@ -83,7 +83,7 @@
   :effect   "If the contained creature has any on death effects, you have one additional failed death save slot."
   :tags     #{:survivability}}
  {:category "below"
-  :effect   "If the contained creature has any legendary resistances, you are considered to be proficient in all saving throws while power is active."
+  :effect   "If the contained creature has any legendary resistances, you are considered to be proficient in all saving throws while the power is active."
   :tags     #{:survivability}}
  {:category "below"
   :effect   "If the contained creature has any recharge abilities, the monster power activates when you score a natural critical hit."

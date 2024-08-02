@@ -1,9 +1,4 @@
-[{:type    :gold
-  :options ["Your next Gold will instead grant a Curios result with only wealth curios."
-            "Your next Gold result will grant 10 additional gold."
-            "If you choose, your next Gold result will grant only 1 gold, but will also grant an additional loot roll."
-            "You may choose to replace your next Gold result to instead double the sale value of one of your items/receptacles."]}
- {:type    :unique
+[{:type    :unique
   :options ["You may choose the base type of the unique from your next Unique result."
             "Your next Unique result will grant one additional Ancient Orb."
             "Your next Unique result will grant two unique items."
@@ -17,10 +12,6 @@
             "Your next Ring result will only grant non-synergy rings, but will grant three rings instead of two."
             "Your next Ring result cannot grant non-synergy rings you are wearing."
             "Your next Ring result cannot grant synergy rings other than synergy rings you are wearing."]}
- {:type    :enchanted
-  :options ["Your next Enchanted result will grant your choice of a glove or armour receptacle."
-            "Your next Enchanted result will grant two identical receptacles."
-            "Your next Enchanted result's receptacle will have a 'wealth' tagged modifier added to it."]}
  {:type    :curio
   :options ["Your next Curio result will grant an additional curio."
             "Your next Curio result will grant your choice of curios."

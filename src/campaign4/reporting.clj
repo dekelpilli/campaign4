@@ -31,7 +31,6 @@
     (and (:name loot)
          (:level loot)) :unique
     (:item loot) :vial
-    (:enchants loot) :enchanted
     (get loot "above") :talisman
     (:cr loot) :gem
     (and (:name loot)
@@ -71,7 +70,7 @@
   (let [colour (case colour
                  :red 31
                  :green 32)]
-    (str "\u001b[0;" colour "m" s "\u001b[0m")))
+    (str "\u001b[0;" colour ";40m" s "\u001b[0m")))
 
 (defn- unique-changelog [mods]
   (keep

@@ -2,11 +2,7 @@
   (:require
     [campaign4.dynamic-mods :as dyn]
     [campaign4.randoms :as randoms]
-    [campaign4.util :as u]
-    [randy.core :as r]))
-
-(def ^:private new-base-type (r/alias-method-sampler {"gloves" 2
-                                                      "armour" 3}))
+    [campaign4.util :as u]))
 
 (def ^:private _tags
   "Explicitly defined for better IDE prompting"
@@ -61,8 +57,3 @@
 (defn add-typed-enchants [base-type points-target]
   (->> (get enchants-fns base-type)
        (add-enchants-totalling points-target)))
-
-(defn random-enchanted [points-target]
-  (let [base-type (new-base-type)]
-    {:base     base-type
-     :enchants (add-typed-enchants base-type points-target)}))

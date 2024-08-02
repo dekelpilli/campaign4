@@ -4,21 +4,15 @@
     [campaign4.analytics :as analytics]
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
-    [campaign4.enchants :as e]
     [campaign4.omens :as omens]
     [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
     [campaign4.uniques :as uniques]
-    [campaign4.vials :as vials]
-    [randy.core :as r]
-    [randy.rng :as rng]))
+    [campaign4.vials :as vials]))
 
 (def loot-actions
-  [{:id          :gold
-    :description "20-30 gold"
-    :action      (fn gold-loot [] (str (rng/next-int @r/default-rng 20 31) " gold"))}
-   {:id          :unique
+  [{:id          :unique
     :description "Unique + 1 ancient orb"
     :action      (fn unique-loot [] [(-> (uniques/new-unique)
                                          (uniques/at-level 1))
@@ -29,9 +23,6 @@
    {:description "2 distinct rings"
     :id          :ring
     :action      (fn ring-loot [] (rings/new-rings 2))}
-   {:id          :enchanted
-    :description "Enchanted Receptacle with at least 3 points of mods"
-    :action      (fn enchanted-receptacle [] (e/random-enchanted 3))}
    {:description "Crafting consumable or shrine"
     :id          :crafting
     :action      crafting/crafting-loot}

@@ -78,6 +78,6 @@
   (-> (load-mod {:effect "You gain {{x|random:feats}}"})
       format-mod)
 
-  (-> (load-mod {:effect "Recover a {{level|level:+|ordinal}}-level spell slot when you roll for initiative.{{level|level:literal: :If this is higher than your maximum spell slot, recover your maximum spell slot instead.}}"
+  (-> (load-mod {:effect "Recover a {{level|level:+|ordinal}}-level spell slot when you roll for initiative.{{level|level:literal:_: If this is higher than your maximum spell slot, recover your maximum spell slot instead.}}"
                  :tags   #{:magic}})
       (format-mod {:level 3})))

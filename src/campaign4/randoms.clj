@@ -100,6 +100,13 @@
   ["prone" "poisoned" "petrified" "invisible" "grappled" "frightened" "restrained" "deafened" "charmed" "blinded"
    "weakened" "taunted" "staggered" "sluggish" "slowed" "rattled" "dominated" "debilitated" "dazed" "confused"])
 
+(m/defmethod randoms-factor :maneuver-traditions [_ _] 2)
+(m/defmethod randoms-preset :maneuver-traditions [_ _]
+  ["Comedic Jabs" "Eldritch Blackguard" "Gallant Heart" "Adamant Mountain" "Arcane Knight" "Beast Unity" "Biting Zephyr"
+   "Mirror’s Glint" "Mist and Shade" "Rapid Current" "Razor’s Edge" "Sanguine Knot" "Spirited Steed" "Tempered Iron"
+   "Tooth and Claw" "Unending Wheel"])
+
+
 (m/defmethod randoms-factor :literal [_ _] 1)
 (m/defmethod randoms-preset :literal [_ values] (vec values))
 
