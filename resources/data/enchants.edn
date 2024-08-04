@@ -102,7 +102,7 @@
   :tags   #{:utility}}
  {:effect "You may cast {{x|random:cantrips}} {{level|level:+:times}} per long rest."
   :tags   #{:magic}}
- #_{:effect "This item sells for an extra {{level|level:+}}d20 gold. You only roll after the item is sold." ;TODO remove?
+ {:effect "This item sells for an extra {{level|level:+}}d20 gold. You only roll after the item is sold."
   :tags   #{:wealth}}
  {:effect "+{{level|level:+:5}} to your loot rolls on loot rolls obtained via positive random encounters."
   :tags   #{:wealth}}

@@ -31,7 +31,7 @@ You can use divinity dust to progress your progress in a divinity path you have 
 - Receptacles can inherently swap the enchantments they hold with those on a compatible item.
 
 ### Moving mods
-Can only move mods on weapons to weapons, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
+Can only move mods on gloves to gloves, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
 
 ### Enchant rules
 - The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire)
@@ -47,13 +47,10 @@ Can only move mods on weapons to weapons, and mods on armours to armours. Recept
 - You can see a unique's next level for free in towns
 
 ### Relics
-Relics are equipment that can be levelled up with relic dust. Each relic starts at level 1, and can be levelled up 5 times for 1 dust, and beyond this point for 3 dust per level. 
-
-When relics are sold, dust for the first 5 level ups will be recouped. Levels beyond this point will not factor into the sale result of the relic, and it is recommended that you only level relics beyond this point once all of your relics are at maximum level.
-
-Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). 
-
-A relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. 
+- Relics are equipment that can be levelled up with relic dust. Each relic starts at level 1, and can be levelled up 5 times for 1 dust, and beyond this point for 3 dust per level. 
+- When relics are sold, dust for the first 5 level ups will be recouped. Levels beyond this point will not factor into the sale result of the relic, and it is recommended that you only level relics beyond this point once all of your relics are at maximum level.
+- Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). 
+- A relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. 
 
 ### Vials
 - Vials are consumable items that alter the behaviour of modifiers on your items. These can either be drunk to apply an effect on you, or applied to an item's modifiers to alter their behaviour.
@@ -78,23 +75,24 @@ A relic can be taken to a Diviner in any city to learn (for free) the options fo
 - You must decide if the generated relic will be a weapon or an armour before you turn in sets as this potentially influences mods on the relic.
 - Players draw 4 cards per loot result.
 
+[//]: # (TODO gold for vials? crafting items?)
 ### Vendor valuations
 - Helmets: N/A
 - Rings: N/A
 - Curios: N/A
-- Mundane bases: 2
+- Mundane bases: N/A
 - Vials: 10 (other than essence/cleansing, which are 1)
 - Crafting items: 8
-- Unique effect: 15
-- Amulets: 10 * CR capacity
-- Special bases: 25
 - Relic effects: 1 relic dust, + dust cost of levelling, to a maximum of 5 (total max of 6 relic dust)
 
 ### Sales and services
 - Orbs of Disavowment: 10
 - Vial of Cleansing: 2
 - Vial of Essence: 5
-- Mundanes: 5
+- Catalysts: 100
+- Relic dust: 100
+- Ancient orb: 40
+- Mundanes: Free (negligible cost)
 - Empty receptacles/moving modifiers: Free
 
 ### Tags
@@ -108,13 +106,3 @@ A relic can be taken to a Diviner in any city to learn (for free) the options fo
   - Magic: Grants bonuses to spell slots, concentration, spell levels, spells known, non-accuracy/damage buffs to spell behaviour
   - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
   - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points, ability score improvements
-
-### Journey Activities & Travel
-- Which journey activity is performed is decided at the start of the day by each player, after learning the weather
-- If players short rest during a day they perform journey activities, half a day of travel is added, even if they short rest more than once
-- Journey activity DCs are increased by 1 for each short rest already performed that day
-
-### Barrier
-- Whenever you take damage, if it matches a barrier you have, it depletes the barrier before depleting your hit points. If it matches multiple barriers, you can choose which barrier is depleted first.
-- Your barrier values are set to their maximums at the end of your turn and when you roll for initiative.
-- Whenever you gain/lose barrier, you gain/lose an equal amount of barrier (min 0).
