@@ -24,15 +24,15 @@
             :tags   #{:magic}}]}
  {:name   "Eternal Vigour"
   :info   "Improves your longevity in combat through various avenues."
-  :levels [{:effect "+2 barrier, and +2 barrier for each previous time you've been hit per round."
+  :levels [{:effect "+2 barrier, and +2 barrier for each previous time you've been hit per round." ;TODO replace
             :tags   #{:survivability}}
-           {:effect "You have +3 to maximum hit points, and you have +1 maximum hit points per armour relic level."
+           {:effect "While you have at least one non-depleted barrier, +1 sturdiness for each barrier type you have."
             :tags   #{:survivability}}
            {:effect "Armour attacks against you need to score at least 9 to be considered a standard success."
             :tags   #{:survivability}}
            {:effect "You take no additional damage from critical hits."
             :tags   #{:survivability}}
-           {:effect "Once per round when you fail a saving throw against an effect that would cause a condition, you may attempt the save again."
+           {:effect "Once per round when you fail a saving throw against an effect that would cause a condition, you may attempt the save again." ;TODO replace
             :tags   #{:survivability}}]}
  {:name   "Perpetual Learning"
   :info   "Improves your ability to acquire knowledge through skill checks, and improves Divination spellcasting."
@@ -48,16 +48,16 @@
             :tags   #{:magic :survivability :utility :accuracy}}]}
  {:name   "Unrelenting Fortune"
   :info   "Improves your luck and your ability to acquire better items."
-  :levels [{:effect "The quantity of crafting items and tarot cards you find from loot rolls is increased by 1." ;TODO crafting items are now only 1, rethink?
+  :levels [{:effect "You may add or subtract 5 from any loot roll you make."
             :tags   #{:wealth}}
-           {:effect "The cost of upgrading your relic levels is reduced by 10%." ;TODO complicates relic selling, rethink?
-            :tags   #{:wealth}}
-           {:effect "Your chance to fracture helmets with Orbs of Personality is halved. When mending helmets: -5% chance to keep modifiers the same, +5% chance to upgrade."
+           {:effect "Whenever you roll a 1 on any die, you may reroll that die. You must then accept that result"
+            :tags   #{:utility :damage :survivability}}
+           {:effect "Whenever you obtain a loot result you have specialised in, roll a d4. On a 4, gain a loot roll."
             :tags   #{:wealth}}
            {:effect "You may cast Fortune's Favour at any spell level as a free action on your turn once per round. You can use no more than 10 spell slot levels on this per long rest."
             :tags   #{:magic}}
-           {:effect "Your amulet's trait is always active. When rolling the trait in an amulet, you may choose for the trait to belong to a creature up to 2 CR higher." ;TODO replace
-            :tags   #{:utility}}]}
+           {:effect "For every 2 loot specialisations you unlock, unlock a further one that does not count towards this mod. This works retroactively and for future specialisations, to a minimum of +1 specialisation."
+            :tags   #{:wealth}}]}
  {:name   "Wrathful Judgement"
   :info   "Grants a mark and improves your marks, with a focus on revenge."
   :levels [{:effect "Creatures of your choice that damage you, or land a killing blow against an ally of yours, become marked by Brand of Vengeance for a minute. Creatures marked with BoV have +1 damage taken from you."

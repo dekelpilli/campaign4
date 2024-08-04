@@ -1,3 +1,4 @@
+;TODO replace gold costs?
 [{:cost         "20g (each)"
   :participants "any"
   :rules        "Each paying player gets a disadvantaged d100 loot roll, granting the reward twice."}

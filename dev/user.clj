@@ -68,7 +68,8 @@
     [::e/survivability
      ::e/utility
      ::e/utility
-     ::e/negated-damage])
+     ::e/negated-damage]
+    3)
 
   (paths/progress-path! ::u/nailo)
   (paths/new-path-progress! ::u/nailo ::paths/subjective-truth)

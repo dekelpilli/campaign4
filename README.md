@@ -14,6 +14,15 @@
 ### Curios
 Curios can only be used to fill a receptacle with weapon or armour enchantments.
 
+Curio-crafted items can be sold for a Catalyst. Catalysts can be used to improve subsequent Curio crafts, increasing their points total beyond the default 3:
+
+| Catalysts required | Item points |
+|--------------------|-------------|
+| 0                  | 3           |
+| 1                  | 4           |
+| 3                  | 5           |
+| 6                  | 6           |
+
 ### Divine Dust
 You can use divinity dust to progress your progress in a divinity path you have started, or start a new one if you haven't started one/have finished all you have started.
 
@@ -34,12 +43,17 @@ Can only move mods on weapons to weapons, and mods on armours to armours. Recept
 - Synergy rings = rings whose name starts with "The" = rings whose modifier interacts with other rings
 
 ### Uniques
-- Unique items are, lore-wise, failed attempts creating relics, or at replicating items from myths/folk stories
 - Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level
 - You can see a unique's next level for free in towns
 
 ### Relics
-Relics are equipment that can be levelled up with gold. Each relic starts at level 1, and can be levelled up 5 times (up to level 6). Each level costs 100gp. Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). Any relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. When relics are sold, all gold invested in them will be refunded 100%.
+Relics are equipment that can be levelled up with relic dust. Each relic starts at level 1, and can be levelled up 5 times for 1 dust, and beyond this point for 3 dust per level. 
+
+When relics are sold, dust for the first 5 level ups will be recouped. Levels beyond this point will not factor into the sale result of the relic, and it is recommended that you only level relics beyond this point once all of your relics are at maximum level.
+
+Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). 
+
+A relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. 
 
 ### Vials
 - Vials are consumable items that alter the behaviour of modifiers on your items. These can either be drunk to apply an effect on you, or applied to an item's modifiers to alter their behaviour.
@@ -62,7 +76,7 @@ Relics are equipment that can be levelled up with gold. Each relic starts at lev
 - Players may turn in tarot sets with exactly 3 cards.
 - The base result of a tarot turn in is a relic. It has 1 base (starting) mod from the thematic mod pool and a random mod pool with mods taken from the relic mod pool.
 - You must decide if the generated relic will be a weapon or an armour before you turn in sets as this potentially influences mods on the relic.
-- Players draw 2 cards per loot result.
+- Players draw 4 cards per loot result.
 
 ### Vendor valuations
 - Helmets: N/A
@@ -74,8 +88,7 @@ Relics are equipment that can be levelled up with gold. Each relic starts at lev
 - Unique effect: 15
 - Amulets: 10 * CR capacity
 - Special bases: 25
-- Magical item effects: total mod points in the effect, max 40
-- Relic effects: 60 + cost of levelling
+- Relic effects: 1 relic dust, + dust cost of levelling, to a maximum of 5 (total max of 6 relic dust)
 
 ### Sales and services
 - Orbs of Disavowment: 10

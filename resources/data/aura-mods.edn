@@ -14,7 +14,7 @@
  {:effect         "Creatures killed within {{level|level:+:5}} feet of you have 30% chance to generate an additional loot roll."
   :upgrade-points 2
   :tags           #{:wealth}}
- {:effect "Whenever you cast a spell centered on a space or a single creature, creatures within {{level|level:+:10:20}} feet of that space or creature drop 1 gold whenever they are hit by a spell attack, including potentially from that spell, until the end of your next turn."
+ #_{:effect "Whenever you cast a spell centered on a space or a single creature, creatures within {{level|level:+:10:20}} feet of that space or creature drop 1 gold whenever they are hit by a spell attack, including potentially from that spell, until the end of your next turn." ;TODO remove?
   :tags   #{:wealth :magic}}
  {:effect         "Creatures of your choice within {{level|level:+:5}} feet of you gain +1 damage for each creature currently affected by this aura."
   :upgrade-points 2

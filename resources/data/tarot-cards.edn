@@ -64,6 +64,7 @@
   :order  21
   :effect "The resulting relic will have an additional starting modifier taken from the Talisman 'Unconditional' slot (slot 3). This modifier counts as if it is on your Talisman."}
 
+ ;TODO replace gold reward. % chance for relic dust?
  {:name   "X of Swords"
   :order  40
   :effect "You gain {X} additional gold when turning in this set. Mods in the resulting relic's mod pool are advantaged towards 'damage' and 'accuracy' tagged modifiers."}

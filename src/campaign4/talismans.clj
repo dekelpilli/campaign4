@@ -38,6 +38,7 @@
                                1 0.1
                                2 0.6
                                3 0.85
+                               4 1
                                nil)]
     (loop [upgrades 1
            upgrade-threshold upgrade-threshold]
@@ -58,8 +59,8 @@
   (let [avg (fn [c] (double (/ (apply + c) (count c))))
         freqs (fn [c] (->> (frequencies c)
                            (into (sorted-map))))]
-    (->> (range 1 4)
-         (mapv (fn [n] (repeatedly 100000 #(new-gem n))))
+    (->> (range 1 5)
+         (mapv (fn [n] (repeatedly 10000 #(new-gem n))))
          (mapv (fn [c]
                  (let [c (mapv :cr c)]
                    {:freqs (freqs c)

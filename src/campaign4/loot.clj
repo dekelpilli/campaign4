@@ -4,7 +4,6 @@
     [campaign4.analytics :as analytics]
     [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
-    [campaign4.omens :as omens]
     [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
@@ -44,12 +43,12 @@
   (let [width (->> (count loot-actions)
                    (/ 100)
                    int)
-        omens-width (mod 100 width)]
-    (loop [max-roll omens-width
+        specialised-width (mod 100 width)]
+    (loop [max-roll specialised-width
            [action & actions] loot-actions
-           table (sorted-map omens-width {:description "Reroll, granting an omen"
-                                          :id          :omen
-                                          :action      (constantly "Reroll, granting an omen. If this slot is rolled again, or if the reroll also grants an omen, gain an omen for a loot type where you don't currently have an omen and resolve the roll as normal.")})]
+           table (sorted-map specialised-width {:description "Specialised loot"
+                                                :id          :specialised
+                                                :action      (constantly "Choose a loot table slot you have specialised and gain a loot result of that type. If you have none, gain an advantaged loot roll instead.")})]
       (if action
         (let [max-roll (+ max-roll width)]
           (->> (assoc table max-roll action)
@@ -57,14 +56,13 @@
         table))))
 
 (defn loot-result [n]
-  (let [{:keys [id action]
+  (let [{:keys [action]
          :as   result} (-> (subseq loot-table >= n)
                            first
                            val
                            (assoc :n n))]
     (-> (dissoc result :action)
-        (assoc :result (action))
-        (cond-> (contains? loot-table n) (assoc :omen (omens/new-omen id))))))
+        (assoc :result (action)))))
 
 (defn loot! [n]
   (let [{:keys [id]

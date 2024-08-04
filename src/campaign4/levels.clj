@@ -28,8 +28,10 @@
       (or (empty? max-levels)
           (> (apply max max-levels) level)))))
 
-(m/defmethod level-value :+ [_ level [step starting-value]]
-  (let [step (or (checked-parse-num step) 1)]
+(m/defmethod level-value :+ [_ level [step starting-value level-cap]]
+  (let [level (-> level
+                  level-cap (max (parse-long level-cap)))
+        step (or (checked-parse-num step) 1)]
     (+ (or (checked-parse-num starting-value) step)
        (* step (dec level)))))
 
@@ -41,7 +43,7 @@
           (str/starts-with? s "_") (subs 1)))
 
 (m/defmethod level-value :literal [_ level vals]
-  (let [vals (into [] (keep literal-arg) vals)
+  (let [vals (mapv literal-arg vals)
         idx (dec level)]
     (if (< idx (count vals))
       (nth vals idx)

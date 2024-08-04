@@ -1,5 +1,6 @@
 [{:effect         "+{{level|level:+}} AB with unarmed weapon attacks while your highest ability score is Intelligence, Wisdom, or Charisma."
   :tags           #{:accuracy}
+  :points         2
   :upgrade-points 3
   :origin         :zed}
  {:effect "When learning spells, you may learn maneuvers from the {{x|randoms:maneuvers-traditions}} tradition as if they are spells. You may activate these maneuvers by consuming a spell slot of level at least equal to the point cost of the maneuver."
@@ -15,10 +16,10 @@
  {:effect "+{{levels|level:+1:2}} non-magical incoming healing."
   :tags   #{:survivability}
   :origin :urian}
- {:effect         "+{{level|level:+}} Armour if you haven't been hit by an Armour attack since the end of your last turn."
-  :tags           #{:survivability}
-  :upgrade-points 3
-  :origin         :urian}
+ {:effect "+{{level|level:+}} Armour if you haven't been hit by an Armour attack since the end of your last turn."
+  :tags   #{:survivability}
+  :points 3
+  :origin :urian}
 
  {:effect "Your amulet's proc roll is made with advantage if you scored a critical hit in the previous round."
   :tags   #{:critical :utility}

@@ -37,7 +37,7 @@
                                     :tag        (keyword s)})))
                 (keys curios))))))
 
-(defn use-curios [base-type curio-kws]
+(defn use-curios [base-type curio-kws points]
   (let [weightings (->> (mapv (curios base-type) curio-kws)
                         (reduce
                           (fn [acc {:keys [multiplier tag]}]
@@ -63,4 +63,4 @@
                                        new-weighting (* (or weighting-multi 1) weighting)]
                                    (assoc e :weighting (or new-weighting weighting)))))
                          u/weighted-sampler)]
-    (e/add-enchants-totalling (count curio-kws) enchants-fn)))
+    (e/add-enchants-totalling points enchants-fn)))
