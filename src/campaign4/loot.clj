@@ -7,48 +7,43 @@
     [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
-    [campaign4.uniques :as uniques]
-    [campaign4.vials :as vials]))
+    [campaign4.uniques :as uniques]))
 
 (def loot-actions
-  [{:id          :unique
-    :description "Unique + 1 ancient orb"
-    :action      (fn unique-loot [] [(-> (uniques/new-unique)
-                                         (uniques/at-level 1))
-                                     {:name   "Ancient Orb"
-                                      :effect "Reroll a unique into a random different unique item at level 1."}])}
-   {:id     :talisman
-    :action talismans/new-talisman}
-   {:description "2 distinct rings"
-    :id          :ring
-    :action      (fn ring-loot [] (rings/new-rings 2))}
-   {:description "Crafting consumable or shrine"
+  [{:description "Crafting loot (a vial, shrine, or orb) + reroll"
     :id          :crafting
     :action      crafting/crafting-loot}
    {:id          :curio
     :description "Receptacle + 4 Curios"
     :action      (fn curios-loot [] (-> (repeatedly 4 curios/new-curio)
                                         vec))}
-   {:id     :vial
-    :action vials/new-vial}
+   {:id     :divine-dust
+    :action (constantly "Divine Dust")}
    {:id     :helmet
     :action (constantly "One helmet (character specific)")} ;TODO
+   {:description "2 distinct rings"
+    :id          :ring
+    :action      (fn ring-loot [] (rings/new-rings 2))}
+   {:id     :talisman
+    :action talismans/new-talisman}
    {:id          :tarot
     :description "Draw four tarot cards"
     :action      (constantly "Draw four tarot cards")}
-   {:id     :divine-dust
-    :action (constantly "Divine Dust")}])
+   {:id          :unique
+    :description "Unique + 1 ancient orb"
+    :action      (fn unique-loot [] [(-> (uniques/new-unique)
+                                         (uniques/at-level 1))
+                                     {:name   "Ancient Orb"
+                                      :effect "Reroll a unique into a random different unique item at level 1."}])}])
 
 (def loot-table
   (let [width (->> (count loot-actions)
                    (/ 100)
                    int)
-        specialised-width (mod 100 width)]
-    (loop [max-roll specialised-width
+        remainder-width (mod 100 width)]
+    (loop [max-roll remainder-width
            [action & actions] loot-actions
-           table (sorted-map specialised-width {:description "Specialised loot"
-                                                :id          :specialised
-                                                :action      (constantly "Choose a loot table slot you have specialised and gain a loot result of that type. If you have none, gain an advantaged loot roll instead.")})]
+           table (sorted-map)]
       (if action
         (let [max-roll (+ max-roll width)]
           (->> (assoc table max-roll action)

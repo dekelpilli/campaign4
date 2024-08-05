@@ -4,8 +4,8 @@
  {:name   "The Hardened"
   :effect "+1 physical damage reduction for each non-synergy ring worn."
   :points 4}
- {:name   "The Dangerous"
-  :effect "+1 damage for each synergy ring type worn."
+ {:name   "The Soldier"
+  :effect "+1 damage for each synergy ring type you are wearing."
   :points 5}
  {:name   "The Lone Wolf"
   :effect "+1 critical hit range while not wearing any synergy rings that are not The Lone Wolf."
@@ -17,8 +17,11 @@
   :effect "+5 feet to all of your speed types for each 'The Speedster' ring worn."
   :points 4}
  {:name   "The Prosperous"
-  :effect "+1 gold found for each 'The Prosperous' ring worn."
-  :points 1}
+  :effect "Gain 1 gold from each loot roll for each 'The Prosperous' ring worn."
+  :points 2}
+ {:name   "The Journeyman"
+  :effect "+1 to journey activity checks for each non-synergy ring type you are wearing."
+  :points 3}
  {:name   "The Simpleton"
   :effect "Your non-synergy rings' cost decreases by 1 point. Your synergy rings' cost increases by 2."
   :points 0} ;2 if you include the ring's effect once
@@ -60,4 +63,7 @@
   :points 1}
  {:name   "Scapegoat"
   :effect "When a creature within 5 feet of you takes damage, you may choose for them to take no damage instead. You then take an equal amount of true damage."
-  :points 2}]
+  :points 2}
+ {:name   "Jeweller"
+  :effect "Whenever you obtain a loot roll, you may roll a d4. On a roll of 4, gain a ring result instead."
+  :points 3}]

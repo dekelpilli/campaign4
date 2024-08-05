@@ -105,10 +105,13 @@
   {:title (format "%s (level %s relic; %s)" name level base)
    :body  (format-coll (mapv :formatted mods))})
 
-(m/defmethod format-loot :vial [{:keys [name character item]}]
+(defn- format-vial [{:keys [name character item]}]
   {:title (format "%s (vial)" name)
    :body  (format "### Effects when drunk:\n%s\n### Effects when applied to item:\n%s"
                   character item)})
+
+(m/defmethod format-loot :vial [loot]
+  (format-vial loot))
 
 (m/defmethod format-loot :talisman [{:strs [above below unconditional]}]
   {:title "Talisman"
@@ -122,11 +125,13 @@
    :body  (->> (format-coll entries)
                (format "```%s```"))})
 
-(m/defmethod format-loot :crafting [{:keys [name effect]}]
-  {:title (str name (if (str/includes? name "Shrine")
-                      ""
-                      " (crafting consumable)"))
-   :body  effect})
+(m/defmethod format-loot :crafting [{:keys [character item name effect] :as loot}]
+  (if (and character item)
+    (format-vial loot)
+    {:title (str name (if (str/includes? name "Shrine")
+                        ""
+                        " (crafting consumable)"))
+     :body  effect}))
 
 (m/defmethod format-loot :curios [curios]
   {:title "Curios"

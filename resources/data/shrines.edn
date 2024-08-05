@@ -1,0 +1,12 @@
+[{:name   "Shrine of Annexation"
+  :effect "Add a random mod to a magical item."}
+ {:name   "Shrine of Empowerment"
+  :effect "Upgrade a random upgradeable mod on a magical item."}
+ {:name   "Shrine of Balance"
+  :effect "Remove a random non-locked mod from a magic item and replace it with new random mods at least equal in point value."}
+ {:name   "Shrine of Compensation"
+  :effect "Remove a random non-locked mod from a magic item with at least 2 mods (and 1 upgradeable) and upgrade other mods on the item (randomly) to compensate for the mod points lost."}
+ {:name   "Shrine of Consumption"
+  :effect "Add a random upgradeable modifier, doubled, to a weapon. Increases sell value by 10, but also add the following locked modifier: '-1 die size with damage'."}
+ {:name   "Shrine of Shattering"
+  :effect "Creates a copy of a magic item. On each of these copies, each mod has a 50% chance to be removed."}]
