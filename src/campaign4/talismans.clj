@@ -6,8 +6,8 @@
     [randy.core :as r]
     [randy.rng :as rng]))
 
-(def talisman-enchants-by-category
-  (->> (u/load-data :talisman-enchants)
+(def talisman-mods-by-category
+  (->> (u/load-data :talisman-mods)
        (reduce
          (fn [acc {:keys [category] :as e}]
            (update acc category
@@ -38,7 +38,7 @@
                                1 0.1
                                2 0.6
                                3 0.85
-                               4 1
+                               4 1.05
                                nil)]
     (loop [upgrades 1
            upgrade-threshold upgrade-threshold]
@@ -79,5 +79,5 @@
            r/sample))
 
 (defn new-talisman []
-  (update-vals talisman-enchants-by-category
+  (update-vals talisman-mods-by-category
                (comp dyn/format-mod r/sample)))

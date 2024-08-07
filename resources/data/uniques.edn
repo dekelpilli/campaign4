@@ -72,7 +72,7 @@
   :base "armour"
   :mods [{:effect "Your hit die size is increased by 2. This increases your maximum hit points."
           :tags   #{:survivability}}
-         {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, regenerate 2 hit points."
+         {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, heal 2 hit points."
           :tags   #{:survivability}}
          {:effect "You may add your %sStrength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
           :levels [""
@@ -302,7 +302,7 @@
   :mods [{:effect "+%d physical barrier."
           :levels [2 4]
           :tags   #{:survivability}}
-         {:effect "Regenerate 1 hit point when you block an attack."
+         {:effect "Heal 1 hit point when you block an attack."
           :tags   #{:survivability}}
          {:effect "You may make an opportunity attack against creatures within 5 feet of you when you block their melee attacks."
           :tags   #{:damage}}

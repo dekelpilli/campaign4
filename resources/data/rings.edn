@@ -2,7 +2,7 @@
   :effect "+2 to Medicine checks for stabilising allies for each ring the ally is wearing."
   :points 4}
  {:name   "The Hardened"
-  :effect "+1 physical damage reduction for each non-synergy ring worn."
+  :effect "+1 sturdiness against physical damage for each non-synergy ring worn."
   :points 4}
  {:name   "The Soldier"
   :effect "+1 damage for each distinct synergy ring you are wearing."

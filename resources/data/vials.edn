@@ -8,7 +8,7 @@
   :character "+2 barrier while your items have at least one modifier that grants you Armour."
   :item      "+2 barrier while this item has at least one modifier that grants Armour to the wearer, including conditional modifiers regardless of if they apply."}
  {:name      "Hale"
-  :character "You regenerate 1 hit point at the start of each turn in combat for each item you're wearing that has modifiers that relate to healing, regeneration, and temporary hit points."
+  :character "You heal 1 hit point at the start of each turn in combat for each item you're wearing that has modifiers that relate to healing, regeneration, and temporary hit points."
   :item      "+1 to the values of all modifiers on this item that relate to healing, regeneration, and temporary hit points."}
  {:name      "Selfish"
   :character "Outgoing healing modifiers on your items are converted to incoming healing. Incoming healing modifiers on your items have +1 to their values, not including converted modifiers."

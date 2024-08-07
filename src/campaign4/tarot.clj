@@ -174,7 +174,7 @@
                      "The Emperor" (relic-mod-of-tag starting base-type #{:damage :accuracy})
                      "The Chariot" (relic-mod-of-tag starting base-type #{:utility :control})
                      "Wheel of Fortune" (relic-mod-of-tag starting base-type #{:critical :wealth})
-                     "The World" (->> (talismans/talisman-enchants-by-category "unconditional")
+                     "The World" (->> (talismans/talisman-mods-by-category "unconditional")
                                       r/sample)
                      nil)]
         (update acc :starting conj mod)

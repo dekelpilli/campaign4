@@ -132,7 +132,7 @@
   :tags   #{:survivability}}
  {:effect "When you deliver a Killing Blow, grant {{level|level:+:5}} points of magical healing to yourself or a creature you can see."
   :tags   #{:survivability :magic}}
- {:effect "While up, regenerate {{level|level:+}} hit point at the start of each round of combat."
+ {:effect "While up, heal {{level|level:+}} hit point at the start of each round of combat."
   :tags   #{:survivability}}
  {:effect "+{{level|level:+:3}} to maximum HP."
   :tags   #{:survivability}}
