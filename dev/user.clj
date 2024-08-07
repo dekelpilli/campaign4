@@ -15,15 +15,17 @@
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
     [org.fversnel.dnddice.core :as d]
-    [puget.printer :refer [cprint]]
-    [randy.rng :as rng]))
+    [puget.printer :refer [cprint] :as pp]
+    [randy.rng :as rng])
+  (:import
+    (java.awt Toolkit)
+    (java.awt.datatransfer StringSelection)))
 
 (require
   '[randy.core :as r]
   '[campaign4.crafting :as crafting]
   '[campaign4.helmets :as helmets]
-  '[campaign4.randoms :as randoms]
-  '[campaign4.vials :as vials])
+  '[campaign4.randoms :as randoms])
 
 (defmacro cp [] `(cprint *1))
 
@@ -38,6 +40,16 @@
 (defmacro r!
   ([] `(do (reporting/report-loot! *1) *1))
   ([x] `(let [x# ~x] (reporting/report-loot! x#) x#)))
+
+(defn copy! [o]
+  (let [clipboard (.getSystemClipboard (Toolkit/getDefaultToolkit))
+        s (pp/pprint-str o)
+        selection (StringSelection. s)]
+    (.setContents clipboard selection selection)))
+
+(comment
+  (pp/pprint-str *1)
+  (copy! *1))
 
 (defn roll [n x]
   (-> (str n \d x)
@@ -107,6 +119,12 @@
     {:filter {:name ["Update relic name"]}}
     (constantly {:name "new relic name"}))
 
+  (->> (helmets/qualified-char->mods ::u/nailo)
+       (mapv #(-> (dissoc % :template)
+                  (assoc :level 1)))
+       copy!)
+  (helmets/new-helmet ::u/nailo)
+
   (talismans/new-gem 0)
 
   (u/insight-truth 5 30)
@@ -114,9 +132,4 @@
 
   (roll 10 4)
   (cp)
-  (r!)
-
-  ;---------------------------------------------------------------------------
-
-  (dbd/-reload-relics!)
-  (dbd/insert-monsters!))
+  (r!))

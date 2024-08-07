@@ -29,8 +29,8 @@
           (> (apply max max-levels) level)))))
 
 (m/defmethod level-value :+ [_ level [step starting-value level-cap]]
-  (let [level (-> level
-                  level-cap (max (parse-long level-cap)))
+  (let [level (cond-> level
+                      level-cap (max (parse-long level-cap)))
         step (or (checked-parse-num step) 1)]
     (+ (or (checked-parse-num starting-value) step)
        (* step (dec level)))))

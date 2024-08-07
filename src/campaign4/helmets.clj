@@ -1,86 +1,79 @@
 (ns campaign4.helmets
   (:require
+    [campaign4.dynamic-mods :as dyn]
+    [campaign4.levels :as levels]
     [campaign4.util :as u]
+    [clojure.string :as str]
     [randy.core :as r]))
 
 (def ^:private mod-mending-result (r/alias-method-sampler {:upgrade 3 :remove 3 :nothing 4}))
+(def ^:private specialised-mending? #{::u/nailo})
 
-(def character-enchants
-  (as-> (u/load-data :character-enchants) $
-        (group-by :character $)
-        (update-vals $ #(mapv (fn [e] (-> e
-                                          (dissoc :character)
-                                          (update :tags set)))
-                              %))))
+(def character-mods (-> (u/load-data :character-mods)
+                        (update-vals #(mapv (fn [mod]
+                                              (-> (dyn/load-mod mod)
+                                                  (update :points (fnil identity 1))))
+                                            %))))
+
+(def qualified-char->mods (comp character-mods keyword name))
+
+(defn new-helmet [character]
+  (when-let [mods (qualified-char->mods character)]
+    {:character (-> character name str/capitalize)
+     :mods      (loop [total 0
+                       chosen []
+                       [{:keys [points] :as mod} & mods] (r/shuffle mods)]
+                  (let [total (+ points total)]
+                    (if (>= total 2)
+                      (conj chosen (-> (dyn/format-mod mod)
+                                       (dissoc :template :formatted)))
+                      (recur total (conj chosen mod) mods))))}))
+
+(defn- mod-points [{:keys [points upgrade-points level]}]
+  (let [upgrade-points (or upgrade-points points)]
+    (+ points
+       (* (dec level) upgrade-points))))
+
+(defn fractured-chance [points]
+  (-> (- points 2.2)
+      Math/atan
+      (- 1)
+      (* 100)
+      int
+      (max 0)))
+
+(defn- upgrade-helm-mod [existing-mods upgradeable-mods]
+  (let [{:keys [points] :as upgraded-enchant} (r/sample upgradeable-mods)
+        fracture-chance (if (= points 1)
+                          (-> (transduce (map mod-points) points existing-mods)
+                              fractured-chance)
+                          0)]
+    {:mod             upgraded-enchant
+     :fracture-chance fracture-chance}))
 ;
-;(defn new-helmet []
-;  (when-let [enchants (p/>>item "Character name:" character-enchants)]
-;    (loop [total 0
-;           chosen []
-;           [{:keys [points] :as enchant} & enchants] (r/shuffle enchants)]
-;      (let [total (+ points total)]
-;        (if (>= total 20)
-;          (conj chosen enchant)
-;          (recur total (conj chosen enchant) enchants))))))
-;
-;(defn- select-enchants [character-enchants]
-;  (not-empty (p/>>distinct-items "Present enchants:" character-enchants)))
-;
-;(defn- get-present-enchants []
-;  (some-> (p/>>item "Character name:" character-enchants) select-enchants))
-;
-;(defn- enchant-levels [enchants]
-;  (->> enchants
-;       (map (fn [{:keys [upgradeable effect] :as enchant}]
-;              (assoc enchant
-;                :level (if upgradeable
-;                         (parse-long (p/>>input (str "What is the level of '" effect "'")))
-;                         1))))
-;       not-empty))
-;
-;(defn- get-present-enchants-levels []
-;  (some-> (get-present-enchants) enchant-levels))
-;
-;(defn- sum-enchant-points [total {:keys [level points]}]
-;  (+ total (* level points)))
-;
-;(defn fractured-chance [points-total]
-;  (->> (- 120 points-total)
-;       (min 100)
-;       (max 25)
-;       (- 100)))
-;
-;(defn- upgrade-helm-mod [present-enchants upgradeable-enchants]
-;  (let [{:keys [points] :as upgraded-enchant} (r/sample upgradeable-enchants)
-;        points-total (reduce sum-enchant-points 10 present-enchants)
-;        fracture-chance (if (<= points 10)
-;                          (fractured-chance points-total)
-;                          0)]
-;    {:enchant         upgraded-enchant
-;     :fracture-chance fracture-chance}))
-;
-;(defn- add-helm-mod [present-enchants not-present-enchants]
-;  (let [{:keys [points] :as added-enchant} (r/sample not-present-enchants)
-;        points-total (reduce sum-enchant-points points present-enchants)]
-;    {:enchant         added-enchant
-;     :fracture-chance (fractured-chance points-total)}))
-;
-;(defn apply-personality []
-;  (u/when-let* [character-enchants (p/>>item "Character name:" (character-enchants))
-;                present-enchants (some-> (select-enchants character-enchants) enchant-levels)]
-;    (let [upgradeable-enchants (filterv :upgradeable present-enchants)
-;          has-upgrades? (seq upgradeable-enchants)
-;          present-enchant-effects (into #{} (map :effect) present-enchants)
-;          remaining-mods (filterv (comp not present-enchant-effects :effect) character-enchants)
-;          has-available-mods? (seq remaining-mods)
-;          action (r/sample (cond-> []
-;                                   has-available-mods? (conj :add)
-;                                   has-upgrades? (conj :upgrade)))
-;          result (case action
-;                   :upgrade (upgrade-helm-mod present-enchants upgradeable-enchants)
-;                   :add (add-helm-mod present-enchants remaining-mods))]
-;      (assoc result :action action))))
-;
+(defn- add-helm-mod [existing-mods remaining-mods]
+  (let [{:keys [points] :as added-mod} (r/sample remaining-mods)
+        points-total (transduce (map mod-points) + points existing-mods)]
+    {:mod             added-mod
+     :fracture-chance (fractured-chance points-total)}))
+
+(defn apply-personality [character existing-mods]
+  (let [character-mods (qualified-char->mods character)
+        character-mods-by-effect (u/assoc-by :effect character-mods)
+        existing-mods (mapv (fn [{:keys [effect] :as mod}]
+                              (merge mod (get character-mods-by-effect effect)))
+                            existing-mods)
+        upgradeable-mods (filterv (comp levels/upgradeable? :template) existing-mods)
+        present-mod-effects (into #{} (map :effect) existing-mods)
+        remaining-mods (filterv (comp not present-mod-effects :effect) character-mods)
+        action (r/sample (cond-> []
+                                 (seq remaining-mods) (conj :add)
+                                 (seq upgradeable-mods) (conj :upgrade)))
+        result (case action
+                 :upgrade (upgrade-helm-mod existing-mods upgradeable-mods)
+                 :add (add-helm-mod existing-mods remaining-mods))]
+    (assoc result :action action)))
+
 ;(defn finish-helmet-progress-upgrade []
 ;  (u/when-let* [present-enchants (get-present-enchants-levels)
 ;                enchant-levels (enchant-levels present-enchants)]

@@ -1,0 +1,5 @@
+{:nailo [{:effect "a"
+          :tags   #{:survivability}
+          :points 2}
+         {:effect "+{{level|level:+}} HP"
+          :tags   #{:damage}}]}

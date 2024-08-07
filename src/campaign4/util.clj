@@ -14,12 +14,13 @@
                 aero/read-config))
 
 (defn load-data [kw]
-  (->> (str "data/" (name kw) ".edn")
-       jio/resource
-       jio/reader
-       PushbackReader.
-       read
-       (filterv #(:enabled? % true))))
+  (let [raw (->> (str "data/" (name kw) ".edn")
+                 jio/resource
+                 jio/reader
+                 PushbackReader.
+                 read)]
+    (cond->> raw
+             (sequential? raw) (filterv #(:enabled? % true)))))
 
 (def character-insights {::nailo 1}) ; TODO
 (def characters (-> (keys character-insights)
