@@ -175,6 +175,9 @@
   :points    3
   :tags      #{:survivability}}
  {:base-type "armour"
+  :effect    "-1 to a Defence of your choice, to a minimum of 0. +1 {{x|random:defences:non-armour}}."
+  :tags      #{:survivability}}
+ {:base-type "armour"
   :effect    "Gain physical barrier equal to {{level|level:+}}x the CR of your highest CR active minion."
   :tags      #{:survivability}}
  {:base-type "armour"

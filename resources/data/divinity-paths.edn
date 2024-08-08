@@ -24,25 +24,25 @@
             :tags   #{:magic}}]}
  {:name   "Eternal Vigour"
   :info   "Improves your longevity in combat through various avenues."
-  :levels [{:effect "+2 barrier, and +2 barrier for each previous time you've been hit per round." ;TODO replace
+  :levels [{:effect "While you have at least one non-depleted barrier, for each barrier type you have, gain +1 sturdiness in that type."
             :tags   #{:survivability}}
-           {:effect "While you have at least one non-depleted barrier, +1 sturdiness for each barrier type you have."
-            :tags   #{:survivability}}
+           {:effect "You may enchant one of your gloves with armour enchantments (relics, uniques, or curios)."
+            :tags   #{:utility}}
            {:effect "Armour attacks against you need to score at least 9 to be considered a standard success."
             :tags   #{:survivability}}
            {:effect "You take no additional damage from critical hits."
             :tags   #{:survivability}}
-           {:effect "Once per round when you fail a saving throw against an effect that would cause a condition, you may attempt the save again." ;TODO replace
+           {:effect "No more than once per combat, when a condition is applied to you, you may attempt a saving throw. On a success, the condition is not applied, and you are immune to that condition until the end of your next turn."
             :tags   #{:survivability}}]}
  {:name   "Perpetual Learning"
   :info   "Improves your ability to acquire knowledge through skill checks, and improves Divination spellcasting."
-  :levels [{:effect "Any text within line of sight within 50 metres of you becomes readable to you regardless of its language, distance/size, legibility, and lighting. Additionally, you gain +2 expertise dice for Investigation checks relating to reading."
+  :levels [{:effect "Any text within line of sight within 100 feet of you becomes readable to you regardless of its language, distance/size, legibility, and lighting. Additionally, you gain +2 expertise dice for Investigation checks relating to reading."
             :tags   #{:utility}}
-           {:effect "When you make a Nature, Investigation, History, or Religion check, you may choose to treat the d20 roll as though you had rolled an 11."
+           {:effect "When you make a Nature, Investigation, History, or Religion check, you may choose to treat the d20 roll as though you had rolled an 11, or a minimum of 5 for the purpose of journey activities."
             :tags   #{:utility}}
            {:effect "You may learn any Divination spell as if it were on your class' spell list."
             :tags   #{:magic}}
-           {:effect "You gain one question about a creature you can see at the start of each round in combat while under the effect of a Divination spell. You have +1 Armour against attacks from creatures you've learned about directly via a question. Your non-cantrip Divination spells no longer require concentration."
+           {:effect "You have +1 Armour against attacks from creatures you've learned about directly via a question while under the effect of a Divination spell you have cast, and your non-cantrip Divination spells no longer require concentration."
             :tags   #{:magic :utility :survivability}}
            {:effect "At the start of each of your turns in combat while conscious, you have a percent chance to be affected by Warrior's Instincts until the start of your next turn equal to double the number of Divination spells (including cantrips) you have prepared, to a minimum of 10%."
             :tags   #{:magic :survivability :utility :accuracy}}]}
@@ -72,7 +72,7 @@
             :tags   #{:damage}}]}
  {:name   "Aggressive Combat"
   :info   "Grants bonuses that make you a more competent close combatant."
-  :levels [{:effect "You gain +1 global damage for each enemy in battle (>0 hp only)."
+  :levels [{:effect "You gain +1 global damage for each enemy within 5 feet of you."
             :tags   #{:damage}}
            {:effect "You gain proficiency in saving throws of types you've failed in the last 12 seconds. Creatures of your choice within 10 feet of you also gain this proficiency."
             :tags   #{:survivability}}
@@ -83,7 +83,7 @@
            {:effect "One of your weapons has an additional enchantment slot. You gain 4 curios of your choice upon receiving this benefit."
             :tags   #{:utility :wealth}}]}
  {:name   "Unbound Arcana"
-  :info   "Improves you general spellcasting prowess."
+  :info   "Improves your general spellcasting prowess."
   :levels [{:effect "You have an additional first, second, and third level spell slot, assuming you already have at least one."
             :tags   #{:magic}}
            {:effect "When you upcast a spell, you may cast it at a level one above the spell slot consumed."
@@ -96,7 +96,7 @@
             :tags   #{:magic}}]}
  {:name   "Arcane Combat"
   :info   "Improves spellcasting and weapon attacks for characters that utilise both."
-  :levels [{:effect "Weapon-specific affixes on your shield, boots, gloves, and body armour apply to your spells as well."
+  :levels [{:effect "Weapon-specific affixes on your shield, boots, gloves, and body armour apply to your spells as well." ;TODO replace
             :tags   #{:utility}}
            {:effect "Enemies you have targeted with both a weapon attack and a spell in the last minute cannot make opportunity attacks against you, and do not impose disadvantage on your ranged attacks as a result of being within 5 feet of you."
             :tags   #{:utility}}
@@ -154,4 +154,3 @@
             :tags   #{:magic}}
            {:effect "You and your undead minions may choose to convert any damage you deal to Necrotic damage. Additionally, no more than {Prof} times per long rest, you may convert incoming damage to Necrotic damage."
             :tags   #{:damage :survivability}}]}]
-;TODO add path for psionics?

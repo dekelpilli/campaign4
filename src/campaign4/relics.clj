@@ -65,6 +65,7 @@
                      (current-relic-mods relic)))))
 
 (defn- level-options-types [remaining-pool num-progress-mods has-upgradeable?]
+  ;TODO add support for specialisation that offers +1 option
   (let [pool-option (if (seq remaining-pool) :pool :random)]
     (match [num-progress-mods has-upgradeable?]
            [2 _] [:progress :progress pool-option]
