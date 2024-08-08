@@ -74,4 +74,6 @@
     loot))
 
 (comment
-  (loots! 10 20 30))
+  (loots! 10 20 30)
+
+  (loot-result 28))
