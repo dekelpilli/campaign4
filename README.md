@@ -5,6 +5,7 @@
 - Gems contain a monster passive from a monster of CR up to the gem's limit.
 - You can obtain gems by selling talismans.
 - You can craft talismans by destroying another talisman and choosing a mod from the destroyed talisman to add to the base talisman. This replaces the mod on the base talisman on the equivalent slot (talismans have 3 different slots, each with different types of modifiers).
+- You may choose to trigger your gem's passive outside of combat no more than once per long rest, lasting for a minute.
 
 More details:
 - Gems worn by downed players are inactive.
@@ -59,6 +60,7 @@ Can only move mods on gloves to gloves, and mods on armours to armours. Receptac
 - Vials are consumable items that alter the behaviour of modifiers on your items. These can either be drunk to apply an effect on you, or applied to an item's modifiers to alter their behaviour.
 - Vials applied to items also alter mods added after the vial was applied.
 - There is no limit to the number of vials on an item/player, and vials apply in any order the player chooses.
+- Each vial type can be applied no more than once on a character or item.
 - Vials on a player are calculated after vials on items.
 
 ### Helmets
@@ -85,7 +87,7 @@ If you reject the crafting result of a shrine, it grants you 10 gold instead.
 - Rings: N/A
 - Curios: N/A
 - Mundane bases: N/A
-- Crafting items: 10
+- Crafting items (including vials): 10
 - Unopened loot roll: 20
 - Relic effects: 1 relic dust, + dust cost of levelling, to a maximum of 5 (total max of 6 relic dust)
 

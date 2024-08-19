@@ -8,7 +8,7 @@
   :effect   "If the contained creature is a Celestial, you may cast the Bless spell at will."
   :tags     #{:magic}}
  {:category "above"
-  :effect   "If the contained creature is a Construct, gain sturdiness equal to your level against any damage types it is resistant or immune to."
+  :effect   "If the contained creature is a Construct, gain damage reduction equal to your level against any damage types it is resistant or immune to."
   :tags     #{:survivability}}
  {:category "above"
   :effect   "If the contained creature is a Dragon, you may adjust your loot rolls by an amount equal to twice its CR."
