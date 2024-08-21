@@ -1,14 +1,14 @@
-[{:name   "Subjective Truth" ;TODO
-  :info   "Focuses on improving deceptive conversations out of combat, and Illusion spells both in and out of combat."
+[{:name   "Subjective Truth"
+  :info   "Focuses on improving conversations (exclusively out of combat)."
   :levels [{:effect "You gain proficiency or +1 expertise die in Deception and Insight."
-            :tags   #{:magic :utility}}
-           {:effect "Creatures that currently believe one of your illusions are real have disadvantage when attacking you."
-            :tags   #{:survivability :magic}}
-           {:effect "When casting non-cantrip Illusion spells, you may choose to use the spell slot level below that spell's regular casting requirement, including any upcasting, to a minimum of 1."
-            :tags   #{:magic}}
-           {:effect "+1 to the DCs of Illusion spells."
-            :tags   #{:accuracy}}
-           {:effect "No more than once per conversation, when you tell a lie, you may immediately learn if each person that heard that lie believed, disbelieved, or was unsure about the veracity of your statement."
+            :tags   #{:utility}}
+           {:effect "When you make a dishonest statement that is technically true, you can use your Persuasion instead of Deception. As such, if you fail, it is as if you failed a Persuasion check, rather than a Deception check."
+            :tags   #{:utility}}
+           {:effect "No more than once per conversation, when you make a Deception or Persuasion check, you may immediately learn the success of that check for one target of that check. This allows you to then immediately add to that statement, potentially salvaging the situation."
+            :tags   #{:utility}}
+           {:effect "At the end of a conversation, you may find out whether or not a lie was told during that conversation."
+            :tags   #{:utility}}
+           {:effect "You can roll your own Insight checks."
             :tags   #{:utility}}]}
  {:name   "Distributed Rejuvenation" ;TODO
   :info   "Improves healing you grant via spells and Medicine checks."
@@ -20,8 +20,8 @@
             :tags   #{:magic}}
            {:effect "You may make Wisdom (Medicine) checks to heal downed creatures as a bonus action. You may do this no more than once per combat. Additionally, add twice your outgoing healing bonus, instead of just once, to the life gained by downed allies you heal with Medicine checks."
             :tags   #{:utility}}
-           {:effect "When you cast a spell that grants hit points, you may choose to cause the spell to be upcast by up to 3 spell levels, to a maximum of 6th level. The spell consumes resources as if it had been cast normally."
-            :tags   #{:magic}}]}
+           {:effect "Modifiers to healing on your worn items have their magnitudes doubled."
+            :tags   #{:survivability}}]}
  {:name   "Eternal Vigour"
   :info   "Improves your longevity in combat through various avenues."
   :levels [{:effect "While you have at least one non-depleted barrier, for each barrier type you have, gain +1 damage reduction for that type."

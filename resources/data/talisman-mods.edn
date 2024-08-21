@@ -2,16 +2,16 @@
   :effect   "If the contained creature is an Aberration, gain any senses the creature has."
   :tags     #{:utility}}
  {:category "above"
-  :effect   "If the contained creature is a Beast, you have gain an expertise die in Animal Handling, Survival, and Nature."
+  :effect   "If the contained creature is a Beast, you have gain an expertise die in Animal Handling, Survival, and Nature, and also become proficient in these skills."
   :tags     #{:utility}}
  {:category "above"
-  :effect   "If the contained creature is a Celestial, you may cast the Bless spell at will."
+  :effect   "If the contained creature is a Celestial, you are granted the effects of the Bless spell while the power is active."
   :tags     #{:magic}}
  {:category "above"
   :effect   "If the contained creature is a Construct, gain damage reduction equal to your level against any damage types it is resistant or immune to."
   :tags     #{:survivability}}
  {:category "above"
-  :effect   "If the contained creature is a Dragon, you may adjust your loot rolls by an amount equal to twice its CR."
+  :effect   "If the contained creature is a Dragon, you may adjust your loot rolls by an amount equal to thrice its CR."
   :tags     #{:wealth}}
  {:category "above"
   :effect   "If the contained creature is an Elemental, gain a bonus to elemental (acid, cold, fire, lightning, or thunder) damage equal to the gem's CR while the power is active."
@@ -32,13 +32,13 @@
   :effect   "If the contained creature is a Monstrosity, gain +2 to your ability score in which the contained creature has the highest score. If it has more than one highest score, this only affects one such score of your choice, also grants +2 to that ability score's maximum."
   :tags     #{:damage :utility}}
  {:category "above"
-  :effect   "If the contained creature is an Ooze, creatures within 5 feet of you that hit you while this power is active must succeed on a saving throw or become slowed until the start of their next turn."
+  :effect   "If the contained creature is an Ooze, creatures within 5 feet of you that hit you while this power is active must succeed on a saving throw or become slowed for one round."
   :tags     #{:control}}
  {:category "above"
-  :effect   "If the contained creature is a Plant, while this power is active, you gain access to a major effect that poisons one creature targeted by your attack until the end of their next turn."
+  :effect   "If the contained creature is a Plant, while this power is active, you gain access to a major effect that poisons one creature targeted by your attack for one round."
   :tags     #{:control}}
  {:category "above"
-  :effect   "If the contained creature is an Undead, they have a 20% chance to act when this power is activated."
+  :effect   "If the contained creature is an Undead, you have a 20% chance to also trigger a full turn of the contained creature when the power is activated, starting on a space within 5 feet of you and controlled by you. The creature then dissipates."
   :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is evil or unaligned, you and your minions have +1 AB while the power is active."
@@ -115,6 +115,12 @@
   :effect   "While not down, gain hit points equal to the contained creature's CR when its power is activated."
   :tags     #{:survivability}}
  {:category "unconditional"
+  :effect   "When this gem does not activate at the start of a round, you may choose for it to activate instead, but enemies in combat also gain the passive effect."
+  :tags     #{:utility}}
+ {:category "unconditional"
+  :effect   "You may trigger the contained passive out of combat an amount equal to your proficiency bonus per long rest, instead of only once."
+  :tags     #{:utility}}
+ {:category "unconditional"
   :effect   "Gain maximum hit points equal to the gem's CR."
   :tags     #{:survivability}}
  {:category "unconditional"
@@ -132,9 +138,6 @@
  {:category "unconditional"
   :effect   "You have +1 to your DCs if this monster power hasn't been activated since your last long rest, and +1 AB while the power is active."
   :tags     #{:accuracy}}
- {:category "unconditional"
-  :effect   "When this power is activated, you have a 20% chance to also trigger a full turn of the contained creature, starting on a space within 5 feet of you and controlled by you. The creature then dissipates."
-  :tags     #{:utility}}
  {:category "unconditional"
   :effect   "Gems in this talisman offer twice as many options when rerolling the contained monster trait."
   :tags     #{:wealth}}

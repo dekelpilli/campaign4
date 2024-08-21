@@ -1,9 +1,9 @@
 [{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:10:30:3}}% chance to retain that spell slot."
-  :points         2
+  :points         3
   :tags           #{:magic}
   :upgrade-points 1}
  {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -{{level|level:+:1}} to saving throws."
-  :points 3
+  :points 2
   :tags   #{:accuracy :control :magic}}
  {:effect "+{{level|level:+}} {{x|random:ability-scores}}."
   :points 2

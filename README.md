@@ -40,6 +40,7 @@ Can only move mods on gloves to gloves, and mods on armours to armours. Receptac
 ### Enchant rules
 - The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire)
 - Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 6d6 -> 5d6 + 1d8)
+- Round-based effects round down (that is, if you do something that lasts for one round as an action on your turn, that effect will end at the start of your next turn).
 
 ### Rings
 - Max number of ring points used = 5 + char level + prof bonus
