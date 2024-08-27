@@ -123,6 +123,14 @@
        (mapv #(-> (dissoc % :template)
                   (assoc :level 1)))
        copy!)
+  (helmets/apply-personality
+    ::u/nailo
+    [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
+     {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
+  (helmets/mend-helmet
+    ::u/nailo
+    [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
+     {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
   (helmets/new-helmet ::u/nailo)
 
   (talismans/new-gem 0)

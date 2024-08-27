@@ -7,7 +7,6 @@
     [randy.core :as r]))
 
 (def ^:private mod-mending-result (r/alias-method-sampler {:upgrade 3 :remove 3 :nothing 4}))
-(def ^:private specialised-mending? #{::u/nailo})
 
 (def character-mods (-> (u/load-data :character-mods)
                         (update-vals #(mapv (fn [mod]
@@ -45,25 +44,30 @@
 (defn- upgrade-helm-mod [existing-mods upgradeable-mods]
   (let [{:keys [points] :as upgraded-enchant} (r/sample upgradeable-mods)
         fracture-chance (if (= points 1)
-                          (-> (transduce (map mod-points) points existing-mods)
+                          (-> (transduce (map mod-points) + points existing-mods)
                               fractured-chance)
                           0)]
     {:mod             upgraded-enchant
      :fracture-chance fracture-chance}))
-;
+
 (defn- add-helm-mod [existing-mods remaining-mods]
   (let [{:keys [points] :as added-mod} (r/sample remaining-mods)
         points-total (transduce (map mod-points) + points existing-mods)]
     {:mod             added-mod
      :fracture-chance (fractured-chance points-total)}))
 
+(defn- match-character-mods [character-mods mods]
+  (let [character-mods-by-effect (u/assoc-by :effect character-mods)]
+    (mapv (fn [{:keys [effect] :as mod}]
+            (merge mod (get character-mods-by-effect effect)))
+          mods)))
+
 (defn apply-personality [character existing-mods]
   (let [character-mods (qualified-char->mods character)
-        character-mods-by-effect (u/assoc-by :effect character-mods)
-        existing-mods (mapv (fn [{:keys [effect] :as mod}]
-                              (merge mod (get character-mods-by-effect effect)))
-                            existing-mods)
-        upgradeable-mods (filterv (comp levels/upgradeable? :template) existing-mods)
+        existing-mods (match-character-mods character-mods existing-mods)
+        upgradeable-mods (filterv (fn [{:keys [level template]}]
+                                    (levels/upgradeable? level template))
+                                  existing-mods)
         present-mod-effects (into #{} (map :effect) existing-mods)
         remaining-mods (filterv (comp not present-mod-effects :effect) character-mods)
         action (r/sample (cond-> []
@@ -74,17 +78,14 @@
                  :add (add-helm-mod existing-mods remaining-mods))]
     (assoc result :action action)))
 
-;(defn finish-helmet-progress-upgrade []
-;  (u/when-let* [present-enchants (get-present-enchants-levels)
-;                enchant-levels (enchant-levels present-enchants)]
-;    {:fracture-chance (-> (reduce sum-enchant-points 0 enchant-levels)
-;                          fractured-chance)}))
-;
-;(defn mend-helmet []
-;  (when-let [present-enchants (get-present-enchants-levels)]
-;    {:enchants (keep (fn [{:keys [upgradeable] :as enchant}]
-;                       (case (mod-mending-result)
-;                         :upgrade (cond-> enchant
-;                                          upgradeable (update :level inc))
-;                         :nothing enchant
-;                         :remove nil)) present-enchants)}))
+(defn- mend-mod [mod]
+  (case (mod-mending-result)
+    :upgrade (-> (update mod :level inc)
+                 dyn/format-mod)
+    :nothing (dyn/format-mod mod)
+    :remove nil))
+
+(defn mend-helmet [character existing-mods]
+  (-> (qualified-char->mods character)
+      (match-character-mods existing-mods)
+      (->> (into [] (keep mend-mod)))))
