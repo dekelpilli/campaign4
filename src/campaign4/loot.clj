@@ -20,9 +20,8 @@
     :action (constantly "Divine Dust")}
    {:id     :helmet
     :action (constantly "One helmet (character specific)")}
-   {:description "2 distinct rings"
-    :id          :ring
-    :action      rings/loot-result}
+   {:id     :ring
+    :action rings/loot-result}
    {:id     :talisman
     :action talismans/loot-result}
    {:id          :tarot

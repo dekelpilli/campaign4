@@ -32,7 +32,7 @@
   :effect "If all of your worn synergy rings are 'The Trained', with a minimum of 3, you may choose to gain a feat from one of your rings. This ring grants the option of `{{x|random:feats}}`. You may change the chosen ring during a long rest."
   :points 2}
  {:name   "The Able"
-  :effect "+1 {{x|random:ability-scores}} while not wearing any synergy rings that are not 'The Able'"
+  :effect "{% with x=x|random:ability-scores %}+1 {{x}} and +1 maximum {{x}} while not wearing any synergy rings that are not 'The Able'.{% endwith %}"
   :points 2}
  {:name   "Vengeful"
   :effect "Once per short rest, as a reaction to being damaged, you may cast Hellish Rebuke on the creature that damaged you, ignoring range restrictions."

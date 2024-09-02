@@ -11,12 +11,8 @@
                (fn [r] (assoc r :synergy? (str/starts-with? (:name r) "The")))
                dyn/load-mod))))
 
-(defn new-rings [n]
-  (->> (r/sample-without-replacement n rings)
-       (mapv dyn/format-mod)))
-
 (defn loot-result []
-  (new-rings 2))
+  (-> rings r/sample dyn/format-mod (dissoc :template)))
 
 (defn sacrifice [sacrificials-used sacrificed-rings]
   (let [remaining-rings (into [] (remove (comp (set sacrificed-rings) :name)) rings)
