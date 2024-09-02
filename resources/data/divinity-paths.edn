@@ -130,27 +130,15 @@
             :tags   #{:utility}}
            {:effect "Whenever a creature you can see teleports or is teleported, you can immediately target one other creature you can see to teleport to a space within 5 feet of the original creature's new location. If the target creature is not willing, you must hit it with a Will attack to teleport it in this way. This does not chain."
             :tags   #{:utility}}]}
- {:name   "Nature's Influence" ;TODO rework/remove. Currently this has a flavour focus rather than a mechanical focus. Flavour towards journey activities?
-  :info   "Provides various in combat and out of combat boons relating to nature."
-  :levels [{:effect "You gain proficiency or +1 expertise die with Survival and Nature when in nature or when foraging materials from creatures." ;TODO replace
-            :tags   #{:utility :wealth}}
-           {:effect "You are permanently under the effects of the Speak with Animals spell, granting you an expertise die on checks made for the Befriend Creature journey activity. You also learn all of the native Mogothan races' languages and Mogothan."
-            :tags   #{:magic :utility}} ;TODO replace, extend to some other journey activities?
-           {:effect "You harness the powers of a Moorbounder. Once per combat, as a free action, you gain the Moorbounder's speed and Standing Leap feature for the remainder of your turn."
+ {:name   "Leader's Dominion"
+  :info   "Grants benefits relating to minions and magic relating to minions."
+  :levels [{:effect "Your minions have +2 damage while you have an active talisman power from a creature with the same creature type. You have +2 damage while at least one of your minions is benefiting from this effect."
+            :tags   #{:damage}}
+           {:effect "You and your minions gain temporary hit points equal to your level at the start of your turn while you are concentrating on a minion spell, or on a spell targeting one of your minions (e.g. Summon Draconic Spirit, or Haste targeting one of your minions)."
+            :tags   #{:survivability :magic}}
+           {:effect "The Generosity vial causes mods to affect both you and your minions, instead of just your minions. This also works for mods that originally only affected minions. Additionally, you may convert any vial you have into a Generosity vial."
             :tags   #{:utility}}
-           {:effect "You harness the powers of spiders; your spells and attacks have +1d4 poison damage, and you are always under the effect of the Spider Climb spell."
-            :tags   #{:damage :magic :utility}}
-           {:effect "You have +1 critical hit range against enemies under the effect of a non-magical condition, and when you score a natural critical hit and deal poison damage, force the target to make a Constitution saving throw, causing it to become poisoned for 1 minute on a failed save (repeat on turn ends)."
-            :tags   #{:critical :control}}]}
- {:name   "Controlled Morbidity" ;TODO make this generic for minions, remove necromancy theme
-  :info   "Focuses on Necromancy and Necromancy spells, with some buffs also applying to undead minions."
-  :levels [{:effect "You and your undead minions are at least resistant to necrotic damage and have +1d6 necrotic damage while you have an Undead creature's amulet effect active."
-            :tags   #{:damage :survivability}}
-           {:effect "You and your undead minions gain +1 necrotic damage for a minute (stacking) whenever you cast a Necromancy spell as an action."
-            :tags   #{:damage :magic}}
-           {:effect "You and your undead minions are proficient in Constitution saving throws while you are concentrating on a non-cantrip Necromancy spell." ;TODO rethink (conc, CON)
-            :tags   #{:magic :survivability}}
-           {:effect "You learn the Finger of Death spell with the Cyneburg’s Shadowed Finger of Death variation. In addition to regular casting you may be permitted with this spell, you may cast it on yourself once per long rest without consuming a spell slot. If this spell kills a living creature, you may cast Soul Cage to capture its soul."
+           {:effect "Whenever you cast a concentration spell targeting at least one your existing minions, you may choose for one of the targeted minions to hold that concentration instead of you."
             :tags   #{:magic}}
-           {:effect "You and your undead minions may choose to convert any damage you deal to Necrotic damage. Additionally, no more than {Prof} times per long rest, you may convert incoming damage to Necrotic damage."
-            :tags   #{:damage :survivability}}]}]
+           {:effect "" ;TODO
+            :tags   #{}}]}]

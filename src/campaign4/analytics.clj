@@ -1,6 +1,7 @@
 (ns campaign4.analytics
-  (:require [campaign4.persistence :as p]
-            [clojure.core.async :as a]))
+  (:require
+    [campaign4.persistence :as p]
+    [clojure.core.async :as a]))
 
 (def current-session (atom nil))
 

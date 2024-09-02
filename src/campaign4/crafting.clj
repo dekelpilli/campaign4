@@ -7,7 +7,7 @@
                             (map (juxt identity u/load-data))
                             [:orbs :shrines :vials]))
 
-(defn crafting-loot []
+(defn loot-result []
   (-> (r/sample [:orbs :shrines :vials])
       crafting-options
       r/sample))

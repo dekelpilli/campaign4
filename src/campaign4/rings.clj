@@ -15,6 +15,9 @@
   (->> (r/sample-without-replacement n rings)
        (mapv dyn/format-mod)))
 
+(defn loot-result []
+  (new-rings 2))
+
 (defn sacrifice [sacrificials-used sacrificed-rings]
   (let [remaining-rings (into [] (remove (comp (set sacrificed-rings) :name)) rings)
         num-options (-> (count sacrificed-rings)

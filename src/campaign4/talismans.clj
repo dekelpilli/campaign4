@@ -81,3 +81,4 @@
 (defn new-talisman []
   (update-vals talisman-mods-by-category
                (comp dyn/format-mod r/sample)))
+(def loot-result new-talisman)

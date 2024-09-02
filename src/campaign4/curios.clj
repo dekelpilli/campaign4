@@ -22,6 +22,10 @@
   (-> (r/sample ["accuracy" "control" "critical" "damage" "magic" "survivability" "utility" "wealth"])
       (cond-> (u/occurred? 1/3) ->negated)))
 
+(defn loot-result []
+  (-> (repeatedly 4 new-curio)
+      vec))
+
 (def curios
   (update-vals
     positive-curios

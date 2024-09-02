@@ -1,7 +1,6 @@
 (ns campaign4.reporting
   (:require
     [campaign4.util :as u]
-    [clojure.core.async :as a]
     [clojure.string :as str]
     [clojure.walk :as walk]
     [hato.client :as hato]
@@ -9,6 +8,7 @@
     [methodical.core :as m]
     [puget.printer :as pp])
   (:import
+    (java.util.concurrent Executors)
     (name.fraser.neil.plaintext diff_match_patch$Operation)))
 
 (def ^:private discord-username "\uD83D\uDCB0 Placeholder DMs \uD83D\uDCB0")
@@ -229,10 +229,11 @@
                                     :avatar_url (:discord-avatar u/config)
                                     :username   discord-username})})))
 
+(def executor (Executors/newSingleThreadExecutor))
+
 (defn report-loot! [loot]
   (when loot
-    (a/go
-      (format-and-report! loot))))
+    (.submit executor ^Runnable #(format-and-report! loot))))
 
 (comment
   (-> {:result [{:name "ancient" :effect "reroll unique"}
@@ -246,7 +247,7 @@
        :n      6}
       format-loot
       format-loot-message)
-  (-> (campaign4.crafting/crafting-loot)
+  (-> (campaign4.crafting/loot-result)
       report-loot!)
   (-> {:curios (-> (repeatedly 4 campaign4.curios/new-curio)
                    vec)}

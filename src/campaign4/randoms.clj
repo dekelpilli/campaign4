@@ -36,12 +36,12 @@
 
 (m/defmethod randoms-factor :feats [_ _] 1)
 (m/defmethod randoms-preset :feats [_ _]
-  ["Alert" "Athlete" "Blinktouched" "Brawler" "Charger" "Crippler" "Crossbow Expert" "Defensive Duelist" "Dual Wielder"
+  ["Alert" "Athlete" "Blinktouched" "Brawler" "Charger" "Crippler" "Defensive Duelist" "Dual Wielder"
    "Dungeon Delver" "Durable" "Eldritch Adept" "Fighting Initiate" "Grappler" "Great Weapon Master" "Healer"
    "Heavy Armour Master" "Inspiring Leader" "Keen Mind" "Light Armour Master" "Magic Initiate" "Martial Scholar"
-   "Master Traveler" "Medium Armour Master" "Metamagic Adept" "Mounted Combatant" "Polearm Master" "Reflective"
-   "Resilient" "Ritual Caster" "Sentinel" "Sharpshooter" "Shield Master" "Skilled" "Skulker" "Socialite" "Specialist"
-   "Spell Touched" "Summoner" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
+   "Master Traveler" "Medium Armour Master" "Metamagic Adept" "Mounted Combatant" "Reflective" "Resilient"
+   "Sentinel" "Sharpshooter" "Shield Master" "Skilled" "Skulker" "Socialite" "Specialist" "Spell Touched"
+   "Summoner" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
 
 (m/defmethod randoms-factor :skills [_ _] 5)
 (m/defmethod randoms-preset :skills [_ _]

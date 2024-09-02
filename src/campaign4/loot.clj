@@ -12,29 +12,25 @@
 (def loot-actions
   [{:description "Crafting loot (a vial, shrine, or orb) + reroll"
     :id          :crafting
-    :action      crafting/crafting-loot}
+    :action      crafting/loot-result}
    {:id          :curio
     :description "Receptacle + 4 Curios"
-    :action      (fn curios-loot [] (-> (repeatedly 4 curios/new-curio)
-                                        vec))}
+    :action      curios/loot-result}
    {:id     :divine-dust
     :action (constantly "Divine Dust")}
    {:id     :helmet
-    :action (constantly "One helmet (character specific)")} ;TODO
+    :action (constantly "One helmet (character specific)")}
    {:description "2 distinct rings"
     :id          :ring
-    :action      (fn ring-loot [] (rings/new-rings 2))}
+    :action      rings/loot-result}
    {:id     :talisman
-    :action talismans/new-talisman}
+    :action talismans/loot-result}
    {:id          :tarot
     :description "Draw four tarot cards"
     :action      (constantly "Draw four tarot cards")}
    {:id          :unique
     :description "Unique + 1 ancient orb"
-    :action      (fn unique-loot [] [(-> (uniques/new-unique)
-                                         (uniques/at-level 1))
-                                     {:name   "Ancient Orb"
-                                      :effect "Reroll a unique into a random different unique item at level 1."}])}])
+    :action      uniques/loot-result}])
 
 (def loot-table
   (let [width (->> (count loot-actions)

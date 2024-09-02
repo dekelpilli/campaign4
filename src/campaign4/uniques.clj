@@ -44,6 +44,12 @@
 (defn new-unique []
   (r/sample uniques))
 
+(defn loot-result []
+  [(-> (new-unique)
+       (at-level 1))
+   {:name   "Ancient Orb"
+    :effect "Reroll a unique into a random different unique item at level 1."}])
+
 (defn new-uniques [n]
   (r/sample-without-replacement n uniques))
 
