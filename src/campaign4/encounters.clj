@@ -3,7 +3,8 @@
     [campaign4.analytics :as analytics]
     [campaign4.util :as u]
     [clojure.string :as str]
-    [randy.core :as r]))
+    [randy.core :as r]
+    [randy.rng :as rng]))
 
 ;TODO redo weathers, random encounters
 (def ^:private races ["Aarakocra" "Aasimar" "Bugbear" "Centaur" "Changeling" "Dragonborn" "Dwarf" "Elf" "Firbolg"
@@ -145,6 +146,19 @@
         (if (seq days)
           (recur acc (get weather-fns weather) days)
           acc)))))
+
+(defn gem-procs []
+  (reduce-kv
+    (fn [acc char {threshold :gem-threshold}]
+      (assoc acc
+        (keyword (name char))
+        {:default-threshold threshold
+         :proc?             (as-> (rng/next-int @r/default-rng 1 101) $
+                                  (str (< $ threshold) " (" $ ")"))
+         :adv/disadv        (as-> (rng/next-int @r/default-rng 1 101) $
+                                  (str (< $ threshold) " (" $ ")"))}))
+    {}
+    u/character-stats))
 
 (defn positive-encounter []
   {:race      (r/sample races)

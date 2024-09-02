@@ -107,7 +107,7 @@
            {:effect "If you have made a weapon attacked in the last 18 seconds, you have +4 spell damage, and minions from your spells have +4 damage. If you have used a spell slot or finished casting a spell with a casting time of at least an action in the last 18 seconds, you have +4 weapon damage."
             :tags   #{:damage}}]}
  {:name   "Elemental Mastery"
-  :info   "Improves your prowess with and against elemental damage (acid, cold, fire, lightning, or thunder damage) from weapon attacks as well as spells."
+  :info   "Improves your prowess with and against elemental damage (acid, cold, fire, lightning, or thunder damage)."
   :levels [{:effect "+1 damage with attacks for each elemental damage type it deals (acid, cold, fire, lightning, or thunder damage)."
             :tags   #{:damage}}
            {:effect "You can cast Absorb Elements an amount of times equal to an ability score modifier of your choice, to a minimum of once, per long rest."
@@ -140,5 +140,5 @@
             :tags   #{:utility}}
            {:effect "Whenever you cast a concentration spell targeting at least one your existing minions, you may choose for one of the targeted minions to hold that concentration instead of you."
             :tags   #{:magic}}
-           {:effect "" ;TODO
-            :tags   #{}}]}]
+           {:effect "Whenever one of your minions would die, they may make a saving throw. On a success, they remain on 1 hit point instead, but die one round later (at which point they can attempt the saving throw again)."
+            :tags   #{:survivability}}]}]

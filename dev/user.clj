@@ -121,7 +121,7 @@
 
   (p/update-data!
     ::p/relics
-    {:filter {:name ["Update relic name"]}}
+    {:filter {:name ["old relic name"]}}
     (constantly {:name "new relic name"}))
 
   (->> (helmets/qualified-char->mods ::u/nailo)
@@ -144,5 +144,6 @@
   (u/insight-lie 5)
 
   (roll 10 4)
+  (encounters/gem-procs)
   (cp)
   (r!))

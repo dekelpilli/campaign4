@@ -22,8 +22,9 @@
     (cond->> raw
              (sequential? raw) (filterv #(:enabled? % true)))))
 
-(def character-insights {::nailo 1}) ; TODO
-(def characters (-> (keys character-insights)
+(def character-stats {::nailo {:insight       1
+                               :gem-threshold 50}}) ; TODO
+(def characters (-> (keys character-stats)
                     set))
 
 (defn- d20 []
@@ -35,7 +36,7 @@
 (defn insight-truth [persuasion-bonus believability-dc]
   (let [persuasion-roll (+ (d20) persuasion-bonus)]
     (reduce-kv
-      (fn [acc character bonus]
+      (fn [acc character {bonus :insight}]
         (let [insight-roll (d20)
               output (case insight-roll
                        1 {:trust :no-trust
@@ -53,12 +54,12 @@
                           :diff  diff}))]
           (assoc acc character output)))
       {}
-      character-insights)))
+      character-stats)))
 
 (defn insight-lie [deception-bonus]
   (let [deception-roll (+ (d20) deception-bonus)]
     (reduce-kv
-      (fn [acc character bonus]
+      (fn [acc character {bonus :insight}]
         (let [insight-roll (d20)
               output (case insight-roll
                        20 {:trust :no-trust
@@ -75,7 +76,7 @@
                           :diff  diff}))]
           (assoc acc character output)))
       {}
-      character-insights)))
+      character-stats)))
 
 (defn occurred? [likelihood-probability]
   (< (rng/next-double @r/default-rng) likelihood-probability))
