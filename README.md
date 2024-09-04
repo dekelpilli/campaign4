@@ -27,61 +27,60 @@ Curio-crafted items can be sold for a Catalyst. Catalysts can be used to improve
 | 3                  | 5           |
 | 6                  | 6           |
 
-### Divine Dust
-You can use divine dust to progress a divinity path you have started, or start a new one if you haven't started one/have finished all you have started. Divine paths grant powers directly to your character, rather than being tied to an item.
-
-### Receptacles
+#### Receptacles
 - Receptacles are vessels for holding enchantments that fit on one enchantment slot. This can be a relic (levelled or unlevelled), unique (levelled or unlevelled), or regular magic enchantment slot (any number of enchants).
 - Receptacles can inherently swap the enchantments they hold with those on a compatible item.
 
-### Moving mods
+#### Moving mods
 Can only move mods on gloves to gloves, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
 
-### Enchant rules
+#### Enchant rules
 - The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire)
 - Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 6d6 -> 5d6 + 1d8)
 - Round-based effects round down (that is, if you do something that lasts for one round as an action on your turn, that effect will end at the start of your next turn).
+
+### Divine Dust
+You can use divine dust to progress a divinity path you have started, or start a new one if you haven't started one/have finished all you have started. Divine paths grant powers directly to your character, rather than being tied to an item.
+
+### Helmets
+- Character enchants only, spawn with 3 points of mods
+- Can be destroyed for 2 orbs of personality, regardless of mods
+- Orb of personality:
+    - Applying orb of personality either adds a new character mod or upgrades existing mod (or progresses an upgrade)
+    - After applying upgrade, if mod upgrade is not in progress, has chance to fracture (make unmodifiable) based on point value on the helmet
+- Players can attempt to mend a fractured helmet:
+    - Each mod has 40% chance to stay the same, 30% to upgrade (to the next level), 30% chance to remove the mod completely
 
 ### Rings
 - Max number of ring points used = 5 + char level + prof bonus
 - Sacrifice: Smash n rings together (n > 1) to get a choice of 1 from n distinct new rings that can't be of the same type as any of the inputs
 - Synergy rings = rings whose name starts with "The" = rings whose modifier interacts with other rings
 
-### Uniques
-- Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level
-- You can see a unique's next level for free in towns
+### Tarot
+- Players may turn in tarot sets with exactly 3 cards.
+- The base result of a tarot turn in is a relic. It has 1 base (starting) mod from the thematic mod pool and a random mod pool with mods taken from the relic mod pool.
+- You must decide if the generated relic will be a glove or an armour before you turn in sets as this potentially influences mods on the relic.
 
-### Relics
-- Relics are equipment that can be levelled up with relic dust. Each relic starts at level 1, and can be levelled up 5 times for 1 dust, and beyond this point for 3 dust per level. 
+#### Relics
+- Relics are equipment that can be levelled up with relic dust. Each relic starts at level 1, and can be levelled up 5 times for 1 dust, and beyond this point for 3 dust per level.
 - When relics are sold, dust for the first 5 level ups will be recouped. Levels beyond this point will not factor into the sale result of the relic, and it is recommended that you only level relics beyond this point once all of your relics are at this level.
-- Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new thematic affix to the relic (each relic has its own set of thematic affixes). 
-- A relic can be taken to a Diviner in any city to learn (for free) the options for the first two levels the relic will gain, and all the thematic affixes the relic has. 
+- Whenever a relic is levelled up, the owner has 3 options of how to upgrade it, or can choose to apply none of the upgrades. Upgrades can either be to upgrade an existing affix on the relic, add a new random affix to the relic, or add a new affix to the relic from its pre-determined pool.
+- A relic can be taken to a Diviner in any city to learn (for free) what mods are in its pre-determined pool.
 
-### Vials
+### Uniques
+- Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level.
+- You can always what a unique's next level will be.
+
+### Crafting
+#### Vials
 - Vials are consumable items that alter the behaviour of modifiers on your items. These can either be drunk to apply an effect on you, or applied to an item's modifiers to alter their behaviour.
 - Vials applied to items also alter mods added after the vial was applied.
 - There is no limit to the number of vials on an item/player, and vials apply in any order the player chooses.
 - Each vial type can be applied no more than once on a character or item.
 - Vials on a player are calculated after vials on items.
+#### Shrines
+- If you reject the crafting result of a shrine, it grants you 10 gold instead.
 
-### Helmets
-- Character enchants only, spawn with 3 points of mods
-- Can be destroyed for 2 orbs of personality, regardless of mods
-- Orb of personality:
-  - Applying orb of personality either adds a new character mod or upgrades existing mod (or progresses an upgrade)
-  - After applying upgrade, if mod upgrade is not in progress, has chance to fracture (make unmodifiable) based on point value on the helmet
-- Players can attempt to mend a fractured helmet:
-  - Each mod has 40% chance to stay the same, 30% to upgrade (to the next level), 30% chance to remove the mod completely
-  - Only character enchants are affected by this (non-char enchants can be added on creation via tarot cards)
-
-### Tarot
-- Players may turn in tarot sets with exactly 3 cards.
-- The base result of a tarot turn in is a relic. It has 1 base (starting) mod from the thematic mod pool and a random mod pool with mods taken from the relic mod pool.
-- You must decide if the generated relic will be a glove or an armour before you turn in sets as this potentially influences mods on the relic.
-- Players draw 4 cards per loot result.
-
-### Shrines
-If you reject the crafting result of a shrine, it grants you 10 gold instead.
 
 ### Vendor valuations
 - Helmets: N/A

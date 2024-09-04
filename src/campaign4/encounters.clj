@@ -1,6 +1,8 @@
 (ns campaign4.encounters
   (:require
     [campaign4.analytics :as analytics]
+    [campaign4.rings :as rings]
+    [campaign4.uniques :as uniques]
     [campaign4.util :as u]
     [clojure.string :as str]
     [randy.core :as r]
@@ -146,6 +148,41 @@
         (if (seq days)
           (recur acc (get weather-fns weather) days)
           acc)))))
+
+(defn jeweller-encounter [num-rings]
+  (let [rings (repeatedly num-rings #(r/sample rings/rings))
+        dupes (->> (mapv :name rings)
+                   (frequencies)
+                   (into #{} (comp (remove (comp #{1} val))
+                                   (map key))))]
+    (filterv (comp dupes :name) rings)))
+
+(defn antiquarian-encounter [{:keys [name] :as unique} num-rerolls]
+  (let [uniques (vec (repeatedly num-rerolls #(r/sample uniques/uniques)))
+        {:keys [level unique]} (reduce
+                                 (fn [acc generated]
+                                   (cond-> acc
+                                           (= name (:name generated)) (-> (update :level inc)
+                                                                          (assoc :unique generated))))
+                                 {:level  1
+                                  :unique nil}
+                                 uniques)]
+    (uniques/at-level (or unique (peek uniques))
+                      level)))
+
+(comment
+  (into (sorted-map)
+        (map (fn [n]
+               [n (-> (/ (reduce + 0 (repeatedly 10000 #(count (jeweller-encounter n))))
+                         10000)
+                      double)]))
+        (range 7 12))
+
+  (into (sorted-map)
+        (map (fn [n]
+               [n (into (sorted-map) (update-vals (frequencies (repeatedly 10000 #(:level (antiquarian-encounter (r/sample uniques/uniques) n))))
+                                           #(double (/ % 100))))]))
+        (range 10 21)))
 
 (defn gem-procs []
   (reduce-kv

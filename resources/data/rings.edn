@@ -25,9 +25,9 @@
  {:name   "The Simpleton"
   :effect "Your non-synergy rings' cost decreases by 1 point. Your synergy rings' cost increases by 2."
   :points 0} ;2 if you include the ring's effect once
- #_{:name   "The Beacon" ;good but doesn't make sense in the context of the campaign
-    :effect "You emit bright light in a radius of 5 feet from you for each ring worn."
-    :points 2}
+ {:name   "The Beacon"
+  :effect "You emit bright light in a radius of 5 feet from you for each ring worn."
+  :points 2}
  {:name   "The Trained"
   :effect "If all of your worn synergy rings are 'The Trained', with a minimum of 3, you may choose to gain a feat from one of your rings. This ring grants the option of `{{x|random:feats}}`. You may change the chosen ring during a long rest."
   :points 2}
