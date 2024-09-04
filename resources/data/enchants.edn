@@ -35,8 +35,6 @@
   :tags   #{:utility}}
  {:effect "Applying a vial to a relic has a +{{level|level:+:5:10}}% chance to cause it to gain a level. This does not include purchased vials."
   :tags   #{:wealth}}
- {:effect "Whenever you would gain an omen for a loot category, you may choose which omen for that category you receive."
-  :tags   #{:wealth}}
  {:effect "{% with x=x|random:without-replacement:2:conditions %}When you would otherwise gain the condition '{{x.0}}', gain '{{x.1}}' instead.{% endwith %}"
   :tags   #{:survivability}}
  {:effect "{% with x=x|random:without-replacement:2:conditions %}No more than once per short rest, when you would otherwise inflict the condition '{{x.0}}' on a creature, inflict '{{x.1}}' instead.{% endwith %}"
