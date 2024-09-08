@@ -15,11 +15,11 @@
   :levels [{:effect "Immediately before you heal a downed creature with the use of a Medicine check, you may cast Aid on them as a free action. When cast in this way, Aid grants additional maximum hit points equal to the total number of failed and successful death saves the creature has, but does not increase their current hit points."
             :tags   #{:survivability}}
            {:effect "When you heal a creature with a non-magical effect (e.g. Medicine check on a downed creature, Healer feat), that creature gain temporary hit points equal to your level. When you heal a creature with temporary hit points with a spell, gain temporary hit points equal to their temporary hit points."
-            :tags   #{:survivability :magic}}
+            :tags   #{:survivability}}
            {:effect "You may learn any Concentration spell that grants hit points and cast it with your spell points. You may concentrate on two such spells at one time. This includes, but is not limited to, Aura of Life, Enervation, Beacon of Hope, Healing Spirit, and Vampiric Touch."
-            :tags   #{:magic}}
+            :tags   #{:utility}}
            {:effect "When you heal one creature with the use of a spell, that creature also gains temporary hit points equal to 50% of the spell's outgoing healing total, including any bonuses to outgoing healing you have."
-            :tags   #{:magic}}
+            :tags   #{:survivability}}
            {:effect "Modifiers to healing on your worn items have their magnitudes doubled. This does not work on itemised divinity paths."
             :tags   #{:survivability}}]}
  {:name   "Eternal Vigour"
@@ -41,21 +41,21 @@
            {:effect "When you make a Nature, Investigation, History, or Religion check, you may choose to treat the d20 roll as though you had rolled an 11, or a minimum of 5 for the purpose of journey activities."
             :tags   #{:utility}}
            {:effect "You may learn any Divination spell as if it were on your class' spell list."
-            :tags   #{:magic}}
+            :tags   #{:utility}}
            {:effect "You have +1 Armour against attacks from creatures you've learned about directly via a question while under the effect of a Divination spell you have cast, and your non-cantrip Divination spells no longer require concentration."
-            :tags   #{:magic :utility :survivability}}
+            :tags   #{:utility :survivability}}
            {:effect "At the start of each of your turns in combat while conscious, you have a percent chance to be affected by Warrior's Instincts until the start of your next turn equal to double the number of Divination spells (including cantrips) you have prepared, to a minimum of 10%."
-            :tags   #{:magic :survivability :utility :accuracy}}]}
+            :tags   #{:survivability :utility :accuracy}}]}
  {:name   "Unrelenting Fortune"
   :info   "Improves your luck and your ability to acquire better items."
   :levels [{:effect "You may add or subtract 5 from any loot roll you make."
             :tags   #{:wealth}}
            {:effect "Whenever you roll a 1 on any die, you may reroll that die. You must then accept that result"
-            :tags   #{:utility :damage :survivability}}
+            :tags   #{:utility :damage :survivability :accuracy}}
            {:effect "Whenever you obtain a loot result you have specialised in, roll a d4. On a 4, gain a loot roll."
             :tags   #{:wealth}}
            {:effect "You may cast Fortune's Favour at any spell level as a free action on your turn once per round. You can use no more than 10 spell slot levels on this per long rest."
-            :tags   #{:magic}}
+            :tags   #{:accuracy}}
            {:effect "For every 2 loot specialisations you unlock, unlock a further one that does not count towards this mod. This works retroactively and for future specialisations, to a minimum of +1 specialisation."
             :tags   #{:wealth}}]}
  {:name   "Wrathful Judgement"
@@ -85,15 +85,15 @@
  {:name   "Unbound Arcana"
   :info   "Improves your general spellcasting prowess."
   :levels [{:effect "You may cast spells with a range that isn't Self as if they had a range of Touch instead. When you land a major success against a creature with a spell cast with a range of Touch, they become rattled until the start of their next turn."
-            :tags   #{:magic :control}}
+            :tags   #{:utility :control}}
            {:effect "You have an additional spell slot in each but your top two spells slots. This always grants at least a first level spell slot."
-            :tags   #{:magic}}
+            :tags   #{:resources}}
            {:effect "Once per short rest, if you've been concentrating on a spell for at least two whole turns in combat, you choose for that cast to no longer require concentration."
-            :tags   #{:magic}}
+            :tags   #{:utility}}
            {:effect "When you upcast a spell, you may cast it at a level one above the spell slot consumed."
-            :tags   #{:magic}}
+            :tags   #{:resources}}
            {:effect "Whenever you make a spell attack that did not land a hit against at least one creature, you may revert time to before that spell was cast. When you do this, you may not cast that spell again for a minute."
-            :tags   #{:magic}}]}
+            :tags   #{:utility}}]}
  {:name   "Arcane Combat"
   :info   "Improves spellcasting and weapon attacks for characters that utilise both."
   :levels [{:effect "Enemies you have targeted with both a weapon attack and a spell in the last minute cannot make opportunity attacks against you, and do not impose disadvantage on your ranged attacks as a result of being within 5 feet of you."
@@ -111,9 +111,9 @@
   :levels [{:effect "+1 damage with attacks for each elemental damage type it deals (acid, cold, fire, lightning, or thunder damage)."
             :tags   #{:damage}}
            {:effect "You can cast Absorb Elements an amount of times equal to an ability score modifier of your choice, to a minimum of once, per long rest."
-            :tags   #{:magic}}
+            :tags   #{:survivability}}
            {:effect "You may cast Fire Shield as a bonus action once per long rest. When cast in this way, you may cast it for any elemental damage type (rather than just cold and fire)."
-            :tags   #{:magic}}
+            :tags   #{:survivability :damage}}
            {:effect "+1 critical hit range for attacks that would deal elemental damage. -1 major success threshold for attacks that would deal multiple elemental damage types."
             :tags   #{:critical :accuracy}}
            {:effect "+1 AB with attacks that would deal elemental damage damage."
@@ -135,10 +135,10 @@
   :levels [{:effect "Your minions have +2 damage while you have an active talisman power from a creature with the same creature type. You have +2 damage while at least one of your minions is benefiting from this effect."
             :tags   #{:damage}}
            {:effect "You and your minions gain temporary hit points equal to your level at the start of your turn while you are concentrating on a minion spell, or on a spell targeting one of your minions (e.g. Summon Draconic Spirit, or Haste targeting one of your minions)."
-            :tags   #{:survivability :magic}}
+            :tags   #{:survivability}}
            {:effect "The Generosity vial causes mods to affect both you and your minions, instead of just your minions. This also works for mods that originally only affected minions. Additionally, you may convert any vial you have into a Generosity vial."
             :tags   #{:utility}}
            {:effect "Whenever you cast a concentration spell targeting at least one your existing minions, you may choose for one of the targeted minions to hold that concentration instead of you."
-            :tags   #{:magic}}
+            :tags   #{:utility}}
            {:effect "Whenever one of your minions would die, they may make a saving throw. On a success, they remain on 1 hit point instead, but die one round later (at which point they can attempt the saving throw again)."
             :tags   #{:survivability}}]}]

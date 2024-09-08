@@ -1,11 +1,11 @@
 [{:name "Pacifist's Vow"
   :base "armour"
   :mods [{:effect "Non-damaging spells have a 50% chance consume a spell slot 1 level lower than their usual."
-          :tags   #{:magic}}
+          :tags   #{:resources}}
          {:effect "+1 AB with effects that cannot deal damage."
           :tags   #{:accuracy}}
          {:effect "You may forego dealing damage with a spell to make it count as a non-damaging spell."
-          :tags   #{:magic :utility}}
+          :tags   #{:resources :utility}}
          {:effect "Your weapons gain the 'non-lethal' trait."
           :tags   #{:utility}}
          {:effect "You cannot upcast damaging spells."}
@@ -14,10 +14,10 @@
           :levels [:keep :skip]}
          {:effect "Non-damaging spells consume a spell slot 1 level lower than their usual (min 1) while you are concentrating or while not in combat."
           :levels [:skip :keep]
-          :tags   #{:magic}}
+          :tags   #{:resources}}
          {:effect "Spells you cast targeting willing creatures have a 50% chance to not require concentration (optionally)."
           :levels [:skip :keep]
-          :tags   #{:magic}}]}
+          :tags   #{:utility}}]}
  {:name "Researcher's Power"
   :base "armour"
   :mods [{:effect "Your mental ability scores are capped at exactly 26."
@@ -105,10 +105,10 @@
  {:name "Black Magic"
   :base "armour"
   :mods [{:effect "Replenish a first level spell slot when you expend a spell slot to cast a curse spell."
-          :tags   #{:magic}}
+          :tags   #{:resources}}
          {:effect "If you cast a concentration spell that would curse a creature while you are already concentrating on a curse, the spell shares concentration with your existing concentration. You can concentrate on %d such spells at a time."
           :levels [2 3]
-          :tags   #{:magic}}
+          :tags   #{:utility}}
          {:effect "+1 AB with necromancy spells while you are concentrating on multiple spells."
           :levels [:skip :keep]
           :tags   #{:accuracy}}
@@ -247,7 +247,7 @@
          {:effect "Requires 22 Strength to wield."}
          {:effect "If you have at least 24 Strength, you may use Strength as your spellcasting ability."
           :levels [:skip :keep]
-          :tags   #{:magic}}
+          :tags   #{:damage}}
          {:effect "When you damage a creature with lightning damage, another creature of your choice within 10 feet of it takes 111lightning damage equal to your Strength modifier. This cannot damage a creature more than once in a turn."
           :levels [:skip :keep]
           :tags   #{:damage}}]}
@@ -278,10 +278,10 @@
          {:effect "You cannot critically hit restrained enemies."}
          {:effect "When you would otherwise land a killing blow with a weapon, the enemy instead dies at the end of their next turn. They can still die if they take damage from out sources before their turn, but are immune to damage until the end of their turn once it starts. You know when this happens."}
          {:effect "When a creature dies at the end of their turn due to this unique's effect, you may cast Soul Cage as a reaction. You may do this as many times as you wish, but not while you have an active trapped soul via an instance of Soul Cage."
-          :tags   #{:magic}
+          :tags   #{:utility :survivability :accuracy}
           :levels [:skip :keep]}
          {:effect "No more than once per long rest, when a creature restrained by a critical attack from your weapons dies, you may cast Soul Cage as a reaction. You may not do this while you have an active trapped soul via an instance of Soul Cage."
-          :tags   #{:magic}
+          :tags   #{:utility :survivability :accuracy}
           :levels [:skip :keep]}]}
  {:name "Raven's Talon"
   :base "gloves"
@@ -376,19 +376,19 @@
   :base "gloves"
   :mods [{:effect "You learn the Earth Tremor spell and %scast it as a first level spell, consuming no resources, after you attack a creature within 5 feet of you."
           :levels ["" "may "]
-          :tags   #{:magic}}
+          :tags   #{:damage :control}}
          {:effect "+1 bludgeoning damage with spells for each spell with 'earth' in its name that you have prepared."
-          :tags   #{:magic :damage}}
+          :tags   #{:damage}}
          {:effect "When preparing spells, treat spells with 'earth' in their name as if they were on your class' spell list."
-          :tags   #{:magic}}
+          :tags   #{:utility}}
          {:effect "You cannot be knocked prone by the Earth Tremor and Earthquake spells."
           :tags   #{:survivability}}
          {:effect "As a major effect, you may cast Earth Tremor targeted around a target of major success hit, consuming no resources."
-          :tags   #{:magic}}
+          :tags   #{:damage}}
          {:effect "You cannot use major effects not granted by this item."}
          {:effect "Whenever you are hit by an attack that is at least a major success, you immediately cast Earth Tremor. When cast in this way, the spell also affects you."}
          {:effect "While concentrating on a spell with 'earth' in the name, other such spells consume a spell slot one lower than their usual spell slot."
-          :tags   #{:magic}
+          :tags   #{:resources}
           :levels [:skip :keep]}]}
  {:name "Babr-e Bayan"
   :base "armour"
@@ -416,7 +416,7 @@
          {:effect "+2 incoming healing from magic."
           :tags   #{:survivability}}
          {:effect "+2 outgoing healing with magic."
-          :tags   #{:magic :survivability}}
+          :tags   #{:survivability}}
          {:effect "%s"
           :levels ["Healing granted via your Medicine checks is considered magical."
                    "You may choose for any healing granted by you to be considered magical healing."]
@@ -431,7 +431,7 @@
          {:effect "-2 Dexterity."}
          {:effect "When you grant magical healing to a creature, it may immediately attempt to save out of any ongoing effects on it with saving throws that repeat each round."
           :levels [:skip :keep]
-          :tags   #{:magic :survivability}}]}
+          :tags   #{:survivability}}]}
  {:name "Reckless Replenishment"
   :base "armour"
   :mods [{:effect "At the end of each of your turns, gain temporary hit points equal to %s%% of your missing hit points."

@@ -1,10 +1,10 @@
 [{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:10:30:3}}% chance to retain that spell slot."
   :points         3
-  :tags           #{:magic}
+  :tags           #{:resources}
   :upgrade-points 1}
  {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -{{level|level:+:1}} to saving throws."
   :points 2
-  :tags   #{:accuracy :control :magic}}
+  :tags   #{:accuracy :control}}
  {:effect "+{{level|level:+}} {{x|random:ability-scores}}."
   :points 2
   :tags   #{:utility :damage}}
@@ -28,14 +28,14 @@
   :tags   #{:utility :damage}}
  {:effect "You have +{{level|level:+}} second level spell slot(s) if you already have at least one spell slot of any level."
   :points 2
-  :tags   #{:magic}}
+  :tags   #{:resources}}
  {:effect "When you turn in tarot cards, +{{level|level:+:5:10}}% chance to draw one additional card and add it to the turn in."
   :tags   #{:wealth}}
  {:effect "When you sell curio crafts, +{{level|level:+:5:10}}% chance to gain an additional catalyst."
   :tags   #{:wealth}}
  {:effect "Whenever you receive a ring loot result, +{{level|level:+:5:10}}% chance to receive an additional ring. You may choose if this ring will be a synergy ring or not."
   :tags   #{:wealth}}
- {:effect "+{{level|level:+:10:25}}% to full reveal the contents of a divine path whenever you use divine dust."
+ {:effect "+{{level|level:+:10:25}}% to full reveal the contents of a divine path whenever you use divine dust to progress that path."
   :tags   #{:wealth}}
  {:effect "{% with x=x|random:without-replacement:2:gear-slots %}While your {{x.0}} slot it empty, treat it as if it contains the same object you have in your {{x.1}} slot.{% endwith %}"
   :tags   #{:utility}}
@@ -47,15 +47,14 @@
   :points 2
   :tags   #{:control}}
  {:effect "Recover a {{level|level:+|ordinal}}-level spell slot when you roll for initiative.{{level|level:literal:_: If this is higher than your maximum spell slot, recover your maximum spell slot instead.}}"
-  :tags   #{:magic}}
+  :tags   #{:resources}}
  {:effect "Recover {{level|level:+:10}}% of your maximum class points (minimum 1) when you roll for initiative."
   :tags   #{:utility}}
  {:effect "You have advantage on initiative rolls."
+  :points 3
   :tags   #{:utility}}
- {:effect "No more than {{level|level:+|times}} per minute, when you score a critical hit, recover a 1st-level spell slot."
-  :tags   #{:critical :magic}}
- {:effect "No more than {{level|level:+|times}} per minute, when you score a critical hit, recover 10% of your maximum class points (minimum 1)."
-  :tags   #{:critical :utility}}
+ {:effect "No more than {{level|level:+|times}} per minute, when you score a critical hit, recover {{x|random:literal:a 1st-level spell slot:10% of your maximum class points (minimum 1)}}."
+  :tags   #{:critical :resources}}
  {:effect "You gain telepathy with a range of {{level|level:+:10}} feet."
   :tags   #{:utility}}
  {:effect "+{{level|level:+}} question when learning creature stats (must have earned at least one question)"
@@ -71,9 +70,7 @@
  {:effect "If you take damage exceeding 25% of your maximum hit points in one round and do not reach 0 hit points by its end, you may move up one place in the initiative tracker, if possible."
   :tags   #{:utility}}
  {:effect "{{level|level:+|times|capitalize}} per long rest, when you need make an attack roll or ability check, you can use your reaction to replace it with a 50% chance to critically succeed and 50% chance to to critically fail."
-  :tags   #{:critical :survivability :utility}}
- {:effect "You have {{level|level:+}} additional first level spell slot if you already have at least one."
-  :tags   #{:magic}}
+  :tags   #{:critical :accuracy :utility}}
  {:effect "+{{level|level:+:5}}ft {{x|random:literal:blindsight:tremorsense}}."
   :tags   #{:utility}}
  {:effect "Creatures that have hit you with a critical hit in the last minute have -{level|level:+}}AB."
@@ -105,7 +102,7 @@
  {:effect "+{{level|level:+}} expertise die with {{x|random:skills}}."
   :tags   #{:utility}}
  {:effect "You may cast {{x|random:cantrips}} {{level|level:+:times}} per long rest."
-  :tags   #{:magic}}
+  :tags   #{:utility}}
  {:effect "-{{level|level:+:5}} to your gold costs for positive random encounters."
   :tags   #{:wealth}}
  {:effect "+{{level|level:+:5}}% chance to receive an additional loot results when buying loot results."
@@ -119,21 +116,24 @@
  {:effect "+{{level|level:+}} incoming healing from magic."
   :tags   #{:survivability}}
  {:effect "+{{level|level:+:2}} outgoing healing with magic."
-  :tags   #{:magic}}
+  :tags   #{:survivability}}
  {:effect "{{level|level:+|times|capitalize}} per long rest, when rolling a natural 1 on a d20, you may reroll."
   :tags   #{:utility}}
  {:effect "You have resistance to all damage while affected by the benefits of the Dodge action."
   :tags   #{:survivability}}
  {:effect "+{{level|level:+}} damage to {{x|random:literal:melee and touch:ranged and thrown}} attacks."
   :tags   #{:damage}}
- {:effect "{{level|level:+|times|capitalize}} per short rest, recover a 1st-level spell slot on Killing Blow."
-  :tags   #{:magic}}
+ {:effect "{{level|level:+|times|capitalize}} per short rest, recover a random expended spell slot on Killing Blow."
+  :points 2
+  :tags   #{:resources}}
+ {:effect "{{level|level:+|times|capitalize}} per short rest, recover a point of exertion on Killing Blow."
+  :tags   #{:resources}}
  {:effect "When an attack fails to hit you in combat, you can use your reaction to reduce your AC for the attack until it does hit you. Your next instance of damage in the next minute is then increased by {{level|level:+:2:3}} for each point of AC you dropped."
   :tags   #{:damage}}
  {:effect "Gain temporary hit points equal to your level when you deliver a Killing Blow."
   :tags   #{:survivability}}
  {:effect "When you deliver a Killing Blow, grant {{level|level:+:5}} points of magical healing to yourself or a creature you can see."
-  :tags   #{:survivability :magic}}
+  :tags   #{:survivability}}
  {:effect "While up, heal {{level|level:+}} hit point at the start of each round of combat."
   :tags   #{:survivability}}
  {:effect "+{{level|level:+:3}} to maximum HP."
@@ -148,8 +148,8 @@
   :tags   #{:utility}}
  {:effect "Your critical hits with non-lethal weapons are also non-lethal."
   :tags   #{:critical :utility}}
- {:effect "+{{level|level:+:10:10:3}}% chance to refund the spell slots used for spells cast outside of your turn."
-  :tags   #{:magic}}
+ {:effect "+{{level|level:+:10:10:3}}% chance to refund any resource costs from actions made outside of your turn."
+  :tags   #{:resources}}
  {:effect "Regain 2 hits points when you, or allies within {{level|level:+:5}} feet of you, take a critical hit and remain conscious."
   :tags   #{:survivability}}
  {:effect "Armour can no longer cause your Stealth checks to be made with disadvantage."
@@ -302,8 +302,8 @@
   :effect    "Missed weapon attacks have a {{level|level:+:5:20}}% chance to be critical hits instead while you are below 20% hit points."
   :tags      #{:critical}}
  {:base-type "gloves"
-  :effect    "{{level|level:+|times|capitalize}} per long rest, you can choose a target you can see as an action and then cast a random 1st-level spell on that target, ignoring range restrictions."
-  :tags      #{:magic}}
+  :effect    "{{level|level:+|times|capitalize}} per long rest, you can choose a target you can see as an action and then cast a random spell of a random spell level you have available on that target, ignoring range restrictions."
+  :tags      #{:utility}}
  {:base-type "gloves"
   :effect    "When you deliver a Killing Blow, gain +2 global damage for {{level|level:+}} minute."
   :tags      #{:damage}}
@@ -336,7 +336,7 @@
   :tags      #{:damage}}
  {:base-type "gloves"
   :effect    "If all creatures targeted by a spell you cast received a natural critical hit, the spell slot used for that cast is refunded."
-  :tags      #{:critical :magic}}
+  :tags      #{:critical :resources}}
  {:base-type "gloves"
   :effect    "You and your minions have +{level|level:+:3}} damage with critical hits."
   :tags      #{:critical}}

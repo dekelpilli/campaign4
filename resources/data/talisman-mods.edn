@@ -6,7 +6,7 @@
   :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is a Celestial, you are granted the effects of the Bless spell while the power is active."
-  :tags     #{:magic}}
+  :tags     #{:accuracy :survivability}}
  {:category "above"
   :effect   "If the contained creature is a Construct, gain damage reduction equal to your level against any damage types it is resistant or immune to."
   :tags     #{:survivability}}
@@ -18,7 +18,7 @@
   :tags     #{:damage}}
  {:category "above"
   :effect   "If the contained creature is a Fey, choose a Druid-exclusive spell of spell level equal to or lower than the gem's CR. You may cast this once per short rest. You may change the chosen spell on a long rest, or when replacing/upgrading the gem."
-  :tags     #{:magic}}
+  :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is a Fiend, whenever this passive procs, another passive of your choice from the same creature also procs. If it has only one passive, the gem's proc roll is made with advantage on rounds immediately after the gem was active."
   :tags     #{:utility}}
@@ -78,7 +78,7 @@
   :effect   "If the contained creature has any condition immunities, this power becomes active until the end of the round when one of those conditions is applied to you (including willingly)."
   :tags     #{:utility}}
  {:category "below"
-  :effect   "If the contained creature has any special reactions, you have one additional reaction while the power is active."
+  :effect   "If the contained creature has any special reactions, you have one additional reaction during rounds where the power is active."
   :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has any on death effects, you have one additional failed death save slot."
@@ -97,7 +97,7 @@
   :tags     #{:survivability}}
  {:category "below"
   :effect   "If the contained creature has spell slots or innate spellcasting, you learn all spells known by the contained creature, and may cast them using your own spell slots."
-  :tags     #{:magic}}
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has any skill proficiencies, you may choose up to 3 of these skills to gain proficiency or an expertise die in. You may change the chosen skills on a long rest, or when replacing/upgrading the gem."
   :tags     #{:utility}}
@@ -106,10 +106,13 @@
   :tags     #{:utility :survivability}}
  {:category "below"
   :effect   "If the contained creature knows multiple languages, you learn the Tongues and Comprehend Languages spells and may cast them once each per short rest."
-  :tags     #{:magic}}
+  :tags     #{:utility}}
  {:category "below"
   :effect   "If the contained creature has at least four passive traits, gain maximum hit points equal to twice the number of passive traits it has."
   :tags     #{:survivability}}
+ {:category "below"
+  :effect   "If the contained creature has multiple actions that can grapple, restrain, push, or knock down, your exertion costs are reduced by 1 while the power is active, to a minimum of 1."
+  :tags     #{:resources}}
 
  {:category "unconditional"
   :effect   "While not down, gain hit points equal to the contained creature's CR when its power is activated."

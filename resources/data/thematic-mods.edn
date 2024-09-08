@@ -34,7 +34,7 @@
 
  {:effect "+{{level|level:+:5:10}}% chance to cast Wither and Bloom as a free action at the start of your turn."
   :origin :tanyll
-  :tags   #{:magic}}
+  :tags   #{:survivability :damage}}
  {:effect "Heal {{level|level:+}} hit point at the end of a turn where you have dealt Necrotic damage."
   :origin :tanyll
   :tags   #{:survivability}}
@@ -71,7 +71,7 @@
   :tags   #{:utility :survivability}}
  {:effect "Healing actions you use do not consume resources if you have landed a killing blow with radiant damage since the beginning of your last turn."
   :origin :solarmane
-  :tags   #{:utility :magic :survivability}}
+  :tags   #{:utility :resources :survivability}}
  {:effect "You may redirect healing targeted at you by another creature to a creature of your choice that you can see. This counts as your outgoing healing."
   :origin :solarmane
   :tags   #{:survivability :utility}}
@@ -85,7 +85,7 @@
   :tags   #{:damage :control}}
  {:effect "While concentrating, spells you cast below the level of the spell on which you're concentrating have a {{level|level:+:10:10:3}}% chance to not consume a spell slot.",
   :origin :jumlin
-  :tags   #{:magic}}
+  :tags   #{:resources}}
 
  {:effect "All physical damage you would deal is converted to your choice of Poison or Necrotic damage."
   :origin :festus

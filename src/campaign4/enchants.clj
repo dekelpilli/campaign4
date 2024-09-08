@@ -10,7 +10,7 @@
    ::control
    ::critical
    ::damage
-   ::magic
+   ::resources
    ::survivability
    ::utility
    ::wealth
@@ -18,7 +18,7 @@
    ::negated-control
    ::negated-critical
    ::negated-damage
-   ::negated-magic
+   ::negated-resources
    ::negated-survivability
    ::negated-utility
    ::negated-wealth])
