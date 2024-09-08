@@ -14,8 +14,8 @@
   :cost  "30g, +10g for each ring generated above 7"
   :rules "Players choose an amount of rings to generate, up to 11. For each ring type that was generated more than once, the player may keep all of those rings."}
  {:name "The Antiquarian"
-  :cost "30g, +5g for each reroll above 10"
-  :rules "You may buy a random unique from The Antiquarian for 40g, or provide your own unique. Choose an amount of times to reroll the unique, up to 15. If that unique was rolled again, gain it with a level equal to 1 + the amount of times it was rolled into. Otherwise, gain the last unique that was rolled."}
+  :cost "35g, +5g for each reroll above 10"
+  :rules "You may buy a random unique from The Antiquarian for 40g, or provide your own unique. Choose an amount of times to reroll the unique, up to 15. If that unique was rolled again, gain it with a level equal to 1 + the amount of times it was rolled into. Otherwise, gain the last unique that was rolled, and keep your original unique."}
  {:name  "The Prospector"
   :cost  "Up to 40g"
   :rules "Players may choose to replace the monster passive in a gem until it meets a condition modifier on their talisman, an amount of times equal to half the money spent (no dupes). If a matching monster isn't found, the fee is refunded."}

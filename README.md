@@ -35,8 +35,8 @@ Curio-crafted items can be sold for a Catalyst. Catalysts can be used to improve
 Can only move mods on gloves to gloves, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
 
 #### Enchant rules
-- The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire)
-- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 6d6 -> 5d6 + 1d8)
+- The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire).
+- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 6d6 -> 5d6 + 1d8).
 - Round-based effects round down (that is, if you do something that lasts for one round as an action on your turn, that effect will end at the start of your next turn).
 
 ### Divine Dust
@@ -81,7 +81,6 @@ You can use divine dust to progress a divinity path you have started, or start a
 #### Shrines
 - If you reject the crafting result of a shrine, it grants you 10 gold instead.
 
-
 ### Vendor valuations
 - Helmets: N/A
 - Rings: N/A
@@ -109,7 +108,7 @@ You can use divine dust to progress a divinity path you have started, or start a
   - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
   - Magic: Grants bonuses to spell slots, concentration, spell levels, spells known, non-accuracy/damage buffs to spell behaviour
   - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
-  - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points, ability score improvements
+  - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points
 
 ### Specialisations
 

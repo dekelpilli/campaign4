@@ -77,8 +77,8 @@
   (rings/loot-result)
   (uniques/loot-result)
 
-  (encounters/pass-time 1 ::encounters/clear)
-  (encounters/travel 1 ::encounters/sweltering)
+  (encounters/pass-time 1)
+  (encounters/travel 10)
 
   (curios/use-curios
     "armour"

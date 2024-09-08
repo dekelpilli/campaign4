@@ -14,7 +14,7 @@
  {:effect "+{{level|level:+}} to journey activity checks."
   :points 2
   :tags   #{:utility}}
- {:effect "Your loot rolls always grant you {{level|level:+}} additional gold (even from non-gold results)."
+ {:effect "Your loot rolls always grant you {{level|level:+:2}} additional gold."
   :points 2
   :tags   #{:wealth}}
  {:effect "+{{level|level:+:5}} feet range for applying stabilising Medicine checks."
@@ -29,7 +29,13 @@
  {:effect "You have +{{level|level:+}} second level spell slot(s) if you already have at least one spell slot of any level."
   :points 2
   :tags   #{:magic}}
- {:effect "When you or someone in your party draws tarot cards, draw one additional card and place one of the drawn cards back in the deck."
+ {:effect "When you turn in tarot cards, +{{level|level:+:5:10}}% chance to draw one additional card and add it to the turn in."
+  :tags   #{:wealth}}
+ {:effect "When you sell curio crafts, +{{level|level:+:5:10}}% chance to gain an additional catalyst."
+  :tags   #{:wealth}}
+ {:effect "Whenever you receive a ring loot result, +{{level|level:+:5:10}}% chance to receive an additional ring. You may choose if this ring will be a synergy ring or not."
+  :tags   #{:wealth}}
+ {:effect "+{{level|level:+:10:25}}% to full reveal the contents of a divine path whenever you use divine dust."
   :tags   #{:wealth}}
  {:effect "{% with x=x|random:without-replacement:2:gear-slots %}While your {{x.0}} slot it empty, treat it as if it contains the same object you have in your {{x.1}} slot.{% endwith %}"
   :tags   #{:utility}}
@@ -100,13 +106,13 @@
   :tags   #{:utility}}
  {:effect "You may cast {{x|random:cantrips}} {{level|level:+:times}} per long rest."
   :tags   #{:magic}}
- {:effect "+{{level|level:+:5}} to your loot rolls on loot rolls obtained via positive random encounters."
+ {:effect "-{{level|level:+:5}} to your gold costs for positive random encounters."
   :tags   #{:wealth}}
- {:effect "+{{level|level:+:10}}% chance to trade your creature parts for two loot rolls instead of one."
+ {:effect "+{{level|level:+:5}}% chance to receive an additional loot results when buying loot results."
   :tags   #{:wealth}}
- {:effect "+{{level|level:+:15}}% chance to avoid gaining a level of {{x|random:literal:fatigue:strife}} when you would normally gain one."
+ {:effect "+{{level|level:+:10:15}}% chance to avoid gaining a level of {{x|random:literal:fatigue:strife}} when you would normally gain one."
   :tags   #{:utility}}
- {:effect "+{{level|level:+:10}}% chance to lose one level of {{x|random:literal:fatigue:strife}} when you would normally gain one."
+ {:effect "+{{level|level:+:5:10}}% chance to lose one level of {{x|random:literal:fatigue:strife}} when you would normally gain one."
   :tags   #{:utility}}
  {:effect "Helmets you destroy have a 25% chance to grant {{level|level:+}} additional Orb of Personality."
   :tags   #{:wealth}}
