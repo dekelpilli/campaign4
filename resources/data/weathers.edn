@@ -24,7 +24,7 @@
   :effect   "You are considered to have at least 4 fatigue today."}
  {:name     "Firestorm"
   :category :negative
-  :effect   "Whenever someone gains multiple levels of fatigue or strife from a journey activity today, the rest of the party also gains one level of fatigue or strife."}
+  :effect   "Whenever someone gains multiple levels of fatigue or strife from a journey activity today, and no other characters are affected, the rest of the party also gains one level of fatigue or strife."}
  {:name     "Fire whirls"
   :category :negative
   :effect   "Your direction of travel today is random."}

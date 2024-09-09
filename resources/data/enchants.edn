@@ -1,3 +1,4 @@
+;TODO add exertion/maneuver related enchants
 [{:effect         "Whenever you cast a spell using your highest available spell slot, you have a {{level|level:+:10:30:3}}% chance to retain that spell slot."
   :points         3
   :tags           #{:resources}

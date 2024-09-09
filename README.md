@@ -23,9 +23,9 @@ Curio-crafted items can be sold for a Catalyst. Catalysts can be used to improve
 | Catalysts required | Item points |
 |--------------------|-------------|
 | 0                  | 3           |
-| 1                  | 4           |
-| 3                  | 5           |
-| 6                  | 6           |
+| 3                  | 4           |
+| 5                  | 5           |
+| 7                  | 6           |
 
 #### Receptacles
 - Receptacles are vessels for holding enchantments that fit on one enchantment slot. This can be a relic (levelled or unlevelled), unique (levelled or unlevelled), or regular magic enchantment slot (any number of enchants).
@@ -81,41 +81,50 @@ You can use divine dust to progress a divinity path you have started, or start a
 #### Shrines
 - If you reject the crafting result of a shrine, it grants you 10 gold instead.
 
-### Vendor valuations
-- Helmets: N/A
-- Rings: N/A
-- Curios: N/A
-- Mundane bases: N/A
-- Crafting items (including vials): 10
-- Unopened loot roll: 20
-- Relic effects: 1 relic dust, + dust cost of levelling, to a maximum of 5 (total max of 6 relic dust)
-
-### Sales and services
-- Orbs of Disavowment: 10
-- Vial of Cleansing: 2
-- Vial of Essence: 4
-- Loot result of your choice: 100
-- Mundanes: Free (negligible cost)
-- Empty receptacles/moving modifiers: Free
-
 ### Tags
 - Drawbacks/negative mods have no tags
 - The following tags exist:
-  - Damage: Directly increases or grants damage (such as with an aura or thorns), either with flat additions or modifiers to the damage itself, ignore res/imm, minion damage, damage conversion, ability score improvements
-  - Critical: Inflicts staggered, reduces crit req, improves crit damage (e.g. via adding crit dice), triggers effect on crit
-  - Accuracy: Grants AB, grants attacks advantage, grants enemies disadvantaged defence (dazed, staggered, blinded, restrained), grants DCs bonuses, lower enemy AC/saves
-  - Survivability: Grants AC, spell save bonuses/adv, advantaged defence, health regen, incoming healing, max HP, minion defences, change incoming damage, barrier
-  - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
-  - Resources: Grants maximum resources, avoids resource costs, or improves resource replenishment
-  - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
-  - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points
+    - Damage: Directly increases or grants damage (such as with an aura or thorns), either with flat additions or modifiers to the damage itself, ignore res/imm, minion damage, damage conversion, ability score improvements
+    - Critical: Inflicts staggered, reduces crit req, improves crit damage (e.g. via adding crit dice), triggers effect on crit
+    - Accuracy: Grants AB, grants attacks advantage, grants enemies disadvantaged defence (dazed, staggered, blinded, restrained), grants DCs bonuses, lower enemy AC/saves
+    - Survivability: Grants AC, spell save bonuses/adv, advantaged defence, health regen, incoming healing, max HP, minion defences, change incoming damage, barrier
+    - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
+    - Resources: Grants maximum resources, avoids resource costs, or improves resource replenishment
+    - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
+    - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points
+
+### Vendor valuations
+| Item                             | Sell Value                                                         |
+|:---------------------------------|:-------------------------------------------------------------------|
+| Crafting items (including vials) | 10                                                                 |
+| Curios                           | 1 Catalyst                                                         |
+| Curio crafted items              | 1 Catalyst for each mod on the item                                |
+| Divine Dust                      | N/A                                                                |
+| Helmets                          | 2x Orbs of Personality                                             |
+| Rings                            | N/A                                                                |
+| Mundane bases                    | N/A                                                                |
+| Unopened loot roll               | 25                                                                 |
+| Talismans                        | A CR2 gem. If the Talisman has locked mods, the CR will be higher. |
+| Tarot Cards                      | N/A                                                                |
+| Relic effects                    | Relic dust equal to the relic level, to a maximum of 6             |
+| Uniques                          | 1 Ancient Orb                                                      |
+
+### Sales and services
+| Item                               | Price                  |
+|:-----------------------------------|:-----------------------|
+| Orb of Disavowment                 | 10                     |
+| Vial of Cleansing                  | 2                      |
+| Vial of Essence                    | 4                      |
+| Loot result of your choice         | 100                    |
+| Mundanes                           | Free (negligible cost) |
+| Empty receptacles/moving modifiers | Free                   |
 
 ### Specialisations
 
 | Result Type         | Effect                                                                                                                                                                                                                                                                                                     | Locking                                                                                                    |
 |:--------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|
-| Curios (17-28)      | Whenever you craft using curios, you also generate an item on the same base-type, with the same point value, but treated as if you used negated versions of each curio (inversed -> positive & vise versa).                                                                                                | The extra crafted item can't be sold or used by other characters.                                          |
-| Curios              | Treat your curio crafts as if you used one additional catalyst.                                                                                                                                                                                                                                            | Your curio crafts can't be used by other characters.                                                       |
+| Curios (17-28)      | Whenever you craft using curios, you also generate an item on the same base-type, with the same point value, but treated as if you used negated versions of each curio (inversed -> positive & vise versa). Additionally, you can treat Orbs of Magnetism as if they were catalysts.                       | The extra crafted item can't be sold or used by other characters.                                          |
+| Curios              | +1 to your curio crafts' points targets.                                                                                                                                                                                                                                                                   | Your curio crafts can't be used by other characters.                                                       |
 | Curios              | Once after crafting an item with curios, you can use a catalyst to upgrade a modifier on that item (at random).                                                                                                                                                                                            | Items upgraded in this way can't be used by other characters.                                              |
 | Curios              | If all of your glove and armour slots have a curio crafted enchantment, you may enchant one of your gloves, or one of your armours, with another curio-crafted enchantment.                                                                                                                                | N/A                                                                                                        |
 | Divine Dust (29-40) | When you start a divinity path, you unlock the first two tiers. When selecting this specialisation, gain one divinity progress for each path you have started.                                                                                                                                             | N/A                                                                                                        |
@@ -136,7 +145,7 @@ You can use divine dust to progress a divinity path you have started, or start a
 | Talismans           | You can wear an additional talisman. It procs independently of your regular talisman.                                                                                                                                                                                                                      | N/A                                                                                                        |
 | Tarot (77-88)       | Levelling relics beyond level 6 only costs 2 relic dust (instead of 3).                                                                                                                                                                                                                                    | Relics levelled in this way can't be used by other characters.                                             |
 | Tarot               | You have an additional option when levelling relics.                                                                                                                                                                                                                                                       | Relics levelled in this way can't be used by other characters.                                             |
-| Tarot               | When you draw tarot cards, draw 3 additional cards and then discard 3 of the 7.                                                                                                                                                                                                                            | Relics created with the additional cards can't be used by other characters.                                |
+| Tarot               | When you draw tarot cards, draw 3 additional cards and then discard 2 of the 7.                                                                                                                                                                                                                            | Relics created with the additional cards can't be used by other characters.                                |
 | Tarot               | You may designate one card you hold as favoured. If it is in the deck, the favoured card will always be drawn when you draw Tarot cards. You may change this choice at will to a card you are holding.                                                                                                     | N/A                                                                                                        |
 | Uniques (89-100)    | When you find a unique item, it has a 50% chance to be at level 2.                                                                                                                                                                                                                                         | Uniques found at level 2 can't be used by other characters.                                                |
 | Uniques             | When you use an Ancient Orb, you may choose for the resulting unique to have the same base type (armour, gloves, or talisman) as the unique item it was used on.                                                                                                                                           | Uniques generated in this way, or upgrades they contribute to, can't be used by other characters.          |
