@@ -255,16 +255,19 @@
   :base "gloves"
   :mods [{:effect "One of your weapons gains the 'offhand' trait."
           :tags   #{:utility}}
-         {:effect "If both of your weapons have the 'offhand' trait, your main hand weapon gains all of the other traits of your offhand weapon."
+         {:effect "If your offhand weapon does not naturally have the 'offhand' trait, your main hand weapon gains all of the other traits on your offhand weapon."
           :tags   #{:utility}}
          {:effect "Add Dexterity instead of Strength to your weapon attacks' damage. This has no effect on weapons that don't add Strength to their damage."
           :tags   #{:utility}}
          {:effect "-3 melee damage with weapons if your Dexterity score is less than the Dexterity score of the target."}
          {:effect "You cannot make weapon attacks while your Dexterity score is less than 22."}
+         {:effect "If both of your weapons have the 'offhand' trait, your main hand weapon's damage die size increases by one for each trait on your offhand weapon."
+          :levels [:skip :keep]
+          :tags   #{:damage}}
          {:effect "+3 melee damage with weapons if your Dexterity score is greater than the Dexterity score of the target."
           :tags   #{:damage}
           :levels [:skip :keep]}
-         {:effect "+1 expertise die with Charisma skill checks if your Dexterity score is higher than any of the audience members' Dexterity scores."
+         {:effect "+1 expertise die with Charisma skill checks if the sum of your Dexterity and Charisma scores is at least 40."
           :tags   #{:utility}
           :levels [:skip :keep]}]}
  {:name "Pasha"
@@ -291,7 +294,7 @@
           :tags   #{:damage}}
          {:effect "+1 critical hit range against non-blind enemies."
           :tags   #{:critical}}
-         {:effect "Non-blind enemies you naturally critically hit become blinded. This ends if they succeed on saving throw at the end of their turns, or if you do not damage them during your turn."
+         {:effect "Non-blind enemies you naturally critically hit become blinded. This ends on a successful passive saving throw, or if you do not damage them during your turn."
           :tags   #{:control :accuracy}}
          {:effect "You cannot critically hit blinded enemies; your critical hits against blinded enemies are major successes instead."}
          {:effect "Creatures blinded by you have -1 to non-Armour defences while blind."
@@ -326,7 +329,7 @@
          {:effect "+1 critical hit range."
           :levels [:skip :keep]
           :tags   #{:critical}}
-         {:effect "You become shrouded in magical darkness when you score a critical hit."
+         {:effect "You become shrouded in magical darkness when you score a natural critical hit while you are hidden."
           :levels [:skip :keep]
           :tags   #{:utility :critical}}]}
  {:name "The Resilient"
@@ -411,7 +414,7 @@
           :tags   #{:accuracy}}
          {:effect "+5 to Medicine checks%s."
           :levels [" for healing downed allies"
-                   ""]
+                   ". This does not benefit journey activities."]
           :tags   #{:utility :survivability}}
          {:effect "+2 incoming healing from magic."
           :tags   #{:survivability}}

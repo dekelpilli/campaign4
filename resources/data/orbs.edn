@@ -1,5 +1,5 @@
 [{:name   "Orb of Perfection"
-  :effect "Alter the randomised values on a modifier to your liking. For modifiers with only one random value, replace the random value with any possible random value of your choice. For modifiers with multiple random values, roll the mod 5 times and choose one of the results, or to keep it as it was before."}
+  :effect "Alter the randomised values on a modifier to your liking. For modifiers with only one random value, replace the random value with any possible random value of your choice. For modifiers with multiple random values, reroll the mod 1d8 times and choose one of the results, or to keep it as it was before."}
  {:name   "Sacrificial Orb"
   :effect "Use when performing a ring sacrifice to increase the amount of generated options by an amount equal to the number of rings sacrificed."}
  {:name   "Orb of Favouritism"
@@ -11,7 +11,7 @@
  {:name   "Orb of Mulligan"
   :effect "Resets a relic to before it was levelled, allowing it to immediately be re-levelled again to the level it was previously."}
  {:name   "Orb of the Ages"
-  :effect "Apply to a unique item to have a 20% chance to set it to level 2."}
+  :effect "Apply to a unique item to have a 25% chance to set it to level 2."}
 
  {:name     "Ancient Orb(s)"
   :effect   "Reroll a unique item into another random unique item."
