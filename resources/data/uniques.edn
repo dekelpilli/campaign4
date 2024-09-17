@@ -248,12 +248,12 @@
          {:effect "If you have at least 24 Strength, you may use Strength as your spellcasting ability."
           :levels [:skip :keep]
           :tags   #{:damage}}
-         {:effect "When you damage a creature with lightning damage, another creature of your choice within 10 feet of it takes 111lightning damage equal to your Strength modifier. This cannot damage a creature more than once in a turn."
+         {:effect "When you damage a creature with lightning damage, another creature of your choice within 10 feet of it takes lightning damage equal to your Strength modifier. This cannot damage a creature more than once in a turn."
           :levels [:skip :keep]
           :tags   #{:damage}}]}
  {:name "Excalibur"
   :base "gloves"
-  :mods [{:effect "One of your weapons gains the 'offhand' trait."
+  :mods [{:effect "One of your weapons gains the 'offhand' trait, but you no longer add your offhand weapon's damage to the main hand weapon's damage."
           :tags   #{:utility}}
          {:effect "If your offhand weapon does not naturally have the 'offhand' trait, your main hand weapon gains all of the other traits on your offhand weapon."
           :tags   #{:utility}}
