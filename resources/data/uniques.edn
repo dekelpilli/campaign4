@@ -136,12 +136,12 @@
           :tags   #{:control :critical}}
          {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
           :tags   #{:control}}
-         {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have just hit with a critical). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}
+         {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have frozen as part of the attack). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}
          {:effect "-2 to non-physical, non-cold damage types."}
          {:effect "+1 critical hit range with attacks that deal cold damage, and no other non-physical damage."
           :levels [:skip :keep]
           :tags   #{:critical}}
-         {:effect "Your attacks that deal cold damage also have this major effect: make a Fortitude attack against the target, freezing them until the end of their next turn on a hit. This major effect can trigger further major effects."
+         {:effect "Your attacks that deal cold damage also have this available major effect: the target must make a saving throw, becoming frozen them until the end of their next turn on a failed save. If the target died as a result of this attack, you may force a different creature to make the save instead."
           :levels [:skip :keep]
           :tags   #{:control}}]}
  {:name "Extended Demise"
@@ -150,7 +150,7 @@
           :tags   #{:damage}}
          {:effect "+3 to damage over time."
           :tags   #{:damage}}
-         {:effect "Damage from your hits also counts as damage over time, but does not have its duration extended by this item."
+         {:effect "Damage from your hits also counts as damage over time, but cannot have its duration extended."
           :tags   #{:damage}}
          {:effect "-3 to damage with hits."}
          {:effect "Damage from your hits is delayed by one round."}

@@ -1,5 +1,30 @@
-{:nailo [{:effect "a"
-          :tags   #{:survivability}
-          :points 2}
-         {:effect "+{{level|level:+}} HP"
-          :tags   #{:damage}}]}
+{:alima  [{:effect "You count as {{level|level:+:1:1}} Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20."
+           :tags   #{:resources :utility}}
+          {:effect "Your Genie's Wrath also adds damage for {{level|level:+:1:1:3}} other patron kind of your choice."
+           :tags   #{:damage}
+           :points 3}
+          {:effect "When learning Eldritch Invocations, you may halve the level requirement of the Invocations available. You may have no more than {{level|level:+:1:1:8}} such Invocation at a time."
+           :tags   #{:utility}
+           :points 2}
+          {:effect "You gain the effects of all three Pact Boons."
+           :tags   #{:utility}
+           :points 2}
+          {:effect "You gain access to the following Major Effect: regain all spell points consumed as part of this attack."
+           :tags   #{:resources}
+           :points 2}
+          {:effect "Once per long rest, when you cast one of your Genie or Efreeti spells, it consumes no resources."
+           ;TODO change patron if not efreeti
+           :tags   #{:resources}}
+          ;TODO add/replace based on spell choices
+          ] ;dan, warlock, genie
+ :shahir [{:effect "You may choose {{level|level:+}} additional skill with Analysed Need whenever you complete a rest."
+           :tags   #{:utility}}
+          {:effect "When you roll for initiative, {{level|level:+}} creature(s) you can see takes 1 true damage, ignoring any temporary resistance."
+           :tags   #{:damage :utility}}
+          {:effect "For every 10 feet of Darkvision you have past 20ft, +1 die size with your bite attack. +{{level|level:+:5}} feet of Darkvision."
+           :tags   #{:damage :utility}}
+          ;TODO make stronger version of Developed Poise based on which was chosen
+          ;TODO add/replace based on trick choices
+          ] ;lawrence, savant, vampirism
+ :thoros [] ;bentley, cleric, sun priest
+ :simo   []} ;jonathon, fighter, sharpshooter
