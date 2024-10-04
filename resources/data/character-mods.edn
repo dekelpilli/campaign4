@@ -12,11 +12,8 @@
           {:effect "You gain access to the following Major Effect: regain all spell points consumed as part of this attack."
            :tags   #{:resources}
            :points 2}
-          {:effect "Once per long rest, when you cast one of your Genie or Efreeti spells, it consumes no resources."
-           ;TODO change patron if not efreeti
-           :tags   #{:resources}}
-          ;TODO add/replace based on spell choices
-          ] ;dan, warlock, genie
+          {:effect "Once per long rest, when you cast one of your Genie or Djinni spells, it consumes no resources."
+           :tags   #{:resources}}] ;TODO add/replace based on spell choices
  :shahir [{:effect "You may choose {{level|level:+}} additional skill with Analysed Need whenever you complete a rest."
            :tags   #{:utility}}
           {:effect "When you roll for initiative, {{level|level:+}} creature(s) you can see takes 1 true damage, ignoring any temporary resistance."
@@ -26,5 +23,24 @@
           ;TODO make stronger version of Developed Poise based on which was chosen
           ;TODO add/replace based on trick choices
           ] ;lawrence, savant, vampirism
- :thoros [] ;bentley, cleric, sun priest
- :simo   []} ;jonathon, fighter, sharpshooter
+ :thoros [{:effect "When you hit with a weapon attack, you may consume one use of your Channel Divinity to add radiant damage equal to {{level|level:+:1:2}}d12 + your level."
+           :tags   #{:damage}}
+          {:effect "When you use your Flash Fight feature to target an ally, you and any other creatures (not including the target) of your choice within 5 feet of you gain +1 Armour for the duration."
+           :points 2
+           :tags   #{:survivability}}
+          {:effect "When you cast an AoE spell that would deal fire or radiant damage, you may increase or decrease its area (square size/cone length/radius as specified by the spell) by {{level|level:+:5}} feet."
+           :tags   #{:utility}}
+          {:effect "When you cause a creature to have disadvantage on an attack, including with conditions you cause, the attack also has -1 AB."
+           :points 2
+           :tags   #{:control}}] ;bentley, cleric, sun priest
+ :simo   [{:effect "+{{level|level:+}} critical hit range while you have an active Major Effect."
+           :tags   #{:critical}}
+          {:effect "+{{level|level:+}} die size with expertise dice."
+           :tags   #{:utility}}
+          {:effect "+{{level|level:+:2}} with weapon attacks when using Focus Shot."
+           :tags   #{:damage}}
+          {:effect "+{{level|level:+:10:20:4}}% for your maneuvers to immediately refund their exertion cost."
+           :tags   #{:resources}}
+          {:effect "Gain exertion {{level|level:+}} beyond your pool's maximum when you complete a long rest."
+           :tags   #{:resources}}]} ;jonathon, fighter, sharpshooter
+;TODO balance pass

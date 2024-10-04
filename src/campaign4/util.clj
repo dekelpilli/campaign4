@@ -22,8 +22,14 @@
     (cond->> raw
              (sequential? raw) (filterv #(:enabled? % true)))))
 
-(def character-stats {::nailo {:insight       1
-                               :gem-threshold 50}}) ; TODO
+(def character-stats {::alima  {:insight       1
+                                :gem-threshold 50}
+                      ::shahir {:insight       1
+                                :gem-threshold 0}
+                      ::thoros {:insight       1
+                                :gem-threshold 0}
+                      ::simo   {:insight       1
+                                :gem-threshold 0}}) ; TODO
 (def characters (-> (keys character-stats)
                     set))
 

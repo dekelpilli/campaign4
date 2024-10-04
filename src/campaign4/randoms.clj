@@ -86,7 +86,7 @@
 
 (m/defmethod randoms-factor :gear-slots [_ _] 2)
 (m/defmethod randoms-preset :gear-slots [_ _]
-  ["left glove" "right glove" "body armour" "boots" "belt"])
+  ["left glove" "right glove" "body armour" "boots"])
 
 (m/defmethod randoms-factor :defences [_ [type]]
   (cond-> 3
@@ -105,7 +105,6 @@
   ["Comedic Jabs" "Eldritch Blackguard" "Gallant Heart" "Adamant Mountain" "Arcane Knight" "Beast Unity" "Biting Zephyr"
    "Mirror’s Glint" "Mist and Shade" "Rapid Current" "Razor’s Edge" "Sanguine Knot" "Spirited Steed" "Tempered Iron"
    "Tooth and Claw" "Unending Wheel"])
-
 
 (m/defmethod randoms-factor :literal [_ _] 1)
 (m/defmethod randoms-preset :literal [_ values] (vec values))

@@ -44,7 +44,7 @@
                   [:path :string]
                   [:progress :int]]
      ::analytics [:map
-                  [::type :string]
+                  [:type :string]
                   [:session :int]
                   [:amount :int]]}))
 
