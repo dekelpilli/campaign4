@@ -1,24 +1,8 @@
 # Loot Rules
 
-### Talismans
-- Talismans contain gems with monster passives that have a chance to proc each round in combat. This chance scales with the CR of the gem, which can be increased by merging gems.
-- Gems contain a monster passive from a monster of CR up to the gem's limit.
-- You can obtain gems by selling talismans.
-- You can craft talismans by destroying another talisman and choosing a mod from the destroyed talisman to add to the base talisman. This replaces the mod on the base talisman on the equivalent slot (talismans have 3 different slots, each with different types of modifiers).
-- You may choose to trigger your gem's passive outside of combat no more than once per long rest, lasting for a minute.
-
-More details:
-- Gems worn by downed players are inactive.
-- The % chance to proc a gem at the start of a round is equal to 5 + the gem's CR^2.
-- Gems can be upgraded (+1 CR) by merging two gems of the same CR. On upgrade, the existing passive on either gems can be kept, or a choice from 3 new passives from the new CR.
-- Monsters can be swapped between gems freely, or simply removed, as long as gems never contain a passive from a monster above the CR limit.
-- After feeding a talisman into another talisman, a random non-locked enchant on the talisman is locked, meaning it cannot be replaced again.
-- Talismans sell for higher level gems if they have locked mods.
-
 ### Curios
-Curios can only be used to fill a receptacle with glove or armour enchantments. You can only do so with exactly 4 curios.
-
-Curio-crafted items can be sold for a Catalyst. Catalysts can be used to improve subsequent Curio crafts, increasing their points total beyond the default 3:
+- Curios can only be used to fill a receptacle with glove or armour enchantments. You can only do so with exactly 4 curios.
+- Curio-crafted items can be sold for Catalysts. Catalysts can be used to improve subsequent Curio crafts, increasing their points total beyond the default 3:
 
 | Catalysts required | Item points |
 |--------------------|-------------|
@@ -26,18 +10,6 @@ Curio-crafted items can be sold for a Catalyst. Catalysts can be used to improve
 | 3                  | 4           |
 | 5                  | 5           |
 | 7                  | 6           |
-
-#### Receptacles
-- Receptacles are vessels for holding enchantments that fit on one enchantment slot. This can be a relic (levelled or unlevelled), unique (levelled or unlevelled), or regular magic enchantment slot (any number of enchants).
-- Receptacles can inherently swap the enchantments they hold with those on a compatible item.
-
-#### Moving mods
-Can only move mods on gloves to gloves, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
-
-#### Enchant rules
-- The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire).
-- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 6d6 -> 5d6 + 1d8).
-- Round-based effects round down (that is, if you do something that lasts for one round as an action on your turn, that effect will end at the start of your next turn).
 
 ### Divine Dust
 You can use divine dust to progress a divinity path you have started, or start a new one if you haven't started one/have finished all you have started. Divine paths grant powers directly to your character, rather than being tied to an item.
@@ -56,6 +28,21 @@ You can use divine dust to progress a divinity path you have started, or start a
 - Sacrifice: Smash n rings together (n > 1) to get a choice of 1 from n distinct new rings that can't be of the same type as any of the inputs
 - Synergy rings = rings whose name starts with "The" = rings whose modifier interacts with other rings
 
+### Talismans
+- Talismans contain gems with monster passives that have a chance to proc each round in combat. This chance scales with the CR of the gem, which can be increased by merging gems.
+- Gems contain a monster passive from a monster of CR up to the gem's limit.
+- You can obtain gems by selling talismans.
+- You can craft talismans by destroying another talisman and choosing a mod from the destroyed talisman to add to the base talisman. This replaces the mod on the base talisman on the equivalent slot (talismans have 3 different slots, each with different types of modifiers).
+- You may choose to trigger your gem's passive outside of combat no more than once per long rest, lasting for a minute.
+
+More details:
+- Gems worn by downed players are inactive.
+- The % chance to proc a gem at the start of a round is equal to 5 + the gem's CR^2.
+- Gems can be upgraded (+1 CR) by merging two gems of the same CR. On upgrade, the existing passive on either gems can be kept, or a choice from 3 new passives from the new CR.
+- Monsters can be swapped between gems freely, or simply removed, as long as gems never contain a passive from a monster above the CR limit.
+- After feeding a talisman into another talisman, a random non-locked enchant on the talisman is locked, meaning it cannot be replaced again.
+- Talismans sell for higher level gems if they have locked mods.
+
 ### Tarot
 - Players may turn in tarot sets with exactly 3 cards.
 - The base result of a tarot turn in is a relic. It has 1 base (starting) mod from the thematic mod pool and a random mod pool with mods taken from the relic mod pool.
@@ -68,8 +55,9 @@ You can use divine dust to progress a divinity path you have started, or start a
 - A relic can be taken to a Diviner in any city to learn (for free) what mods are in its pre-determined pool.
 
 ### Uniques
-- Unique items/receptacle can be fed into another unique item of the same type (name), to increase that unique item's level.
-- You can always what a unique's next level will be.
+- Uniques are pre-defined items with powerful affixes, and also with drawbacks.
+- Unique items/receptacles can be fed into another unique item of the same type (name), to increase that unique item's level.
+- You can always see what a unique's next level will be.
 
 ### Crafting
 #### Vials
@@ -81,17 +69,19 @@ You can use divine dust to progress a divinity path you have started, or start a
 #### Shrines
 - If you reject the crafting result of a shrine, it grants you 10 gold instead.
 
-### Tags
-- Drawbacks/negative mods have no tags
-- The following tags exist:
-    - Damage: Directly increases or grants damage (such as with an aura or thorns), either with flat additions or modifiers to the damage itself, ignore res/imm, minion damage, damage conversion, ability score improvements
-    - Critical: Inflicts staggered, reduces crit req, improves crit damage (e.g. via adding crit dice), triggers effect on crit
-    - Accuracy: Grants AB, grants attacks advantage, grants enemies disadvantaged defence (dazed, staggered, blinded, restrained), grants DCs bonuses, lower enemy AC/saves
-    - Survivability: Grants AC, spell save bonuses/adv, advantaged defence, health regen, incoming healing, max HP, minion defences, change incoming damage, barrier
-    - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
-    - Resources: Grants maximum resources, avoids resource costs, or improves resource replenishment
-    - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
-    - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points
+## General Rules/Concepts
+
+#### Enchant rules
+- The same mod can't grant damage multiples times to the same instance of damage (e.g. "+2 fire and cold damage" will still only apply once to an attack that has both cold and fire).
+- Die size increases increase the size of a single die (2d6 -> 1d6 + 1d8, 6d6 -> 5d6 + 1d8).
+- Round-based effects round down (that is, if you do something that lasts for one round as an action on your turn, that effect will end at the start of your next turn).
+
+#### Receptacles
+- Receptacles are vessels for holding enchantments that fit on one enchantment slot. This can be a relic (levelled or unlevelled), unique (levelled or unlevelled), or regular magic enchantment slot (any number of enchants).
+- Receptacles can inherently swap the enchantments they hold with those on a compatible item.
+
+#### Moving mods
+Can only move mods on gloves to gloves, and mods on armours to armours. Receptacles are untyped and can hold mods from any item.
 
 ### Vendor valuations
 | Item                             | Sell Value                                                         |
@@ -119,7 +109,19 @@ You can use divine dust to progress a divinity path you have started, or start a
 | Mundanes                           | Free  |
 | Empty receptacles/moving modifiers | Free  |
 
-### Specialisations
+### Tags
+- Drawbacks/negative mods have no tags
+- The following tags exist:
+    - Damage: Directly increases or grants damage (such as with an aura or thorns), either with flat additions or modifiers to the damage itself, ignore res/imm, minion damage, damage conversion, ability score improvements
+    - Critical: Inflicts staggered, reduces crit req, improves crit damage (e.g. via adding crit dice), triggers effect on crit
+    - Accuracy: Grants AB, grants attacks advantage, grants enemies disadvantaged defence (dazed, staggered, blinded, restrained), grants DCs bonuses, lower enemy AC/saves
+    - Survivability: Grants AC, spell save bonuses/adv, advantaged defence, health regen, incoming healing, max HP, minion defences, change incoming damage, barrier
+    - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
+    - Resources: Grants maximum resources, avoids resource costs, or improves resource replenishment
+    - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
+    - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points
+
+## Specialisations
 | Result Type         | Effect                                                                                                                                                                                                                                                                                                     | Locking                                                                                                              |
 |:--------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------|
 | Curios (17-28)      | Whenever you craft using curios, you also generate an item on the same base-type, with the same point value, but treated as if you used negated versions of each curio (inversed -> positive & vise versa). Additionally, you can treat Orbs of Magnetism as if they were two catalysts.                   | The extra crafted item can't be sold or used by other characters.                                                    |
