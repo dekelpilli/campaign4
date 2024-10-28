@@ -7,28 +7,22 @@
     [clojure.core.match :refer [match]]
     [randy.core :as r]))
 
+(defn all-relics []
+  (p/query-data ::p/relics
+                {:filter {:sold [false]}}))
+
+(defn find-by-name [name]
+  (-> (p/query-data ::p/relics
+                    {:filter {:name [name]
+                              :sold [false]}
+                     :limit  1})
+      first))
+
 (defn update-relic! [{:keys [name] :as relic}]
   (p/update-data! ::p/relics
                   {:filter {:name [name]}
                    :limit  1}
                   (constantly (select-keys relic [:levels :base :found :sold]))))
-
-;(defn unveil-relic-levels! []
-;  (when-let [{:keys [levels] :as relic} (choose-found-relic)]
-;    (let [new-levels (reduce (fn [levels _]
-;                               (if-let [new-level (single-relic-level relic (peek levels))]
-;                                 (conj levels new-level)
-;                                 (reduced levels)))
-;                             levels
-;                             (range (count levels) 4))]
-;      (-> (update relic :levels into new-levels)
-;          update-relic!)
-;      new-levels)))
-;
-;(defn reset-relic! []
-;  (when-let [relic (choose-found-relic)]
-;    (update-relic!
-;      (update relic :levels (comp u/jsonb-lift vector first)))))
 
 (defn- upgrade-points [{:keys [level template]}]
   (when (or (nil? level) (levels/upgradeable? level template))
@@ -58,25 +52,34 @@
           starting
           (take level levels)))
 
-(defn current-relic-state [relic]
-  (-> (select-keys relic [:level :name :base-type])
+(defn current-relic-state [relic]  ;TODO properly handle formatted vs effect inconsistency
+  (-> (select-keys relic [:level :name :base])
       (assoc :mods (mapv
                      #(select-keys % [:formatted :points :level :tags])
                      (current-relic-mods relic)))))
 
-(defn- level-options-types [remaining-pool num-progress-mods has-upgradeable?]
-  ;TODO add support for specialisation that offers +1 option
-  (let [pool-option (if (seq remaining-pool) :pool :random)]
+(defn- level-options-types [remaining-pool num-progress-mods num-upgradeable-mods]
+  (let [pool-option (if (seq remaining-pool) :pool :random)
+        second-pool-option (cond
+                             (>= (count remaining-pool) 2) :pool
+                             (>= num-upgradeable-mods 2) (r/sample [:random :upgrade])
+                             :else :random)
+        has-upgradeable? (pos? num-upgradeable-mods)]
     (match [num-progress-mods has-upgradeable?]
-           [2 _] [:progress :progress pool-option]
-           [1 true] [:progress pool-option (r/sample [:random :upgrade])]
-           [1 false] [:progress pool-option :random]
-           [0 true] [:random pool-option :upgrade]
-           [0 false] [:random pool-option (if (>= (count remaining-pool) 2)
-                                            (r/sample [:random pool-option])
-                                            :random)])))
+           [2 _] [:progress :progress pool-option (or (#{:random :pool} second-pool-option)
+                                                      :random)]
+           [1 true] [:progress pool-option (r/sample [:random :upgrade]) second-pool-option]
+           [1 false] [:progress pool-option :random second-pool-option]
+           [0 true] [:random pool-option :upgrade second-pool-option]
+           [0 false] [:random pool-option
+                      (if (>= (count remaining-pool) 2)
+                        (r/sample [:random pool-option])
+                        :random)
+                      (if (>= (count remaining-pool) 3)
+                        (r/sample [:random pool-option])
+                        :random)])))
 
-(defn relic-level-options [{:keys [pool levels level sold base] :as relic}]
+(defn relic-level-options [{:keys [pool levels level sold base] :as relic} fourth-option?]
   (if-not (or sold
               (= level 6)
               (not= (dec level) (count levels)))
@@ -93,7 +96,8 @@
                                               (<= remaining-levels)))
                                     current-mods)
           progress-mods (filterv :progress current-mods)
-          option-types (level-options-types remaining-pool (count progress-mods) (-> upgradeable-mods seq some?))
+          option-types (cond-> (level-options-types remaining-pool (count progress-mods) (count upgradeable-mods))
+                               (not fourth-option?) (subvec 0 3))
           option-freqs (frequencies option-types)]
       (reduce-kv
         (fn [options option-type amount]
@@ -115,51 +119,52 @@
 
 (comment
   (relic-level-options
-    {:name      ""
-     :sold      false
-     :base-type "armour"
-     :level     5
-     :levels    [{:pool {:effect "Mod 1"
-                         :points 2}}
-                 {:pool {:effect "Mod 2"}}
-                 {:upgrade {:effect "Mod 0"}}
-                 {:upgrade {:effect "Mod 1"
-                            :points 2}}]
-     :starting  [{:effect "Mod 0"}]
-     :pool      [{:effect "Mod 1"
-                  :points 2}
-                 {:effect "Mod 2"}
-                 {:effect "Mod 3"}
-                 {:effect "Mod 4"}
-                 {:effect "Mod 5"}
-                 {:effect "Mod 6"}]})
+    {:name     ""
+     :sold     false
+     :base     "armour"
+     :level    5
+     :levels   [{:pool {:effect "Mod 1"
+                        :points 2}}
+                {:pool {:effect "Mod 2"}}
+                {:upgrade {:effect "Mod 0"}}
+                {:upgrade {:effect "Mod 1"
+                           :points 2}}]
+     :starting [{:effect "Mod 0"}]
+     :pool     [{:effect "Mod 1"
+                 :points 2}
+                {:effect "Mod 2"}
+                {:effect "Mod 3"}
+                {:effect "Mod 4"}
+                {:effect "Mod 5"}
+                {:effect "Mod 6"}]}
+    false)
 
-  (let [db-relic {:name      ""
-                  :sold      false
-                  :found     true
-                  :base-type "armour"
-                  :level     6
-                  :levels    [{:pool {:effect "Mod 1"
-                                      :points 2}}
-                              {:pool {:effect "Mod 2"}}
-                              {:upgrade {:effect "Mod 0"}}
-                              {:upgrade {:effect "Mod 1"
-                                         :points 2}}
-                              {:progress {:effect "Mod 1"}}] ;can also have :random {whatever}, and nil for no changes
-                  :starting  [{:effect "Mod 0"}]
-                  :pool      [{:effect "Mod 1"
-                               :points 2}
-                              {:effect "Mod 2"}
-                              {:effect "Mod 3"}
-                              {:effect "Mod 4"}
-                              {:effect "Mod 5"}
-                              {:effect "Mod 6"}]}
-        output-relic {:name      ""
-                      :level     6
-                      :base-type "armour"
-                      :effects   [{:effect "Mod 0"
-                                   :level  2}
-                                  {:effect "Mod 1"
-                                   :level  2}
-                                  {:effect "Mod 2"
-                                   :level  1}]}]))
+  (let [db-relic {:name     ""
+                  :sold     false
+                  :found    true
+                  :base     "armour"
+                  :level    6
+                  :levels   [{:pool {:effect "Mod 1"
+                                     :points 2}}
+                             {:pool {:effect "Mod 2"}}
+                             {:upgrade {:effect "Mod 0"}}
+                             {:upgrade {:effect "Mod 1"
+                                        :points 2}}
+                             {:progress {:effect "Mod 1"}}] ;can also have :random {whatever}, and nil for no changes
+                  :starting [{:effect "Mod 0"}]
+                  :pool     [{:effect "Mod 1"
+                              :points 2}
+                             {:effect "Mod 2"}
+                             {:effect "Mod 3"}
+                             {:effect "Mod 4"}
+                             {:effect "Mod 5"}
+                             {:effect "Mod 6"}]}
+        output-relic {:name    ""
+                      :level   6
+                      :base    "armour"
+                      :effects [{:effect "Mod 0"
+                                 :level  2}
+                                {:effect "Mod 1"
+                                 :level  2}
+                                {:effect "Mod 2"
+                                 :level  1}]}]))

@@ -2,6 +2,7 @@
   (:require
     [aero.core :as aero]
     [clojure.java.io :as jio]
+    [clojure.string :as str]
     [jsonista.core :as j]
     [randy.core :as r]
     [randy.rng :as rng])
@@ -37,7 +38,8 @@
   (rng/next-int @r/default-rng 1 21))
 
 (defn parse-json [?s]
-  (j/read-value ?s j/keyword-keys-object-mapper))
+  (when-not (and (string? ?s) (str/blank? ?s))
+    (j/read-value ?s j/keyword-keys-object-mapper)))
 
 (defn insight-truth [persuasion-bonus believability-dc]
   (let [persuasion-roll (+ (d20) persuasion-bonus)]

@@ -1,5 +1,6 @@
 (ns campaign4.reporting
   (:require
+    [campaign4.paths :as paths]
     [campaign4.util :as u]
     [clojure.string :as str]
     [clojure.walk :as walk]
@@ -176,8 +177,15 @@
    :body  (-> (mapv :formatted enchants)
               format-coll)})
 
-(m/defmethod format-loot :divinity [loot]
-  {:body (str loot)}) ;TODO
+(m/defmethod format-loot :divinity [{:keys [tier modifier]}]
+  {:title (str (some (fn [{:keys [name levels]}]
+                       (println name modifier)
+                       (when (= (nth levels (dec tier))
+                                modifier)
+                         name))
+                     (vals paths/divinity-paths))
+               " (" tier ")")
+   :body  (:effect modifier)})
 
 (m/defmethod format-loot :ring [{:keys [name points formatted]}]
   {:title (format "%s (%s point ring)" name points)

@@ -63,6 +63,9 @@
   (-> (choose-by-name name coll)
       :name))
 
+(defn choose-by-relic-name [name]
+  (choose-by-name name (relics/all-relics)))
+
 (comment
   (analytics/set-session! 1)
 
@@ -113,7 +116,13 @@
             ["court of swords", "strength", "empress"])
       (tarot/generate-relic "gloves"))
 
-  (relics/current-relic-state (:relic *1))
+  (choose-by-relic-name "myrelic")
+  (relics/current-relic-state *1)
+  (relics/relic-level-options *1 true)
+
+  (-> (update *1 :levels (fnil conj []) (nth *1 0))
+      relics/update-relic!)
+
 
   (-> (:relic *1)
       (assoc :name "MyRelicNameHere")

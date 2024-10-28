@@ -10,7 +10,7 @@
   :tags   #{:utility}
   :origin :zed}
 
- {:effect "Creatures frightened by you have disadvantage on all attack rolls against {{x|literal:you:targets other than you}}."
+ {:effect "Creatures frightened by you have disadvantage on all attack rolls against {{x|random:literal:you:targets other than you}}."
   :tags   #{:control}
   :origin :urian}
  {:effect "+{{levels|level:+1:2}} non-magical incoming healing."
