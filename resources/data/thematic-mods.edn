@@ -76,7 +76,7 @@
   :origin :solarmane
   :tags   #{:survivability :utility}}
 
- {:effect "+{{level|level:+|dice}} radiant damage, and +{{level|level:+}} radiant damage over time."
+ {:effect "+{{level|level:+|dice}} radiant damage with attacks, and +{{level|level:+}} radiant damage over time."
   :origin :jumlin
   :tags   #{:damage}}
  {:effect "+{{level|level:+:2:4}} Wisdom and +{{level|level:+:2:4}} Maximum Wisdom while at least one creature you can see is affected by a blind you caused."
@@ -93,7 +93,7 @@
  {:effect "Enemies under the effect of your DoTs are marked to take +{{level|level:+}} damage from damage over time."
   :origin :festus
   :tags   #{:damage}}
- {:effect         "Your auras {{level|level:+:5}} feet larger."
+ {:effect         "Your auras are {{level|level:+:5}} feet larger."
   :upgrade-points 2
   :origin         :festus
   :tags           #{:utility}}]

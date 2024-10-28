@@ -1,9 +1,11 @@
 (ns user
   (:require
     [campaign4.analytics :as analytics]
+    [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
     [campaign4.encounters :as encounters]
+    [campaign4.helmets :as helmets]
     [campaign4.loot :as loot]
     [campaign4.paths :as paths]
     [campaign4.persistence :as p]
@@ -16,15 +18,13 @@
     [campaign4.util :as u]
     [org.fversnel.dnddice.core :as d]
     [puget.printer :refer [cprint] :as pp]
+    [randy.core :as r]
     [randy.rng :as rng])
   (:import
     (java.awt Toolkit)
     (java.awt.datatransfer StringSelection)))
 
 (require
-  '[randy.core :as r]
-  '[campaign4.crafting :as crafting]
-  '[campaign4.helmets :as helmets]
   '[campaign4.randoms :as randoms])
 
 (defmacro cp [] `(cprint *1))
@@ -78,7 +78,7 @@
   (uniques/loot-result)
 
   (encounters/pass-time 1)
-  (encounters/travel 10)
+  (encounters/travel 3)
 
   (curios/use-curios
     "armour"
@@ -133,7 +133,7 @@
     [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
      {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
   (helmets/mend-helmet
-    ::u/nailo
+    ::u/shahir
     [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
      {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
   (helmets/new-helmet ::u/nailo)

@@ -103,3 +103,38 @@
                            io/writer)]
       (pprint/pprint powers writer))
     (count powers)))
+
+(defn convert-feats-5etools
+  "s = feats doc markdown, manually remove stat block(s) and css"
+  [s]
+  (let [s (str/replace s #"(\\column|\\page|___\n)" "")
+        base-feat {:source   "sns" ;prerequisites converted manually
+                   :page     0
+                   :category "G"
+                   :entries  []}
+        add-list-item (fn add-list-item [entries list-item]
+                        (let [latest (peek entries)]
+                          (if (= (:type latest) "list")
+                            (assoc entries
+                              (dec (count entries))
+                              (update latest :items conj list-item))
+                            (conj entries {:type  "list"
+                                           :items [list-item]}))))]
+    (loop [feats []
+           feat base-feat
+           [line & remaining-lines] (str/split-lines s)]
+      (cond
+        (nil? line) (cond-> feats
+                            (:name feat) (conj feat))
+        (str/blank? line) (recur feats feat remaining-lines)
+        (str/starts-with? line "### ") (recur
+                                         (cond-> feats
+                                                 (:name feat) (conj feat))
+                                         (assoc base-feat :name (subs line 4))
+                                         remaining-lines)
+        (or (str/starts-with? line "* ")
+            (str/starts-with? line "- ")) (recur
+                                            feats
+                                            (update feat :entries add-list-item (subs line 2))
+                                            remaining-lines)
+        :else (recur feats (update feat :entries conj line) remaining-lines)))))

@@ -1,46 +1,62 @@
-{:alima  [{:effect "You count as {{level|level:+:1:1}} Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20."
+{:sharad [{:effect "You count as {{level|level:+:1:1}} Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20."
            :tags   #{:resources :utility}}
           {:effect "Your Genie's Wrath also adds damage for {{level|level:+:1:1:3}} other patron kind of your choice."
            :tags   #{:damage}
            :points 3}
           {:effect "When learning Eldritch Invocations, you may halve the level requirement of the Invocations available. You may have no more than {{level|level:+:1:1:8}} such Invocation at a time."
-           :tags   #{:utility}
-           :points 2}
-          {:effect "You gain the effects of all three Pact Boons."
+           :tags   #{:utility}}
+          {:effect "You gain the effects of {{level|level:+:1:1:2}} additional Pact Boons (of your choice)."
            :tags   #{:utility}
            :points 2}
           {:effect "You gain access to the following Major Effect: regain all spell points consumed as part of this attack."
            :tags   #{:resources}
            :points 2}
-          {:effect "Once per long rest, when you cast one of your Genie or Djinni spells, it consumes no resources."
-           :tags   #{:resources}}] ;TODO add/replace based on spell choices
- :shahir [{:effect "You may choose {{level|level:+}} additional skill with Analysed Need whenever you complete a rest."
+          {:effect "When you cast a spell with a casting time that is not an action, it consumes spell points as if its spell level is one lower, to a minimum of 1 (works with upcasting)."
+           :tags   #{:resources}}]
+ :shahir [{:effect "You may choose {{level|level:+}} additional skill(s) with Analysed Need whenever you complete a rest."
            :tags   #{:utility}}
-          {:effect "When you roll for initiative, {{level|level:+}} creature(s) you can see takes 1 true damage, ignoring any temporary resistance."
-           :tags   #{:damage :utility}}
-          {:effect "For every 10 feet of Darkvision you have past 20ft, +1 die size with your bite attack. +{{level|level:+:5}} feet of Darkvision."
-           :tags   #{:damage :utility}}
-          ;TODO make stronger version of Developed Poise based on which was chosen
-          ;TODO add/replace based on trick choices
-          ] ;lawrence, savant, vampirism
- :thoros [{:effect "When you hit with a weapon attack, you may consume one use of your Channel Divinity to add radiant damage equal to {{level|level:+:1:2}}d12 + your level."
+          {:effect "When you roll for initiative, up to {{level|level:+:1:1:4}} creature(s) you can see lose hit points equal to your level."
            :tags   #{:damage}}
-          {:effect "When you use your Flash Fight feature to target an ally, you and any other creatures (not including the target) of your choice within 5 feet of you gain +1 Armour for the duration."
+          {:effect "When a creature affected by your Attention Diverting Aegis or Antagonising Flourish targets a creature other than you with an attack, you can use a reaction to immediately taunt it until the end of its next turn."
+           :tags   #{:control}
+           :points 2}
+          {:effect "You have {{level|level:+}} additional reaction(s) per round, however you can still make no more than one opportunity attack per round."
+           :points 2
+           :tags   #{:utility}}
+          {:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks."
+           :points 3
+           :tags   #{:survivability}}
+          {:effect "Whenever you would gain a trick and instead choose to learn a maneuver, you may learn two maneuvers instead."
+           :points 2}]
+ :thoros [{:effect "When you cast non-damaging a spell with a limited number of targets that is greater than 1, its target limit is doubled."
+           :points 2
+           :tags   #{:utility}}
+          {:effect "When you use your Flash Fight feature to target an ally, you and any other creatures (not including the target) of your choice within 5 feet of you gain +{{level|level:+}} to all defences for the duration."
+           :points 3
+           :tags   #{:survivability}}
+          {:effect "When at least one ally within {{level|level:+:5}} feet of you has a defence with a higher score than you, +1 to each such defence."
            :points 2
            :tags   #{:survivability}}
           {:effect "When you cast an AoE spell that would deal fire or radiant damage, you may increase or decrease its area (square size/cone length/radius as specified by the spell) by {{level|level:+:5}} feet."
            :tags   #{:utility}}
-          {:effect "When you cause a creature to have disadvantage on an attack, including with conditions you cause, the attack also has -1 AB."
+          {:effect "Casting Aid on a creature that is not on full healthy also causes it to gain {{level|level:+:10:20}}% of its missing hit points."
+           :tags   #{:survivability}}
+          {:effect "The die size of dice rolled due to your Guidance, Bane, and Bless spells is increased by {{level|level:+}}."
            :points 2
-           :tags   #{:control}}] ;bentley, cleric, sun priest
- :simo   [{:effect "+{{level|level:+}} critical hit range while you have an active Major Effect."
-           :tags   #{:critical}}
-          {:effect "+{{level|level:+}} die size with expertise dice."
+           :tags   #{:control}}]
+ :simo   [{:effect "Your critical damage is increased by the distance between you and the target (in squares)."
+           :tags   #{:critical :damage}}
+          {:effect "You may choose to reroll your initiative at the start of each round."
+           :point  2
            :tags   #{:utility}}
-          {:effect "+{{level|level:+:2}} with weapon attacks when using Focus Shot."
+          {:effect "+{{level|level:+:2}} damage with weapon attacks when using Focus Shot."
            :tags   #{:damage}}
+          {:effect "Your Maneuver Specialisation bonuses are doubled."
+           :points 3
+           :tags   #{:damage :resources :accuracy}}
           {:effect "+{{level|level:+:10:20:4}}% for your maneuvers to immediately refund their exertion cost."
+           :point  2
            :tags   #{:resources}}
-          {:effect "Gain exertion {{level|level:+}} beyond your pool's maximum when you complete a long rest."
-           :tags   #{:resources}}]} ;jonathon, fighter, sharpshooter
-;TODO balance pass
+          {:effect "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn."
+           :points 2
+           :tags   #{:utility :critical}}]}

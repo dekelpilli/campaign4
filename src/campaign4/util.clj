@@ -22,14 +22,14 @@
     (cond->> raw
              (sequential? raw) (filterv #(:enabled? % true)))))
 
-(def character-stats {::alima  {:insight       1
-                                :gem-threshold 50}
-                      ::shahir {:insight       1
+(def character-stats {::sharad {:insight       1
                                 :gem-threshold 0}
-                      ::thoros {:insight       1
+                      ::shahir {:insight       0 ;TODO
+                                :gem-threshold 0}
+                      ::thoros {:insight       8
                                 :gem-threshold 0}
                       ::simo   {:insight       1
-                                :gem-threshold 0}}) ; TODO
+                                :gem-threshold 0}})
 (def characters (-> (keys character-stats)
                     set))
 
@@ -94,12 +94,6 @@
   (r/alias-method-sampler
     (mapv #(dissoc % :weighting) coll)
     (mapv :weighting coll)))
-
-(defmacro when-let* [bindings & body]
-  (if (seq bindings)
-    `(when-let [~(first bindings) ~(second bindings)]
-       (when-let* ~(drop 2 bindings) ~@body))
-    `(do ~@body)))
 
 (defn str-contains-any-fn [coll]
   (let [trie (-> (Trie/builder)

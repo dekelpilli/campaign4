@@ -50,11 +50,17 @@
                             (str freq die)))
                         ""))))))
 
+(defn- percentage [n]
+  (->> (double n)
+       (* 100)
+       (format "%.1f")))
+
 (selmer/add-filter! :random randoms-filter)
 (selmer/add-filter! :level levels-filter)
 (selmer/add-filter! :times times-format)
 (selmer/add-filter! :ordinal h/ordinal)
 (selmer/add-filter! :dice scale-dice)
+(selmer/add-filter! :percentage percentage)
 
 (defn load-mod [{:keys [effect] :as mod}]
   (try
@@ -75,7 +81,7 @@
        (assoc mod :formatted generated)))))
 
 (comment
-  (-> (load-mod {:effect "You gain {{x|random:feats}}"})
+  (-> (load-mod {:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks."})
       format-mod)
 
   (-> (load-mod {:effect "Recover a {{level|level:+|ordinal}}-level spell slot when you roll for initiative.{{level|level:literal:_: If this is higher than your maximum spell slot, recover your maximum spell slot instead.}}"

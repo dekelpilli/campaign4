@@ -29,12 +29,17 @@
 (defn pass-time [days]
   (analytics/record! "days:other" days))
 
+(defn positive-encounter []
+  (assoc (r/sample positive-encounters)
+    :race (r/sample races)
+    :sex (r/sample sexes)))
+
 (defn travel [days]
   (analytics/record! "days:travel" days)
   (mapv
     (fn [_]
-      (cond-> {:weather (random-weather)}
-              (u/occurred? 0.1) (assoc :encounter (r/sample positive-encounters))))
+      (cond-> (sorted-map :weather (random-weather))
+              (u/occurred? 0.1) (assoc :encounter (positive-encounter))))
     (range days)))
 
 (defn gem-procs []
@@ -49,11 +54,6 @@
                                   (str (< $ threshold) " (" $ ")"))}))
     {}
     u/character-stats))
-
-(defn positive-encounter []
-  {:race      (r/sample races)
-   :sex       (r/sample sexes)
-   :encounter (r/sample positive-encounters)})
 
 (defn jeweller-encounter [num-rings]
   (let [rings (repeatedly num-rings #(r/sample rings/rings))
@@ -94,11 +94,15 @@
         (recur (transduce (map num-char->num) + 0 (str sum)))))))
 
 (comment
+  (antiquarian-encounter
+    (r/sample uniques/uniques)
+    15)
   (into (sorted-map)
         (map (fn [n]
-               [n (-> (/ (reduce + 0 (repeatedly 10000 #(count (jeweller-encounter n))))
-                         10000)
-                      double)]))
+               [n (-> (repeatedly 10000 #(count (jeweller-encounter n)))
+                      frequencies
+                      (update-vals #(double (/ % 100)))
+                      (->> (into (sorted-map))))]))
         (range 7 12))
 
   (into (sorted-map)

@@ -2,6 +2,10 @@
   :points         3
   :tags           #{:resources}
   :upgrade-points 1}
+ {:effect         "The first {{level|level:+:1:2}} expertise die you add to a skill check add d4s, instead of just the first one. Dice beyond this amount increase die size as usual."
+  :points         2
+  :upgrade-points 1
+  :tags           #{:utility}}
  {:effect "Creatures of your choice under the effect of a spell of yours or a condition you caused have -{{level|level:+:1}} to saving throws."
   :points 2
   :tags   #{:accuracy :control}}

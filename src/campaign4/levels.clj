@@ -1,6 +1,7 @@
 (ns campaign4.levels
   (:require
     [campaign4.util :as u]
+    [clojure.edn :as edn]
     [clojure.string :as str]
     [methodical.core :as m]))
 
@@ -16,7 +17,8 @@
 
 (defn- checked-parse-num [s]
   (or (checked-parse-long s)
-      (checked-parse-double s)))
+      (checked-parse-double s)
+      (when (and s (str/includes? s "/")) (edn/read-string s))))
 
 (defn upgradeable? [level template]
   (when-let [level-sections (-> (keep (comp :tag-value :tag meta) template)
