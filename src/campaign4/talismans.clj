@@ -78,7 +78,6 @@
            not-empty
            r/sample))
 
-(defn new-talisman []
+(defn loot-result []
   (update-vals talisman-mods-by-category
                (comp dyn/format-mod r/sample)))
-(def loot-result new-talisman)

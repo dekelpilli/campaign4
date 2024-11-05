@@ -65,7 +65,7 @@
        (str/join \newline)))
 
 (m/defmethod format-loot :sequential [coll]
-  {:body (format-loot coll)})
+  {:body (format-coll coll)})
 
 (defn- ansi-colour [s colour]
   (let [colour (case colour
@@ -187,7 +187,7 @@
                " (" tier ")")
    :body  (:effect modifier)})
 
-(m/defmethod format-loot :ring [{:keys [name points formatted]}]
+(m/defmethod format-loot :rings [{:keys [name points formatted]}]
   {:title (format "%s (%s point ring)" name points)
    :body  formatted})
 

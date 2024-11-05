@@ -16,6 +16,7 @@
     [campaign4.tarot :as tarot]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
+    [clojure.set :as set]
     [org.fversnel.dnddice.core :as d]
     [puget.printer :refer [cprint] :as pp]
     [randy.core :as r]
@@ -66,6 +67,14 @@
 (defn choose-by-relic-name [name]
   (choose-by-name name (relics/all-relics)))
 
+(def loot-thresholds (-> (update-vals loot/loot-table :id)
+                         set/map-invert))
+
+(defn- loot-result [type]
+  (some-> (loot-thresholds type)
+          loot/loot-result
+          (dissoc :n)))
+
 (comment
   (analytics/set-session! 1)
 
@@ -74,11 +83,11 @@
   (pf (loot/loot! 99))
   (apply loot/loots! (keys loot/loot-table))
   (loot/loot-result 42)
-  (curios/loot-result)
-  (crafting/loot-result)
-  (talismans/loot-result)
-  (rings/loot-result)
-  (uniques/loot-result)
+  (loot-result :crafting)
+  (loot-result :curio)
+  (loot-result :talisman)
+  (loot-result :ring)
+  (loot-result :unique)
 
   (encounters/pass-time 1)
   (encounters/travel 3)
@@ -115,37 +124,35 @@
   (-> (mapv #(choose-by-name % tarot/cards)
             ["court of swords", "strength", "empress"])
       (tarot/generate-relic "gloves"))
-
-  (choose-by-relic-name "myrelic")
-  (relics/current-relic-state *1)
-  (relics/relic-level-options *1 true)
-
-  (-> (update *1 :levels (fnil conj []) (nth *1 0))
-      relics/update-relic!)
-
-
   (-> (:relic *1)
       (assoc :name "MyRelicNameHere")
       tarot/save-relic!)
+
+  (choose-by-relic-name "myrelic")
+  (-> (relics/current-relic-state *1)
+      reporting/report-loot!)
+  (relics/relic-level-options *1 true)
+  (-> (update *1 :levels (fnil conj []) (nth *1 0))
+      relics/update-relic!)
 
   (p/update-data!
     ::p/relics
     {:filter {:name ["old relic name"]}}
     (constantly {:name "new relic name"}))
 
-  (->> (helmets/qualified-char->mods ::u/nailo)
+  (->> (helmets/qualified-char->mods ::u/simo)
        (mapv #(-> (dissoc % :template)
                   (assoc :level 1)))
        copy!)
   (helmets/apply-personality
-    ::u/nailo
+    ::u/simo
     [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
      {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
   (helmets/mend-helmet
     ::u/shahir
     [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
      {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
-  (helmets/new-helmet ::u/nailo)
+  (helmets/new-helmet ::u/simo)
 
   (talismans/new-gem 0)
 

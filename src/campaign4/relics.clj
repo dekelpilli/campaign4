@@ -52,10 +52,12 @@
           starting
           (take level levels)))
 
-(defn current-relic-state [relic]  ;TODO properly handle formatted vs effect inconsistency
-  (-> (select-keys relic [:level :name :base])
+(defn current-relic-state [relic]
+  (-> (select-keys relic [:level :name :base :sold])
       (assoc :mods (mapv
-                     #(select-keys % [:formatted :points :level :tags])
+                     #(let [mod (select-keys % [:formatted :points :level :tags])]
+                        (cond-> mod
+                                (nil? (:formatted mod)) (assoc :formatted (:effect %))))
                      (current-relic-mods relic)))))
 
 (defn- level-options-types [remaining-pool num-progress-mods num-upgradeable-mods]

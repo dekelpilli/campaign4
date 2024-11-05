@@ -103,7 +103,7 @@
           :tags   #{:survivability}
           :levels [:skip :keep]}]}
  {:name "Black Magic"
-  :base "armour"
+  :base "gloves"
   :mods [{:effect "Replenish a first level spell slot when you expend a spell slot to cast a curse spell."
           :tags   #{:resources}}
          {:effect "If you cast a concentration spell that would curse a creature while you are already concentrating on a curse, the spell shares concentration with your existing concentration. You can concentrate on %d such spells at a time."
@@ -145,7 +145,7 @@
           :levels [:skip :keep]
           :tags   #{:control}}]}
  {:name "Extended Demise"
-  :base "armour"
+  :base "gloves"
   :mods [{:effect "DoTs you inflict deal damage for one round after they end (including being ended with a save, or moving out of their area)."
           :tags   #{:damage}}
          {:effect "+3 to damage over time."

@@ -5,6 +5,7 @@
     [hato.client :as hato]
     [jsonista.core :as j]
     [malli.core :as m]
+    [malli.registry :as mr]
     [malli.transform :as mt]))
 
 ;https://support.getgrist.com/api/#tag/records
@@ -48,6 +49,11 @@
                   [:session :int]
                   [:amount :int]]}))
 
+(def ^:private registry
+  (-> (m/default-schemas)
+      (merge models)
+      mr/registry))
+
 (defn- records-path [table]
   (str "/docs/" (:document-id grist-config)
        "/tables/"
@@ -55,10 +61,10 @@
        "/records"))
 
 (defn- encode [table data]
-  (m/encode (table models) data transformer))
+  (m/encode table data {:registry registry} transformer))
 
 (defn- decode [table data]
-  (m/decode (table models) data transformer))
+  (m/decode table data {:registry registry} transformer))
 
 (defn insert-data! [table data]
   (grist-request
@@ -98,10 +104,8 @@
   (grist-request
     {:method :get
      :path   "/orgs/67020/workspaces"})
-  (m/decode
-    (::monsters models)
-    {:name "x"}
-    ;{:registry models}
-    (mt/string-transformer))
+  (encode
+    ::monsters
+    {:name "x" :traits [{:x "y"}]})
   (query-data ::monsters {:filter {:name ["Allosaurus"]}
                           :limit  1}))

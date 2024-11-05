@@ -62,7 +62,7 @@
       r/sample))
 
 (comment
-  (-> (group-by :base uniques) ;TODO consider adding some unique armours
+  (-> (group-by :base uniques)
       (update-vals count))
 
   (let [levels 2] ;prints any uniques without levels defined up to {level}

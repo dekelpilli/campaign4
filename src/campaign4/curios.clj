@@ -24,7 +24,8 @@
 
 (defn loot-result []
   (-> (repeatedly 4 new-curio)
-      vec))
+      vec
+      (with-meta {:campaign4.reporting/type :curios})))
 
 (def curios
   (update-vals
