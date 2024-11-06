@@ -119,7 +119,7 @@ Can only move mods on gloves to gloves, and mods on armours to armours. Receptac
     - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
     - Resources: Grants maximum resources, avoids resource costs, or improves resource replenishment
     - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities
-    - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, class points
+    - Utility: Grants other bonuses such as skill proficiencies/bonuses, languages, senses, speed, ability scores
 
 ## Specialisations
 | Result Type         | Effect                                                                                                                                                                                                                                                                                                     | Locking                                                                                                              |

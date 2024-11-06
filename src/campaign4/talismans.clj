@@ -55,17 +55,6 @@
        (+ 2)
        cr->output)))
 
-(comment
-  (let [avg (fn [c] (double (/ (apply + c) (count c))))
-        freqs (fn [c] (->> (frequencies c)
-                           (into (sorted-map))))]
-    (->> (range 1 5)
-         (mapv (fn [n] (repeatedly 10000 #(new-gem n))))
-         (mapv (fn [c]
-                 (let [c (mapv :cr c)]
-                   {:freqs (freqs c)
-                    :avg   (avg c)}))))))
-
 (defn sample-gems [cr amount]
   (let [monster-traits (monster-traits-by-cr cr)]
     (cond->> monster-traits
@@ -81,3 +70,14 @@
 (defn loot-result []
   (update-vals talisman-mods-by-category
                (comp dyn/format-mod r/sample)))
+
+(comment
+  (let [avg (fn [c] (double (/ (apply + c) (count c))))
+        freqs (fn [c] (->> (frequencies c)
+                           (into (sorted-map))))]
+    (->> (range 1 5)
+         (mapv (fn [n] (repeatedly 10000 #(new-gem n))))
+         (mapv (fn [c]
+                 (let [c (mapv :cr c)]
+                   {:freqs (freqs c)
+                    :avg   (avg c)}))))))

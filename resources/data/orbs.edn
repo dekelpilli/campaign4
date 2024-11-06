@@ -5,13 +5,13 @@
  {:name   "Orb of Favouritism"
   :effect "Reroll the monster & trait in an gem 5 times, forcing a specific monster type. If none are available of that type in the appropriate CR, you may roll with a lower CR."}
  {:name   "Orb of Discovery"
-  :effect "Reroll the monster & trait in an gem 10 times, guaranteeing unique results where possible, player then chooses one of the results, or to keep the current trait."}
+  :effect "Reroll the monster & trait in an gem 10 times, guaranteeing unique results where possible. You may choose to keep the current trait, or to replace it with Choose one of the results."}
  {:name   "Orb of Magnetism"
   :effect "Apply during a curio craft. Reverse the polarity of any of the curios used in that craft."}
  {:name   "Orb of Mulligan"
   :effect "Resets a relic to before it was levelled, allowing it to immediately be re-levelled again to the level it was previously."}
  {:name   "Orb of the Ages"
-  :effect "Apply to a unique item to have a 25% chance to set it to level 2."}
+  :effect "Apply to a unique item to have a 25% chance to set it to level 2. If it is already level 2 or greater, it instead has a 15% chance to level up."}
 
  {:name     "Ancient Orb(s)"
   :effect   "Reroll a unique item into another random unique item."

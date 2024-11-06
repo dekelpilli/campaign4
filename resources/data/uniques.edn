@@ -21,19 +21,18 @@
  {:name "Researcher's Power"
   :base "armour"
   :mods [{:effect "Your mental ability scores are capped at exactly 26."
-          :tags   #{:utility}}
+          :tags   #{:damage :utility}}
          {:effect "+4 Intelligence."
-          :tags   #{:utility}}
+          :tags   #{:damage :utility}}
          {:effect "+2 to your lowest mental ability score (choose if equal)."
-          :tags   #{:utility}}
+          :tags   #{:damage :utility}}
+         {:effect "You cannot use Intelligence to cast spells. You can use a different mental ability score for spells that you would normally cast with Intelligence."}
          {:effect "Treat your mental ability scores as if they have a minimum value of 14."
-          :tags   #{:utility}
+          :tags   #{:damage :utility}
           :levels [:skip :keep]}
          {:effect "Gain an expertise die for all Intelligence skill checks in which you are proficient."
           :tags   #{:utility}
-          :levels [:skip :keep]}
-         {:effect "You cannot use Intelligence to cast spells."}
-         {:effect "You can use a different mental ability score for spells that you would normally cast with Intelligence."}]}
+          :levels [:skip :keep]}]}
  {:name "Wrestler's Perseverance"
   :base "armour"
   :mods [{:effect "You have advantage with melee attacks while grappled or restrained. You do not suffer disadvantage on melee attacks while restrained."
@@ -53,8 +52,9 @@
           :tags   #{:survivability}}]}
  {:name "Garb of the Divine"
   :base "armour"
-  :mods [{:effect "You gain Divinity until the end of your next turn when you hit a creature with an attack while you do not have Divinity."}
-         {:effect "If you have at least 20 Charisma, +10 fire, radiant, cold, and lightning damage while you have Divinity."
+  :mods [{:effect "You gain Divinity until the end of your next turn when you hit a creature with an attack while you do not have Divinity."
+          :tags   #{:utility}}
+         {:effect "If you have at least 20 Charisma, add twice your Charisma modifier to any fire, radiant, cold, and lightning damage while you have Divinity."
           :tags   #{:damage}}
          {:effect "If you have at least 20 Charisma, you are immune to curses."
           :tags   #{:survivability}}
@@ -70,11 +70,11 @@
           :levels [:skip :keep]}]}
  {:name "Werebear's Pelt"
   :base "armour"
-  :mods [{:effect "Your hit die size is increased by 2. This increases your maximum hit points."
+  :mods [{:effect "Your hit die size is increased by 2. This increases your maximum hit points accordingly."
           :tags   #{:survivability}}
          {:effect "At the start of your turn, if you are conscious and have been damaged in the last round, heal 2 hit points."
           :tags   #{:survivability}}
-         {:effect "You may add your %sStrength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
+         {:effect "You may add %syour Strength modifier to damage you deal with an attack (in addition to such additions allowed by default)."
           :levels [""
                    "twice "]
           :tags   #{:survivability}}
@@ -98,7 +98,7 @@
          {:effect "+1 Fortitude."
           :tags   #{:utility}}
          {:effect "Your speed is reduced by 10 feet."}
-         {:effect "You cannot use bonus action if you used your bonus action during your previous turn in the current combat."}
+         {:effect "You cannot use bonus actions if you used your bonus action during your previous turn in the current combat."}
          {:effect "Your Will and Reflexes are considered to be no lower than your Fortitude minus 2."
           :tags   #{:survivability}
           :levels [:skip :keep]}]}
@@ -109,11 +109,11 @@
          {:effect "If you cast a concentration spell that would curse a creature while you are already concentrating on a curse, the spell shares concentration with your existing concentration. You can concentrate on %d such spells at a time."
           :levels [2 3]
           :tags   #{:utility}}
+         {:effect "After you cast a non-necromancy spell, you have a 20% chance to lose an additional equivalent spell slot, if available."}
+         {:effect "You cannot deal radiant damage."}
          {:effect "+1 AB with necromancy spells while you are concentrating on multiple spells."
           :levels [:skip :keep]
-          :tags   #{:accuracy}}
-         {:effect "After you cast a non-necromancy spell, you have a 20% chance to lose an additional equivalent spell slot, if available."}
-         {:effect "You cannot deal radiant damage."}]}
+          :tags   #{:accuracy}}]}
  {:name "Relentless"
   :base "armour"
   :mods [{:effect "Gain temporary hit points equal to twice your level when you roll for initiative and do not have full health."
@@ -122,19 +122,19 @@
           :tags   #{:survivability}}
          {:effect "Healing you receive also replenishes each of your barrier types."
           :tags   #{:survivability}}
-         {:effect "Healing you receive while you have temporary hit points is always rolled at its maximum value (if the healing applies to multiple people, this still only applies to the healing you receive)."
-          :levels [:skip :keep]
-          :tags   #{:survivability}}
          {:effect "-5 incoming healing from magic while healthy."}
-         {:effect "Healing you receive while not in combat is instead applied at the end of your first turn during your next combat."}
-         {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}]}
+         {:effect "Healing you receive while not in combat is instead applied at the end of your first turn during your next combat. This does not impact healing from long rests."}
+         {:effect "You always gain exactly 1 hit point when medicine is applied to you while you are down."}
+         {:effect "Healing you receive while you have temporary hit points is always rolled at its maximum value (if the healing is applied to multiple targets, this still only applies to the healing you receive)."
+          :levels [:skip :keep]
+          :tags   #{:survivability}}]}
  {:name "Cryomancer's Obsession"
   :base "armour"
   :mods [{:effect "+1d4 cold damage."
           :tags   #{:damage}}
-         {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies have +2 cold vulnerability, gain fire resistance, and are restrained. Save at end of turn to end, or until taking fire damage."
+         {:effect "Enemies you score a natural critical hit against are frozen for up to a minute. Frozen enemies take +2 cold damage, gain fire resistance, and are restrained. Ends with passive save, or upon taking fire damage."
           :tags   #{:control :critical}}
-         {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or until they save out or take fire damage."
+         {:effect "Enemies that score a natural melee critical hit against you are frozen until the end of your next turn, or on taking fire damage."
           :tags   #{:control}}
          {:effect "You can only land killing blows against frozen enemies (including non-frozen enemies you have frozen as part of the attack). Other enemies remain on 1 HP when they would otherwise go down. You know when this happens."}
          {:effect "-2 to non-physical, non-cold damage types."}
@@ -155,10 +155,10 @@
          {:effect "-3 to damage with hits."}
          {:effect "Damage from your hits is delayed by one round."}
          {:effect "DoTs on you inflict deal damage for one round after they end."}
-         {:effect "Enemies under the effect of your DoTs become resistant to damage types dealt by those DoTs if they were originally immune to them."
+         {:effect "Enemies under the effect of your DoTs are no longer resistant to damage types dealt by those DoTs if they were originally resistant to them."
           :levels [:skip :keep]
           :tags   #{:damage}}
-         {:effect "Enemies under the effect of your DoTs are no longer resistant to damage types dealt by those DoTs if they were originally resistant to them."
+         {:effect "Enemies under the effect of your DoTs become resistant to damage types dealt by those DoTs if they were originally immune to them."
           :levels [:skip :keep]
           :tags   #{:damage}}]}
  {:name "Thunderfist"
@@ -432,7 +432,7 @@
          {:effect "You cannot dual-wield weapons."}
          {:effect "-2 to your two lowest mental ability scores (choose if equal)."}
          {:effect "-2 Dexterity."}
-         {:effect "When you grant magical healing to a creature, it may immediately attempt to save out of any ongoing effects on it with saving throws that repeat each round."
+         {:effect "When you grant magical healing to a creature, it may immediately attempt to save out of any ongoing effects on it with passive saves."
           :levels [:skip :keep]
           :tags   #{:survivability}}]}
  {:name "Reckless Replenishment"
