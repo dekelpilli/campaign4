@@ -5,7 +5,7 @@
  {:name   "Orb of Favouritism"
   :effect "Reroll the monster & trait in an gem 5 times, forcing a specific monster type. If none are available of that type in the appropriate CR, you may roll with a lower CR."}
  {:name   "Orb of Discovery"
-  :effect "Reroll the monster & trait in an gem 10 times, guaranteeing unique results where possible. You may choose to keep the current trait, or to replace it with Choose one of the results."}
+  :effect "Reroll the monster & trait in an gem 10 times, guaranteeing unique results where possible. You may choose to keep the current trait, or to replace it with any of the results."}
  {:name   "Orb of Magnetism"
   :effect "Apply during a curio craft. Reverse the polarity of any of the curios used in that craft."}
  {:name   "Orb of Mulligan"
