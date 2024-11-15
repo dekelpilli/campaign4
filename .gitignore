@@ -10,3 +10,5 @@ resources/config.edn
 .rebel_readline_history
 5et
 .clj-kondo/*/
+.calva
+.lsp

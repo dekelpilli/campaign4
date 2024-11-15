@@ -23,7 +23,7 @@
   :character "Gain piercing damage thorns equal to your barrier if at least 3 of your items grant barrier."
   :item      "Modifiers on this item that grant barrier also grant equivalent piercing damage thorns that triggers when that barrier applies."}
  {:name      "Journeyman"
-  :character "You are considered to be proficient in all skills for the purpose of journey activities while at least one item grants you expertise dice or flat bonuses to a skill you are proficient in."
+  :character "You are considered to be proficient in all skills for the purpose of journey activities while at least one item grants you expertise dice or flat bonuses to a skill you are proficient in, but such bonuses from items no longer apply."
   :item      "You are considered to be proficient in all skills for the purpose of journey activities while this item has a modifier that grants proficiency or expertise die with any skill."}
  {:name      "Generosity"
   :character "Choose a modifier tag. Modifiers on your items with this tag apply to your minions instead of to yourself."
@@ -38,14 +38,14 @@
   :character "Choose an ability score. 'Wealth' tagged modifiers on your items have no effect. +0.5 to this ability score for each item you are wearing with at least one 'wealth' tagged modifier."
   :item      "Choose an ability score. 'Wealth' tagged modifiers on this item have no effect. +0.5 to this ability score for each wealth modifier on this item."}
  {:name      "Precise"
-  :character "+1 to your critical hit range for each item you are wearing with at least one 'critical' tagged modifier. You don't add any damage dice as a result of critical hits, and your natural criticals are always hits."
+  :character "+1 to your critical hit range for each item you are wearing with at least one 'critical' tagged modifier. Your critical hits deal no additional damage, and your natural criticals are always hits."
   :item      "+1 to your critical hit range for each 'critical' tagged modifier on this item. Your critical hits deal no additional damage, your attacks have -1AB, and your natural criticals are always hits."}
  {:name      "Multi-talented"
   :character "Choose a skill. Modifiers to specific skills on your items also apply to this skill, but modifiers that specifically apply to this skill have no effect."
   :item      "Choose a skill. Modifiers to skills on this item also apply to this skill (this has no effect on modifiers that already apply to this skill)."}
  {:name      "Aggressive"
   :character "Your Armour is always exactly 3 while your gloves only have 'damage' tagged modifiers on them (across both), and have at least 2 modifiers in total."
-  :item      "'Damage' tagged modifiers on this item have no effect. +1 Armour if this item has at least 3 damage tagged modifiers."}
+  :item      "'Damage' tagged modifiers on this item have no effect. +1 Armour if this item has at least 2 damage tagged modifiers."}
  {:name      "Amplified"
   :character "While all of your worn items are relics, one relic of your choice you are wearing is treated as if it is at level 6."
   :item      "This can only be applied to relics. If this relic is your only worn relic, it is treated as if it is level 6."}

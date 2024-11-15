@@ -117,7 +117,7 @@
       r!)
 
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["hanging"
+            ["hang"
              "empress"])
       (with-meta {::reporting/type :tarot})
       (doto reporting/report-loot!))
