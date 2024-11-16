@@ -38,8 +38,11 @@
   (analytics/record! "days:travel" days)
   (mapv
     (fn [_]
-      (cond-> (sorted-map :weather (random-weather))
-              (u/occurred? 0.1) (assoc :encounter (positive-encounter))))
+      (-> (sorted-map :weather (random-weather))
+          (assoc :journeys (->> (vec u/characters)
+                                r/shuffle
+                                (mapv name)))
+          (cond-> (u/occurred? 0.1) (assoc :encounter (positive-encounter)))))
     (range days)))
 
 (defn gem-procs []

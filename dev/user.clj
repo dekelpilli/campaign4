@@ -1,7 +1,6 @@
 (ns user
   (:require
     [campaign4.analytics :as analytics]
-    [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.enchants :as e]
     [campaign4.encounters :as encounters]
@@ -80,9 +79,9 @@
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 99))
+  (pf (loot/loot! 18))
   (apply loot/loots! (keys loot/loot-table))
-  (loot/loot-result 42)
+  (loot/loot-result 18)
   (loot-result :crafting)
   (loot-result :curio)
   (loot-result :talisman)
@@ -90,7 +89,7 @@
   (loot-result :unique)
 
   (encounters/pass-time 1)
-  (encounters/travel 3)
+  (encounters/travel 2)
 
   (curios/use-curios
     "armour"
@@ -157,7 +156,9 @@
   (talismans/new-gem 0)
 
   (u/insight-truth 5 30)
-  (u/insight-lie 5)
+  (u/insight-lie -1)
+  (u/group-bonus :persuasion ::u/sidekick)
+  (u/group-bonus :deception ::u/sidekick)
 
   (roll 10 4)
   (encounters/gem-procs)

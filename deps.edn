@@ -1,11 +1,11 @@
 {:paths   ["src" "resources"]
- :deps    {org.clojure/clojure                             {:mvn/version "1.12.0-beta1"}
+ :deps    {org.clojure/clojure                             {:mvn/version "1.12.0"}
            org.clojure/core.match                          {:mvn/version "1.1.0"}
            org.clojure/core.async                          {:mvn/version "1.6.681"}
 
-           metosin/jsonista                                {:mvn/version "0.3.9"}
+           metosin/jsonista                                {:mvn/version "0.3.12"}
 
-           metosin/malli                                   {:mvn/version "0.16.2"}
+           metosin/malli                                   {:mvn/version "0.16.4"}
 
            com.github.dekelpilli/randy                     {:mvn/version "0.0.33"}
 
@@ -17,9 +17,9 @@
 
            org.ahocorasick/ahocorasick                     {:mvn/version "0.6.3"}
 
-           methodical/methodical                           {:mvn/version "1.0.111"}
+           methodical/methodical                           {:mvn/version "1.0.124"}
            selmer/selmer                                   {:mvn/version "1.12.61"}
-           org.clj-commons/humanize                        {:mvn/version "1.0"}
+           org.clj-commons/humanize                        {:mvn/version "1.1"}
 
            hato/hato                                       {:mvn/version "1.0.0"}
 

@@ -24,12 +24,24 @@
              (sequential? raw) (filterv #(:enabled? % true)))))
 
 (def character-stats {::sharad {:insight       1
+                                :perception    1
+                                :persuasion    7
+                                :deception     4
                                 :gem-threshold 0}
-                      ::shahir {:insight       0 ;TODO
+                      ::shahir {:insight       0
+                                :perception    0
+                                :deception     1
+                                :persuasion    1
                                 :gem-threshold 0}
                       ::thoros {:insight       8
+                                :perception    8
+                                :deception     -1
+                                :persuasion    2
                                 :gem-threshold 0}
                       ::simo   {:insight       1
+                                :perception    4.5
+                                :deception     1
+                                :persuasion    1
                                 :gem-threshold 0}})
 (def characters (-> (keys character-stats)
                     set))
@@ -40,6 +52,19 @@
 (defn parse-json [?s]
   (when-not (and (string? ?s) (str/blank? ?s))
     (j/read-value ?s j/keyword-keys-object-mapper)))
+
+(defn- avg [c]
+  (int (/ (apply + c) (count c))))
+
+(defn group-bonus [skill & missing-characters]
+  (as-> (apply dissoc character-stats missing-characters) $
+        (vals $)
+        (mapv skill $)
+        (sort-by - $)
+        (vec $)
+        (into $ (subvec $ 0 2))
+        (do (println $) $)
+        (avg $)))
 
 (defn insight-truth [persuasion-bonus believability-dc]
   (let [persuasion-roll (+ (d20) persuasion-bonus)]
