@@ -25,7 +25,7 @@
                   (let [total (+ points total)]
                     (if (>= total 2)
                       (conj chosen (-> (dyn/format-mod mod)
-                                       (dissoc :template :formatted)))
+                                       (dissoc :template)))
                       (recur total (conj chosen mod) mods))))}))
 
 (defn- mod-points [{:keys [points upgrade-points level]}]

@@ -22,7 +22,7 @@
   (p/update-data! ::p/relics
                   {:filter {:name [name]}
                    :limit  1}
-                  (constantly (select-keys relic [:levels :base :found :sold]))))
+                  (fn [stored] (merge stored (select-keys relic [:name :levels :level :base :found :sold])))))
 
 (defn- upgrade-points [{:keys [level template]}]
   (when (or (nil? level) (levels/upgradeable? level template))
@@ -52,13 +52,15 @@
           starting
           (take level levels)))
 
+(defn format-relic-mod [new-mod]
+  (let [mod (select-keys new-mod [:formatted :points :level :tags])]
+    (cond-> mod
+            (nil? (:formatted mod)) (assoc :formatted (:effect new-mod)))))
+
 (defn current-relic-state [relic]
   (-> (select-keys relic [:level :name :base :sold])
-      (assoc :mods (mapv
-                     #(let [mod (select-keys % [:formatted :points :level :tags])]
-                        (cond-> mod
-                                (nil? (:formatted mod)) (assoc :formatted (:effect %))))
-                     (current-relic-mods relic)))))
+      (assoc :mods (mapv format-relic-mod
+                         (current-relic-mods relic)))))
 
 (defn- level-options-types [remaining-pool num-progress-mods num-upgradeable-mods]
   (let [pool-option (if (seq remaining-pool) :pool :random)
@@ -81,6 +83,10 @@
                         (r/sample [:random pool-option])
                         :random)])))
 
+(defn- load-relic-mod [{:keys [effect] :as mod}]
+  (cond-> mod
+          effect dyn/load-mod))
+
 (defn relic-level-options [{:keys [pool levels level sold base] :as relic} fourth-option?]
   (if-not (or sold
               (= level 6)
@@ -91,7 +97,7 @@
                                vec)
                            pool)
           current-mods (->> (current-relic-mods relic)
-                            (mapv dyn/load-mod))
+                            (mapv load-relic-mod))
           remaining-levels (- 6 level)
           upgradeable-mods (filterv (fn [mod]
                                       (some-> (upgrade-points mod)
@@ -108,7 +114,7 @@
                 (case option-type
                   :progress progress-mods ;(= amount (count progress-mods)) is always true
                   :pool (->> (r/sample-without-replacement amount remaining-pool)
-                             (mapv dyn/load-mod))
+                             (mapv load-relic-mod))
                   :upgrade (r/sample-without-replacement amount upgradeable-mods)
                   :random (let [f (comp dyn/format-mod (e/enchants-fns base))]
                             (loop [opts #{(f)}]

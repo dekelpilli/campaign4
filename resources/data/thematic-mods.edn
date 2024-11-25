@@ -47,7 +47,7 @@
   :points 2
   :origin :tanyll
   :tags   #{:survivability}}
- {:effect "Whenever you land a major success with a ranged weapon attack, you may attempt to knock the target prone, as per the rules in the Knockdown maneuver. "
+ {:effect "Whenever you land a major success with a ranged weapon attack, you may knock the target prone, as per the limitations in the Knockdown maneuver."
   :origin :tanyll
   :tags   #{:control}}
  {:effect "Your thrown and ranged attacks do not suffer disadvantage due to targeting prone creatures."

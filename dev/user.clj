@@ -74,6 +74,11 @@
           loot/loot-result
           (dissoc :n)))
 
+(defn- report-tarot-cards! [cards]
+  (-> (mapv #(choose-by-name % tarot/cards) cards)
+      (with-meta {::reporting/type :tarot})
+      (doto reporting/report-loot!)))
+
 (comment
   (analytics/set-session! 1)
 
@@ -87,9 +92,10 @@
   (loot-result :talisman)
   (loot-result :ring)
   (loot-result :unique)
+  (r!)
 
   (encounters/pass-time 1)
-  (encounters/travel 2)
+  (encounters/travel 1)
 
   (curios/use-curios
     "armour"
@@ -100,7 +106,7 @@
     3)
 
   (paths/progress-path! ::u/nailo)
-  (paths/new-path-progress! ::u/nailo ::paths/subjective-truth)
+  (paths/new-path-progress! ::u/shahir ::paths/eternal-vigour)
 
   (->> ["lone"
         "Restless"]
@@ -111,27 +117,36 @@
   (uniques/at-level *1 1)
   (uniques/at-level *2 2)
   (choose-by-name "reckle" uniques/uniques)
-  (-> (choose-by-name "pacif" uniques/uniques)
+  (-> (choose-by-name "thunder" uniques/uniques)
       (uniques/at-level 2)
       r!)
 
+  (report-tarot-cards! ["fool"
+                        "tower"
+                        "hiero"
+                        "x of pent"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["hang"
-             "empress"])
-      (with-meta {::reporting/type :tarot})
-      (doto reporting/report-loot!))
-  (-> (mapv #(choose-by-name % tarot/cards)
-            ["court of swords", "strength", "empress"])
+            ["tower", "hiero", "empress"])
       (tarot/generate-relic "gloves"))
   (-> (:relic *1)
       (assoc :name "MyRelicNameHere")
       tarot/save-relic!)
+  (pf)
+
+  (let [relic (choose-by-relic-name "myrelic")
+        rand-upgrade (-> (relics/relic-level-options relic false)
+                         r/sample
+                         (update-vals relics/format-relic-mod))]
+    (-> (update relic :levels (fnil conj []) rand-upgrade)
+        (update :level inc)
+        relics/update-relic!))
 
   (choose-by-relic-name "myrelic")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
-  (relics/relic-level-options *1 true)
-  (-> (update *1 :levels (fnil conj []) (nth *1 0))
+  (relics/relic-level-options *1 false)
+  (-> (update *2 :levels (fnil conj []) (nth *1 0))
+      (update :level inc)
       relics/update-relic!)
 
   (p/update-data!
@@ -151,7 +166,7 @@
     ::u/shahir
     [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
      {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
-  (helmets/new-helmet ::u/simo)
+  (helmets/new-helmet ::u/thoros)
 
   (talismans/new-gem 0)
 

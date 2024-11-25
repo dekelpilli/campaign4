@@ -27,6 +27,7 @@
     (-> loot meta ::type) (-> loot meta ::type name keyword)
     (string? loot) :string
     (sequential? loot) :sequential
+    (:character loot) :helmet
     (some? (:synergy? loot)) :ring
     (some? (:sold loot)) :relic
     (and (:name loot)
@@ -154,6 +155,10 @@
        :body  effect})
     cards))
 
+(m/defmethod format-loot :helmet [{:keys [character mods]}]
+  {:title (format "Helmet (for %s)" character)
+   :body  (format-coll (mapv :formatted mods))})
+
 (defn- loot-title [title id]
   (or title
       (-> id
@@ -179,7 +184,6 @@
 
 (m/defmethod format-loot :divinity [{:keys [tier modifier]}]
   {:title (str (some (fn [{:keys [name levels]}]
-                       (println name modifier)
                        (when (= (nth levels (dec tier))
                                 modifier)
                          name))
@@ -187,7 +191,7 @@
                " (" tier ")")
    :body  (:effect modifier)})
 
-(m/defmethod format-loot :rings [{:keys [name points formatted]}]
+(m/defmethod format-loot :ring [{:keys [name points formatted]}]
   {:title (format "%s (%s point ring)" name points)
    :body  formatted})
 
