@@ -16,7 +16,6 @@
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
     [clojure.set :as set]
-    [org.fversnel.dnddice.core :as d]
     [puget.printer :refer [cprint] :as pp]
     [randy.core :as r]
     [randy.rng :as rng])
@@ -51,10 +50,6 @@
   (pp/pprint-str *1)
   (copy! *1))
 
-(defn roll [n x]
-  (-> (str n \d x)
-      d/roll))
-
 (defn choose-by-name [name coll]
   (let [pattern (re-pattern (str "(?i).*" name ".*"))]
     (some #(when (re-matches pattern (:name %)) %) coll)))
@@ -80,7 +75,7 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 1)
+  (analytics/set-session! 3)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
@@ -93,6 +88,8 @@
   (loot-result :ring)
   (loot-result :unique)
   (r!)
+
+  (encounters/encounter-xp ::encounters/medium)
 
   (encounters/pass-time 1)
   (encounters/travel 1)
@@ -175,7 +172,7 @@
   (u/group-bonus :persuasion ::u/sidekick)
   (u/group-bonus :deception ::u/sidekick)
 
-  (roll 10 4)
+  (u/roll 10 4)
   (encounters/gem-procs)
   (cp)
   (r!))

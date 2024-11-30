@@ -1,6 +1,8 @@
 (ns campaign4.encounters
   (:require
     [campaign4.analytics :as analytics]
+    [campaign4.dynamic-mods :as dyn]
+    [campaign4.helmets :as helmets]
     [campaign4.rings :as rings]
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]
@@ -10,9 +12,9 @@
 
 ;DC19 journey activities + scaling with prof
 (def ^:private races ["Aarakocra" "Aasimar" "Bugbear" "Centaur" "Changeling" "Dragonborn" "Dwarf" "Elf" "Firbolg"
-                      "Genasi" "Gith" "Gnome" "Goblin" "Goliath" "Half-Elf" "Half-Orc" "Halfling" "Harengon" "Hobgoblin"
-                      "Human" "Kalashtar" "Kenku" "Kobold" "Leonin" "Lizardfolk" "Loxodon" "Minotaur" "Orc" "Owlin"
-                      "Satyr" "Shifter" "Tabaxi" "Tiefling" "Tortle" "Triton" "Vedalken" "Yuan-Ti Pureblood" "Zeme"])
+                      "Genasi" "Gith" "Gnome" "Goblin" "Goliath" "Half-Elf" "Half-Orc" "Halfling" "Hobgoblin"
+                      "Human" "Kalashtar" "Kenku" "Kobold" "Lizardfolk" "Loxodon" "Minotaur" "Orc" "Shifter" "Tabaxi"
+                      "Tiefling" "Tortle" "Triton" "Vedalken" "Yuan-Ti Pureblood" "Zeme"])
 (def ^:private sexes ["female" "male"])
 
 (def ^:private positive-encounters (u/load-data :positive-encounters))
@@ -81,6 +83,30 @@
                                  uniques)]
     (uniques/at-level unique level)))
 
+(defn tailor-encounter [character points-target]
+  (let [{:keys [mods] :as helm} (helmets/new-helmet character)]
+    (loop [mods (mapv (comp dyn/load-mod #(assoc % :level 1)) mods)
+           points (helmets/helmet-points mods)]
+      (if (>= points points-target)
+        (->> (mapv dyn/format-mod mods)
+             (assoc helm :mods))
+        (let [{:keys [action mod]} (helmets/apply-personality character mods)
+              mods (case action
+                     :add (->> (assoc mod :level 1)
+                               (conj mods))
+                     :upgrade (mapv (fn [{:keys [effect] :as m}]
+                                      (cond-> m
+                                              (= effect (:effect mod)) (update :level inc))) ;can't fracture until progress is finished anyway
+                                    mods))
+              points (helmets/helmet-points mods)
+              fractured? (-> points
+                             helmets/fractured-chance
+                             (/ 100)
+                             u/occurred?)]
+          (if fractured?
+            "Fractured (gain 1 orb of personality)"
+            (recur mods points)))))))
+
 (defn- num-char->num [c]
   (- (int c) 48))
 
@@ -95,6 +121,16 @@
       (if (or (<= sum maximum) (< sum 10))
         sum
         (recur (transduce (map num-char->num) + 0 (str sum)))))))
+
+(def ^:private roll-total (comp :total u/roll))
+
+(defn encounter-xp [difficulty]
+  (case difficulty
+    ::trivial (roll-total 1 4)
+    ::medium (+ 4 (roll-total 1 4))
+    ::hard (+ 7 (roll-total 1 4))
+    ::dungeon-boss (+ 8 (roll-total 1 4))
+    ::single (+ 8 (roll-total 1 6))))
 
 (comment
   (antiquarian-encounter

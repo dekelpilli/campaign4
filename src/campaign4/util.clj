@@ -4,6 +4,7 @@
     [clojure.java.io :as jio]
     [clojure.string :as str]
     [jsonista.core :as j]
+    [org.fversnel.dnddice.core :as d]
     [randy.core :as r]
     [randy.rng :as rng])
   (:import
@@ -133,3 +134,8 @@
 (defn extract-format-tags [tag-value]
   (when tag-value
     (re-seq #"(?:[^:\"]|\"[^\"]*\")+" tag-value)))
+
+(defn roll [n x]
+  (-> (str n \d x)
+      d/roll
+      (dissoc :roll)))

@@ -41,18 +41,22 @@
       int
       (max 0)))
 
+(defn helmet-points [existing-mods]
+  (transduce (map mod-points) + 0 existing-mods))
+
 (defn- upgrade-helm-mod [existing-mods upgradeable-mods]
   (let [{:keys [points] :as upgraded-enchant} (r/sample upgradeable-mods)
-        fracture-chance (if (= points 1)
-                          (-> (transduce (map mod-points) + points existing-mods)
-                              fractured-chance)
-                          0)]
+        progress-only? (> points 1)
+        fracture-chance (if progress-only?
+                          0
+                          (-> (+ points (helmet-points existing-mods))
+                              fractured-chance))]
     {:mod             upgraded-enchant
      :fracture-chance fracture-chance}))
 
 (defn- add-helm-mod [existing-mods remaining-mods]
   (let [{:keys [points] :as added-mod} (r/sample remaining-mods)
-        points-total (transduce (map mod-points) + points existing-mods)]
+        points-total (+ points (helmet-points existing-mods))]
     {:mod             added-mod
      :fracture-chance (fractured-chance points-total)}))
 
