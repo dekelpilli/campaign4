@@ -96,10 +96,10 @@
 
   (curios/use-curios
     "armour"
-    [::e/survivability
-     ::e/utility
-     ::e/utility
-     ::e/negated-damage]
+    [::e/negated-accuracy
+     ::e/critical
+     ::e/negated-critical
+     ::e/wealth]
     3)
 
   (paths/progress-path! ::u/nailo)

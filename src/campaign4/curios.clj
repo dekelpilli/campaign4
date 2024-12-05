@@ -68,4 +68,5 @@
                                        new-weighting (* (or weighting-multi 1) weighting)]
                                    (assoc e :weighting (or new-weighting weighting)))))
                          u/weighted-sampler)]
-    (e/add-enchants-totalling points enchants-fn)))
+    {:base     base-type
+     :enchants (e/add-enchants-totalling points enchants-fn)}))

@@ -39,7 +39,8 @@
          (:effect loot)
          (= 2 (count loot))) :crafting
     (:curios loot) :curios
-    (:tier loot) :divinity))
+    (:tier loot) :divinity
+    (:enchants loot) :enchanted))
 
 (m/defmulti format-loot derive-type)
 (m/defmulti format-loot-result :id)
@@ -67,6 +68,10 @@
 
 (m/defmethod format-loot :sequential [coll]
   {:body (format-coll coll)})
+
+(m/defmethod format-loot :enchanted [{:keys [enchants base]}]
+  {:title (format "Enchanted item (%s)" base)
+   :body  (format-coll (mapv :formatted enchants))})
 
 (defn- ansi-colour [s colour]
   (let [colour (case colour
