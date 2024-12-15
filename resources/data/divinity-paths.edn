@@ -104,7 +104,7 @@
             :tags   #{:survivability}}
            {:effect "You have +1 AB with weapon attacks while you are concentrating on a spell or are under the effect of a spell you have cast, and +1 AB with spells against enemies you have hit with a weapon attack."
             :tags   #{:accuracy}}
-           {:effect "If you have made a weapon attacked in the last 18 seconds, you have +4 spell damage, and minions from your spells have +4 damage. If you have used a spell slot or finished casting a spell with a casting time of at least an action in the last 18 seconds, you have +4 weapon damage."
+           {:effect "If you have made a weapon attack in the last 18 seconds, you have +4 spell damage, and minions from your spells have +4 damage. If you have used a spell slot or finished casting a spell with a casting time of at least an action in the last 18 seconds, you have +4 weapon damage."
             :tags   #{:damage}}]}
  {:name   "Elemental Mastery"
   :info   "Improves your prowess with and against elemental damage (acid, cold, fire, lightning, or thunder damage)."

@@ -64,7 +64,6 @@
         (sort-by - $)
         (vec $)
         (into $ (subvec $ 0 2))
-        (do (println $) $)
         (avg $)))
 
 (defn insight-truth [persuasion-bonus believability-dc]
