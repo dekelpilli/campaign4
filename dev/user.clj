@@ -75,13 +75,13 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 3)
+  (analytics/set-session! 5)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 18))
+  (pf (loot/loot! 82))
   (apply loot/loots! (keys loot/loot-table))
-  (loot/loot-result 18)
+  (loot/loot-result 91)
   (loot-result :crafting)
   (loot-result :curio)
   (loot-result :talisman)
@@ -89,18 +89,23 @@
   (loot-result :unique)
   (r!)
 
-  (encounters/encounter-xp ::encounters/medium)
+  (encounters/encounter-xp ::encounters/single)
 
   (encounters/pass-time 1)
   (encounters/travel 1)
 
+  (encounters/positive-encounter)
+
   (curios/use-curios
-    "armour"
-    [::e/negated-accuracy
+    "gloves"
+    [::e/negated-resources
      ::e/critical
-     ::e/negated-critical
-     ::e/wealth]
+     ::e/control
+     ::e/utility]
     3)
+
+  (r!)
+  (curios/new-curio)
 
   (paths/progress-path! ::u/nailo)
   (paths/new-path-progress! ::u/shahir ::paths/eternal-vigour)
@@ -151,10 +156,9 @@
     {:filter {:name ["old relic name"]}}
     (constantly {:name "new relic name"}))
 
-  (->> (helmets/qualified-char->mods ::u/simo)
+  (->> (helmets/qualified-char->mods ::u/sharad)
        (mapv #(-> (dissoc % :template)
-                  (assoc :level 1)))
-       copy!)
+                  (assoc :level 1))))
   (helmets/apply-personality
     ::u/simo
     [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
@@ -163,13 +167,13 @@
     ::u/shahir
     [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
      {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
-  (helmets/new-helmet ::u/thoros)
+  (helmets/new-helmet ::u/sharad)
 
   (talismans/new-gem 0)
 
-  (u/insight-truth 5 30)
+  (u/insight-truth 3 20)
   (u/insight-lie -1)
-  (u/group-bonus :persuasion ::u/sidekick)
+  (u/group-bonus :persuasion  ::u/thoros)
   (u/group-bonus :deception ::u/sidekick)
 
   (u/roll 10 4)

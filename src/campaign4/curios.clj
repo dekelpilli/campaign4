@@ -19,7 +19,7 @@
   (str "negated-" s))
 
 (defn new-curio []
-  (-> (r/sample ["accuracy" "control" "critical" "damage" "magic" "survivability" "utility" "wealth"])
+  (-> (r/sample ["accuracy" "control" "critical" "damage" "resources" "survivability" "utility" "wealth"])
       (cond-> (u/occurred? 1/3) ->negated)))
 
 (defn loot-result []
