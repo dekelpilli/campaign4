@@ -237,9 +237,6 @@
  {:base-type "armour"
   :effect    "Until proven otherwise, intelligent creatures perceive you as having {{x|random:literal:0:5}} Armour."
   :tags      #{:utility}}
- {:base-type "armour"
-  :effect    "+{{level|level:+:2:4}} barrier for each active omen you have."
-  :tags      #{:survivability}}
  {:base-type "gloves"
   :effect    "+{{level|level:+}} AB."
   :points    5

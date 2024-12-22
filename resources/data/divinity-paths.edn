@@ -33,6 +33,8 @@
            {:effect "You take no additional damage from critical hits."
             :tags   #{:survivability}}
            {:effect "No more than once per combat, when a condition is applied to you, you may attempt a saving throw. On a success, the condition is not applied, and you are immune to that condition until the end of your next turn."
+            :tags   #{:survivability}}
+           {:effect "Each 'survivability' tagged mod on you (from uniques, relics, magic items - including talismans, and divine paths) also increases your maximum hit points by 1."
             :tags   #{:survivability}}]}
  {:name   "Perpetual Learning"
   :info   "Improves your ability to acquire knowledge through skill checks, and improves Divination spellcasting."

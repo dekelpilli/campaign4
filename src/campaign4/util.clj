@@ -29,7 +29,7 @@
                                 :persuasion    7
                                 :deception     4
                                 :gem-threshold 0}
-                      ::shahir {:insight       0
+                      ::shahir {:insight       3
                                 :perception    0
                                 :deception     1
                                 :persuasion    1

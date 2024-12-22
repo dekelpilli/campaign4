@@ -4,6 +4,8 @@
     [campaign4.util :as u]
     [clojure.string :as str]))
 
+(def extended-paths? #{::u/shahir})
+
 (def paths
   #{::unrelenting-fortune
     ::nature's-influence
@@ -51,8 +53,9 @@
   (when-let [{:keys [path progress]} (when (u/characters character)
                                        (-> (p/update-data! ::p/divinity
                                                            {:filter {:character [(name character)]
-                                                                     :progress  [1 2 3 4]}}
+                                                                     :progress  (cond-> [1 2 3 4]
+                                                                                        (extended-paths? character) (conj 5))}}
                                                            (fn [divinity] (update divinity :progress inc)))
                                            first))]
     {:modifier (get-in divinity-paths [path :levels (dec progress)])
-     :tier     (inc progress)}))
+     :tier     progress}))

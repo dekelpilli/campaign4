@@ -11,3 +11,7 @@
   (-> (r/sample [:orbs :shrines :vials])
       crafting-options
       r/sample))
+
+(defn new-shrine []
+  (-> (:shrines crafting-options)
+      r/sample))

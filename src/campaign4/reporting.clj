@@ -27,12 +27,12 @@
     (-> loot meta ::type) (-> loot meta ::type name keyword)
     (string? loot) :string
     (sequential? loot) :sequential
+    (:item loot) :vial
     (:character loot) :helmet
     (some? (:synergy? loot)) :ring
     (some? (:sold loot)) :relic
     (and (:name loot)
          (:level loot)) :unique
-    (:item loot) :vial
     (get loot "above") :talisman
     (:cr loot) :gem
     (and (:name loot)
@@ -54,10 +54,6 @@
 (m/defmethod format-loot-result :curio [{:keys [result]}]
   (-> (with-meta result {::type :curios})
       format-loot))
-
-(m/defmethod format-loot-result :omen [{:keys [result]}]
-  {:title "Reroll and gain omen"
-   :body  result})
 
 (m/defmethod format-loot-result :default [{:keys [result]}]
   (format-loot result))
@@ -86,16 +82,15 @@
         (nil? change) nil
         (= :new change) (str "- " (ansi-colour effect :green))
         (= :removed change) (str "- " (ansi-colour effect :red))
-        (:diff change) (doto (->> (mapv
-                                    (fn [diff]
-                                      (cond
-                                        (= diff_match_patch$Operation/EQUAL (.-operation diff)) (.-text diff)
-                                        (= diff_match_patch$Operation/INSERT (.-operation diff)) (ansi-colour (.-text diff) :green)
-                                        (= diff_match_patch$Operation/DELETE (.-operation diff)) (ansi-colour (.-text diff) :red)))
-                                    (:diff change))
-                                  str/join
-                                  (str "- "))
-                         println)))
+        (:diff change) (->> (mapv
+                              (fn [diff]
+                                (cond
+                                  (= diff_match_patch$Operation/EQUAL (.-operation diff)) (.-text diff)
+                                  (= diff_match_patch$Operation/INSERT (.-operation diff)) (ansi-colour (.-text diff) :green)
+                                  (= diff_match_patch$Operation/DELETE (.-operation diff)) (ansi-colour (.-text diff) :red)))
+                              (:diff change))
+                            str/join
+                            (str "- "))))
     mods))
 
 (m/defmethod format-loot :unique [{:keys [name base level mods]}]
@@ -172,15 +167,12 @@
           (->> (mapv str/capitalize)
                (str/join " ")))))
 
-(m/defmethod format-loot :loot [{:keys [omen id n] :as loot}]
+(m/defmethod format-loot :loot [{:keys [id n] :as loot}]
   (let [formatted (format-loot-result loot)
-        formatted (if (vector? formatted) formatted [formatted])
-        formatted-results (update formatted 0
-                                  (fn [formatted] (-> (assoc formatted :roll n)
-                                                      (update :title loot-title id))))]
-    (cond-> formatted-results
-            omen (conj {:title "Omen"
-                        :body  omen}))))
+        formatted (if (vector? formatted) formatted [formatted])]
+    (update formatted 0
+            (fn [formatted] (-> (assoc formatted :roll n)
+                                (update :title loot-title id))))))
 
 (m/defmethod format-loot :enchanted [{:keys [base enchants]}]
   {:title (format "Enchanted %s (receptacle)" base)

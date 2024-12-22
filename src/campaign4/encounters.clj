@@ -126,11 +126,11 @@
 
 (defn encounter-xp [difficulty]
   (case difficulty
-    ::trivial (roll-total 1 4)
-    ::medium (+ 4 (roll-total 1 4))
-    ::hard (+ 7 (roll-total 1 4))
-    ::dungeon-boss (+ 8 (roll-total 1 4))
-    ::single (+ 8 (roll-total 1 6))))
+    ::trivial (+ 4 (roll-total 1 4))
+    ::medium (+ 8 (roll-total 1 4))
+    ::hard (+ 11 (roll-total 1 4))
+    ::dungeon-boss (+ 12 (roll-total 1 4))
+    ::single (+ 14 (roll-total 1 6))))
 
 (comment
   (antiquarian-encounter

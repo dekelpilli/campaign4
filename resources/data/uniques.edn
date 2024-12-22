@@ -93,15 +93,24 @@
           :tags   #{:survivability}}
          {:effect "You have advantaged defence against effects that would move you%s."
           :levels [""
-                   " or knock you prone."]
+                   " or knock you prone"]
           :tags   #{:survivability}}
          {:effect "+1 Fortitude."
           :tags   #{:utility}}
-         {:effect "Your speed is reduced by 10 feet."}
+         {:effect "Your speed is reduced by %d feet."
+          :levels [10
+                   10
+                   5]}
          {:effect "You cannot use bonus actions if you used your bonus action during your previous turn in the current combat."}
-         {:effect "Your Will and Reflexes are considered to be no lower than your Fortitude minus 2."
+         {:effect "Your %sWill and Reflexes are considered to be no lower than your Fortitude minus 2."
           :tags   #{:survivability}
-          :levels [:skip :keep]}]}
+          :levels [:skip
+                   ""
+                   "Armour, "]}
+         {:effect "You can get up from prone as a free action."
+          :levels [:skip
+                   :skip
+                   :keep]}]}
  {:name "Black Magic"
   :base "gloves"
   :mods [{:effect "Replenish a first level spell slot when you expend a spell slot to cast a curse spell."

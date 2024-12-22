@@ -98,10 +98,8 @@
                            pool)
           current-mods (->> (current-relic-mods relic)
                             (mapv load-relic-mod))
-          remaining-levels (- 6 level)
           upgradeable-mods (filterv (fn [mod]
-                                      (some-> (upgrade-points mod)
-                                              (<= remaining-levels)))
+                                      (levels/upgradeable? (:level mod) (:template mod)))
                                     current-mods)
           progress-mods (filterv :progress current-mods)
           option-types (cond-> (level-options-types remaining-pool (count progress-mods) (count upgradeable-mods))

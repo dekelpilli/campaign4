@@ -21,7 +21,7 @@
   :points 3
   :origin :urian}
 
- {:effect "Your amulet's proc roll is made with advantage if you scored a critical hit in the previous round."
+ {:effect "Your talisman's proc roll is made with advantage if you scored a critical hit in the previous round."
   :tags   #{:critical :utility}
   :origin :truvat}
  {:effect "Conditions you apply with a critical hit always last {{level|level:+}} round longer than usual (including persisting for a round after a successful saving throw)."
