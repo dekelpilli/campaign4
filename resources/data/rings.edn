@@ -43,9 +43,6 @@
  {:name   "Watchful"
   :effect "You may trance instead of sleeping during long rests, but must still rest for 8 hours (by default) to achieve a long rest."
   :points 2}
- {:name   "Restless"
-  :effect "You do not suffer disadvantage on Perception checks while asleep."
-  :points 1}
  {:name   "Divergent"
   :effect "{% with x=x|random:without-replacement:2:damage-types:non-physical %}You take {{x.0}} damage as {{x.1}} damage instead.{% endwith %}"
   :points 1}
