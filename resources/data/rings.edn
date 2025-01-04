@@ -65,5 +65,5 @@
   :effect "Whenever you obtain a loot roll, you may roll a d4. On a roll of 4, gain a ring result instead."
   :points 3}
  {:name   "Impactful"
-  :effect "You trigger major effects on attack roll values of 13+, although the attack is still considered a standard success for other purposes."
+  :effect "You trigger major effects on attacks with a score of 13+ (after defences), although the attack is still considered a standard success for other purposes."
   :points 4}]

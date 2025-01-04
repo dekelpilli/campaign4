@@ -57,7 +57,7 @@
 (defn- add-helm-mod [existing-mods remaining-mods]
   (let [{:keys [points] :as added-mod} (r/sample remaining-mods)
         points-total (+ points (helmet-points existing-mods))]
-    {:mod             added-mod
+    {:mod             (dyn/format-mod added-mod)
      :fracture-chance (fractured-chance points-total)}))
 
 (defn- match-character-mods [character-mods mods]

@@ -235,7 +235,7 @@
           :levels [""
                    " If this modifier did not increase the AB of a thrown attack you make, roll its damage with advantage."]
           :tags   #{:damage :accuracy}}
-         {:effect "Your thrown attacks do no suffer disadvantage from long range."
+         {:effect "Your thrown attacks do not suffer disadvantage from long range."
           :tags   #{:accuracy}}
          {:effect "You may immediately ask a question about a creature you hit with an attack."
           :tags   #{:utility}}

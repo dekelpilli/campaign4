@@ -79,7 +79,7 @@
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 89))
+  (pf (loot/loot! 87))
   (apply loot/loots! (keys loot/loot-table))
   (loot/loot-result 91)
   (loot-result :crafting)
@@ -89,6 +89,7 @@
   (loot-result :unique)
   (r!)
 
+  (encounters/gem-procs)
   (encounters/encounter-xp ::encounters/hard)
 
   (encounters/pass-time 1)
@@ -125,15 +126,15 @@
 
   (r!)
 
-  (report-tarot-cards! ["fool"
-                        "tower"
-                        "hiero"
-                        "x of pent"])
+  (report-tarot-cards! ["star"
+                        "moon"
+                        "emperor"
+                        "streng"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["X of cups", "empress", "wheel of"])
+            ["moon", "x of pen", "wheel"])
       (tarot/generate-relic "armour"))
   (-> (:relic *1)
-      (assoc :name "MyRelicNameHere")
+      (assoc :name "Truvat's Sneakers")
       tarot/save-relic!)
   (pf)
 
@@ -145,7 +146,7 @@
         (update :level inc)
         relics/update-relic!))
 
-  (choose-by-relic-name "moment")
+  (choose-by-relic-name "sneakers")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
   (relics/relic-level-options *1 false)
@@ -159,30 +160,37 @@
     {:filter {:name ["old relic name"]}}
     (constantly {:name "new relic name"}))
 
-  (->> (helmets/qualified-char->mods ::u/thoros)
+  (->> (helmets/qualified-char->mods ::u/shahir)
        (mapv #(-> (dissoc % :template)
                   (assoc :level 1))))
   (helmets/apply-personality
-    ::u/thoros
-    [{:effect "When you use your Flash Fight feature to target an ally, you and any other creatures (not including the target) of your choice within 5 feet of you gain +{{level|level:+}} to all defences for the duration.",
+    ::u/shahir
+    [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks.",
       :points 3,
-      :tags   #{:survivability},
-      :level  1}])
+      :tags #{:survivability},
+      :level 1}
+     {:effect "You have {{level|level:+}} additional reaction(s) per round, however you can still make no more than one opportunity attack per round.",
+      :points 2,
+      :level 1
+      :tags #{:utility}}])
   (helmets/mend-helmet
     ::u/shahir
-    [{:effect "a", :tags #{:survivability}, :points 2, :level 2}
-     {:effect "+{{level|level:+}} HP", :tags #{:damage}, :points 1, :level 1}])
-  (helmets/new-helmet ::u/thoros)
+    [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks.",
+      :points 3,
+      :tags #{:survivability},
+      :level 1}])
+  (helmets/new-helmet ::u/shahir)
   (r!)
 
   (talismans/new-gem 0)
+  (talismans/sample-gems 3 3)
 
-  (u/insight-truth 3 20)
+  (u/insight-truth 8 15)
   (u/insight-lie -1)
-  (u/group-bonus :persuasion ::u/simo ::u/sharad)
-  (u/group-bonus :deception ::u/sidekick)
+  (u/group-bonus :persuasion ::u/simo ::u/thoros ::u/sidekick)
+  (u/group-bonus :deception ::u/simo ::u/thoros ::u/sidekick)
 
-  (u/roll 10 4)
+  (u/roll 1 20)
   (encounters/gem-procs)
   (cp)
   (r!))

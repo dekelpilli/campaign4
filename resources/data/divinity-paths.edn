@@ -59,6 +59,8 @@
            {:effect "You may cast Fortune's Favour at any spell level as a free action on your turn once per round. You can use no more than 10 spell slot levels on this per long rest."
             :tags   #{:accuracy}}
            {:effect "For every 2 loot specialisations you unlock, unlock a further one that does not count towards this mod. This works retroactively and for future specialisations, to a minimum of +1 specialisation."
+            :tags   #{:wealth}}
+           {:effect "Whenever you achieve any success with a journey activity, also gain the equivalent success tier's benefits from the Chronicle journey activity."
             :tags   #{:wealth}}]}
  {:name   "Wrathful Judgement"
   :info   "Grants a mark and improves your marks."

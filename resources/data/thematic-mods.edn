@@ -45,16 +45,16 @@
 
  {:effect "Your ranged and thrown weapons gain the 'Parrying' trait."
   :points 2
-  :origin :tanyll
+  :origin :dayuzh
   :tags   #{:survivability}}
  {:effect "Whenever you land a major success with a ranged weapon attack, you may knock the target prone, as per the limitations in the Knockdown maneuver."
-  :origin :tanyll
+  :origin :dayuzh
   :tags   #{:control}}
  {:effect "Your thrown and ranged attacks do not suffer disadvantage due to targeting prone creatures."
-  :origin :tanyll
+  :origin :dayuzh
   :tags   #{:accuracy}}
 
- {:effect "Your ranged attacks do no suffer disadvantage at long range."
+ {:effect "Your ranged attacks do not suffer disadvantage at long range."
   :origin :desmond
   :tags   #{:accuracy}}
  {:effect "{{level|level:+:1:3}} damage with improvised weapons."
