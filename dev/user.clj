@@ -2,6 +2,7 @@
   (:require
     [campaign4.analytics :as analytics]
     [campaign4.curios :as curios]
+    [campaign4.dynamic-mods :as dyn]
     [campaign4.enchants :as e]
     [campaign4.encounters :as encounters]
     [campaign4.helmets :as helmets]
@@ -75,7 +76,7 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 7)
+  (analytics/set-session! 8)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
@@ -96,20 +97,24 @@
   (encounters/travel 1)
 
   (encounters/positive-encounter)
+  (encounters/tinkerer-encounter "playfulness" 99)
+  (encounters/jeweller-encounter 11)
 
   (curios/use-curios
-    "armour"
-    [::e/damage
-     ::e/resources
-     ::e/negated-accuracy
-     ::e/negated-wealth]
-    3)
+    "gloves"
+    [::e/accuracy
+     ::e/accuracy
+     ::e/negated-resources
+     ::e/negated-resources]
+    4)
 
   (r!)
   (curios/new-curio)
+  (r/sample rings/rings)
+  (dyn/format-mod *1)
 
-  (paths/progress-path! ::u/shahir)
-  (paths/new-path-progress! ::u/shahir ::paths/eternal-vigour)
+  (paths/progress-path! ::u/thoros)
+  (paths/new-path-progress! ::u/thoros ::paths/distributed-rejuvenation)
 
   (->> ["lone"
         "Restless"]
@@ -126,15 +131,15 @@
 
   (r!)
 
-  (report-tarot-cards! ["star"
+  (report-tarot-cards! ["sun"
                         "moon"
-                        "emperor"
-                        "streng"])
+                        "justice"
+                        "x of wands"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["moon", "x of pen", "wheel"])
-      (tarot/generate-relic "armour"))
+            ["moon", "x of wands", "sun"])
+      (tarot/generate-relic "gloves"))
   (-> (:relic *1)
-      (assoc :name "Truvat's Sneakers")
+      (assoc :name "Critical Gloves")
       tarot/save-relic!)
   (pf)
 
@@ -146,12 +151,12 @@
         (update :level inc)
         relics/update-relic!))
 
-  (choose-by-relic-name "sneakers")
+  (choose-by-relic-name "critical")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
   (relics/relic-level-options *1 false)
   (-> (update *2 :levels (fnil conj [])
-              (dissoc (nth *1 0) :template))
+              (dissoc (nth *1 2) :template))
       (update :level inc)
       relics/update-relic!)
 
@@ -164,31 +169,28 @@
        (mapv #(-> (dissoc % :template)
                   (assoc :level 1))))
   (helmets/apply-personality
-    ::u/shahir
-    [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks.",
-      :points 3,
-      :tags #{:survivability},
-      :level 1}
-     {:effect "You have {{level|level:+}} additional reaction(s) per round, however you can still make no more than one opportunity attack per round.",
-      :points 2,
-      :level 1
-      :tags #{:utility}}])
+    ::u/simo
+    [{:effect    "You may choose to reroll your initiative at the start of each round.",
+      :points    2,
+      :level     1
+      :tags      #{:utility},
+      :formatted "You may choose to reroll your initiative at the start of each round."}])
   (helmets/mend-helmet
     ::u/shahir
     [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks.",
       :points 3,
-      :tags #{:survivability},
-      :level 1}])
-  (helmets/new-helmet ::u/shahir)
+      :tags   #{:survivability},
+      :level  1}])
+  (helmets/new-helmet ::u/simo)
   (r!)
 
   (talismans/new-gem 0)
   (talismans/sample-gems 3 3)
 
-  (u/insight-truth 8 15)
-  (u/insight-lie -1)
-  (u/group-bonus :persuasion ::u/simo ::u/thoros ::u/sidekick)
-  (u/group-bonus :deception ::u/simo ::u/thoros ::u/sidekick)
+  (u/insight-truth 8 25)
+  (u/insight-lie 8)
+  (u/group-bonus :persuasion)
+  (u/group-bonus :deception ::u/simo ::u/thoros)
 
   (u/roll 1 20)
   (encounters/gem-procs)

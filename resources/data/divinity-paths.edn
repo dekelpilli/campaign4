@@ -14,7 +14,7 @@
   :info   "Improves healing you grant, especially via spells and Medicine checks."
   :levels [{:effect "Immediately before you heal a downed creature with the use of a Medicine check, you may cast Aid on them as a free action. When cast in this way, Aid grants additional maximum hit points equal to the total number of failed and successful death saves the creature has, but does not increase their current hit points."
             :tags   #{:survivability}}
-           {:effect "When you heal a creature with a non-magical effect (e.g. Medicine check on a downed creature, Healer feat), that creature gain temporary hit points equal to your level. When you heal a creature with temporary hit points with a spell, gain temporary hit points equal to their temporary hit points."
+           {:effect "When you heal a creature with a non-magical effect (e.g. Medicine check on a downed creature, Healer feat), that creature gains temporary hit points equal to your level. When you heal a creature with temporary hit points with a spell, gain temporary hit points equal to their temporary hit points."
             :tags   #{:survivability}}
            {:effect "You may learn any Concentration spell that grants hit points and cast it with your spell points. You may concentrate on two such spells at one time. This includes, but is not limited to, Aura of Life, Enervation, Beacon of Hope, Healing Spirit, and Vampiric Touch."
             :tags   #{:utility}}

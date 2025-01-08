@@ -35,19 +35,20 @@
   (when-let [character (when (and (u/characters character)
                                   (paths divinity-path))
                          (name character))]
-    (when-not (-> (p/query-data ::p/divinity
-                                {:filter {:character [(name character)]
-                                          :progress  [1 2 3 4]}
-                                 :limit  1})
-                  seq)
-      (p/insert-data! ::p/divinity
-                      [{:path      (->> (str/split (name divinity-path) #"-")
-                                        (mapv str/capitalize)
-                                        (str/join \space))
-                        :character character
-                        :progress  1}])
-      {:modifier (-> divinity-paths divinity-path first)
-       :tier     1})))
+    (let [pretty-name (->> (str/split (name divinity-path) #"-")
+                           (mapv str/capitalize)
+                           (str/join \space))]
+      (when-not (-> (p/query-data ::p/divinity
+                                  {:filter {:character [(name character)]
+                                            :progress  [1 2 3 4]}
+                                   :limit  1})
+                    seq)
+        (p/insert-data! ::p/divinity
+                        [{:path      pretty-name
+                          :character character
+                          :progress  1}])
+        {:modifier (-> divinity-paths pretty-name first)
+         :tier     1}))))
 
 (defn progress-path! [character]
   (when-let [{:keys [path progress]} (when (u/characters character)

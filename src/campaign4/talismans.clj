@@ -68,8 +68,9 @@
            r/sample))
 
 (defn loot-result []
-  (update-vals talisman-mods-by-category
-               (comp dyn/format-mod r/sample)))
+  {:talisman (update-vals talisman-mods-by-category
+                          (comp dyn/format-mod r/sample))
+   :gem      (new-gem)})
 
 (comment
   (let [avg (fn [c] (double (/ (apply + c) (count c))))

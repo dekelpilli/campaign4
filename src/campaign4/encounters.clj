@@ -66,7 +66,9 @@
                    (frequencies)
                    (into #{} (comp (remove (comp #{1} val))
                                    (map key))))]
-    (filterv (comp dupes :name) rings)))
+    (->> (filterv (comp dupes :name) rings)
+         (sort-by :name)
+         vec)))
 
 (defn antiquarian-encounter [{:keys [name]
                               :as   unique} num-rerolls]
