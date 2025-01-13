@@ -187,7 +187,13 @@
          {:effect "Deafened enemies have advantaged defence against you."}
          {:effect "Other tagged modifiers related to thunder damage on items you are using, whether incoming or outgoing, have their magnitudes increased by 1 (where possible)."
           :levels [:skip :keep]
-          :tags   #{:damage :survivability}}]}
+          :tags   #{:damage :survivability}}
+         {:effect "You learn the Crushing Haymaker spell and may cast it without consuming any spell slots once per long rest. Additionally, when you trigger a major effect with an attack that deals thunder damage, you may forego triggering a major effect to instead have a 49% chance to gain an additional such use of Crushing Haymaker, which remains available until your next long rest."
+          :levels [:skip :skip :keep]
+          :tags   #{:damage :control}}
+         {:effect "You learn the Whirling Kick spell and may cast it without consuming any resources if you hit with a Crushing Haymaker on your previous turn in the current combat."
+          :levels [:skip :skip :keep]
+          :tags   #{:damage :utility :control}}]}
  {:name "Dominion"
   :base "armour"
   :mods [{:effect "+%d physical barrier per minion you control, to a maximum of 6 barrier."
