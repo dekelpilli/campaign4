@@ -14,9 +14,9 @@
 (def cards (u/load-data :tarot-cards))
 
 (def pool-weights
-  {:thematic 50
-   :aura     20
-   :racial   20
+  {:thematic 25
+   :aura     25
+   :racial   40
    :unique-1 6
    :unique-2 4})
 
@@ -227,10 +227,12 @@
         pool (reduce (fn [mods _] (add-pool-mod mods starting base-type type-generator tags)) #{} (range 6))
         {:keys [cards pool]} (handle-post-pool-cards pool base-type cards)]
     {:relic           {:starting (mapv
-                                   (fn [mod]
-                                     (if-let [context (meta mod)]
-                                       (dyn/format-mod mod context)
-                                       (dyn/format-mod mod)))
+                                   (fn [{:keys [effect] :as mod}]
+                                     (let [context (meta mod)
+                                           mod (if context
+                                                 (dyn/format-mod mod context)
+                                                 (dyn/format-mod mod))]
+                                       (assoc mod :effect effect)))
                                    starting)
                        :sold     false
                        :base     base-type
