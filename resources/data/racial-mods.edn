@@ -833,7 +833,7 @@
   :name    "Earth Walk"
   :book    "Various"}
  {:subrace "Fire"
-  :effect  "You have resistance to {{x|randoms:literal:fire:acid:lightning}} damage."
+  :effect  "You have resistance to {{x|random:literal:fire:acid:lightning}} damage."
   :tags    #{:survivability}
   :race    "Genasi"
   :name    "Fire Resistance"

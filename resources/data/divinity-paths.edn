@@ -16,7 +16,7 @@
             :tags   #{:survivability}}
            {:effect "When you heal a creature with a non-magical effect (e.g. Medicine check on a downed creature, Healer feat), that creature gains temporary hit points equal to your level. When you heal a creature with temporary hit points with a spell, gain temporary hit points equal to their temporary hit points."
             :tags   #{:survivability}}
-           {:effect "You may learn any Concentration spell that grants hit points and cast it with your spell points. You may concentrate on two such spells at one time. This includes, but is not limited to, Aura of Life, Enervation, Beacon of Hope, Healing Spirit, and Vampiric Touch."
+           {:effect "You may learn any Concentration spell that grants hit points and cast it with your spell slots. You may concentrate on two such spells at one time. This includes, but is not limited to, Aura of Life, Enervation, Beacon of Hope, Healing Spirit, and Vampiric Touch."
             :tags   #{:utility}}
            {:effect "When you heal one creature with the use of a spell, that creature also gains temporary hit points equal to 50% of the spell's outgoing healing total, including any bonuses to outgoing healing you have."
             :tags   #{:survivability}}

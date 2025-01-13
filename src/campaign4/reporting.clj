@@ -57,8 +57,7 @@
 
 (m/defmethod format-loot-result :talisman [{:keys [result]}]
   (->> ((juxt :talisman :gem) result)
-       (mapv format-loot)
-       format-loot))
+       (mapv format-loot)))
 
 (m/defmethod format-loot-result :default [{:keys [result]}]
   (format-loot result))

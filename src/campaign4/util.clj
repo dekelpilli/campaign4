@@ -33,7 +33,7 @@
                                 :perception    0
                                 :deception     1
                                 :persuasion    1
-                                :gem-threshold 14}
+                                :gem-threshold 21}
                       ::thoros {:insight       8
                                 :perception    8
                                 :deception     -1

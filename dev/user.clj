@@ -1,6 +1,7 @@
 (ns user
   (:require
     [campaign4.analytics :as analytics]
+    [campaign4.crafting :as crafting]
     [campaign4.curios :as curios]
     [campaign4.dynamic-mods :as dyn]
     [campaign4.enchants :as e]
@@ -76,11 +77,11 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 8)
+  (analytics/set-session! 9)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 87))
+  (pf (loot/loot! 32))
   (apply loot/loots! (keys loot/loot-table))
   (loot/loot-result 91)
   (loot-result :crafting)
@@ -96,25 +97,30 @@
   (encounters/pass-time 1)
   (encounters/travel 1)
 
+  (crafting/new-shrine)
+  (->> (e/enchants-by-base "gloves")
+       (r/sample-without-replacement 5)
+       (mapv dyn/format-mod))
+
   (encounters/positive-encounter)
-  (encounters/tinkerer-encounter "playfulness" 99)
+  (encounters/tinkerer-encounter "prophetic" 45)
   (encounters/jeweller-encounter 11)
 
   (curios/use-curios
-    "gloves"
-    [::e/accuracy
-     ::e/accuracy
-     ::e/negated-resources
-     ::e/negated-resources]
-    4)
+    "armour"
+    [::e/damage
+     ::e/survivability
+     ::e/negated-survivability
+     ::e/negated-accuracy]
+    3)
 
   (r!)
   (curios/new-curio)
   (r/sample rings/rings)
   (dyn/format-mod *1)
 
-  (paths/progress-path! ::u/thoros)
-  (paths/new-path-progress! ::u/thoros ::paths/distributed-rejuvenation)
+  (paths/progress-path! ::u/shahir)
+  (paths/new-path-progress! ::u/sharad ::paths/elemental-mastery)
 
   (->> ["lone"
         "Restless"]
@@ -123,23 +129,22 @@
 
   (uniques/new-unique)
   (uniques/at-level *1 1)
-  (uniques/at-level *2 2)
-  (choose-by-name "reckle" uniques/uniques)
+  (uniques/at-level *1 2)
+  (choose-by-name "thunderf" uniques/uniques)
   (-> (choose-by-name "steadf" uniques/uniques)
       (uniques/at-level 3)
       pf)
 
   (r!)
 
-  (report-tarot-cards! ["sun"
-                        "moon"
-                        "justice"
-                        "x of wands"])
+  (report-tarot-cards! ["temper"
+                        "fool"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["moon", "x of wands", "sun"])
-      (tarot/generate-relic "gloves"))
-  (-> (:relic *1)
-      (assoc :name "Critical Gloves")
+            ["stre" "justi"])
+      (tarot/generate-relic "armour"))
+  (relics/current-relic-state (:relic *1))
+  (-> (:relic *2)
+      (assoc :name "Jummy's Mittens")
       tarot/save-relic!)
   (pf)
 
@@ -151,12 +156,12 @@
         (update :level inc)
         relics/update-relic!))
 
-  (choose-by-relic-name "critical")
+  (choose-by-relic-name "moment")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
   (relics/relic-level-options *1 false)
-  (-> (update *2 :levels (fnil conj [])
-              (dissoc (nth *1 2) :template))
+  (-> (update *3 :levels (fnil conj [])
+              (dissoc (nth *1 0) :template))
       (update :level inc)
       relics/update-relic!)
 
@@ -185,12 +190,14 @@
   (r!)
 
   (talismans/new-gem 0)
+  (talismans/cr->output 4)
   (talismans/sample-gems 3 3)
+  (talismans/gem-by-monster-type 4 "construct")
 
-  (u/insight-truth 8 25)
+  (u/insight-truth 8 20)
   (u/insight-lie 8)
   (u/group-bonus :persuasion)
-  (u/group-bonus :deception ::u/simo ::u/thoros)
+  (u/group-bonus :deception)
 
   (u/roll 1 20)
   (encounters/gem-procs)

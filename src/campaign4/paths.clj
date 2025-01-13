@@ -47,7 +47,7 @@
                         [{:path      pretty-name
                           :character character
                           :progress  1}])
-        {:modifier (-> divinity-paths pretty-name first)
+        {:modifier (-> pretty-name divinity-paths :levels first)
          :tier     1}))))
 
 (defn progress-path! [character]
