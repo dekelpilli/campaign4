@@ -18,15 +18,16 @@
 (def ^:private sexes ["female" "male"])
 
 (def ^:private positive-encounters (u/load-data :positive-encounters))
-(def ^:private weathers (->> (u/load-data :weathers)
-                             (group-by :category)))
+(def ^:private weathers (as-> (u/load-data :weathers) weathers
+                              (mapv #(update % :weighting (fnil identity 1)) weathers)
+                              (group-by :category weathers)
+                              (update-vals weathers u/weighted-sampler)))
 (def ^:private random-weather-category (r/alias-method-sampler {:negative 55
                                                                 :neutral  25
                                                                 :positive 20}))
 
 (defn random-weather []
-  (-> ((random-weather-category) weathers)
-      r/sample))
+  (((random-weather-category) weathers)))
 
 (defn pass-time [days]
   (analytics/record! "days:other" days))

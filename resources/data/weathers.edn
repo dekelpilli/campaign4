@@ -32,13 +32,16 @@
   :category :negative
   :effect   "The space you would enter today becomes untraversable for 2 days."}
  {:name     "Monsoon"
+  :weighting 2
   :category :negative
   :effect   "You gain 1 strife at the start of the day."}
  {:name     "Gale force winds"
+  :weighting 2
   :category :negative
   :effect   "You gain 1 fatigue at the start of the day."}
 
  {:name     "Magical energy storm"
+  :weighting 2/3
   :category :neutral
   :effect   "All journey activity successes today become critical successes, and all failures become critical failures."}
  {:name     "Clear"
@@ -58,8 +61,10 @@
   :category :positive
   :effect   "-1 to the DC of all journey activities today."}
  {:name     "Sunny"
+  :weighting 1/2
   :category :positive
   :effect   "+1 success tier to journey activities made today."}
  {:name     "Diamond dust"
+  :weighting 1/2
   :category :positive
   :effect   "You are guaranteed to find a positive random encounter today."}]
