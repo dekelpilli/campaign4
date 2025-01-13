@@ -46,16 +46,22 @@
               (mapv
                 (fn [mod]
                   (cond-> mod
-                          (= (or (:upgrade level) (:progress level))
+                          (= (select-keys (or (:upgrade level) (:progress level))
+                                          [:upgrade-points :points :effect])
                              (select-keys mod [:upgrade-points :points :effect])) upgrade-mod))
                 mods)))
           starting
           (take level levels)))
 
-(defn format-relic-mod [new-mod]
-  (let [mod (select-keys new-mod [:formatted :points :level :tags])]
-    (cond-> mod
-            (nil? (:formatted mod)) (assoc :formatted (:effect new-mod)))))
+(defn format-relic-mod [mod]
+  (let [mod (-> (select-keys mod [:effect :formatted :points :level :tags])
+                dyn/load-mod
+                (dyn/format-mod (or (not-empty (select-keys mod [:level]))
+                                    {:level 1}))
+                (dissoc :template)
+                (update :tags set))]
+    (-> (dissoc mod :effect)
+        (cond-> (nil? (:formatted mod)) (assoc :formatted (:effect mod))))))
 
 (defn current-relic-state [relic]
   (-> (select-keys relic [:level :name :base :sold])

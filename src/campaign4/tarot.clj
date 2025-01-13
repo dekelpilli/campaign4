@@ -241,8 +241,7 @@
      :remaining-cards (mapv (fn [card] (update card :order #(if (< % 10) :before :after))) cards)}))
 
 (defn- saved-mod [mod]
-  (-> (select-keys mod [:formatted :tags :race :subrace :type])
-      (set/rename-keys {:formatted :effect})))
+  (select-keys mod [:formatted :points :upgrade-points :effect :tags :race :subrace :type]))
 
 (defn save-relic! [relic]
   (let [relic (-> (update relic :starting #(mapv saved-mod %))

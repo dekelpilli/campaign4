@@ -13,7 +13,7 @@
  {:effect "Creatures frightened by you have disadvantage on all attack rolls against {{x|random:literal:you:targets other than you}}."
   :tags   #{:control}
   :origin :urian}
- {:effect "+{{levels|level:+1:2}} non-magical incoming healing."
+ {:effect "+{{level|level:+1:2}} non-magical incoming healing."
   :tags   #{:survivability}
   :origin :urian}
  {:effect "+{{level|level:+}} Armour if you haven't been hit by an Armour attack since the end of your last turn."

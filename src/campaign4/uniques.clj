@@ -26,9 +26,9 @@
     (cond
       new-mod (-> (dissoc new-mod :levels)
                   (cond-> (and (> level 1)
-                               (not= new-mod previously)) (assoc :change (if previously
-                                                                           {:diff (.diff_main dmp (:effect previously) (:effect new-mod))}
-                                                                           :new))))
+                               (not= (:effect new-mod) (:effect previously))) (assoc :change (if previously
+                                                                                               {:diff (.diff_main dmp (:effect previously) (:effect new-mod))}
+                                                                                               :new))))
       (and (nil? new-mod)
            (and (some? previously)
                 (not (:removed? previously)))) {:effect (:effect previously)
