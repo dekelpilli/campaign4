@@ -10,43 +10,11 @@
     [randy.core :as r]
     [randy.rng :as rng]))
 
-;DC19 journey activities + scaling with prof
-(def ^:private races ["Aarakocra" "Aasimar" "Bugbear" "Centaur" "Changeling" "Dragonborn" "Dwarf" "Elf" "Firbolg"
-                      "Genasi" "Gith" "Gnome" "Goblin" "Goliath" "Half-Elf" "Half-Orc" "Halfling" "Hobgoblin"
-                      "Human" "Kalashtar" "Kenku" "Kobold" "Lizardfolk" "Loxodon" "Minotaur" "Orc" "Shifter" "Tabaxi"
-                      "Tiefling" "Tortle" "Triton" "Vedalken" "Yuan-Ti Pureblood" "Zeme"])
-(def ^:private sexes ["female" "male"])
-
-(def ^:private positive-encounters (u/load-data :positive-encounters))
-(def ^:private weathers (as-> (u/load-data :weathers) weathers
-                              (mapv #(update % :weighting (fnil identity 1)) weathers)
-                              (group-by :category weathers)
-                              (update-vals weathers u/weighted-sampler)))
-(def ^:private random-weather-category (r/alias-method-sampler {:negative 55
-                                                                :neutral  25
-                                                                :positive 20}))
-
-(defn random-weather []
-  (((random-weather-category) weathers)))
-
 (defn pass-time [days]
   (analytics/record! "days:other" days))
 
-(defn positive-encounter []
-  (assoc (r/sample positive-encounters)
-    :race (r/sample races)
-    :sex (r/sample sexes)))
-
 (defn travel [days]
-  (analytics/record! "days:travel" days)
-  (mapv
-    (fn [_]
-      (-> (sorted-map :weather (random-weather))
-          (assoc :journeys (->> (vec u/characters)
-                                r/shuffle
-                                (mapv name)))
-          (cond-> (u/occurred? 0.1) (assoc :encounter (positive-encounter)))))
-    (range days)))
+  (analytics/record! "days:travel" days))
 
 (defn gem-procs []
   (reduce-kv
@@ -61,7 +29,7 @@
     {}
     u/character-stats))
 
-(defn jeweller-encounter [num-rings]
+(defn jeweller-stand [num-rings]
   (let [rings (repeatedly num-rings #(r/sample rings/rings))
         dupes (->> (mapv :name rings)
                    (frequencies)
@@ -71,8 +39,8 @@
          (sort-by :name)
          vec)))
 
-(defn antiquarian-encounter [{:keys [name]
-                              :as   unique} num-rerolls]
+(defn antiquarian-stand [{:keys   [name]
+                              :as unique} num-rerolls]
   (let [uniques (->> #(r/sample uniques/uniques)
                      (repeatedly num-rerolls)
                      vec)
@@ -86,7 +54,7 @@
                                  uniques)]
     (uniques/at-level unique level)))
 
-(defn tailor-encounter [character points-target]
+(defn tailor-stand [character points-target]
   (let [{:keys [mods] :as helm} (helmets/new-helmet character)]
     (loop [mods (mapv (comp dyn/load-mod #(assoc % :level 1)) mods)
            points (helmets/helmet-points mods)]
@@ -113,7 +81,7 @@
 (defn- num-char->num [c]
   (- (int c) 48))
 
-(defn tinkerer-encounter [word maximum]
+(defn tinkerer-stand [word maximum]
   (let [char-values {\a 1 \b 2 \c 3 \d 4 \e 5
                      \f 8 \g 3 \h 5 \i 1 \j 1
                      \k 2 \l 3 \m 4 \n 5 \o 7
@@ -136,12 +104,12 @@
     ::single (+ 14 (roll-total 1 6))))
 
 (comment
-  (antiquarian-encounter
+  (antiquarian-stand
     (r/sample uniques/uniques)
     15)
   (into (sorted-map)
         (map (fn [n]
-               [n (-> (repeatedly 10000 #(count (jeweller-encounter n)))
+               [n (-> (repeatedly 10000 #(count (jeweller-stand n)))
                       frequencies
                       (update-vals #(double (/ % 100)))
                       (->> (into (sorted-map))))]))
@@ -149,6 +117,6 @@
 
   (into (sorted-map)
         (map (fn [n]
-               [n (into (sorted-map) (update-vals (frequencies (repeatedly 10000 #(:level (antiquarian-encounter (r/sample uniques/uniques) n))))
+               [n (into (sorted-map) (update-vals (frequencies (repeatedly 10000 #(:level (antiquarian-stand (r/sample uniques/uniques) n))))
                                                   #(double (/ % 100))))]))
         (range 10 21)))

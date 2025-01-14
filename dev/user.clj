@@ -69,7 +69,7 @@
 (defn- loot-result [type]
   (some-> (loot-thresholds type)
           loot/loot-result
-          (dissoc :n)))
+          (select-keys [:id :result])))
 
 (defn- report-tarot-cards! [cards]
   (-> (mapv #(choose-by-name % tarot/cards) cards)
@@ -82,7 +82,6 @@
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
   (pf (loot/loot! 32))
-  (apply loot/loots! (keys loot/loot-table))
   (loot/loot-result 91)
   (loot-result :crafting)
   (loot-result :curio)
@@ -102,9 +101,8 @@
        (r/sample-without-replacement 5)
        (mapv dyn/format-mod))
 
-  (encounters/positive-encounter)
-  (encounters/tinkerer-encounter "prophetic" 45)
-  (encounters/jeweller-encounter 11)
+  (encounters/tinkerer-stand "prophetic" 45)
+  (encounters/jeweller-stand 11)
 
   (curios/use-curios
     "armour"

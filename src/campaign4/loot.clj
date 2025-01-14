@@ -7,7 +7,14 @@
     [campaign4.reporting :as reporting]
     [campaign4.rings :as rings]
     [campaign4.talismans :as talismans]
-    [campaign4.uniques :as uniques]))
+    [campaign4.uniques :as uniques]
+    [campaign4.util :as u]))
+
+(def carnival-stands-by-ticket (->> (u/load-data :carnival-stands)
+                                    (u/assoc-by :ticket)))
+
+(defn redeem-ticket [ticket-type]
+  (get carnival-stands-by-ticket (keyword ticket-type)))
 
 (def loot-actions
   [{:description "Crafting loot (a vial, shrine, or orb) + reroll"
@@ -55,21 +62,27 @@
     (-> (dissoc result :action)
         (assoc :result (action)))))
 
-(defn loot! [n]
+(defn tickets [id]
+  (cond-> []
+          (and (contains? carnival-stands-by-ticket :crafting) (u/occurred? 1/10)) (conj id)
+          (u/occurred? 1/30) (conj :otherworldly)
+          (u/occurred? 1/5) (conj :perks)))
+
+(defn loot-with-tickets [n]
   (let [{:keys [id]
          :as   result} (loot-result n)]
+    (->> (tickets id)
+         (mapv redeem-ticket)
+         (assoc result :tickets))))
+
+(defn loot! [n]
+  (let [{:keys [id tickets]
+         :as   result} (loot-with-tickets n)]
     (analytics/record! (str "loot" id) 1)
+    (doseq [{ticket-type :type} tickets]
+      (analytics/record! (str "ticket" ticket-type) 1))
     (doto result
       reporting/report-loot!)))
 
-(defn loots! [& ns]
-  (let [loot (mapv loot-result ns)]
-    (doseq [[id loots] (group-by :id loot)]
-      (analytics/record! (str "loot" id) (count loots)))
-    (run! reporting/report-loot! loot)
-    loot))
-
 (comment
-  (loots! 10 20 30)
-
   (loot-result 28))

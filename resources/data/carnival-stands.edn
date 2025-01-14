@@ -1,0 +1,36 @@
+[{:name   "Traveller"
+  :ticket :otherworldly
+  :cost   "Ticket only"
+  :rules  "The participant rolls twice on a random inactive DM’s last campaign’s loot table. That DM tells them what each loot table slot is, and the participant chooses one to receive."}
+ {:name   "Trainer"
+  :ticket :perks
+  :cost   "Ticket only"
+  :rules  "The participant rolls 2d4 and gains that many perk points that can be used to gain any type of perk."}
+ {:name   "Tinkerer"
+  :ticket :curio
+  :cost   "Ticket only"
+  :rules  "The participant must choose a word and roll an advantaged d100 and feed into Cheiro sum algorithm. They get curios equal to a tenth of that result, to a minimum of 1, with any excess granting 10x that percent change to obtain another curio. Players also obtain a catalyst for every 5 points above 45."}
+ {:name   "Prophet"
+  :ticket :divine-dust
+  :cost   "Ticket only"
+  :rules  "The participant rolls a d12, with each result relating to a Divine Path. They then roll a d5 and obtain the relevant tier from that path. If they already have it, they may either roll again or gain Divine Dust."}
+ {:name   "Tailor"
+  :ticket :helmet
+  :cost   "Ticket, plus 5 gold for each point value above 3"
+  :rules  "The participant states a desired point value (min 3). The Tailor then incrementally generates a helmet (starting from a 'found' helmet) until it reaches the point value. If the helmet is made without fracturing, the participant gets to keep it. Otherwise, the participant gets an Orb of Personality instead."}
+ {:name   "Jeweller"
+  :ticket :ring
+  :cost   "Ticket, plus 10 gold for each ring generated above 7"
+  :rules  "The participant chooses an amount of rings to generate, up to 11. For each ring type that was generated more than once, the participant may keep all of those rings. If none are generated more than once, the fee is refunded."}
+ {:name   "Prospector"
+  :ticket :talisman
+  :cost   "Ticket"
+  :rules  "The participant may choose to replace the monster passive in a gem until it meets a condition modifier on their talisman, up to 20 times. If a matching monster passive isn't found, the ticket is refunded and may be used again if talisman or gem CR change."}
+ {:name   "Oracle"
+  :ticket :tarot
+  :cost   "Ticket, plus up to 4 Tarot cards"
+  :rules  "The participant may give Tarot cards to the oracle, and then draw an amount of Tarot cards equal to 1d6 + the number of cards given. The participant must then turn all of those cards in to create one relic."}
+ {:name   "Antiquarian"
+  :ticket :unique
+  :cost   "Ticket, plus 5 gold for each reroll above 10"
+  :rules  "The participant may buy a random unique from The Antiquarian for 40g, or provide your own unique. Choose an amount of times to reroll the unique, up to 15. If that unique was rolled again, gain it with a level equal to 1 + the amount of times it was rolled into. Otherwise, gain the last unique that was rolled, and keep your original unique."}]

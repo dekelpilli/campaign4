@@ -163,20 +163,28 @@
   {:title (format "Helmet (for %s)" character)
    :body  (format-coll (mapv :formatted mods))})
 
+(defn- format-title-kw [kw]
+  (-> kw
+      name
+      (str/split #"-")
+      (->> (mapv str/capitalize)
+           (str/join " "))))
+
 (defn- loot-title [title id]
   (or title
-      (-> id
-          name
-          (str/split #"-")
-          (->> (mapv str/capitalize)
-               (str/join " ")))))
+      (format-title-kw id)))
 
-(m/defmethod format-loot :loot [{:keys [id n] :as loot}]
+(defn- format-ticket [{:keys [ticket name]}]
+  {:title (format "%s Ticket" (format-title-kw ticket))
+   :body  (format "Can be redeemed at a carnival in any city to access a stand run by The %s." name)})
+
+(m/defmethod format-loot :loot [{:keys [id n tickets] :as loot}]
   (let [formatted (format-loot-result loot)
         formatted (if (vector? formatted) formatted [formatted])]
-    (update formatted 0
-            (fn [formatted] (-> (assoc formatted :roll n)
-                                (update :title loot-title id))))))
+    (-> (into formatted (map format-ticket) tickets)
+        (update 0
+                (fn [formatted] (-> (assoc formatted :roll n)
+                                    (update :title loot-title id)))))))
 
 (m/defmethod format-loot :enchanted [{:keys [base enchants]}]
   {:title (format "Enchanted %s (receptacle)" base)
