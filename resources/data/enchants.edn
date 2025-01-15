@@ -15,9 +15,6 @@
  {:effect "When you cause a condition on a creature, +10% chance to replace that condition with debilitation."
   :points 2
   :tags   #{:control}}
- {:effect "+{{level|level:+}} to journey activity checks."
-  :points 2
-  :tags   #{:utility}}
  {:effect "Your loot rolls always grant you {{level|level:+:2}} additional gold."
   :points 2
   :tags   #{:wealth}}

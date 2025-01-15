@@ -470,7 +470,7 @@
   :race   "Kor"
   :name   "Climbing"
   :book   "PSZ"}
- {:effect "You have proficiency in the Athletics and Acrobatics skills."
+ {:effect "You have proficiency in the Athletics and Finesse skills."
   :points 2
   :tags   #{:utility}
   :race   "Kor"

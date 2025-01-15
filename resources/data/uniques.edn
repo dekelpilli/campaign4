@@ -412,7 +412,7 @@
   :base "armour"
   :mods [{:effect "+1 armour while you have at least 22 Wisdom."
           :tags   #{:survivability}}
-         {:effect "Gain an expertise die on journey activity checks using Wisdom."
+         {:effect "Gain an expertise die with Survival."
           :tags   #{:utility}}
          {:effect "Your Fortitude is at least equal to your Wisdom modifier minus %d."
           :levels [3 2]
@@ -429,7 +429,7 @@
           :tags   #{:accuracy}}
          {:effect "+5 to Medicine checks%s."
           :levels [" for healing downed allies"
-                   ". This does not benefit journey activities."]
+                   ""]
           :tags   #{:utility :survivability}}
          {:effect "+2 incoming healing from magic."
           :tags   #{:survivability}}

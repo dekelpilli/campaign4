@@ -43,11 +43,13 @@
    "Sentinel" "Sharpshooter" "Shield Master" "Skilled" "Skulker" "Socialite" "Specialist" "Spell Touched"
    "Summoner" "Survivor" "Tactician" "Telekinetic" "Telepathic" "War Caster" "Warlord"])
 
-(m/defmethod randoms-factor :skills [_ _] 5)
+(m/defmethod randoms-factor :skills [_ _] 4)
 (m/defmethod randoms-preset :skills [_ _]
-  ["Acrobatics" "Animal handling" "Arcana" "Athletics" "Brawn" "Deception" "Engineering" "History" "Insight"
-   "Intimidation" "Investigation" "Medicine" "Nature" "Perception" "Performance" "Persuasion" "Religion"
-   "Sleight of hand" "Stealth" "Survival"])
+  ["Athletics" "Brawn"
+   "Finesse" "Stealth"
+   "Magiscience" "History" "Medicine" "Nature"
+   "Insight" "Investigation" "Perception" "Survival"
+   "Deception" "Intimidation" "Persuasion"])
 
 (m/defmethod randoms-factor :damage-types [_ [type]]
   (case (or type "all")

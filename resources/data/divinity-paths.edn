@@ -40,7 +40,7 @@
   :info   "Improves your ability to acquire knowledge through skill checks, and improves Divination spellcasting."
   :levels [{:effect "Any text within line of sight within 100 feet of you becomes readable to you regardless of its language, distance/size, legibility, and lighting. Additionally, you gain +2 expertise dice for Investigation checks relating to reading."
             :tags   #{:utility}}
-           {:effect "When you make a Nature, Investigation, History, or Religion check, you may choose to treat the d20 roll as though you had rolled an 11, or a minimum of 5 for the purpose of journey activities."
+           {:effect "When you make a Magiscience, Investigation, or History check, you may choose to treat the d20 roll as though you had rolled an 11."
             :tags   #{:utility}}
            {:effect "You may learn any Divination spell as if it were on your class' spell list."
             :tags   #{:utility}}
@@ -60,7 +60,7 @@
             :tags   #{:accuracy}}
            {:effect "For every 2 loot specialisations you unlock, unlock a further one that does not count towards this mod. This works retroactively and for future specialisations, to a minimum of +1 specialisation."
             :tags   #{:wealth}}
-           {:effect "Whenever you achieve any success with a journey activity, also gain the equivalent success tier's benefits from the Chronicle journey activity."
+           {:effect "Whenever you gain any amount of generic perk points, gain an equivalent amount of Scavenging perk points."
             :tags   #{:wealth}}]}
  {:name   "Wrathful Judgement"
   :info   "Grants a mark and improves your marks."

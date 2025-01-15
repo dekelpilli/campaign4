@@ -22,9 +22,6 @@
  {:name      "Bramblejack"
   :character "Gain piercing damage thorns equal to your barrier if at least 3 of your items grant barrier."
   :item      "Modifiers on this item that grant barrier also grant equivalent piercing damage thorns that triggers when that barrier applies."}
- {:name      "Journeyman"
-  :character "You are considered to be proficient in all skills for the purpose of journey activities while at least one item grants you expertise dice or flat bonuses to a skill you are proficient in, but such bonuses from items no longer apply."
-  :item      "You are considered to be proficient in all skills for the purpose of journey activities while this item has a modifier that grants proficiency or expertise die with any skill."}
  {:name      "Generosity"
   :character "Choose a modifier tag. Modifiers on your items with this tag apply to your minions instead of to yourself."
   :item      "Choose a modifier tag. Modifiers on this item with this tag apply to your minions instead of to yourself."}
