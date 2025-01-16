@@ -8,7 +8,7 @@
             :tags   #{:utility}}
            {:effect "At the end of a conversation, you may find out whether or not a lie was told during that conversation."
             :tags   #{:utility}}
-           {:effect "You can roll your own Insight checks."
+           {:effect "Any expertise dice granted to your Charisma skills instead apply to all of your Charisma skills."
             :tags   #{:utility}}]}
  {:name   "Distributed Rejuvenation"
   :info   "Improves healing you grant, especially via spells and Medicine checks."
@@ -58,9 +58,9 @@
             :tags   #{:wealth}}
            {:effect "You may cast Fortune's Favour at any spell level as a free action on your turn once per round. You can use no more than 10 spell slot levels on this per long rest."
             :tags   #{:accuracy}}
-           {:effect "For every 2 loot specialisations you unlock, unlock a further one that does not count towards this mod. This works retroactively and for future specialisations, to a minimum of +1 specialisation."
+           {:effect "Whenever you gain any amount of generic perk points, gain an equivalent amount of Wealth perk points."
             :tags   #{:wealth}}
-           {:effect "Whenever you gain any amount of generic perk points, gain an equivalent amount of Scavenging perk points."
+           {:effect "For every 2 loot specialisations you unlock, unlock a further one that does not count towards this mod. This works retroactively and for future specialisations, to a minimum of +1 specialisation."
             :tags   #{:wealth}}]}
  {:name   "Wrathful Judgement"
   :info   "Grants a mark and improves your marks."
