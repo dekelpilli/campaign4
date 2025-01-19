@@ -22,10 +22,11 @@
      :mods      (loop [total 0
                        chosen []
                        [{:keys [points] :as mod} & mods] (r/shuffle mods)]
-                  (let [total (+ points total)]
+                  (let [total (+ points total)
+                        mod (-> (dyn/format-mod mod)
+                                (dissoc :template))]
                     (if (>= total 2)
-                      (conj chosen (-> (dyn/format-mod mod)
-                                       (dissoc :template)))
+                      (conj chosen mod)
                       (recur total (conj chosen mod) mods))))}))
 
 (defn- mod-points [{:keys [points upgrade-points level]}]

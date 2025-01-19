@@ -77,11 +77,11 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 9)
+  (analytics/set-session! 10)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 32))
+  (pf (loot/loot! 73))
   (loot/loot-result 91)
   (loot-result :crafting)
   (loot-result :curio)
@@ -91,10 +91,10 @@
   (r!)
 
   (encounters/gem-procs)
-  (encounters/encounter-xp ::encounters/hard)
+  (encounters/encounter-xp ::encounters/medium)
 
   (encounters/pass-time 1)
-  (encounters/travel 1)
+  (encounters/travel 2)
 
   (crafting/new-shrine)
   (->> (e/enchants-by-base "gloves")
@@ -118,7 +118,7 @@
   (dyn/format-mod *1)
 
   (paths/progress-path! ::u/shahir)
-  (paths/new-path-progress! ::u/sharad ::paths/elemental-mastery)
+  (paths/new-path-progress! ::u/simo ::paths/volatile-presence)
 
   (->> ["lone"
         "Restless"]
@@ -154,14 +154,17 @@
         (update :level inc)
         relics/update-relic!))
 
-  (choose-by-relic-name "moment")
+  (choose-by-relic-name "slumber")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
   (relics/relic-level-options *1 false)
-  (-> (update *3 :levels (fnil conj [])
-              (dissoc (nth *1 0) :template))
-      (update :level inc)
-      relics/update-relic!)
+  ;level relic from options
+  (let [relic *2
+        level-options *1
+        option-index 0]
+    (-> (update relic :levels (fnil conj []) (dissoc (nth level-options option-index) :template))
+        (update :level inc)
+        relics/update-relic!))
 
   (p/update-data!
     ::p/relics
@@ -173,11 +176,20 @@
                   (assoc :level 1))))
   (helmets/apply-personality
     ::u/simo
-    [{:effect    "You may choose to reroll your initiative at the start of each round.",
-      :points    2,
+    [{:effect "Your critical damage is increased by the distance between you and the target (in squares).",
+      :tags   #{:damage :critical},
+      :level  1,
+      :points 1}
+     {:effect    "+{{level|level:+:2}} damage with weapon attacks when using Focus Shot.",
+      :tags      #{:damage},
       :level     1
-      :tags      #{:utility},
-      :formatted "You may choose to reroll your initiative at the start of each round."}])
+      :points    1,
+      :formatted "+2 damage with weapon attacks when using Focus Shot."}
+     {:effect    "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn.",
+      :points    2,
+      :tags      #{:utility :critical},
+      :level     1,
+      :formatted "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn."}])
   (helmets/mend-helmet
     ::u/shahir
     [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks.",
@@ -189,7 +201,7 @@
 
   (talismans/new-gem 0)
   (talismans/cr->output 4)
-  (talismans/sample-gems 3 3)
+  (talismans/sample-gems 4 3)
   (talismans/gem-by-monster-type 4 "construct")
 
   (u/insight-truth 8 20)

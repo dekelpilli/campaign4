@@ -18,12 +18,6 @@
                      :limit  1})
       first))
 
-(defn update-relic! [{:keys [name] :as relic}]
-  (p/update-data! ::p/relics
-                  {:filter {:name [name]}
-                   :limit  1}
-                  (fn [stored] (merge stored (select-keys relic [:name :levels :level :base :found :sold])))))
-
 (defn- upgrade-points [{:keys [level template]}]
   (when (or (nil? level) (levels/upgradeable? level template))
     (or (:upgrade-points mod)
@@ -67,6 +61,13 @@
   (-> (select-keys relic [:level :name :base :sold])
       (assoc :mods (mapv format-relic-mod
                          (current-relic-mods relic)))))
+
+(defn update-relic! [{:keys [name] :as relic}]
+  (p/update-data! ::p/relics
+                  {:filter {:name [name]}
+                   :limit  1}
+                  (fn [stored] (merge stored (select-keys relic [:name :levels :level :base :found :sold]))))
+  (current-relic-state relic))
 
 (defn- level-options-types [remaining-pool num-progress-mods num-upgradeable-mods]
   (let [pool-option (if (seq remaining-pool) :pool :random)
@@ -125,7 +126,7 @@
                               (if (= (count opts) amount)
                                 opts
                                 (recur (conj opts (f)))))))))
-        []
+        (with-meta [] {:relic relic})
         option-freqs))
     []))
 
