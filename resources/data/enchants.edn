@@ -116,7 +116,7 @@
   :tags   #{:utility}}
  {:effect "Helmets you destroy have a 25% chance to grant {{level|level:+}} additional Orb of Personality."
   :tags   #{:wealth}}
- {:effect "+{{level|level:+}} incoming healing from magic."
+ {:effect "+{{level|level:+:2}} incoming healing from magic."
   :tags   #{:survivability}}
  {:effect "+{{level|level:+:2}} outgoing healing with magic."
   :tags   #{:survivability}}
