@@ -2,7 +2,7 @@
   :effect   "If the contained creature is an Aberration, gain any senses the creature has."
   :tags     #{:utility}}
  {:category "above"
-  :effect   "If the contained creature is a Beast, you have gain an expertise die in Animal Handling, Survival, and Nature, and also become proficient in these skills."
+  :effect   "If the contained creature is a Beast, you have gain an expertise die in Survival, and Nature, and also become proficient in these skills."
   :tags     #{:utility}}
  {:category "above"
   :effect   "If the contained creature is a Celestial, you are granted the effects of the Bless spell while the power is active."

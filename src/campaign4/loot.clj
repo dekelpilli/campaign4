@@ -64,7 +64,7 @@
 
 (defn tickets [id]
   (cond-> []
-          (and (contains? carnival-stands-by-ticket :crafting) (u/occurred? 1/10)) (conj id)
+          (and (contains? carnival-stands-by-ticket id) (u/occurred? 1/10)) (conj id)
           (u/occurred? 1/30) (conj :otherworldly)
           (u/occurred? 1/5) (conj :perks)))
 
