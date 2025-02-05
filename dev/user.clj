@@ -77,11 +77,11 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 10)
+  (analytics/set-session! 11)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 73))
+  (pf (loot/loot! 53))
   (loot/loot-result 91)
   (loot-result :crafting)
   (loot-result :curio)
@@ -91,10 +91,10 @@
   (r!)
 
   (encounters/gem-procs)
-  (encounters/encounter-xp ::encounters/medium)
+  (encounters/encounter-xp ::encounters/dungeon-boss)
 
   (encounters/pass-time 1)
-  (encounters/travel 2)
+  (encounters/travel 12)
 
   (crafting/new-shrine)
   (->> (e/enchants-by-base "gloves")
@@ -106,10 +106,10 @@
 
   (curios/use-curios
     "armour"
-    [::e/damage
-     ::e/survivability
-     ::e/negated-survivability
-     ::e/negated-accuracy]
+    [::e/wealth
+     ::e/wealth
+     ::e/negated-wealth
+     ::e/negated-survivability]
     3)
 
   (r!)
@@ -118,7 +118,7 @@
   (dyn/format-mod *1)
 
   (paths/progress-path! ::u/shahir)
-  (paths/new-path-progress! ::u/simo ::paths/volatile-presence)
+  (paths/new-path-progress! ::u/thoros ::paths/unbound-arcana)
 
   (->> ["lone"
         "Restless"]
@@ -128,18 +128,18 @@
   (uniques/new-unique)
   (uniques/at-level *1 1)
   (uniques/at-level *1 2)
-  (choose-by-name "thunderf" uniques/uniques)
+  (choose-by-name "resilient" uniques/uniques)
   (-> (choose-by-name "steadf" uniques/uniques)
       (uniques/at-level 3)
       pf)
 
   (r!)
 
-  (report-tarot-cards! ["temper"
-                        "fool"])
+  (report-tarot-cards! ["justice"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["stre" "justi"])
-      (tarot/generate-relic "armour"))
+            ["x of swords" "justice"
+             "judgement" "emperor"])
+      (tarot/generate-relic "gloves"))
   (relics/current-relic-state (:relic *1))
   (-> (:relic *2)
       (assoc :name "Jummy's Mittens")
@@ -175,33 +175,34 @@
        (mapv #(-> (dissoc % :template)
                   (assoc :level 1))))
   (helmets/apply-personality
-    ::u/simo
-    [{:effect "Your critical damage is increased by the distance between you and the target (in squares).",
-      :tags   #{:damage :critical},
-      :level  1,
-      :points 1}
-     {:effect    "+{{level|level:+:2}} damage with weapon attacks when using Focus Shot.",
-      :tags      #{:damage},
+    ::u/sharad
+    [{:effect    "You gain access to the following Major Effect: regain all spell points consumed as part of this attack.",
+      :tags      #{:resources},
+      :points    2,
+      :level     1,
+      :formatted "You gain access to the following Major Effect: regain all spell points consumed as part of this attack."}
+     {:effect    "When learning Eldritch Invocations, you may halve the level requirement of the Invocations available. You may have no more than {{level|level:+:1:1:8}} such Invocation at a time.",
+      :tags      #{:utility},
       :level     1
       :points    1,
-      :formatted "+2 damage with weapon attacks when using Focus Shot."}
-     {:effect    "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn.",
-      :points    2,
-      :tags      #{:utility :critical},
-      :level     1,
-      :formatted "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn."}])
+      :formatted "When learning Eldritch Invocations, you may halve the level requirement of the Invocations available. You may have no more than 1 such Invocation at a time."}
+     {:effect    "You count as {{level|level:+:1:1}} Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20.",
+      :tags      #{:utility :resources},
+      :level     1
+      :points    1,
+      :formatted "You count as 1 Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20."}])
   (helmets/mend-helmet
     ::u/shahir
-    [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks.",
-      :points 3,
-      :tags   #{:survivability},
+    [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks."
+      :points 3
+      :tags   #{:survivability}
       :level  1}])
-  (helmets/new-helmet ::u/simo)
+  (helmets/new-helmet ::u/sharad)
   (r!)
 
   (talismans/new-gem 0)
   (talismans/cr->output 4)
-  (talismans/sample-gems 4 3)
+  (talismans/sample-gems 2 20)
   (talismans/gem-by-monster-type 4 "construct")
 
   (u/insight-truth 8 20)

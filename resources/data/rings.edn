@@ -1,9 +1,9 @@
 [{:name   "The Doctor"
   :effect "+2 to Medicine checks for stabilising allies for each ring the ally is wearing."
-  :points 4}
+  :points 4} ;TODO decrease for next campaign
  {:name   "The Hardened"
   :effect "+1 barrier for each distinct non-synergy ring worn."
-  :points 3}
+  :points 3} ;TODO increase for next campaign
  {:name   "The Soldier"
   :effect "+1 damage for each distinct synergy ring you are wearing."
   :points 5}
@@ -17,7 +17,7 @@
   :effect "+5 feet to all of your speed types for each 'The Speedster' ring worn."
   :points 4}
  {:name   "The Prosperous"
-  :effect "Gain 1 gold from each loot roll for each 'The Prosperous' ring worn."
+  :effect "Gain 1 gold from each loot roll for each 'The Prosperous' ring worn, to a maximum of 50. This does not apply when re-rolling due to receiving a crafting result."
   :points 2}
  {:name   "The Simpleton"
   :effect "Your non-synergy rings' cost decreases by 1 point. Your synergy rings' cost increases by 2."

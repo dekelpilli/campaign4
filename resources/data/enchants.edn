@@ -80,7 +80,7 @@
   :tags   #{:control}}
  {:effect "When you score a critical hit with an attack of opportunity, the target is debilitated until the end of their turn."
   :tags   #{:control :critical}}
- {:effect "You may take an additional action the end of an action where you landed a killing blow with a critical hit."
+ {:effect "{{level|level:+|times|capitalize}} per long rest, you may take an additional action the end of an action where you landed a killing blow with a critical hit."
   :tags   #{:critical :utility}}
  {:effect "First wearer chooses a language in which this item grants proficiency."
   :tags   #{:utility}}

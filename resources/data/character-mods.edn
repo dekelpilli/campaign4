@@ -1,6 +1,6 @@
 {:sharad [{:effect "You count as {{level|level:+:1:1}} Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20."
            :tags   #{:resources :utility}}
-          {:effect "Your Genie's Wrath also adds damage for {{level|level:+1:1:3}} other patron kinds of your choice."
+          {:effect "Your Genie's Wrath also adds damage for {{level|level:+:1:1:3}} other patron kinds of your choice."
            :tags   #{:damage}
            :points 3}
           {:effect "When learning Eldritch Invocations, you may halve the level requirement of the Invocations available. You may have no more than {{level|level:+:1:1:8}} such Invocation at a time."

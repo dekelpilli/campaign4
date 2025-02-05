@@ -359,6 +359,12 @@
           :tags   #{:survivability}}
          {:effect "Gain resistance to Armour attacks equal to half your Armour."
           :levels [:skip :keep]
+          :tags   #{:survivability}}
+         {:effect "You may add your Armour to passive saves you make."
+          :levels [:skip :skip :keep]
+          :tags   #{:survivability}}
+         {:effect "When you become bloodied in combat for the first time, gain +1 to your choice of Fortitude, Reflex, or Will for the remainder of the combat."
+          :levels [:skip :skip :keep]
           :tags   #{:survivability}}]}
  {:name "Thornwall"
   :base "armour"

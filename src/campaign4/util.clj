@@ -28,8 +28,8 @@
                                 :perception    1
                                 :persuasion    7
                                 :deception     4
-                                :gem-threshold 0}
-                      ::shahir {:insight       3
+                                :gem-threshold 9}
+                      ::shahir {:insight       4
                                 :perception    0
                                 :deception     1
                                 :persuasion    1
@@ -43,7 +43,7 @@
                                 :perception    4.5
                                 :deception     1
                                 :persuasion    1
-                                :gem-threshold 0}})
+                                :gem-threshold 14}})
 (def characters (-> (keys character-stats)
                     set))
 
