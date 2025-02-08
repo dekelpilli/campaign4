@@ -78,16 +78,16 @@
   :info   "Grants bonuses that make you a more competent close combatant."
   :levels [{:effect "You gain +1 global damage for each enemy that is close to you (within 5 feet of you, or within reach of your melee attacks)."
             :tags   #{:damage}}
+           {:effect "No more than once per combat, when a creature enters a space that is within 5 feet of your reach, you may immediately move 5 feet towards it."
+            :tags   #{:utility}}
            {:effect "You have an unstabilising aura, causing creatures of your choice within 10 feet of you to be rattled. Additionally, you cannot be rattled."
             :tags   #{:control}}
-           {:effect "Whenever you are hit by an attack from a creature that is close to you, the defence used for that attack gains +1 until the end of the attacker's next turn. This does not stack."
+           {:effect "Whenever an attack from a creature that is close to you scores a success against you, the defence used for that attack gains +1 until the end of the attacker's next turn. You cannot gain this bonus again while under its effects (for any defence type)."
             :tags   #{:survivability}}
-           {:effect "Gain damage equal to the number of your auras covering an enemy's space."
-            :tags   #{:damage}}
            {:effect "Your barriers apply to all damage from creatures that are close to you, regardless of if conditions on those barriers are met."
             :tags   #{:survivability}}
-           {:effect "" ;TODO
-            :tags   #{}}]}
+           {:effect "You gain +1 AB against creatures that are close to you for each enemy that is within 5 feet of you, to a maximum of +3 AB."
+            :tags   #{:accuracy}}]}
  {:name   "Unbound Arcana"
   :info   "Improves your general spellcasting prowess."
   :levels [{:effect "You may cast spells with a range that isn't Self as if they had a range of Touch instead. When you land a major success against a creature with a spell cast with a range of Touch, they become rattled until the start of their next turn."

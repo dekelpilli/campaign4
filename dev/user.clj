@@ -117,8 +117,8 @@
   (r/sample rings/rings)
   (dyn/format-mod *1)
 
-  (paths/progress-path! ::u/shahir)
-  (paths/new-path-progress! ::u/thoros ::paths/unbound-arcana)
+  (r! (paths/progress-path! ::u/shahir))
+  (r! (paths/new-path-progress! ::u/thoros ::paths/unbound-arcana))
 
   (->> ["lone"
         "Restless"]
@@ -202,7 +202,9 @@
 
   (talismans/new-gem 0)
   (talismans/cr->output 4)
-  (talismans/sample-gems 2 20)
+  (let [gems (talismans/sample-gems 2 20)]
+    (run! reporting/report-loot! gems)
+    gems)
   (talismans/gem-by-monster-type 4 "construct")
 
   (u/insight-truth 8 20)

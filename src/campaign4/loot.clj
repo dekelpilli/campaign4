@@ -10,6 +10,10 @@
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]))
 
+(def party-ticket-prob-bonus 0/100)
+(def loot-ticket-prob (+ 1/10 party-ticket-prob-bonus))
+(def otherworldly-ticket-prob (+ 1/30 party-ticket-prob-bonus))
+(def perks-ticket-prob (+ 1/5 party-ticket-prob-bonus))
 (def carnival-stands-by-ticket (->> (u/load-data :carnival-stands)
                                     (u/assoc-by :ticket)))
 
@@ -64,9 +68,9 @@
 
 (defn tickets [id]
   (cond-> []
-          (and (contains? carnival-stands-by-ticket id) (u/occurred? 1/10)) (conj id)
-          (u/occurred? 1/30) (conj :otherworldly)
-          (u/occurred? 1/5) (conj :perks)))
+          (and (contains? carnival-stands-by-ticket id) (u/occurred? loot-ticket-prob)) (conj id)
+          (u/occurred? otherworldly-ticket-prob) (conj :otherworldly)
+          (u/occurred? perks-ticket-prob) (conj :perks)))
 
 (defn loot-with-tickets [n]
   (let [{:keys [id]

@@ -1,9 +1,9 @@
 [{:name   "The Doctor"
   :effect "+2 to Medicine checks for stabilising allies for each ring the ally is wearing."
-  :points 4} ;TODO decrease for next campaign
+  :points 4} ;TODO decrease points for next campaign
  {:name   "The Hardened"
   :effect "+1 barrier for each distinct non-synergy ring worn."
-  :points 3} ;TODO increase for next campaign
+  :points 3} ;TODO increase points for next campaign
  {:name   "The Soldier"
   :effect "+1 damage for each distinct synergy ring you are wearing."
   :points 5}
