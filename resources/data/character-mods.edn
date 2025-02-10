@@ -39,7 +39,7 @@
            :tags   #{:survivability}}
           {:effect "When you cast an AoE spell that would deal fire or radiant damage, you may increase or decrease its area (square size/cone length/radius as specified by the spell) by {{level|level:+:5}} feet."
            :tags   #{:utility}}
-          {:effect "Casting Aid on a creature that is not on full healthy also causes it to gain {{level|level:+:10:20}}% of its missing hit points."
+          {:effect "Casting Aid on a creature that is not on full health also causes it to gain {{level|level:+:10:20}}% of its missing hit points."
            :tags   #{:survivability}}
           {:effect "The die size of dice rolled due to your Guidance, Bane, and Bless spells is increased by {{level|level:+}}."
            :points 2
@@ -54,7 +54,7 @@
           {:effect "Your Maneuver Specialisation bonuses are doubled."
            :points 3
            :tags   #{:damage :resources :accuracy}}
-          {:effect "+{{level|level:+:20:10:4}}% for your maneuvers to immediately refund their exertion cost."
+          {:effect "+{{level|level:+:10:20:4}}% for your maneuvers to immediately refund their exertion cost."
            :points  2
            :tags   #{:resources}}
           {:effect "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn."

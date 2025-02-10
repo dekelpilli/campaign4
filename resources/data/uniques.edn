@@ -291,10 +291,10 @@
           :tags   #{:control}}
          {:effect "+2 critical hit range."
           :tags   #{:critical}}
-         {:effect "+2 damage with against grappled and restrained enemies."
+         {:effect "+2 damage against grappled and restrained enemies."
           :tags   #{:damage}}
          {:effect "You cannot critically hit restrained enemies."}
-         {:effect "When you would otherwise land a killing blow with a weapon, the enemy instead dies at the end of their next turn. They can still die if they take damage from out sources before their turn, but are immune to damage until the end of their turn once it starts. You know when this happens."}
+         {:effect "When you would otherwise land a killing blow with a weapon, the enemy instead dies at the end of their next turn. They can still die if they take damage from other sources before their turn, but are immune to damage until the end of their turn once it starts. You know when this happens."}
          {:effect "When a creature dies at the end of their turn due to this unique's effect, you may cast Soul Cage as a reaction. You may do this as many times as you wish, but not while you have an active trapped soul via an instance of Soul Cage."
           :tags   #{:utility :survivability :accuracy}
           :levels [:skip :keep]}

@@ -68,7 +68,10 @@
           mods)))
 
 (defn apply-personality [character existing-mods]
-  (let [character-mods (qualified-char->mods character)
+  (let [existing-mods (mapv
+                        #(update % :level (fnil identity 1))
+                        existing-mods)
+        character-mods (qualified-char->mods character)
         existing-mods (match-character-mods character-mods existing-mods)
         upgradeable-mods (filterv (fn [{:keys [level template]}]
                                     (levels/upgradeable? level template))
