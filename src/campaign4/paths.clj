@@ -5,6 +5,7 @@
     [clojure.string :as str]))
 
 (def extended-paths? #{::u/shahir})
+(def has-path-spells? #{::u/shahir ::u/sharad})
 
 (def paths
   #{::unrelenting-fortune
@@ -50,13 +51,20 @@
         {:modifier (-> pretty-name divinity-paths :levels first)
          :tier     1}))))
 
+(defn- path-end? [character progress]
+  (let [end (cond-> 5 (extended-paths? character) inc)]
+    (= end progress)))
+
 (defn progress-path! [character]
-  (when-let [{:keys [path progress]} (when (u/characters character)
-                                       (-> (p/update-data! ::p/divinity
-                                                           {:filter {:character [(name character)]
-                                                                     :progress  (cond-> [1 2 3 4]
-                                                                                        (extended-paths? character) (conj 5))}}
-                                                           (fn [divinity] (update divinity :progress inc)))
-                                           first))]
-    {:modifier (get-in divinity-paths [path :levels (dec progress)])
-     :tier     progress}))
+  (when-let [{:keys [path progress spell]}
+             (when (u/characters character)
+               (-> (p/update-data! ::p/divinity
+                                   {:filter {:character [(name character)]
+                                             :progress  (cond-> [1 2 3 4]
+                                                                (extended-paths? character) (conj 5))}}
+                                   (fn [divinity] (update divinity :progress inc)))
+                   first))]
+    (cond-> {:modifier (get-in divinity-paths [path :levels (dec progress)])
+             :tier     progress}
+            (and (has-path-spells? character)
+                 (path-end? progress character)) (assoc :spell spell))))

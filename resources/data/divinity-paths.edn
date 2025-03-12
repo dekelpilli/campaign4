@@ -35,7 +35,8 @@
            {:effect "No more than once per combat, when a condition is applied to you, you may attempt a saving throw. On a success, the condition is not applied, and you are immune to that condition until the end of your next turn."
             :tags   #{:survivability}}
            {:effect "Each 'survivability' tagged mod on you (from uniques, relics, magic items - including talismans, and divine paths) also increases your maximum hit points by 1."
-            :tags   #{:survivability}}]}
+            :tags   #{:survivability}}]
+  :spell  "Globe of Invulnerability"}
  {:name   "Perpetual Learning"
   :info   "Improves your ability to acquire knowledge through skill checks, and improves Divination spellcasting."
   :levels [{:effect "Any text within line of sight within 100 feet of you becomes readable to you regardless of its language, distance/size, legibility, and lighting. Additionally, you gain +2 expertise dice for Investigation checks relating to reading."
@@ -47,7 +48,8 @@
            {:effect "You have +1 Armour against attacks from creatures you've learned about directly via a question while under the effect of a Divination spell you have cast, and your non-cantrip Divination spells no longer require concentration."
             :tags   #{:utility :survivability}}
            {:effect "At the start of each of your turns in combat while conscious, you have a percent chance to be affected by Warrior's Instincts until the start of your next turn equal to double the number of Divination spells (including cantrips) you have prepared, to a minimum of 10%."
-            :tags   #{:survivability :utility :accuracy}}]}
+            :tags   #{:survivability :utility :accuracy}}]
+  :spell  "Scrying"}
  {:name   "Unrelenting Fortune"
   :info   "Improves your luck and your ability to acquire better items."
   :levels [{:effect "You may add or subtract 5 from any loot roll you make."
@@ -61,7 +63,8 @@
            {:effect "Whenever you gain any amount of generic perk points, gain an equivalent amount of Wealth perk points."
             :tags   #{:wealth}}
            {:effect "For every 2 loot specialisations you unlock, unlock a further one that does not count towards this mod. This works retroactively and for future specialisations, to a minimum of +1 specialisation."
-            :tags   #{:wealth}}]}
+            :tags   #{:wealth}}]
+  :spell  "Secret Chest. When cast in this way, if the spell ends while the chest is still in the Ethereal Plane, the chest and all of its contents appear in an unoccupied space adjacent to you (or as close as possible). Additionally, whenever the chest returns to your plane, you may replace any of its contained items with their respective vendor valuation."}
  {:name   "Wrathful Judgement"
   :info   "Grants a mark and improves your marks."
   :levels [{:effect "Creatures of your choice that damage you, or land a killing blow against an ally of yours, become marked by Brand of Vengeance for a minute. Creatures marked with BoV have +1 damage taken from you."
@@ -87,7 +90,8 @@
            {:effect "Your barriers apply to all damage from creatures that are close to you, regardless of if conditions on those barriers are met."
             :tags   #{:survivability}}
            {:effect "You gain +1 AB against creatures that are close to you for each enemy that is within 5 feet of you, to a maximum of +3 AB."
-            :tags   #{:accuracy}}]}
+            :tags   #{:accuracy}}]
+  :spell  "Steel Wind Strike"}
  {:name   "Unbound Arcana"
   :info   "Improves your general spellcasting prowess."
   :levels [{:effect "You may cast spells with a range that isn't Self as if they had a range of Touch instead. When you land a major success against a creature with a spell cast with a range of Touch, they become rattled until the start of their next turn."
@@ -123,7 +127,8 @@
            {:effect "+1 critical hit range for attacks that would deal elemental damage. -1 major success threshold for attacks that would deal multiple elemental damage types."
             :tags   #{:critical :accuracy}}
            {:effect "+1 AB with attacks that would deal elemental damage."
-            :tags   #{:accuracy}}]}
+            :tags   #{:accuracy}}]
+  :spell "Immolation. When cast in this way, you may convert its base damage (including the DoT) to any elemental damage type."}
  {:name   "Volatile Presence"
   :info   "Specialises in teleportation and conjuration, without a focus on spellcasting, granting greater control of the battlefield."
   :levels [{:effect "When you make an opportunity attack, you may make a Will spell attack against that target instead. If the attack succeeds, teleport the target to a random safe and unoccupied space you can see within 20 feet of them (2d9, where 5/5 is no effect). Note that you can make opportunity attacks with ranged weapons as improvised weapons."
@@ -137,7 +142,8 @@
            {:effect "Whenever a creature you can see teleports or is teleported, you can immediately target one other creature you can see to teleport to a safe and unoccupied space within 5 feet of the original creature's new location. If the target creature is not willing, you must hit it with a Will attack to teleport it in this way. This does not chain."
             :tags   #{:utility}}
            {:effect "Your pillars have a 5ft aura centred on them. Creatures of your choice within this aura deal half damage against your pillars, and become sluggish while affected by at least two stacks of this aura."
-            :tags   #{:control}}]}
+            :tags   #{:control}}]
+  :spell  "Wall of Stone"}
  {:name   "Leader's Dominion"
   :info   "Grants benefits relating to minions and magic relating to minions."
   :levels [{:effect "Your minions have +2 damage while you have an active talisman power from a creature with the same creature type. You have +2 damage while at least one of your minions is benefiting from this effect."

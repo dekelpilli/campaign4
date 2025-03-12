@@ -10,7 +10,7 @@
     [campaign4.uniques :as uniques]
     [campaign4.util :as u]))
 
-(def party-ticket-prob-bonus 0/100)
+(def party-ticket-prob-bonus 1/100)
 (def loot-ticket-prob (+ 1/10 party-ticket-prob-bonus))
 (def otherworldly-ticket-prob (+ 1/30 party-ticket-prob-bonus))
 (def perks-ticket-prob (+ 1/5 party-ticket-prob-bonus))
@@ -57,11 +57,14 @@
                (recur max-roll actions)))
         table))))
 
+(defn loot-result-data [n]
+  (-> (subseq loot-table >= n)
+      first
+      val))
+
 (defn loot-result [n]
   (let [{:keys [action]
-         :as   result} (-> (subseq loot-table >= n)
-                           first
-                           val
+         :as   result} (-> (loot-result-data n)
                            (assoc :n n))]
     (-> (dissoc result :action)
         (assoc :result (action)))))

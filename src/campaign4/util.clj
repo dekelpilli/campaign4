@@ -43,7 +43,7 @@
                                 :perception    4.5
                                 :deception     1
                                 :persuasion    1
-                                :gem-threshold 14}})
+                                :gem-threshold 21}})
 (def characters (-> (keys character-stats)
                     set))
 

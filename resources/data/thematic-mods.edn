@@ -3,7 +3,7 @@
   :points         2
   :upgrade-points 3
   :origin         :zed}
- {:effect "When learning spells, you may learn maneuvers from the {{x|random:maneuvers-traditions}} tradition as if they are spells. You may activate these maneuvers by consuming a spell slot of level at least equal to the point cost of the maneuver."
+ {:effect "When learning spells, you may learn maneuvers from the {{x|random|maneuvers-traditions}} tradition as if they are spells. You may activate these maneuvers by consuming a spell slot of level at least equal to the point cost of the maneuver."
   :tags   #{:utility}
   :origin :zed}
  {:effect "If you know any concentration spells that can summon or create minions as an action, you may cast one such spell when you roll for initiative.{{level|level:literal:_: When you choose to do so, make your initiative roll with advantage.}}"

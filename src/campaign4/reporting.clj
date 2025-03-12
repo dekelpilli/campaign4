@@ -191,14 +191,17 @@
    :body  (-> (mapv :formatted enchants)
               format-coll)})
 
-(m/defmethod format-loot :divinity [{:keys [tier modifier]}]
+(m/defmethod format-loot :divinity [{:keys [tier modifier spell]}]
   {:title (str (some (fn [{:keys [name levels]}]
                        (when (= (nth levels (dec tier))
                                 modifier)
                          name))
                      (vals paths/divinity-paths))
                " (" tier ")")
-   :body  (:effect modifier)})
+   :body  (cond-> (:effect modifier)
+                  spell (-> vector
+                            (conj spell)
+                            format-coll))})
 
 (m/defmethod format-loot :ring [{:keys [name points formatted]}]
   {:title (format "%s (%s point ring)" name points)

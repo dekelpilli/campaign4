@@ -77,25 +77,31 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 11)
+  (analytics/set-session! 16)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 53))
+  (pf (loot/loot! 97))
   (loot/loot-result 91)
+  (-> (loot/loot-result-data 90)
+      (select-keys [:id :description]))
   (loot-result :crafting)
   (loot-result :curio)
   (loot-result :talisman)
   (loot-result :ring)
   (loot-result :unique)
+  (loot/tickets :helmet)
   (r!)
 
+  ;IMPORTANT
   (encounters/gem-procs)
+
   (encounters/encounter-xp ::encounters/dungeon-boss)
 
   (encounters/pass-time 1)
-  (encounters/travel 12)
+  (encounters/travel 2)
 
+  ((e/enchants-fns "gloves"))
   (crafting/new-shrine)
   (->> (e/enchants-by-base "gloves")
        (r/sample-without-replacement 5)
@@ -103,6 +109,7 @@
 
   (encounters/tinkerer-stand "prophetic" 45)
   (encounters/jeweller-stand 11)
+  (encounters/tailor-stand ::u/simo 7)
 
   (curios/use-curios
     "armour"
@@ -117,36 +124,44 @@
   (r/sample rings/rings)
   (dyn/format-mod *1)
 
+  ;TODO
   (r! (paths/progress-path! ::u/shahir))
-  (r! (paths/new-path-progress! ::u/thoros ::paths/unbound-arcana))
+  (r! (paths/new-path-progress! ::u/shahir ::paths/aggressive-combat))
 
-  (->> ["lone"
-        "Restless"]
+  (->> ["simpleton"
+        "vengeful"
+        "prepare"
+        "scapeg"
+        "acrob"]
        (mapv #(shorthand-name % rings/rings))
        (rings/sacrifice 0))
 
   (uniques/new-unique)
   (uniques/at-level *1 1)
   (uniques/at-level *1 2)
-  (choose-by-name "resilient" uniques/uniques)
-  (-> (choose-by-name "steadf" uniques/uniques)
-      (uniques/at-level 3)
-      pf)
-
+  (choose-by-name "reckless" uniques/uniques)
+  (-> (choose-by-name "reckless" uniques/uniques)
+      (uniques/at-level 2)
+      r!)
   (r!)
 
-  (report-tarot-cards! ["justice"])
+  (report-tarot-cards! ["wheel of"
+                        "chariot"
+                        "magician"
+                        "world"
+                        "x of swords"
+                        "empress"
+                        "devil"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["x of swords" "justice"
-             "judgement" "emperor"])
+            ["world" "wheel of fortune" "x of swor"])
       (tarot/generate-relic "gloves"))
   (relics/current-relic-state (:relic *1))
   (-> (:relic *2)
-      (assoc :name "Jummy's Mittens")
+      (assoc :name "Extra Attack")
       tarot/save-relic!)
   (pf)
 
-  (let [relic (choose-by-relic-name "moment")
+  (let [relic (choose-by-relic-name "jummy's mittens")
         rand-upgrade (-> (relics/relic-level-options relic false)
                          r/sample
                          (update-vals relics/format-relic-mod))]
@@ -154,14 +169,14 @@
         (update :level inc)
         relics/update-relic!))
 
-  (choose-by-relic-name "slumber")
+  (choose-by-relic-name "momentum")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
   (relics/relic-level-options *1 false)
   ;level relic from options
   (let [relic *2
         level-options *1
-        option-index 0]
+        option-index 2]
     (-> (update relic :levels (fnil conj []) (dissoc (nth level-options option-index) :template))
         (update :level inc)
         relics/update-relic!))
@@ -175,42 +190,38 @@
        (mapv #(-> (dissoc % :template)
                   (assoc :level 1))))
   (helmets/apply-personality
-    ::u/sharad
-    [{:effect    "You gain access to the following Major Effect: regain all spell points consumed as part of this attack.",
-      :tags      #{:resources},
-      :points    2,
-      :level     1,
-      :formatted "You gain access to the following Major Effect: regain all spell points consumed as part of this attack."}
-     {:effect    "When learning Eldritch Invocations, you may halve the level requirement of the Invocations available. You may have no more than {{level|level:+:1:1:8}} such Invocation at a time.",
-      :tags      #{:utility},
-      :level     1
-      :points    1,
-      :formatted "When learning Eldritch Invocations, you may halve the level requirement of the Invocations available. You may have no more than 1 such Invocation at a time."}
-     {:effect    "You count as {{level|level:+:1:1}} Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20.",
-      :tags      #{:utility :resources},
-      :level     1
-      :points    1,
-      :formatted "You count as 1 Warlock level higher for the purpose of calculating your Spell Points and Spells Known. If you count as being above level 20, add 1 to each for each level above 20."}])
+    ::u/simo
+    [{:effect "Your critical damage is increased by the distance between you and the target (in squares)."
+      :tags   #{:critical :damage}}
+     {:effect "+{{level|level:+:2}} damage with weapon attacks when using Focus Shot."
+      :tags   #{:damage}}
+     {:effect "+{{level|level:+:10:20:4}}% for your maneuvers to immediately refund their exertion cost."
+      :points  2
+      :tags   #{:resources}}
+     {:effect "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn."
+      :points 2
+      :tags   #{:utility :critical}}])
   (helmets/mend-helmet
     ::u/shahir
     [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks."
       :points 3
       :tags   #{:survivability}
       :level  1}])
-  (helmets/new-helmet ::u/sharad)
-  (r!)
+  (helmets/new-helmet ::u/shahir)
+  (helmets/fractured-chance 8)
+  (r! *1)
 
   (talismans/new-gem 0)
   (talismans/cr->output 4)
-  (let [gems (talismans/sample-gems 2 20)]
+  (let [gems (talismans/sample-gems 4 3)]
     (run! reporting/report-loot! gems)
     gems)
   (talismans/gem-by-monster-type 4 "construct")
 
-  (u/insight-truth 8 20)
+  (u/insight-truth 7 18)
   (u/insight-lie 8)
-  (u/group-bonus :persuasion)
-  (u/group-bonus :deception)
+  (u/group-bonus :persuasion ::u/sharad)
+  (u/group-bonus :deception ::u/sharad)
 
   (u/roll 1 20)
   (encounters/gem-procs)
