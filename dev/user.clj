@@ -77,11 +77,11 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 16)
+  (analytics/set-session! 19)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 97))
+  (pf (loot/loot! 93))
   (loot/loot-result 91)
   (-> (loot/loot-result-data 90)
       (select-keys [:id :description]))
@@ -90,7 +90,7 @@
   (loot-result :talisman)
   (loot-result :ring)
   (loot-result :unique)
-  (loot/tickets :helmet)
+  (loot/tickets :tarot)
   (r!)
 
   ;IMPORTANT
@@ -98,7 +98,7 @@
 
   (encounters/encounter-xp ::encounters/dungeon-boss)
 
-  (encounters/pass-time 1)
+  (encounters/pass-time 4)
   (encounters/travel 2)
 
   ((e/enchants-fns "gloves"))
@@ -112,56 +112,63 @@
   (encounters/tailor-stand ::u/simo 7)
 
   (curios/use-curios
-    "armour"
-    [::e/wealth
-     ::e/wealth
-     ::e/negated-wealth
-     ::e/negated-survivability]
-    3)
+    "gloves"
+    [::e/negated-damage
+     ::e/negated-accuracy
+     ::e/control
+     ::e/control]
+    6)
 
+  (pf *1)
   (r!)
   (curios/new-curio)
   (r/sample rings/rings)
   (dyn/format-mod *1)
 
-  ;TODO
-  (r! (paths/progress-path! ::u/shahir))
+  (r! (paths/progress-path! ::u/sharad))
   (r! (paths/new-path-progress! ::u/shahir ::paths/aggressive-combat))
 
-  (->> ["simpleton"
-        "vengeful"
-        "prepare"
+  (->> ["speedster"
+        "impactf"
+        "impactf"
         "scapeg"
-        "acrob"]
+        "scapeg"
+        "prosp"
+        "jeweller"
+        "jeweller"
+        "jeweller"
+        "jeweller"]
        (mapv #(shorthand-name % rings/rings))
        (rings/sacrifice 0))
 
   (uniques/new-unique)
   (uniques/at-level *1 1)
-  (uniques/at-level *1 2)
-  (choose-by-name "reckless" uniques/uniques)
-  (-> (choose-by-name "reckless" uniques/uniques)
+  (uniques/at-level *2 2)
+  (choose-by-name "cryo" uniques/uniques)
+  (-> (choose-by-name "power add" uniques/uniques)
       (uniques/at-level 2)
       r!)
   (r!)
 
-  (report-tarot-cards! ["wheel of"
-                        "chariot"
-                        "magician"
-                        "world"
-                        "x of swords"
-                        "empress"
-                        "devil"])
+  (report-tarot-cards! ["emperor"
+                        "tower"
+                        "death"
+                        "court of pent"
+                        "magicia"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["world" "wheel of fortune" "x of swor"])
+            ["emperor"
+             "tower"
+             "court of pent"
+             "magicia"])
       (tarot/generate-relic "gloves"))
-  (relics/current-relic-state (:relic *1))
-  (-> (:relic *2)
-      (assoc :name "Extra Attack")
+  (relics/current-relic-state (choose-by-relic-name "exciting archimedes"))
+  (-> (:relic *3)
+      (assoc :name "exciting archimedes")
       tarot/save-relic!)
   (pf)
+  (r!)
 
-  (let [relic (choose-by-relic-name "jummy's mittens")
+  (let [relic (choose-by-relic-name "exciting archimedes")
         rand-upgrade (-> (relics/relic-level-options relic false)
                          r/sample
                          (update-vals relics/format-relic-mod))]
@@ -169,7 +176,7 @@
         (update :level inc)
         relics/update-relic!))
 
-  (choose-by-relic-name "momentum")
+  (choose-by-relic-name "momentu")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
   (relics/relic-level-options *1 false)
@@ -218,9 +225,9 @@
     gems)
   (talismans/gem-by-monster-type 4 "construct")
 
-  (u/insight-truth 7 18)
+  (u/insight-truth 7 30)
   (u/insight-lie 8)
-  (u/group-bonus :persuasion ::u/sharad)
+  (u/group-bonus :persuasion)
   (u/group-bonus :deception ::u/sharad)
 
   (u/roll 1 20)

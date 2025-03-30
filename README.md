@@ -115,7 +115,7 @@ Can only move mods on gloves to gloves, and mods on armours to armours. Receptac
     - Damage: Directly increases or grants damage (such as with an aura or thorns), either with flat additions or modifiers to the damage itself, ignore res/imm, minion damage, damage conversion, ability score improvements
     - Critical: Inflicts staggered, reduces crit req, improves crit damage (e.g. via adding crit dice), triggers effect on crit
     - Accuracy: Grants AB, grants attacks advantage, grants enemies disadvantaged defence (dazed, staggered, blinded, restrained), grants DCs bonuses, lower enemy AC/saves
-    - Survivability: Grants AC, spell save bonuses/adv, advantaged defence, health regen, incoming healing, max HP, minion defences, change incoming damage, barrier
+    - Survivability: Grants AC, spell save bonuses/adv, advantaged defence, health regen, incoming healing, outgoing healing, max HP, minion defences, change incoming damage, barrier
     - Control: On enemies; Inflicts dazed/debilitated/frightened/rattled/slowed/sluggish/taunted/charmed/blinded/restrained/grappled, reduces speed, reduces accuracy, reduces damage, reduces attacks/actions
     - Resources: Grants maximum resources, avoids resource costs, or improves resource replenishment
     - Wealth: Grants bonuses to loot found, sell value, improves loot searches directly (+investigation doesn't count), improves journey activities

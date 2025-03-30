@@ -28,7 +28,7 @@
                                  (max-level (keyword preset) args)))
                        level-sections)]
       (or (empty? max-levels)
-          (> (apply max max-levels) level)))))
+          (> (apply max max-levels) (or level 1))))))
 
 (m/defmethod level-value :+ [_ level [step starting-value level-cap]]
   (let [level (cond-> level

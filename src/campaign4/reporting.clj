@@ -2,15 +2,24 @@
   (:require
     [campaign4.paths :as paths]
     [campaign4.util :as u]
+    [clojure.edn :as edn]
+    [clojure.java.io :as io]
     [clojure.string :as str]
     [clojure.walk :as walk]
     [hato.client :as hato]
     [jsonista.core :as j]
     [methodical.core :as m]
-    [puget.printer :as pp])
+    [puget.printer :as pp]
+    [randy.core :as r])
   (:import
+    (java.io PushbackReader)
     (java.util.concurrent Executors)
     (name.fraser.neil.plaintext diff_match_patch$Operation)))
+
+(def ^:private words (-> (io/resource "words.edn")
+                         io/reader
+                         PushbackReader.
+                         edn/read))
 
 (def ^:private discord-username "\uD83D\uDCB0 Placeholder DMs \uD83D\uDCB0")
 
@@ -20,6 +29,10 @@
 (defn- priority-comparator [a b]
   (compare (key-priority a (abs (hash a)))
            (key-priority b (abs (hash b)))))
+
+(defn- loot-message-unique-name []
+  (->> (r/sample-without-replacement 2 words)
+       (str/join \space)))
 
 (defn- derive-type [loot]
   (cond
@@ -243,7 +256,8 @@
                    :content-type :application/json
                    :body         (j/write-value-as-string
                                    {:content    (-> (format-loot loot)
-                                                    format-loot-message)
+                                                    format-loot-message
+                                                    (str "\n\n||" (loot-message-unique-name) "||"))
                                     :embeds     [{:title "Full details"
                                                   :type  "link"
                                                   :url   (format "https://discord.com/channels/%s/%s/%s"
@@ -273,6 +287,5 @@
       format-loot-message)
   (-> (campaign4.crafting/loot-result)
       report-loot!)
-  (-> {:curios (-> (repeatedly 4 campaign4.curios/new-curio)
-                   vec)}
+  (-> (campaign4.curios/loot-result)
       report-loot!))

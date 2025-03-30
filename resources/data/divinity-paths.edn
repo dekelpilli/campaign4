@@ -118,7 +118,7 @@
             :tags   #{:damage}}]}
  {:name   "Elemental Mastery"
   :info   "Improves your prowess with and against elemental damage (acid, cold, fire, lightning, or thunder damage)."
-  :levels [{:effect "+1 damage with attacks for each elemental damage type it deals (acid, cold, fire, lightning, or thunder damage)."
+  :levels [{:effect "+1 damage with attacks for each elemental damage type they deal (acid, cold, fire, lightning, or thunder damage)."
             :tags   #{:damage}}
            {:effect "You can cast Absorb Elements an amount of times per long rest equal to an ability score modifier of your choice."
             :tags   #{:survivability}}

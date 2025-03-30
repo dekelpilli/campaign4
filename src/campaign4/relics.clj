@@ -49,6 +49,7 @@
 
 (defn format-relic-mod [mod]
   (let [mod (-> (select-keys mod [:effect :formatted :points :level :tags])
+                (update :effect (fnil identity (:formatted mod)))
                 dyn/load-mod
                 (dyn/format-mod (or (not-empty (select-keys mod [:level]))
                                     {:level 1}))

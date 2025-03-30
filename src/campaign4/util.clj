@@ -26,11 +26,11 @@
 
 (def character-stats {::sharad {:insight       1
                                 :perception    1
-                                :persuasion    7
-                                :deception     4
+                                :persuasion    8
+                                :deception     5
                                 :gem-threshold 9}
-                      ::shahir {:insight       4
-                                :perception    0
+                      ::shahir {:insight       3.5
+                                :perception    1
                                 :deception     1
                                 :persuasion    1
                                 :gem-threshold 21}
@@ -40,10 +40,10 @@
                                 :persuasion    2
                                 :gem-threshold 0}
                       ::simo   {:insight       1
-                                :perception    4.5
+                                :perception    5.5
                                 :deception     1
                                 :persuasion    1
-                                :gem-threshold 21}})
+                                :gem-threshold 30}})
 (def characters (-> (keys character-stats)
                     set))
 

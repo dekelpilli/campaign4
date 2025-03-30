@@ -150,7 +150,7 @@
          {:effect "+1 critical hit range with attacks that deal cold damage, and no other non-physical damage."
           :levels [:skip :keep]
           :tags   #{:critical}}
-         {:effect "Your attacks that deal cold damage also have this available major effect: the target must make a saving throw, becoming frozen them until the end of their next turn on a failed save. If the target died as a result of this attack, you may force a different creature to make the save instead."
+         {:effect "Your attacks that deal cold damage also have this available major effect: the target must make a saving throw, becoming frozen them the end of their next turn on a failed save. If the target died as a result of this attack, you may force a different creature to make the save instead."
           :levels [:skip :keep]
           :tags   #{:control}}]}
  {:name "Extended Demise"
