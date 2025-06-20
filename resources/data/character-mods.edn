@@ -17,7 +17,7 @@
            :tags   #{:utility}}
           {:effect "When you roll for initiative, up to {{level|level:+:1:1:4}} creature(s) you can see lose hit points equal to your level."
            :tags   #{:damage}}
-          {:effect "When a creature affected by your Attention Diverting Aegis or Antagonising Flourish targets a creature other than you with an attack, you can use a reaction to immediately taunt it until the end of its next turn."
+          {:effect "No more than one per round, when a creature affected by your Attention Diverting Aegis or Antagonising Flourish targets a creature other than you with an attack, you can use a reaction to immediately taunt it until the end of its next turn."
            :tags   #{:control}
            :points 2}
           {:effect "You have {{level|level:+}} additional reaction(s) per round, however you can still make no more than one opportunity attack per round."

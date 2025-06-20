@@ -77,11 +77,11 @@
       (doto reporting/report-loot!)))
 
 (comment
-  (analytics/set-session! 19)
+  (analytics/set-session! 24)
 
   (pf (loot/loot! (rng/next-int @r/default-rng 1 101)))
   (pf)
-  (pf (loot/loot! 93))
+  (pf (loot/loot! 95))
   (loot/loot-result 91)
   (-> (loot/loot-result-data 90)
       (select-keys [:id :description]))
@@ -96,10 +96,10 @@
   ;IMPORTANT
   (encounters/gem-procs)
 
-  (encounters/encounter-xp ::encounters/dungeon-boss)
+  (encounters/encounter-xp ::encounters/medium)
 
-  (encounters/pass-time 4)
-  (encounters/travel 2)
+  (encounters/pass-time 1)
+  (encounters/travel 9)
 
   ((e/enchants-fns "gloves"))
   (crafting/new-shrine)
@@ -113,11 +113,11 @@
 
   (curios/use-curios
     "gloves"
-    [::e/negated-damage
-     ::e/negated-accuracy
+    [::e/utility
+     ::e/utility
      ::e/control
-     ::e/control]
-    6)
+     ::e/resources]
+    7)
 
   (pf *1)
   (r!)
@@ -125,45 +125,31 @@
   (r/sample rings/rings)
   (dyn/format-mod *1)
 
-  (r! (paths/progress-path! ::u/sharad))
-  (r! (paths/new-path-progress! ::u/shahir ::paths/aggressive-combat))
+  (r! (paths/progress-path! ::u/shahir))
+  (r! (paths/new-path-progress! ::u/shahir ::paths/perpetual-learning))
 
-  (->> ["speedster"
-        "impactf"
-        "impactf"
-        "scapeg"
-        "scapeg"
-        "prosp"
-        "jeweller"
-        "jeweller"
-        "jeweller"
-        "jeweller"]
+  (->> ["hard" "hard"]
        (mapv #(shorthand-name % rings/rings))
        (rings/sacrifice 0))
 
   (uniques/new-unique)
   (uniques/at-level *1 1)
-  (uniques/at-level *2 2)
-  (choose-by-name "cryo" uniques/uniques)
+  (uniques/at-level *1 3)
+  (choose-by-name "resili" uniques/uniques)
   (-> (choose-by-name "power add" uniques/uniques)
       (uniques/at-level 2)
       r!)
   (r!)
 
-  (report-tarot-cards! ["emperor"
-                        "tower"
-                        "death"
-                        "court of pent"
-                        "magicia"])
+  (report-tarot-cards! ["high priest"])
   (-> (mapv #(choose-by-name % tarot/cards)
-            ["emperor"
-             "tower"
-             "court of pent"
-             "magicia"])
-      (tarot/generate-relic "gloves"))
-  (relics/current-relic-state (choose-by-relic-name "exciting archimedes"))
-  (-> (:relic *3)
-      (assoc :name "exciting archimedes")
+            ["hiero"
+             "court of wand"
+             "moon"])
+      (tarot/generate-relic "armour"))
+  (relics/current-relic-state (choose-by-relic-name "parry glo"))
+  (-> (:relic *1)
+      (assoc :name "Climbing pants")
       tarot/save-relic!)
   (pf)
   (r!)
@@ -176,7 +162,7 @@
         (update :level inc)
         relics/update-relic!))
 
-  (choose-by-relic-name "momentu")
+  (choose-by-relic-name "parry")
   (-> (relics/current-relic-state *1)
       reporting/report-loot!)
   (relics/relic-level-options *1 false)
@@ -193,42 +179,48 @@
     {:filter {:name ["old relic name"]}}
     (constantly {:name "new relic name"}))
 
-  (->> (helmets/qualified-char->mods ::u/shahir)
+  (->> (helmets/qualified-char->mods ::u/simo)
        (mapv #(-> (dissoc % :template)
                   (assoc :level 1))))
   (helmets/apply-personality
     ::u/simo
-    [{:effect "Your critical damage is increased by the distance between you and the target (in squares)."
-      :tags   #{:critical :damage}}
-     {:effect "+{{level|level:+:2}} damage with weapon attacks when using Focus Shot."
-      :tags   #{:damage}}
-     {:effect "+{{level|level:+:10:20:4}}% for your maneuvers to immediately refund their exertion cost."
-      :points  2
-      :tags   #{:resources}}
-     {:effect "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn."
-      :points 2
-      :tags   #{:utility :critical}}])
+    [{:effect "Your critical damage is increased by the distance between you and the target (in squares).",
+      :tags   #{:damage :critical},
+      :points 1,
+      :level  1}
+     {:effect "+{{level|level:+:2}} damage with weapon attacks when using Focus Shot.",
+      :tags   #{:damage},
+      :points 1,
+      :level  3}
+     {:effect "+{{level|level:+:10:20:4}}% for your maneuvers to immediately refund their exertion cost.",
+      :points 2,
+      :tags   #{:resources},
+      :level  2}
+     {:effect "If you land a critical hit or major success with a weapon attack on the same turn where you used a maneuver, you may use one Bonus Action maneuver as a free action before the end of your turn.",
+      :points 2,
+      :tags   #{:utility :critical},
+      :level  1}])
   (helmets/mend-helmet
     ::u/shahir
     [{:effect "Gain temporary hit points equal to {{level|level:+:1/3|percentage}}% of healing granted by your bite attacks."
       :points 3
       :tags   #{:survivability}
       :level  1}])
-  (helmets/new-helmet ::u/shahir)
-  (helmets/fractured-chance 8)
+  (helmets/new-helmet ::u/sharad)
+  (helmets/fractured-chance 16)
   (r! *1)
 
   (talismans/new-gem 0)
-  (talismans/cr->output 4)
+  (talismans/cr->output 3)
   (let [gems (talismans/sample-gems 4 3)]
     (run! reporting/report-loot! gems)
     gems)
   (talismans/gem-by-monster-type 4 "construct")
 
-  (u/insight-truth 7 30)
-  (u/insight-lie 8)
+  (u/insight-truth 4 28)
+  (u/insight-lie 6)
   (u/group-bonus :persuasion)
-  (u/group-bonus :deception ::u/sharad)
+  (u/group-bonus :deception)
 
   (u/roll 1 20)
   (encounters/gem-procs)

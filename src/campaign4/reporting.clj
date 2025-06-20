@@ -13,7 +13,7 @@
     [randy.core :as r])
   (:import
     (java.io PushbackReader)
-    (java.util.concurrent Executors)
+    (java.util.concurrent Executor Executors)
     (name.fraser.neil.plaintext diff_match_patch$Operation)))
 
 (def ^:private words (-> (io/resource "words.edn")
@@ -22,6 +22,7 @@
                          edn/read))
 
 (def ^:private discord-username "\uD83D\uDCB0 Placeholder DMs \uD83D\uDCB0")
+(def ^:private discord-content-size-limit 2000)
 
 (def ^:private key-priority (->> [:name :base-type :mods :effects :formatted :effect :tags]
                                  (map-indexed (fn [i k] [k i]))
@@ -232,25 +233,36 @@
                     body)))
        (str/join \newline)))
 
+(defn- detailed-loot-content [loot]
+  (let [detailed-data (walk/prewalk
+                        (fn [x] (if (map? x)
+                                  (->> (dissoc x :template)
+                                       (into (sorted-map-by priority-comparator)))
+                                  x))
+                        loot)
+        content (str "```edn\n"
+                     (pp/pprint-str detailed-data)
+                     (str "\n```"))]
+    (if (> (count content) discord-content-size-limit)
+      (str "```edn\n"
+           (prn-str detailed-data)
+           (str "\n```"))
+      content)))
+
 (defn- format-and-report! [loot]
-  (let [{:keys [channel_id id]} (-> (hato/request {:method       :post
-                                                   :url          (:detailed-loot-webhook u/config)
-                                                   :query-params {:wait true}
-                                                   :content-type :application/json
-                                                   :body         (j/write-value-as-string
-                                                                   {:content    (str "```edn\n"
-                                                                                     (pp/pprint-str
-                                                                                       (walk/prewalk
-                                                                                         (fn [x] (if (map? x)
-                                                                                                   (->> (dissoc x :template)
-                                                                                                        (into (sorted-map-by priority-comparator)))
-                                                                                                   x))
-                                                                                         loot))
-                                                                                     (str "\n```"))
-                                                                    :avatar_url (:discord-avatar u/config)
-                                                                    :username   discord-username})})
-                                    :body
-                                    u/parse-json)]
+  (let [detailed-content (detailed-loot-content loot)
+        {:keys [channel_id id]} (when (<= (count detailed-content) discord-content-size-limit)
+                                  (-> (hato/request {:method           :post
+                                                     :url              (:detailed-loot-webhook u/config)
+                                                     :query-params     {:wait true}
+                                                     :throw-exceptions false
+                                                     :content-type     :application/json
+                                                     :body             (j/write-value-as-string
+                                                                         {:content    detailed-content
+                                                                          :avatar_url (:discord-avatar u/config)
+                                                                          :username   discord-username})})
+                                      :body
+                                      u/parse-json))]
     (hato/request {:method       :post
                    :url          (:loot-webhook u/config)
                    :content-type :application/json
@@ -258,20 +270,21 @@
                                    {:content    (-> (format-loot loot)
                                                     format-loot-message
                                                     (str "\n\n||" (loot-message-unique-name) "||"))
-                                    :embeds     [{:title "Full details"
-                                                  :type  "link"
-                                                  :url   (format "https://discord.com/channels/%s/%s/%s"
-                                                                 (:discord-server-id u/config)
-                                                                 channel_id
-                                                                 id)}]
+                                    :embeds     (cond-> []
+                                                        id {:title "Full details"
+                                                            :type  "link"
+                                                            :url   (format "https://discord.com/channels/%s/%s/%s"
+                                                                           (:discord-server-id u/config)
+                                                                           channel_id
+                                                                           id)})
                                     :avatar_url (:discord-avatar u/config)
                                     :username   discord-username})})))
 
-(def executor (Executors/newSingleThreadExecutor))
+(def ^Executor executor (Executors/newVirtualThreadPerTaskExecutor))
 
 (defn report-loot! [loot]
   (when loot
-    (.submit executor ^Runnable #(format-and-report! loot))))
+    (.execute executor ^Runnable #(format-and-report! loot))))
 
 (comment
   (-> {:result [{:name "ancient" :effect "reroll unique"}

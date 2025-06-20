@@ -26,18 +26,18 @@
 
 (def character-stats {::sharad {:insight       1
                                 :perception    1
-                                :persuasion    8
+                                :persuasion    9
                                 :deception     5
                                 :gem-threshold 9}
-                      ::shahir {:insight       3.5
-                                :perception    1
-                                :deception     1
-                                :persuasion    1
+                      ::shahir {:insight       4.5
+                                :perception    2
+                                :deception     2
+                                :persuasion    8
                                 :gem-threshold 21}
                       ::thoros {:insight       8
                                 :perception    8
                                 :deception     -1
-                                :persuasion    2
+                                :persuasion    3
                                 :gem-threshold 0}
                       ::simo   {:insight       1
                                 :perception    5.5

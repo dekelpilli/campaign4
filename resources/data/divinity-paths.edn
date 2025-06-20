@@ -45,7 +45,7 @@
             :tags   #{:utility}}
            {:effect "You may learn any Divination spell as if it were on your class' spell list."
             :tags   #{:utility}}
-           {:effect "You have +1 Armour against attacks from creatures you've learned about directly via a question while under the effect of a Divination spell you have cast, and your non-cantrip Divination spells no longer require concentration."
+           {:effect "You may spend a bonus action inspecting a creature you can see in combat. While under the effect of a Divination spell you have cast, you have +1 Armour against attacks from creatures you have investigated. Also, your non-cantrip Divination spells no longer require concentration."
             :tags   #{:utility :survivability}}
            {:effect "At the start of each of your turns in combat while conscious, you have a percent chance to be affected by Warrior's Instincts until the start of your next turn equal to double the number of Divination spells (including cantrips) you have prepared, to a minimum of 10%."
             :tags   #{:survivability :utility :accuracy}}]
